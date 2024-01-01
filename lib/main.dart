@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:provider/provider.dart';
 import 'package:qpay/features/language/language_view_model.dart';
+import 'package:qpay/features/main/main_view_model.dart';
 import 'package:qpay/features/welcome/welcome_view_model.dart';
 import 'package:qpay/routing/app_router.dart';
 import 'package:qpay/utils/color.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => LanguageViewModel()),
         ChangeNotifierProvider(create: (_) => WelcomeViewModel()),
+        ChangeNotifierProvider(create: (_) => MainViewModel())
       ],
       child: LocaleBuilder(
         builder: (locale) {

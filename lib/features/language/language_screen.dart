@@ -21,7 +21,7 @@ class LanguageScreen extends StatelessWidget {
         padding: const EdgeInsets.all(medium),
         child: MyButton(
           text: "continue",
-          onPressed: () => context.go(AppRoutes.welcome),
+          onPressed: () => context.push(AppRoutes.welcome),
         ),
       ),
       body: SafeArea(

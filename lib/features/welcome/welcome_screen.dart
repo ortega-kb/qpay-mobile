@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:qpay/common/widgets/my_button.dart';
 import 'package:qpay/features/welcome/welcome_view_model.dart';
 import 'package:qpay/features/welcome/widgets/page_item.dart';
+import 'package:qpay/routing/app_routes.dart';
 import 'package:qpay/utils/constants/image_path.dart';
 import 'package:qpay/utils/spacing.dart';
 import 'package:qpay/features/welcome/widgets/page_indicator.dart';
@@ -28,8 +30,12 @@ class WelcomeScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(medium),
-          child: MyButton(text: "get_started", onPressed: () {})),
+        padding: const EdgeInsets.all(medium),
+        child: MyButton(
+          text: "get_started",
+          onPressed: () => context.push(AppRoutes.main),
+        ),
+      ),
       body: SafeArea(
         child: Column(
           children: [
