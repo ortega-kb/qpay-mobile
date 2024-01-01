@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:qpay/features/welcome/welcome_screen.dart';
-import 'package:qpay/provider/language_provider.dart';
+import 'package:qpay/common/widgets/my_button.dart';
+import 'package:qpay/features/language/language_view_model.dart';
+import 'package:qpay/routing/app_routes.dart';
 
-import '../../utils/color.dart';
 import '../../utils/spacing.dart';
-import '../../widget/common/select_language.dart';
-import '../../widget/common/subtitle_text.dart';
+import 'widgets/select_language_tile.dart';
+import '../../common/widgets/subtitle.dart';
+import '../../common/widgets/my_title.dart';
 
 class LanguageScreen extends StatelessWidget {
   const LanguageScreen({super.key});
@@ -14,36 +16,12 @@ class LanguageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Séléctionner une langue",
-          style: TextStyle(
-              fontSize: Theme.of(context).textTheme.titleLarge?.fontSize,
-              fontWeight: FontWeight.bold),
-        ),
-      ),
+      appBar: AppBar(title: MyTitle(text: "select_language")),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(medium),
-        child: MaterialButton(
-          color: orange,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(large)),
-          textColor: white,
-          child: Padding(
-            padding: const EdgeInsets.all(middleSmall),
-            child: Text(
-              "Continuer",
-              style: TextStyle(
-                  fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize),
-            ),
-          ),
-          onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) {
-                return const WelcomeScreen();
-              }),
-            );
-          },
+        child: MyButton(
+          text: "continue",
+          onPressed: () => context.go(AppRoutes.welcome),
         ),
       ),
       body: SafeArea(
@@ -52,29 +30,27 @@ class LanguageScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: medium),
-              const SubtitleText(
-                  text:
-                      "Sélectionnez votre langue préférée pour utiliser Qpay facilement."),
+              const Subtitle(text: "subtitle_language"),
               const SizedBox(height: medium),
-              Consumer<LanguageProvider>(
-                builder: (context, provider, child) {
-                  return SelectLanguage(
-                    title: "Français / French",
-                    active: provider.selected == 0,
+              Consumer<LanguageViewModel>(
+                builder: (context, viewModel, child) {
+                  return SelectLanguageTile(
+                    title: "french",
+                    active: viewModel.selectedLanguage == 0,
                     onChanged: (value) {
-                      provider.setLanguage(0);
+                      viewModel.setLanguage(context, 0);
                     },
                   );
                 },
               ),
               const SizedBox(height: medium),
-              Consumer<LanguageProvider>(
-                builder: (context, provider, child) {
-                  return SelectLanguage(
-                    title: "Anglais / English",
-                    active: provider.selected == 1,
+              Consumer<LanguageViewModel>(
+                builder: (context, viewModel, child) {
+                  return SelectLanguageTile(
+                    title: "english",
+                    active: viewModel.selectedLanguage == 1,
                     onChanged: (value) {
-                      provider.setLanguage(1);
+                      viewModel.setLanguage(context, 1);
                     },
                   );
                 },

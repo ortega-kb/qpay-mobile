@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 
-import '../../utils/color.dart';
-import '../../utils/spacing.dart';
+import '../../../utils/color.dart';
+import '../../../utils/spacing.dart';
 
-class SelectLanguage extends StatelessWidget {
+class SelectLanguageTile extends StatelessWidget {
   final String title;
   final bool active;
   final Function(bool?)? onChanged;
 
-  const SelectLanguage(
+  const SelectLanguageTile(
       {super.key,
       required this.title,
       required this.active,
@@ -25,7 +26,7 @@ class SelectLanguage extends StatelessWidget {
         ),
         child: CheckboxListTile(
           activeColor: orange,
-          title: Text(title),
+          title: LocaleText(title),
           value: active,
           onChanged: onChanged,
         ),

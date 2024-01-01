@@ -7,7 +7,7 @@ import 'package:qpay/routing/app_routes.dart';
 class AppRouter {
   final GoRouter goRouter = GoRouter(
     debugLogDiagnostics: true,
-    initialLocation: AppRoutes.welcome,
+    initialLocation: AppRoutes.language,
     routes: [
       GoRoute(
         path: AppRoutes.welcome,

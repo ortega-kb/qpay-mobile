@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:qpay/utils/color.dart';
-import 'package:qpay/widget/welcome/indicator.dart';
+import 'package:qpay/features/welcome/widgets/indicator.dart';
 
-import '../../utils/spacing.dart';
+import '../../../utils/spacing.dart';
 
 class PageIndicator extends StatelessWidget {
   final int page;

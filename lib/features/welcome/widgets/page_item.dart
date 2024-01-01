@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 import 'package:qpay/utils/color.dart';
 import 'package:qpay/utils/spacing.dart';
 
@@ -19,7 +20,7 @@ class PageItem extends StatelessWidget {
       child: Column(
         children: [
           Image.asset(image),
-          Text(
+          LocaleText(
             title,
             style: TextStyle(
               fontSize: Theme.of(context).textTheme.titleLarge?.fontSize,
@@ -30,7 +31,7 @@ class PageItem extends StatelessWidget {
           const SizedBox(height: medium),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: medium),
-            child: Text(
+            child: LocaleText(
               subtitle,
               style: TextStyle(
                   fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,

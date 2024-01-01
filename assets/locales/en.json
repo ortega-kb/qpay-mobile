@@ -1,0 +1,14 @@
+{
+  "select_language": "Select language",
+  "subtitle_language": "Select your preferred language to use Qpay easily.",
+  "continue": "Continue",
+  "french": "Français",
+  "english": "English",
+  "get_started": "Get started",
+  "transfer_money": "Transfer money",
+  "subtitle_transfer_money": "Facilitez le transfert d'argent vers un compte abonné et approvisionnez aisément tous vos comptes variés avec simplicité.",
+  "qr_code_payment": "QR code payement",
+  "subtitle_qr_code_payment": "Effectuez rapidement et facilement des paiements en scannant simplement le QR code, grâce à cette méthode pratique et sécurisée.",
+  "receive_payment": "Receive a payment",
+  "subtitle_receive_payment": "Générez facilement des factures en ajoutant toutes les informations nécessaires, puis créez un QR code pour permettre un paiement rapide et pratique."
+}
