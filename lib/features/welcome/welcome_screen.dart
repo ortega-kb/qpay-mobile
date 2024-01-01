@@ -56,7 +56,7 @@ class WelcomeScreen extends StatelessWidget {
           children: [
             const SizedBox(height: large),
             Expanded(
-              child: Consumer<WelcomeProvider>(
+              child: Consumer(
                 builder: (context, provider, child) {
                   return PageView(
                     controller: pageController,
@@ -84,7 +84,7 @@ class WelcomeScreen extends StatelessWidget {
                 },
               ),
             ),
-            Consumer<WelcomeProvider>(
+            Consumer(
               builder: (context, provider, child) {
                 return PageIndicator(page: provider.currentPage);
               },

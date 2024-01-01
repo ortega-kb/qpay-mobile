@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qpay/presentation/language/language_screen.dart';
-import 'package:qpay/presentation/welcome/welcome_screen.dart';
+import 'package:qpay/features/language/language_screen.dart';
 import 'package:qpay/provider/language_provider.dart';
 import 'package:qpay/provider/welcome_provider.dart';
+import 'package:qpay/routing/app_router.dart';
 import 'package:qpay/utils/color.dart';
 
 void main() {
@@ -17,10 +17,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => WelcomeProvider()),
-        ChangeNotifierProvider(create: (_) => LanguageProvider()),
       ],
-      child: MaterialApp(
+      child: MaterialApp.router(
           debugShowCheckedModeBanner: false,
           title: 'Qpay',
           theme: ThemeData(
@@ -32,7 +30,7 @@ class MyApp extends StatelessWidget {
               backgroundColor: white
             ),
           ),
-          home: const LanguageScreen()
+          routerConfig: AppRouter().goRouter,
       )
     );
   }

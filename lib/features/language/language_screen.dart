@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qpay/presentation/welcome/welcome_screen.dart';
+import 'package:qpay/features/welcome/welcome_screen.dart';
 import 'package:qpay/provider/language_provider.dart';
 
 import '../../utils/color.dart';
