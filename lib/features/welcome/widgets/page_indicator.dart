@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:qpay/common/widgets/indicator.dart';
 import 'package:qpay/utils/color.dart';
-import 'package:qpay/features/welcome/widgets/indicator.dart';
 
 import '../../../utils/spacing.dart';
 
@@ -14,11 +14,11 @@ class PageIndicator extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Indicator(active: page == 0),
+        Indicator(active: page == 0, activeColor: orange, inactiveColor: gray),
         const SizedBox(width: small),
-        Indicator(active: page == 1),
+        Indicator(active: page == 1, activeColor: orange, inactiveColor: gray),
         const SizedBox(width: small),
-        Indicator(active: page == 2),
+        Indicator(active: page == 2, activeColor: orange, inactiveColor: gray),
       ],
     );
   }

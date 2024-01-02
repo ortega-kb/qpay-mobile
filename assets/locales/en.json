@@ -11,5 +11,11 @@
   "subtitle_qr_code_payment": "Effectuez rapidement et facilement des paiements en scannant simplement le QR code, grâce à cette méthode pratique et sécurisée.",
   "receive_payment": "Receive a payment",
   "subtitle_receive_payment": "Générez facilement des factures en ajoutant toutes les informations nécessaires, puis créez un QR code pour permettre un paiement rapide et pratique.",
-  "hello": "Hello,"
+  "hello": "Hello,",
+  "sold_in": "Sold in ",
+  "show": "Voir",
+  "hide": "Hide",
+  "home": "Home",
+  "facture": "Facture",
+  "profile": "Profile"
 }

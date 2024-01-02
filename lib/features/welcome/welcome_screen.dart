@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:qpay/common/widgets/my_button.dart';
-import 'package:qpay/features/welcome/welcome_view_model.dart';
 import 'package:qpay/features/welcome/widgets/page_item.dart';
+import 'package:qpay/provider/welcome_page_provider.dart';
 import 'package:qpay/routing/app_routes.dart';
 import 'package:qpay/utils/constants/image_path.dart';
 import 'package:qpay/utils/spacing.dart';
@@ -14,7 +14,7 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final initialPage = Provider.of<WelcomeViewModel>(context).selectedPage;
+    final initialPage = Provider.of<WelcomePageProvider>(context).selectedPage;
     var pageController = PageController(initialPage: initialPage);
 
     return Scaffold(
@@ -41,8 +41,8 @@ class WelcomeScreen extends StatelessWidget {
           children: [
             const SizedBox(height: large),
             Expanded(
-              child: Consumer<WelcomeViewModel>(
-                builder: (context, viewModel, child) {
+              child: Consumer<WelcomePageProvider>(
+                builder: (context, provider, child) {
                   return PageView(
                     controller: pageController,
                     children: const [
@@ -63,15 +63,15 @@ class WelcomeScreen extends StatelessWidget {
                       )
                     ],
                     onPageChanged: (value) {
-                      viewModel.setPage(value);
+                      provider.setPage(value);
                     },
                   );
                 },
               ),
             ),
-            Consumer<WelcomeViewModel>(
-              builder: (context, viewModel, child) {
-                return PageIndicator(page: viewModel.selectedPage);
+            Consumer<WelcomePageProvider>(
+              builder: (context, provider, child) {
+                return PageIndicator(page: provider.selectedPage);
               },
             )
           ],

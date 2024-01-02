@@ -5,8 +5,14 @@ import '../../../utils/color.dart';
 class Indicator extends StatelessWidget {
   final bool active;
   final double size;
+  final Color activeColor;
+  final Color inactiveColor;
 
-  const Indicator({super.key, required this.active, this.size = 10});
+  const Indicator({super.key,
+    required this.active,
+    required this.activeColor,
+    required this.inactiveColor,
+    this.size = 10});
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +20,8 @@ class Indicator extends StatelessWidget {
       width: active ? size * 2 : size,
       height: size,
       decoration: BoxDecoration(
-          color: active ? orange : gray,
-          borderRadius: BorderRadius.circular(size / 2)
-      ),
+          color: active ? activeColor : inactiveColor,
+          borderRadius: BorderRadius.circular(size / 2)),
     );
   }
 }
