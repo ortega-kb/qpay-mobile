@@ -17,5 +17,9 @@
   "hide": "Cacher",
   "home": "Accueil",
   "facture": "Facture",
-  "profile": "Profil"
+  "profile": "Profil",
+  "see_more": "Voir plus",
+  "quick_operations": "Opérations rapides",
+  "transactions_history": "Transactions (Historique)",
+  "logout": "Se déconnecter"
 }

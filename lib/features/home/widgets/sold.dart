@@ -21,7 +21,7 @@ class Sold extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: orange,
-        borderRadius: BorderRadius.circular(medium),
+        borderRadius: BorderRadius.circular(middleSmall),
       ),
       child: Padding(
         padding: const EdgeInsets.all(medium),

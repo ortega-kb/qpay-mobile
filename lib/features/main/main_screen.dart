@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_locales/flutter_locales.dart';
 import 'package:provider/provider.dart';
+import 'package:qpay/features/facture/facture_screen.dart';
 import 'package:qpay/features/home/home_screen.dart';
 import 'package:qpay/features/main/widgets/main_navigation_bar.dart';
+import 'package:qpay/features/profile/profile_screen.dart';
 import 'package:qpay/provider/main_navigation_provider.dart';
 
 class MainScreen extends StatelessWidget {
@@ -14,7 +14,7 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
       body: Consumer<MainNavigationProvider>(
         builder: (context, provider, child) {
-          return [HomeScreen()][provider.selectedPage];
+          return [HomeScreen(), FactureScreen(), ProfileScreen()][provider.selectedPage];
         },
       ),
       bottomNavigationBar: Consumer<MainNavigationProvider>(
@@ -22,7 +22,8 @@ class MainScreen extends StatelessWidget {
           return MainNavigationBar(
             currentIndex: provider.selectedPage,
             onTap: (index) {
-              provider.setPage(index);
+              if (index != provider.selectedPage)
+                provider.setPage(index);
             },
           );
         },

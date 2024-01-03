@@ -51,8 +51,8 @@ class MyApp extends StatelessWidget {
                 selectedIconTheme: IconThemeData(color: orange),
                 selectedLabelStyle: TextStyle(color: orange),
                 unselectedIconTheme: IconThemeData(color: gray),
-                unselectedLabelStyle: TextStyle(color: gray)
-              )
+                unselectedLabelStyle: TextStyle(color: gray),
+              ),
             ),
             routerConfig: AppRouter().goRouter,
           );

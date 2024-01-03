@@ -15,7 +15,8 @@ class MyButton extends StatelessWidget {
     return MaterialButton(
       color: orange,
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(large)),
+        borderRadius: BorderRadius.circular(large)
+      ),
       textColor: white,
       child: Padding(
         padding: const EdgeInsets.all(middleSmall),
