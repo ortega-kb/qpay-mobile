@@ -9,6 +9,8 @@ import 'package:qpay/utils/constants/image_path.dart';
 import 'package:qpay/utils/spacing.dart';
 import 'package:qpay/features/welcome/widgets/page_indicator.dart';
 
+import '../../utils/color.dart';
+
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
 
@@ -18,7 +20,10 @@ class WelcomeScreen extends StatelessWidget {
     var pageController = PageController(initialPage: initialPage);
 
     return Scaffold(
+      backgroundColor: surface,
       appBar: AppBar(
+        backgroundColor: surface,
+        surfaceTintColor: surface,
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
@@ -33,7 +38,7 @@ class WelcomeScreen extends StatelessWidget {
         padding: const EdgeInsets.all(medium),
         child: MyButton(
           text: "get_started",
-          onPressed: () => context.push(AppRoutes.main),
+          onPressed: () => context.go(AppRoutes.main),
         ),
       ),
       body: SafeArea(

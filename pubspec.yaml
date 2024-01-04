@@ -37,7 +37,9 @@ dependencies:
   cupertino_icons: ^1.0.6
   provider: ^6.1.1
   flutter_locales: ^3.0.1
-  go_router: ^13.0.0
+  go_router: ^13.0.1
+  flutter_barcode_scanner: ^2.0.0
+  pretty_qr_code: ^3.0.0
 
 dev_dependencies:
   flutter_test:

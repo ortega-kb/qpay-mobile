@@ -8,7 +8,6 @@ import 'package:qpay/common/widgets/profile.dart';
 import 'package:qpay/features/profile/widgets/param_tile.dart';
 import 'package:qpay/features/profile/widgets/profile_extended.dart';
 import 'package:qpay/routing/app_routes.dart';
-import 'package:qpay/utils/color.dart';
 import 'package:qpay/utils/spacing.dart';
 
 class ProfileScreen extends StatelessWidget {

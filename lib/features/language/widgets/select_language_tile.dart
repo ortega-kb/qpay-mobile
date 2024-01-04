@@ -17,20 +17,11 @@ class SelectLanguageTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: medium),
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(color: active ? orange : whiteGray),
-          borderRadius: BorderRadius.circular(middleSmall)
-        ),
-        child: CheckboxListTile(
-          activeColor: orange,
-          title: LocaleText(title),
-          value: active,
-          onChanged: onChanged,
-        ),
-      ),
+    return CheckboxListTile(
+      activeColor: primary,
+      title: LocaleText(title),
+      value: active,
+      onChanged: onChanged,
     );
   }
 }

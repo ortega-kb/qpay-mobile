@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:qpay/common/widgets/line.dart';
 import 'package:qpay/common/widgets/my_button.dart';
+import 'package:qpay/common/widgets/tile_container.dart';
 import 'package:qpay/features/language/language_view_model.dart';
 import 'package:qpay/routing/app_routes.dart';
+import 'package:qpay/utils/color.dart';
 
 import '../../utils/spacing.dart';
 import 'widgets/select_language_tile.dart';
@@ -32,29 +35,35 @@ class LanguageScreen extends StatelessWidget {
               const SizedBox(height: medium),
               const Subtitle(text: "subtitle_language"),
               const SizedBox(height: medium),
-              Consumer<LanguageViewModel>(
-                builder: (context, viewModel, child) {
-                  return SelectLanguageTile(
-                    title: "french",
-                    active: viewModel.selectedLanguage == 0,
-                    onChanged: (value) {
-                      viewModel.setLanguage(context, 0);
-                    },
-                  );
-                },
-              ),
-              const SizedBox(height: medium),
-              Consumer<LanguageViewModel>(
-                builder: (context, viewModel, child) {
-                  return SelectLanguageTile(
-                    title: "english",
-                    active: viewModel.selectedLanguage == 1,
-                    onChanged: (value) {
-                      viewModel.setLanguage(context, 1);
-                    },
-                  );
-                },
-              ),
+              TileContainer(
+                child: Column(
+                  children: [
+                    Consumer<LanguageViewModel>(
+                      builder: (context, viewModel, child) {
+                        return SelectLanguageTile(
+                          title: "french",
+                          active: viewModel.selectedLanguage == 0,
+                          onChanged: (value) {
+                            viewModel.setLanguage(context, 0);
+                          },
+                        );
+                      },
+                    ),
+                    const Line(),
+                    Consumer<LanguageViewModel>(
+                      builder: (context, viewModel, child) {
+                        return SelectLanguageTile(
+                          title: "english",
+                          active: viewModel.selectedLanguage == 1,
+                          onChanged: (value) {
+                            viewModel.setLanguage(context, 1);
+                          },
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              )
             ],
           ),
         ),

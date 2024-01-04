@@ -16,10 +16,17 @@
   "show": "Voir",
   "hide": "Hide",
   "home": "Home",
-  "facture": "Facture",
+  "invoice": "Invoice",
   "profile": "Profile",
   "see_more": "See more",
   "quick_operations": "Quick operations",
   "transactions_history": "Transactions (History)",
-  "logout": "Logout"
+  "logout": "Logout",
+  "transactions": "Transactions",
+  "do_deposit": "Deposit",
+  "do_withdraw": "Withdraw",
+  "credit": "Buy credits",
+  "item": "Items*",
+  "details_transaction": "Details of transaction",
+  "generate_invoice": "Generate invoice"
 }

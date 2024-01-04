@@ -25,7 +25,7 @@ class MainNavigationBar extends StatelessWidget {
         BottomNavigationBarItem(
           icon: Icon(CupertinoIcons.square_list),
           activeIcon: Icon(CupertinoIcons.square_list_fill),
-          label: Locales.string(context, "facture"),
+          label: Locales.string(context, "invoice"),
         ),
         BottomNavigationBarItem(
           icon: Icon(CupertinoIcons.person_crop_circle),

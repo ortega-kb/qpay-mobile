@@ -11,7 +11,7 @@ class Profile extends StatelessWidget {
       width: size,
       height: size,
       decoration: BoxDecoration(
-        color: orange,
+        color: primary,
         shape: BoxShape.circle
       ),
     );

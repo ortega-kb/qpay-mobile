@@ -20,7 +20,7 @@ class Sold extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-        color: orange,
+        color: primary,
         borderRadius: BorderRadius.circular(middleSmall),
       ),
       child: Padding(
@@ -37,11 +37,11 @@ class Sold extends StatelessWidget {
                       children: [
                         LocaleText(
                           "sold_in",
-                          style: TextStyle(color: white),
+                          style: TextStyle(color: surface),
                         ),
                         Text(
                           currency[provider.selectedPage],
-                          style: TextStyle(color: white),
+                          style: TextStyle(color: surface),
                         )
                       ],
                     );
@@ -52,7 +52,7 @@ class Sold extends StatelessWidget {
                     return LocaleText(
                       provider.show ? "hide" : "show",
                       style: TextStyle(
-                        color: white,
+                        color: surface,
                       ),
                     );
                   },
@@ -70,7 +70,7 @@ class Sold extends StatelessWidget {
                       onPressed: () => provider.setPage(0),
                       icon: Icon(
                         CupertinoIcons.back,
-                        color: white,
+                        color: surface,
                       ),
                     );
                   },
@@ -80,7 +80,7 @@ class Sold extends StatelessWidget {
                     return Text(
                       provider.selectedPage == 0 ? soldCDF : soldUSD,
                       style: TextStyle(
-                        color: white,
+                        color: surface,
                         fontSize:
                             Theme.of(context).textTheme.headlineLarge?.fontSize,
                         fontWeight: FontWeight.bold,
@@ -94,7 +94,7 @@ class Sold extends StatelessWidget {
                       onPressed: () => provider.setPage(1),
                       icon: Icon(
                         CupertinoIcons.forward,
-                        color: white,
+                        color: surface,
                       ),
                     );
                   },

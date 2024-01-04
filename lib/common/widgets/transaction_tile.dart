@@ -7,13 +7,15 @@ class TransactionTile extends StatelessWidget {
   final String date;
   final String amount;
   final String currency;
+  final void Function()? onTap;
 
   const TransactionTile(
       {super.key,
       required this.action,
       required this.date,
       required this.amount,
-      required this.currency});
+      required this.currency,
+      this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +23,11 @@ class TransactionTile extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: medium),
       child: Container(
         decoration: BoxDecoration(
-            border: Border.all(color: whiteGray),
-            borderRadius: BorderRadius.circular(middleSmall)),
+          color: surface,
+          borderRadius: BorderRadius.circular(middleSmall)
+        ),
         child: ListTile(
+          onTap: onTap,
           dense: true,
           title: Text(
             action,

@@ -16,10 +16,17 @@
   "show": "Voir",
   "hide": "Cacher",
   "home": "Accueil",
-  "facture": "Facture",
+  "invoice": "Facture",
   "profile": "Profil",
   "see_more": "Voir plus",
   "quick_operations": "Opérations rapides",
   "transactions_history": "Transactions (Historique)",
-  "logout": "Se déconnecter"
+  "logout": "Se déconnecter",
+  "transactions": "Transactions",
+  "do_deposit": "Faire un dépot",
+  "do_withdraw": "Faire un Retrait",
+  "credit": "Achat crédits",
+  "item": "Articles*",
+  "details_transaction": "Détails de la transaction",
+  "generate_invoice": "Générer la facture"
 }

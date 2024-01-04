@@ -8,11 +8,12 @@ class Indicator extends StatelessWidget {
   final Color activeColor;
   final Color inactiveColor;
 
-  const Indicator({super.key,
-    required this.active,
-    required this.activeColor,
-    required this.inactiveColor,
-    this.size = 7});
+  const Indicator(
+      {super.key,
+      required this.active,
+      required this.activeColor,
+      required this.inactiveColor,
+      this.size = 7});
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +21,9 @@ class Indicator extends StatelessWidget {
       width: active ? size * 2 : size,
       height: size,
       decoration: BoxDecoration(
-          color: active ? activeColor : inactiveColor,
-          borderRadius: BorderRadius.circular(size / 2)),
+        color: active ? activeColor : inactiveColor,
+        borderRadius: BorderRadius.circular(size / 2),
+      ),
     );
   }
 }

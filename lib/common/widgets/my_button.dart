@@ -13,11 +13,12 @@ class MyButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      color: orange,
+      color: primary,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(large)
       ),
-      textColor: white,
+      textColor: surface,
+      elevation: 0,
       child: Padding(
         padding: const EdgeInsets.all(middleSmall),
         child: LocaleText(

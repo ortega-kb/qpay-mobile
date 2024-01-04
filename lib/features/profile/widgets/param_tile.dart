@@ -9,17 +9,20 @@ class ParamTile extends StatelessWidget {
   final String title;
   final void Function()? onTap;
 
-  const ParamTile(
-      {super.key, required this.icon, required this.title, required this.onTap});
+  const ParamTile({
+    super.key,
+    required this.icon,
+    required this.title,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: medium),
       child: Container(
-        decoration: BoxDecoration(
-            border: Border.all(color: whiteGray),
-            borderRadius: BorderRadius.circular(middleSmall)),
+        decoration:
+            BoxDecoration(borderRadius: BorderRadius.circular(middleSmall)),
         child: ListTile(
           onTap: onTap,
           dense: true,
@@ -27,11 +30,7 @@ class ParamTile extends StatelessWidget {
           title: Text(
             title,
             style: TextStyle(
-              fontSize: Theme
-                  .of(context)
-                  .textTheme
-                  .titleSmall
-                  ?.fontSize,
+              fontSize: Theme.of(context).textTheme.titleSmall?.fontSize,
             ),
           ),
           trailing: Icon(CupertinoIcons.chevron_forward, size: 20),

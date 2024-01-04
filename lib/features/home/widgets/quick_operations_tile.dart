@@ -20,22 +20,28 @@ class QuickOperationsTile extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(middleSmall),
-            border: Border.all(color: whiteGray)),
+          color: surface,
+          borderRadius: BorderRadius.circular(middleSmall),
+        ),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: small),
           child: Row(
             children: [
               const SizedBox(width: medium),
               Container(
-                decoration: BoxDecoration(shape: BoxShape.circle, color: orange),
+                decoration:
+                    BoxDecoration(shape: BoxShape.circle, color: primary),
                 child: Padding(
                   padding: const EdgeInsets.all(small),
-                  child: Icon(icon, color: white, size: 15),
+                  child: Icon(icon, color: surface, size: 15),
                 ),
               ),
               const SizedBox(width: medium),
-              LocaleText(title),
+              LocaleText(
+                title,
+                style: TextStyle(
+                    fontSize: Theme.of(context).textTheme.titleSmall?.fontSize),
+              ),
               const SizedBox(width: medium)
             ],
           ),

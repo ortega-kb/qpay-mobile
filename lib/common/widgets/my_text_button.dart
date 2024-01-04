@@ -17,7 +17,7 @@ class MyTextButton extends StatelessWidget {
         text,
         style: TextStyle(
           fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
-          color: orange
+          color: primary
         ),
       ),
     );

@@ -1,4 +1,3 @@
-
 // custom spacing for application
 
 const double normal = 0.0;

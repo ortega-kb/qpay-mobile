@@ -13,9 +13,9 @@ class SoldIndicator extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Indicator(active: page == 0, activeColor: white, inactiveColor: white),
+        Indicator(active: page == 0, activeColor: surface, inactiveColor: surface),
         const SizedBox(width: small),
-        Indicator(active: page == 1, activeColor: white, inactiveColor: white)
+        Indicator(active: page == 1, activeColor: surface, inactiveColor: surface)
       ],
     );
   }

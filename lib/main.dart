@@ -23,8 +23,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        // viewModel
         ChangeNotifierProvider(create: (_) => LanguageViewModel()),
         ChangeNotifierProvider(create: (_) => HomeViewModel()),
+
+        // provider
         ChangeNotifierProvider(create: (_) => MainNavigationProvider()),
         ChangeNotifierProvider(create: (_) => WelcomePageProvider()),
         ChangeNotifierProvider(create: (_) => SoldProvider()),
@@ -40,16 +43,16 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               useMaterial3: true,
               fontFamily: 'Helvetica',
-              scaffoldBackgroundColor: white,
+              scaffoldBackgroundColor: background,
               appBarTheme: const AppBarTheme(
-                surfaceTintColor: white,
-                backgroundColor: white,
+                surfaceTintColor: background,
+                backgroundColor: background
               ),
               bottomNavigationBarTheme: BottomNavigationBarThemeData(
                 elevation: 1,
-                backgroundColor: white,
-                selectedIconTheme: IconThemeData(color: orange),
-                selectedLabelStyle: TextStyle(color: orange),
+                backgroundColor: surface,
+                selectedIconTheme: IconThemeData(color: primary),
+                selectedLabelStyle: TextStyle(color: primary),
                 unselectedIconTheme: IconThemeData(color: gray),
                 unselectedLabelStyle: TextStyle(color: gray),
               ),

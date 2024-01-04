@@ -19,7 +19,7 @@ class ProfileExtended extends StatelessWidget {
         Container(
           width: size,
           height: size,
-          decoration: BoxDecoration(color: orange, shape: BoxShape.circle),
+          decoration: BoxDecoration(color: primary, shape: BoxShape.circle),
         ),
         const SizedBox(height: small),
         Text(
