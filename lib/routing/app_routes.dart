@@ -11,5 +11,10 @@ class AppRoutes {
   static const String withdraw = "/withdraw";
   static const String transferMoney = "/transferMoney";
   static const String buyCredit = "/buyCredit";
+  static const String myQrCode = "/myQrCode";
+  static const String myBeneficiary = "/myBeneficiary";
+  static const String themes = "/themes";
+  static const String changeMyPin = "/changeMyPin";
+  static const String changeMyPasswd = "/changeMyPasswd";
 
 }

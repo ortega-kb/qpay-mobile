@@ -37,5 +37,12 @@
   "deposit": "Dépot",
   "withdraw": "Retrait",
   "subtitle_deposit": "Veuillez sélectionner le moyen par lequel s'effectuera le dépot dans votre compte Qpay.",
-  "subtitle_withdraw": "Veuillez sélectionner le moyen par lequel s'effectuera le retrait dans votre compte Qpay."
+  "subtitle_withdraw": "Veuillez sélectionner le moyen par lequel s'effectuera le retrait dans votre compte Qpay.",
+  "my_qr_code": "Mon QR code",
+  "my_beneficiary": "Mes bénéficiaires",
+  "account_m": "Créer un compte marchant",
+  "theme": "Thèmes",
+  "languages": "Langues",
+  "change_my_pin": "Changer mon pin",
+  "change_my_passwd": "Changer mon mot de passe"
 }

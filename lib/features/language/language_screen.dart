@@ -33,8 +33,6 @@ class LanguageScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: medium),
-              const Subtitle(text: "subtitle_language"),
-              const SizedBox(height: medium),
               TileContainer(
                 child: Column(
                   children: [

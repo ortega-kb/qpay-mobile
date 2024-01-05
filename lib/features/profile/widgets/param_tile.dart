@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 
 import '../../../utils/color.dart';
 import '../../../utils/spacing.dart';
@@ -29,7 +30,7 @@ class ParamTile extends StatelessWidget {
           child: ListTile(
             dense: false,
             leading: Icon(icon, color: black),
-            title: Text(
+            title: LocaleText(
               title
             ),
             trailing: Icon(CupertinoIcons.chevron_forward, size: 20),

@@ -44,19 +44,19 @@ class ProfileScreen extends StatelessWidget {
                     children: [
                       ParamTile(
                         icon: CupertinoIcons.qrcode,
-                        title: "Mon Qr code",
-                        onTap: () {},
+                        title: "my_qr_code",
+                        onTap: () => context.push(AppRoutes.myQrCode),
                       ),
                       const Line(),
                       ParamTile(
                         icon: CupertinoIcons.person_2_fill,
-                        title: "Mes bénéficiaires",
-                        onTap: () {},
+                        title: "my_beneficiary",
+                        onTap: () => context.push(AppRoutes.myBeneficiary),
                       ),
                       const Line(),
                       ParamTile(
                         icon: CupertinoIcons.person_crop_circle,
-                        title: "Créer un compte marchand",
+                        title: "account_m",
                         onTap: () {},
                       )
                     ],
@@ -68,25 +68,25 @@ class ProfileScreen extends StatelessWidget {
                     children: [
                       ParamTile(
                         icon: Icons.light_mode,
-                        title: "Thèmes",
-                        onTap: () {},
+                        title: "theme",
+                        onTap: () => context.push(AppRoutes.themes),
                       ),
                       const Line(),
                       ParamTile(
                         icon: Icons.language_rounded,
-                        title: "Langues",
-                        onTap: () {},
+                        title: "languages",
+                        onTap: () => context.push(AppRoutes.language),
                       ),
                       ParamTile(
                         icon: Icons.password,
-                        title: "Changer mon pin",
-                        onTap: () {},
+                        title: "change_my_pin",
+                        onTap: () => context.push(AppRoutes.changeMyPin),
                       ),
                       const Line(),
                       ParamTile(
                         icon: Icons.lock,
-                        title: "Changer mon mot de passe",
-                        onTap: () {},
+                        title: "change_my_passwd",
+                        onTap: () => context.push(AppRoutes.changeMyPasswd),
                       ),
                     ],
                   ),
