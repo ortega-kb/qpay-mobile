@@ -7,7 +7,6 @@ import 'package:qpay/provider/sold_provider.dart';
 import 'package:qpay/utils/color.dart';
 import 'package:qpay/utils/spacing.dart';
 
-
 class Sold extends StatelessWidget {
   final String soldCDF;
   final String soldUSD;
@@ -49,10 +48,26 @@ class Sold extends StatelessWidget {
                 ),
                 Consumer<SoldProvider>(
                   builder: (context, provider, child) {
-                    return LocaleText(
-                      provider.show ? "hide" : "show",
-                      style: TextStyle(
-                        color: surface,
+                    return InkWell(
+                      onTap: () => provider.showSold(!provider.show),
+                      borderRadius: BorderRadius.circular(medium),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(medium),
+                          border: Border.all(color: surface),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: medium,
+                            vertical: extraSmall,
+                          ),
+                          child: LocaleText(
+                            provider.show ? "hide" : "show",
+                            style: TextStyle(
+                              color: surface,
+                            ),
+                          ),
+                        ),
                       ),
                     );
                   },
@@ -67,7 +82,11 @@ class Sold extends StatelessWidget {
                 Consumer<SoldProvider>(
                   builder: (context, provider, child) {
                     return IconButton(
-                      onPressed: () => provider.setPage(0),
+                      onPressed: () {
+                        if (provider.selectedPage > 0) {
+                          provider.setPage(0);
+                        }
+                      },
                       icon: Icon(
                         CupertinoIcons.back,
                         color: surface,
@@ -104,7 +123,10 @@ class Sold extends StatelessWidget {
             const SizedBox(height: large),
             Consumer<SoldProvider>(
               builder: (context, provider, child) {
-                return SoldIndicator(page: provider.selectedPage);
+                return Padding(
+                  padding: const EdgeInsets.all(small),
+                  child: SoldIndicator(page: provider.selectedPage),
+                );
               },
             )
           ],

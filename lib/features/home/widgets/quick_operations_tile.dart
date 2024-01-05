@@ -18,6 +18,7 @@ class QuickOperationsTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
+      borderRadius: BorderRadius.circular(middleSmall),
       child: Container(
         decoration: BoxDecoration(
           color: surface,
@@ -40,7 +41,7 @@ class QuickOperationsTile extends StatelessWidget {
               LocaleText(
                 title,
                 style: TextStyle(
-                    fontSize: Theme.of(context).textTheme.titleSmall?.fontSize),
+                    fontSize: Theme.of(context).textTheme.titleMedium?.fontSize),
               ),
               const SizedBox(width: medium)
             ],

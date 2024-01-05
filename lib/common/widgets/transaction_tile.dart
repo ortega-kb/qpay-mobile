@@ -26,30 +26,27 @@ class TransactionTile extends StatelessWidget {
           color: surface,
           borderRadius: BorderRadius.circular(middleSmall)
         ),
-        child: ListTile(
+        child: InkWell(
           onTap: onTap,
-          dense: true,
-          title: Text(
-            action,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              color: black,
-              fontSize: Theme.of(context).textTheme.titleSmall?.fontSize,
-              fontWeight: FontWeight.bold,
+          borderRadius: BorderRadius.circular(middleSmall),
+          child: ListTile(
+            title: Text(
+              action,
+              overflow: TextOverflow.ellipsis,
             ),
-          ),
-          subtitle: Text(
-            date,
-            style: TextStyle(
-                color: gray,
-                fontSize: Theme.of(context).textTheme.bodyMedium?.fontSize),
-          ),
-          trailing: Text(
-            amount + " ${currency}",
-            style: TextStyle(
-              color: black,
-              fontSize: Theme.of(context).textTheme.titleSmall?.fontSize,
-              fontWeight: FontWeight.bold,
+            subtitle: Text(
+              date,
+              style: TextStyle(
+                  color: gray,
+                  fontSize: Theme.of(context).textTheme.bodyMedium?.fontSize),
+            ),
+            trailing: Text(
+              amount + " ${currency}",
+              style: TextStyle(
+                color: black,
+                fontSize: Theme.of(context).textTheme.titleSmall?.fontSize,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:qpay/common/widgets/my_title.dart';
+import 'package:qpay/utils/color.dart';
 
 class ScannerScreen extends StatelessWidget {
   const ScannerScreen({super.key});
+
+
 
   @override
   Widget build(BuildContext context) {

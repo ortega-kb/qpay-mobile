@@ -14,4 +14,9 @@ class SoldProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void showSold(value) {
+    _show = value;
+    notifyListeners();
+  }
+
 }

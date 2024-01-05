@@ -55,27 +55,27 @@ class HomeScreen extends StatelessWidget {
                   QuickOperationsTile(
                     title: "transfer_money",
                     icon: CupertinoIcons.arrow_right_arrow_left,
-                    onTap: () {},
+                    onTap: () => context.push(AppRoutes.transferMoney),
                   ),
                   const SizedBox(width: small),
                   QuickOperationsTile(
                     title: "credit",
                     icon: Icons.phone_callback,
-                    onTap: () {},
+                    onTap: () => context.push(AppRoutes.buyCredit),
                   ),
                   const SizedBox(width: small),
                   QuickOperationsTile(
                     title: "do_deposit",
                     icon: CupertinoIcons.arrow_down_left,
-                    onTap: () {},
+                    onTap: () => context.push(AppRoutes.deposit),
                   ),
                   const SizedBox(width: small),
                   QuickOperationsTile(
                     title: "do_withdraw",
                     icon: CupertinoIcons.arrow_up_right,
-                    onTap: () {},
+                    onTap: () => context.push(AppRoutes.withdraw),
                   ),
-                  const SizedBox(width: medium),
+                  const SizedBox(width: medium)
                 ],
               ),
             ),

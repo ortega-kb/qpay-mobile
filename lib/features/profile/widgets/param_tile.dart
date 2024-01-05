@@ -23,17 +23,17 @@ class ParamTile extends StatelessWidget {
       child: Container(
         decoration:
             BoxDecoration(borderRadius: BorderRadius.circular(middleSmall)),
-        child: ListTile(
+        child: InkWell(
           onTap: onTap,
-          dense: true,
-          leading: Icon(icon, color: black),
-          title: Text(
-            title,
-            style: TextStyle(
-              fontSize: Theme.of(context).textTheme.titleSmall?.fontSize,
+          borderRadius: BorderRadius.circular(middleSmall),
+          child: ListTile(
+            dense: false,
+            leading: Icon(icon, color: black),
+            title: Text(
+              title
             ),
+            trailing: Icon(CupertinoIcons.chevron_forward, size: 20),
           ),
-          trailing: Icon(CupertinoIcons.chevron_forward, size: 20),
         ),
       ),
     );

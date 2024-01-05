@@ -26,11 +26,18 @@ class TitleMore extends StatelessWidget {
           if (onTap != null)
             InkWell(
               onTap: onTap,
-              child: LocaleText(
-                "see_more",
-                style: TextStyle(
-                  fontSize: Theme.of(context).textTheme.titleMedium?.fontSize,
-                  color: gray,
+              borderRadius: BorderRadius.circular(middleSmall),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: extraSmall,
+                  horizontal: small,
+                ),
+                child: LocaleText(
+                  "see_more",
+                  style: TextStyle(
+                    fontSize: Theme.of(context).textTheme.titleMedium?.fontSize,
+                    color: gray,
+                  ),
                 ),
               ),
             )

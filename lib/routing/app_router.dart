@@ -1,13 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
+import 'package:qpay/features/buy_credit/buy_credit_screen.dart';
+import 'package:qpay/features/deposit/deposit_screen.dart';
 import 'package:qpay/features/generate_invoice/generate_invoice_screen.dart';
+import 'package:qpay/features/generate_invoice/pretty_qr_example.dart';
 import 'package:qpay/features/language/language_screen.dart';
 import 'package:qpay/features/main/main_screen.dart';
 import 'package:qpay/features/scanner/scanner_screen.dart';
-import 'package:qpay/features/transations/details_transaction.dart';
+import 'package:qpay/features/transations/details_transaction_screen.dart';
 import 'package:qpay/features/transations/transactions_screen.dart';
+import 'package:qpay/features/transfer_money/transfer_money_screen.dart';
 import 'package:qpay/features/welcome/welcome_screen.dart';
 import 'package:qpay/routing/app_routes.dart';
+
+import '../features/withdraw/withdraw_screen.dart';
 
 class AppRouter {
   final GoRouter goRouter = GoRouter(
@@ -47,13 +53,36 @@ class AppRouter {
       GoRoute(
         path: AppRoutes.detailsTransactions,
         builder: (BuildContext context, GoRouterState state) {
-          return DetailsTransaction();
+          return DetailsTransactionScreen();
         },
       ),
       GoRoute(
         path: AppRoutes.generateInvoice,
         builder: (BuildContext context, GoRouterState state) {
-          return GenerateInvoiceScreen();
+          return PrettyQrHomePage();
+        },
+      ),
+      GoRoute(
+          path: AppRoutes.deposit,
+          builder: (BuildContext context, GoRouterState state) {
+            return DepositScreen();
+          }),
+      GoRoute(
+        path: AppRoutes.withdraw,
+        builder: (BuildContext context, GoRouterState state) {
+          return WithdrawScreen();
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.transferMoney,
+        builder: (BuildContext context, GoRouterState state) {
+          return TransferMoneyScreen();
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.buyCredit,
+        builder: (BuildContext context, GoRouterState state) {
+          return BuyCreditScreen();
         },
       )
     ],
