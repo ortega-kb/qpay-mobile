@@ -5,7 +5,7 @@ import 'package:qpay/common/widgets/profile.dart';
 import 'package:qpay/common/widgets/transaction_tile.dart';
 import 'package:qpay/features/home/widgets/greeting.dart';
 import 'package:qpay/features/home/widgets/quick_operations_tile.dart';
-import 'package:qpay/features/home/widgets/sold.dart';
+import 'package:qpay/features/home/widgets/balance.dart';
 import 'package:qpay/features/home/widgets/title_more.dart';
 import 'package:qpay/routing/app_routes.dart';
 import 'package:qpay/utils/color.dart';
@@ -39,7 +39,7 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: medium),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: medium),
-              child: Sold(
+              child: Balance(
                 soldCDF: "150000",
                 soldUSD: "45",
               ),

@@ -13,6 +13,7 @@
   "subtitle_receive_payment": "Générez facilement des factures en ajoutant toutes les informations nécessaires, puis créez un QR code pour permettre un paiement rapide et pratique.",
   "hello": "Salut,",
   "sold_in": "Solde en ",
+  "balance": "Balance ",
   "show": "Voir",
   "hide": "Cacher",
   "home": "Accueil",
@@ -36,6 +37,7 @@
   "date": "Date",
   "deposit": "Dépot",
   "withdraw": "Retrait",
+
   "subtitle_deposit": "Veuillez sélectionner le moyen par lequel s'effectuera le dépot dans votre compte Qpay.",
   "subtitle_withdraw": "Veuillez sélectionner le moyen par lequel s'effectuera le retrait dans votre compte Qpay.",
   "my_qr_code": "Mon QR code",
@@ -44,5 +46,18 @@
   "theme": "Thèmes",
   "languages": "Langues",
   "change_my_pin": "Changer mon pin",
-  "change_my_passwd": "Changer mon mot de passe"
+  "change_my_passwd": "Changer mon mot de passe",
+  "system_theme": "Thème par défaut du système",
+  "light": "Clair",
+  "dark": "Sombre",
+  "subtitle_my_qr_code": "Servez-vous de votre QR code ou du numéro de compte pour récevoir des transactions.",
+  "authentication": "Authentification",
+  "subtitle_authentication": "Pour accéder à l'interface d'accueil, veuillez vous authentifier afin de garantir un accès sécurisé et personnalisé.",
+  "phone_number": "Numéro de téléphone",
+  "passwd": "Mot de passe",
+  "login": "Se connecter",
+  "create_account": "Créer un compte",
+  "forgot_password": "Mot de passe oublié ?",
+  "creating_account": "Création du compte",
+  "subtitle_creating_account": "Assurez-vous d'insérer toutes les informations nécessaires pour garantir un enregistrement fluide et sans accroc."
 }

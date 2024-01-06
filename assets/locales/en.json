@@ -13,7 +13,8 @@
   "subtitle_receive_payment": "Générez facilement des factures en ajoutant toutes les informations nécessaires, puis créez un QR code pour permettre un paiement rapide et pratique.",
   "hello": "Hello,",
   "sold_in": "Sold in ",
-  "show": "Voir",
+  "balance": "Balance ",
+  "show": "Show",
   "hide": "Hide",
   "home": "Home",
   "invoice": "Invoice",
@@ -38,5 +39,8 @@
   "withdraw": "Withdraw",
   "subtitle_deposit": "Veuillez sélectionner le moyen par lequel s'effectuera le dépot dans votre compte Qpay.",
   "subtitle_withdraw": "Veuillez sélectionner le moyen par lequel s'effectuera le retrait dans votre compte Qpay.",
-  "theme": "Themes"
+  "theme": "Themes",
+  "phone_number": "Phone number",
+  "login": "Login",
+  "create_account": "Créer un compte"
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qpay/common/widgets/my_title.dart';
+import 'package:qpay/common/widgets/m_title.dart';
 
 class ChangeMyPinScreen extends StatelessWidget {
   const ChangeMyPinScreen({super.key});
@@ -8,7 +8,7 @@ class ChangeMyPinScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: MyTitle(text: "change_my_pin"),
+        title: MTitle(text: "change_my_pin"),
       ),
     );
   }

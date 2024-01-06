@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qpay/common/widgets/my_title.dart';
+import 'package:qpay/common/widgets/m_title.dart';
 import 'package:qpay/utils/color.dart';
 
 class ScannerScreen extends StatelessWidget {
@@ -12,7 +12,7 @@ class ScannerScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: true,
-        title: MyTitle(text: "qr_code_payment"),
+        title: MTitle(text: "qr_code_payment"),
       ),
       body: SafeArea(
         child: SingleChildScrollView(

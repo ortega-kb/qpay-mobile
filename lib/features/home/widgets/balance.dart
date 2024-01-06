@@ -2,16 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:provider/provider.dart';
-import 'package:qpay/features/home/widgets/sold_indicator.dart';
+import 'package:qpay/features/home/widgets/balance_indicator.dart';
 import 'package:qpay/provider/sold_provider.dart';
 import 'package:qpay/utils/color.dart';
 import 'package:qpay/utils/spacing.dart';
 
-class Sold extends StatelessWidget {
+class Balance extends StatelessWidget {
   final String soldCDF;
   final String soldUSD;
 
-  const Sold({super.key, required this.soldCDF, required this.soldUSD});
+  const Balance({super.key, required this.soldCDF, required this.soldUSD});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class Sold extends StatelessWidget {
                     return Row(
                       children: [
                         LocaleText(
-                          "sold_in",
+                          "balance",
                           style: TextStyle(color: surface),
                         ),
                         Text(
@@ -125,7 +125,7 @@ class Sold extends StatelessWidget {
               builder: (context, provider, child) {
                 return Padding(
                   padding: const EdgeInsets.all(small),
-                  child: SoldIndicator(page: provider.selectedPage),
+                  child: BalanceIndicator(page: provider.selectedPage),
                 );
               },
             )

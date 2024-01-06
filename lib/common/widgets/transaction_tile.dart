@@ -23,9 +23,7 @@ class TransactionTile extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: medium),
       child: Container(
         decoration: BoxDecoration(
-          color: surface,
-          borderRadius: BorderRadius.circular(middleSmall)
-        ),
+            color: surface, borderRadius: BorderRadius.circular(middleSmall)),
         child: InkWell(
           onTap: onTap,
           borderRadius: BorderRadius.circular(middleSmall),
@@ -37,8 +35,9 @@ class TransactionTile extends StatelessWidget {
             subtitle: Text(
               date,
               style: TextStyle(
-                  color: gray,
-                  fontSize: Theme.of(context).textTheme.bodyMedium?.fontSize),
+                color: gray,
+                fontSize: Theme.of(context).textTheme.bodyMedium?.fontSize,
+              ),
             ),
             trailing: Text(
               amount + " ${currency}",

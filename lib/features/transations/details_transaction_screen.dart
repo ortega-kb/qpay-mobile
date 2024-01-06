@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qpay/common/widgets/my_title.dart';
+import 'package:qpay/common/widgets/m_title.dart';
 import 'package:qpay/features/transations/widgets/details.dart';
 import 'package:qpay/utils/spacing.dart';
 
@@ -10,7 +10,7 @@ class DetailsTransactionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: MyTitle(text: "details_transaction"),
+        title: MTitle(text: "details_transaction"),
       ),
       body: ListView(
         children: [

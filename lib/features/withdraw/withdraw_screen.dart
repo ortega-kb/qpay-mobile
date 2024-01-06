@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qpay/common/widgets/my_title.dart';
+import 'package:qpay/common/widgets/m_title.dart';
 import 'package:qpay/common/widgets/subtitle.dart';
 import 'package:qpay/utils/spacing.dart';
 
@@ -15,7 +15,7 @@ class WithdrawScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: MyTitle(text: "withdraw"),
+        title: MTitle(text: "withdraw"),
       ),
       body: ListView(
         children: [

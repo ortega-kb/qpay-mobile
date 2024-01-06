@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:qpay/common/widgets/my_title.dart';
+import 'package:qpay/common/widgets/m_title.dart';
 import 'package:qpay/features/invoice/widgets/add_item.dart';
 import 'package:qpay/routing/app_routes.dart';
 import 'package:qpay/utils/spacing.dart';
 
-import '../../common/widgets/my_button.dart';
+import '../../common/widgets/m_button.dart';
 
 class InvoiceScreen extends StatelessWidget {
   const InvoiceScreen({super.key});
@@ -14,13 +14,13 @@ class InvoiceScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: MyTitle(text: "invoice"),
+        title: MTitle(text: "invoice"),
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(medium),
-        child: MyButton(
+        child: MButton(
           text: "generate_invoice",
-          onPressed: () => context.push(AppRoutes.generateInvoice),
+          onTap: () => context.push(AppRoutes.generateInvoice),
         ),
       ),
       body: Column(

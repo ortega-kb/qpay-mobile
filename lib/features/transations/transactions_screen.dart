@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:qpay/common/widgets/my_title.dart';
+import 'package:qpay/common/widgets/m_title.dart';
 import 'package:qpay/routing/app_routes.dart';
 import 'package:qpay/utils/color.dart';
 import 'package:qpay/utils/spacing.dart';
@@ -14,7 +14,7 @@ class TransactionsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: MyTitle(text: "transactions"),
+        title: MTitle(text: "transactions"),
         actions: [],
       ),
       body: Column(

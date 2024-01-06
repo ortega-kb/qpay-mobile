@@ -4,9 +4,9 @@ import '../../../common/widgets/indicator.dart';
 import '../../../utils/color.dart';
 import '../../../utils/spacing.dart';
 
-class SoldIndicator extends StatelessWidget {
+class BalanceIndicator extends StatelessWidget {
   final int page;
-  const SoldIndicator({super.key, required this.page});
+  const BalanceIndicator({super.key, required this.page});
 
   @override
   Widget build(BuildContext context) {

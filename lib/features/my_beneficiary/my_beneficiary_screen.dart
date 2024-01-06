@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qpay/common/widgets/my_title.dart';
+import 'package:qpay/common/widgets/m_title.dart';
 
 class MyBeneficiaryScreen extends StatelessWidget {
   const MyBeneficiaryScreen({super.key});
@@ -8,7 +8,7 @@ class MyBeneficiaryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: MyTitle(text: "my_beneficiary"),
+        title: MTitle(text: "my_beneficiary"),
       ),
     );
   }

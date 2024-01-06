@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qpay/common/widgets/deposit_withdraw_tile.dart';
 import 'package:qpay/common/widgets/line.dart';
-import 'package:qpay/common/widgets/my_title.dart';
+import 'package:qpay/common/widgets/m_title.dart';
 import 'package:qpay/common/widgets/subtitle.dart';
 import 'package:qpay/common/widgets/tile_container.dart';
 import 'package:qpay/utils/constants/image_path.dart';
@@ -14,7 +14,7 @@ class DepositScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: MyTitle(text: "deposit"),
+        title: MTitle(text: "deposit"),
       ),
       body: ListView(
         children: [

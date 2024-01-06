@@ -2,10 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 
-class MyTitle extends StatelessWidget {
+class MTitle extends StatelessWidget {
   final String text;
 
-  const MyTitle({super.key, required this.text});
+  const MTitle({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qpay/common/widgets/my_title.dart';
+import 'package:qpay/common/widgets/m_title.dart';
 import 'package:qpay/utils/spacing.dart';
 
 class GenerateInvoiceScreen extends StatelessWidget {
@@ -9,7 +9,7 @@ class GenerateInvoiceScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: MyTitle(text: "invoice"),
+        title: MTitle(text: "invoice"),
       ),
       body: ListView(
         children: [

@@ -16,5 +16,7 @@ class AppRoutes {
   static const String themes = "/themes";
   static const String changeMyPin = "/changeMyPin";
   static const String changeMyPasswd = "/changeMyPasswd";
+  static const String login = "/login";
+  static const String register = "/register";
 
 }

@@ -7,9 +7,11 @@ import 'package:qpay/features/deposit/deposit_screen.dart';
 import 'package:qpay/features/generate_invoice/generate_invoice_screen.dart';
 import 'package:qpay/features/generate_invoice/pretty_qr_example.dart';
 import 'package:qpay/features/language/language_screen.dart';
+import 'package:qpay/features/login/login_screen.dart';
 import 'package:qpay/features/main/main_screen.dart';
 import 'package:qpay/features/my_beneficiary/my_beneficiary_screen.dart';
 import 'package:qpay/features/my_qr_code/my_qr_code_screen.dart';
+import 'package:qpay/features/register/register_screen.dart';
 import 'package:qpay/features/scanner/scanner_screen.dart';
 import 'package:qpay/features/themes/themes_screen.dart';
 import 'package:qpay/features/transations/details_transaction_screen.dart';
@@ -23,7 +25,7 @@ import '../features/withdraw/withdraw_screen.dart';
 class AppRouter {
   final GoRouter goRouter = GoRouter(
     debugLogDiagnostics: true,
-    initialLocation: AppRoutes.main,
+    initialLocation: AppRoutes.register,
     routes: [
       GoRoute(
         path: AppRoutes.welcome,
@@ -93,7 +95,9 @@ class AppRouter {
       GoRoute(
         path: AppRoutes.myQrCode,
         builder: (BuildContext context, GoRouterState state) {
-          return MyQrCodeScreen();
+          return MyQrCodeScreen(
+            accountNumber: (state.extra as Map)["account_number"],
+          );
         },
       ),
       GoRoute(
@@ -118,6 +122,18 @@ class AppRouter {
         path: AppRoutes.changeMyPasswd,
         builder: (BuildContext context, GoRouterState state) {
           return ChangeMyPasswdScreen();
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.login,
+        builder: (BuildContext context, GoRouterState state) {
+          return LoginScreen();
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.register,
+        builder: (BuildContext context, GoRouterState state) {
+          return RegisterScreen();
         },
       )
     ],
