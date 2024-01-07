@@ -42,5 +42,6 @@
   "theme": "Themes",
   "phone_number": "Phone number",
   "login": "Login",
-  "create_account": "Créer un compte"
+  "create_account": "Créer un compte",
+  "sub_total": "Sub-total"
 }

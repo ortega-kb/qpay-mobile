@@ -6,7 +6,7 @@ class RegisterStepProvider with ChangeNotifier {
   int get currentStep => _currentStep;
 
   void stepContinue() {
-    if (currentStep < 4) {
+    if (currentStep < 3) {
       _currentStep ++;
       notifyListeners();
     }

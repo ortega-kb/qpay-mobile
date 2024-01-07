@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 import 'package:qpay/common/widgets/m_title.dart';
@@ -9,6 +10,7 @@ import '../../utils/color.dart';
 
 class MyQrCodeScreen extends StatefulWidget {
   final String accountNumber;
+
   const MyQrCodeScreen({super.key, required this.accountNumber});
 
   @override
@@ -26,7 +28,7 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
     super.initState();
 
     qrCode = QrCode.fromData(
-      data: widget.accountNumber,
+      data: '''{"name": "ortega", "total": "45000"}''',
       errorCorrectLevel: QrErrorCorrectLevel.H,
     );
 
@@ -120,7 +122,13 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
                                         style: TextStyle(color: gray),
                                       ),
                                       trailing: IconButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          Clipboard.setData(
+                                            ClipboardData(
+                                              text: widget.accountNumber,
+                                            ),
+                                          );
+                                        },
                                         icon: Icon(
                                           Icons.copy_rounded,
                                         ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
-import 'package:qpay/features/transations/widgets/row_details.dart';
+import 'package:qpay/common/widgets/row_details.dart';
 
 import '../../../common/widgets/line.dart';
 import '../../../common/widgets/tile_container.dart';

@@ -6,6 +6,7 @@ class ImagePath {
 
   static const afriMoney = "assets/images/afri-money.png";
   static const airtelMoney = "assets/images/airtel-money.png";
+  static const orangeMoney = "assets/images/orange-money.jpg";
   static const mPesa = "assets/images/mpesa.png";
   static const visa = "assets/images/visa.jpg";
 

@@ -18,15 +18,15 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController phoneNumberController = TextEditingController();
-  TextEditingController passwdController = TextEditingController();
+  TextEditingController _phoneNumberController = TextEditingController();
+  TextEditingController _passwdController = TextEditingController();
 
   @override
   void dispose() {
     super.dispose();
 
-    this.phoneNumberController.dispose();
-    this.passwdController.dispose();
+    this._phoneNumberController.dispose();
+    this._passwdController.dispose();
   }
 
   @override
@@ -47,25 +47,26 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   MTextField(
-                    controller: phoneNumberController,
+                    controller: _phoneNumberController,
                     label: "phone_number",
                     obscureText: false,
                     keyboardType: TextInputType.phone,
                   ),
                   const SizedBox(height: medium),
                   MTextField(
-                    controller: passwdController,
+                    controller: _passwdController,
                     label: "passwd",
                     obscureText: true,
                     keyboardType: TextInputType.visiblePassword,
                   ),
                   const SizedBox(height: medium),
-                  ForgotPassword(onTap: () {}),
-
+                  ForgotPassword(
+                    onTap: () => context.push(AppRoutes.forgotPassword),
+                  ),
                   const SizedBox(height: medium),
                   MButton(
                     text: "login",
-                    onTap: () {},
+                    onTap: () => context.go(AppRoutes.main),
                   ),
                   const SizedBox(height: medium),
                   MOutlinedButton(

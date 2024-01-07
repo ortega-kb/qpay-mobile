@@ -28,7 +28,7 @@ class DepositScreen extends StatelessWidget {
                 const Line(),
                 DepositWithDrawTile(name: "M-Pesa", tarif: "3", image: ImagePath.mPesa),
                 const Line(),
-                DepositWithDrawTile(name: "Orange Money", tarif: "2.5", image: ""),
+                DepositWithDrawTile(name: "Orange Money", tarif: "2.5", image: ImagePath.orangeMoney),
                 const Line(),
                 DepositWithDrawTile(name: "Afrimoney", tarif: "3", image: ImagePath.afriMoney),
                 const Line(),

@@ -20,10 +20,6 @@ class RegisterIndicator extends StatelessWidget {
         Indicator(active: page == 2, activeColor: primary, inactiveColor: gray),
         const SizedBox(width: small),
         Indicator(active: page == 3, activeColor: primary, inactiveColor: gray),
-        const SizedBox(width: small),
-        Indicator(active: page == 4, activeColor: primary, inactiveColor: gray),
-        const SizedBox(width: small),
-        Indicator(active: page == 5, activeColor: primary, inactiveColor: gray)
       ],
     );
   }

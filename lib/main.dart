@@ -6,6 +6,7 @@ import 'package:qpay/features/home/home_view_model.dart';
 import 'package:qpay/features/language/language_view_model.dart';
 import 'package:qpay/features/themes/themes_view_model.dart';
 import 'package:qpay/provider/main_navigation_provider.dart';
+import 'package:qpay/provider/qr_scanner_provider.dart';
 import 'package:qpay/provider/register_step_provider.dart';
 import 'package:qpay/provider/sold_provider.dart';
 import 'package:qpay/provider/welcome_page_provider.dart';
@@ -14,6 +15,10 @@ import 'package:qpay/utils/color.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   await Locales.init(['fr', 'en']);
 
   runApp(const MyApp());
@@ -36,6 +41,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => WelcomePageProvider()),
         ChangeNotifierProvider(create: (_) => SoldProvider()),
         ChangeNotifierProvider(create: (_) => RegisterStepProvider()),
+        ChangeNotifierProvider(create: (_) => QrScannerProvider()),
       ],
       child: LocaleBuilder(
         builder: (locale) {
@@ -53,8 +59,8 @@ class MyApp extends StatelessWidget {
                   fontFamily: 'Helvetica',
                   scaffoldBackgroundColor: background,
                   appBarTheme: const AppBarTheme(
-                      surfaceTintColor: background,
-                      backgroundColor: background
+                    surfaceTintColor: background,
+                    backgroundColor: background,
                   ),
                   bottomNavigationBarTheme: BottomNavigationBarThemeData(
                     elevation: 1,
@@ -64,10 +70,6 @@ class MyApp extends StatelessWidget {
                     unselectedIconTheme: IconThemeData(color: gray),
                     unselectedLabelStyle: TextStyle(color: gray),
                   ),
-                ),
-                darkTheme: ThemeData(
-                  useMaterial3: true,
-                  fontFamily: 'Helvetica'
                 ),
                 routerConfig: AppRouter().goRouter,
               );

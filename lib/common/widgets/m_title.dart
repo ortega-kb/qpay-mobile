@@ -15,7 +15,7 @@ class MTitle extends StatelessWidget {
         fontSize: Theme
             .of(context)
             .textTheme
-            .titleLarge
+            .headlineSmall
             ?.fontSize,
         fontWeight: FontWeight.bold,),
     );

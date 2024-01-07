@@ -13,17 +13,18 @@ class Indicator extends StatelessWidget {
       required this.active,
       required this.activeColor,
       required this.inactiveColor,
-      this.size = 7});
+      this.size = 9});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
       width: active ? size * 2 : size,
       height: size,
+      curve: Curves.easeInOutBack,
       decoration: BoxDecoration(
         color: active ? activeColor : inactiveColor,
         borderRadius: BorderRadius.circular(size / 2),
-      ),
+      ), duration: Duration(milliseconds: 500),
     );
   }
 }
