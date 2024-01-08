@@ -8,7 +8,7 @@ import 'package:qpay/features/themes/themes_view_model.dart';
 import 'package:qpay/provider/main_navigation_provider.dart';
 import 'package:qpay/provider/qr_scanner_provider.dart';
 import 'package:qpay/provider/register_step_provider.dart';
-import 'package:qpay/provider/sold_provider.dart';
+import 'package:qpay/provider/balance_page_provider.dart';
 import 'package:qpay/provider/welcome_page_provider.dart';
 import 'package:qpay/routing/app_router.dart';
 import 'package:qpay/utils/color.dart';
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         // provider
         ChangeNotifierProvider(create: (_) => MainNavigationProvider()),
         ChangeNotifierProvider(create: (_) => WelcomePageProvider()),
-        ChangeNotifierProvider(create: (_) => SoldProvider()),
+        ChangeNotifierProvider(create: (_) => BalancePageProvider()),
         ChangeNotifierProvider(create: (_) => RegisterStepProvider()),
         ChangeNotifierProvider(create: (_) => QrScannerProvider()),
       ],

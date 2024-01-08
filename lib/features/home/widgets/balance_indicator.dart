@@ -6,6 +6,7 @@ import '../../../utils/spacing.dart';
 
 class BalanceIndicator extends StatelessWidget {
   final int page;
+
   const BalanceIndicator({super.key, required this.page});
 
   @override
@@ -13,9 +14,17 @@ class BalanceIndicator extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Indicator(active: page == 0, activeColor: surface, inactiveColor: surface),
-        const SizedBox(width: small),
-        Indicator(active: page == 1, activeColor: surface, inactiveColor: surface)
+        Indicator(
+          active: page == 0,
+          activeColor: primary,
+          inactiveColor: gray,
+        ),
+        const SizedBox(width: extraSmall),
+        Indicator(
+          active: page == 1,
+          activeColor: primary,
+          inactiveColor: gray,
+        )
       ],
     );
   }

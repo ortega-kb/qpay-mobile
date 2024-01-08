@@ -5,7 +5,6 @@ import 'package:qpay/features/change_my_passwd/change_my_passwd_screen.dart';
 import 'package:qpay/features/change_my_pin/change_my_pin_screen.dart';
 import 'package:qpay/features/deposit/deposit_screen.dart';
 import 'package:qpay/features/forgot_password/forgot_password_screen.dart';
-import 'package:qpay/features/generate_invoice/generate_invoice_screen.dart';
 import 'package:qpay/features/generate_invoice/pretty_qr_example.dart';
 import 'package:qpay/features/language/language_screen.dart';
 import 'package:qpay/features/login/login_screen.dart';
@@ -139,16 +138,17 @@ class AppRouter {
         },
       ),
       GoRoute(
-          path: AppRoutes.verifyAccount,
-          builder: (BuildContext context, GoRouterState state) {
-            return VerifyAccountScreen();
-          }),
+        path: AppRoutes.verifyAccount,
+        builder: (BuildContext context, GoRouterState state) {
+          return VerifyAccountScreen();
+        },
+      ),
       GoRoute(
         path: AppRoutes.forgotPassword,
         builder: (BuildContext context, GoRouterState state) {
           return ForgotPasswordScreen();
-        }
-      )
+        },
+      ),
     ],
   );
 }

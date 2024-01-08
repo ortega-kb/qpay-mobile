@@ -87,5 +87,10 @@
   "subtitle_qr_scanner": "Placez le QR code dans la zone de scan",
   "automatically_scan": "Le scan sera lancé automatiquement",
   "problem_scan": "Si vous rencontrez des soucis avec le scan, relancer l'application et autorisez l'accès à la camera.",
-  "copyright_q_group": "Développé par Qgroup"
+  "copyright_q_group": "Développé par Qgroup",
+  "tax_on_sell": "Taxe sur les ventes",
+  "warning": "Assurez-vous de scanner le qr code du fournisseur",
+  "beneficiary_account": "Numéro de compte du bénéficiaire",
+  "total_and_transfer": "Total + Frais de transfert",
+  "transfer": "Transférer"
 }

@@ -22,35 +22,14 @@ class ScannerScreen extends StatelessWidget {
       appBar: AppBar(
         title: MTitle(text: "qr_scanner"),
         actions: [
-          Consumer<QrScannerProvider>(
-            builder: (context, provider, child) {
-              return IconButton(
-                isSelected: provider.flashActivated,
-                onPressed: provider.frontCamera ? null: () {
-                  provider.onClickFlash(!provider.flashActivated);
-                  scannerController.toggleTorch();
-                },
-                icon: Icon(
-                  Icons.flash_on_rounded,
-                ),
-                selectedIcon: Icon(
-                  Icons.flash_off_rounded,
-                ),
-              );
+          IconButton(
+            onPressed: () {
+              scannerController.toggleTorch();
             },
+            icon: Icon(
+              Icons.flash_on_rounded,
+            ),
           ),
-          Consumer<QrScannerProvider>(
-            builder: (context, provider, child) {
-              return IconButton(
-                isSelected: provider.frontCamera,
-                onPressed: () {
-                  provider.onClickFrontCamera(!provider.frontCamera);
-                  scannerController.switchCamera();
-                },
-                icon: Icon(Icons.camera_front_rounded),
-              );
-            },
-          )
         ],
       ),
       body: Container(
@@ -58,27 +37,29 @@ class ScannerScreen extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const SizedBox(height: medium),
-                  LocaleText(
-                    "subtitle_qr_scanner",
-                    style: TextStyle(
-                      color: black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
+              child: Padding(
+                padding: const EdgeInsets.all(medium),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    LocaleText(
+                      "subtitle_qr_scanner",
+                      style: TextStyle(
+                        color: black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
+                      ),
                     ),
-                  ),
-                  LocaleText(
-                    "automatically_scan",
-                    style: TextStyle(
-                      color: gray,
-                      fontSize:
-                          Theme.of(context).textTheme.bodyMedium?.fontSize,
-                    ),
-                  )
-                ],
+                    LocaleText(
+                      "automatically_scan",
+                      style: TextStyle(
+                        color: gray,
+                        fontSize:
+                            Theme.of(context).textTheme.bodyMedium?.fontSize,
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
             Expanded(
@@ -95,27 +76,35 @@ class ScannerScreen extends StatelessWidget {
                       print("Normal qr code " + qrCode.raw[0]["rawValue"].toString());
                     }
                   },
-                  overlay: Container(
-                    color: black.withOpacity(0.5),
-                  ),
                   startDelay: true,
                 ),
               ),
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: medium),
-                child: Container(
-                  alignment: Alignment.center,
-                  child: LocaleText(
-                    "problem_scan",
-                    style: TextStyle(
-                      color: gray,
-                      fontSize:
-                          Theme.of(context).textTheme.bodyMedium?.fontSize,
+                padding: const EdgeInsets.all(medium),
+                child: Column(
+                  children: [
+                    LocaleText(
+                      "warning",
+                      style: TextStyle(
+                        color: black,
+                        fontSize:
+                        Theme.of(context).textTheme.bodyLarge?.fontSize,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
-                  ),
+                    LocaleText(
+                      "problem_scan",
+                      style: TextStyle(
+                        color: gray,
+                        fontSize:
+                        Theme.of(context).textTheme.bodyMedium?.fontSize,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
                 ),
               ),
             ),

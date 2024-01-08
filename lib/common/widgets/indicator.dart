@@ -13,7 +13,7 @@ class Indicator extends StatelessWidget {
       required this.active,
       required this.activeColor,
       required this.inactiveColor,
-      this.size = 9});
+      this.size = 8.5});
 
   @override
   Widget build(BuildContext context) {

@@ -30,7 +30,7 @@ class RowDetails extends StatelessWidget {
             value,
             style: TextStyle(
               fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
-              color: gray
+              color: black
             ),
           )
         ],

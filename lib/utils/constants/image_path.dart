@@ -9,5 +9,6 @@ class ImagePath {
   static const orangeMoney = "assets/images/orange-money.jpg";
   static const mPesa = "assets/images/mpesa.png";
   static const visa = "assets/images/visa.jpg";
+  static const logo = "assets/images/logo.png";
 
 }

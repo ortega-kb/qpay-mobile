@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:qpay/common/widgets/profile.dart';
 import 'package:qpay/common/widgets/transaction_tile.dart';
+import 'package:qpay/features/home/widgets/balance_page.dart';
 import 'package:qpay/features/home/widgets/greeting.dart';
 import 'package:qpay/features/home/widgets/quick_operations_tile.dart';
 import 'package:qpay/features/home/widgets/balance.dart';
@@ -20,9 +21,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Greeting(name: "Ortega")
-          ],
+          children: [Greeting(name: "Ortega")],
         ),
         actions: [
           IconButton(
@@ -35,17 +34,14 @@ class HomeScreen extends StatelessWidget {
         color: primary,
         onRefresh: () async {},
         child: ListView(
+          shrinkWrap: true,
           children: [
             const SizedBox(height: medium),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: medium),
-              child: Balance(
-                soldCDF: "150000",
-                soldUSD: "45",
-              ),
-            ),
+            BalancePage(balanceCDF: "500000.00", balanceUSD: "500"),
+
             const SizedBox(height: large),
             TitleMore(title: "quick_operations"),
+
             const SizedBox(height: medium),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
