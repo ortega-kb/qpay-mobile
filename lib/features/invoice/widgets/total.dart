@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qpay/provider/dropdown_currency_provider.dart';
 import 'package:qpay/utils/color.dart';
 import 'package:qpay/utils/spacing.dart';
+
+import '../../../providers/dropdown_currency_provider.dart';
 
 class Total extends StatelessWidget {
   const Total({super.key});

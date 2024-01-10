@@ -99,5 +99,14 @@
   "account_settings": "Paramètres du compte",
   "type_of_network": "Type de réseau*",
   "buy_credit": "Acheter",
-  "account_number": "Numéro de compte"
+  "account_number": "Numéro de compte",
+  "create_account_marchand": "Enregistrement (Marchand)",
+  "subtitle_account_marchand": "Assurez-vous d'insérer toutes les informations liées à votre compagnie.",
+  "denomination_entreprise": "Dénomitation de l'entreprise",
+  "country_of_implementation": "Pays d'implémentation",
+  "activity_sector": "Sécteur d'activité",
+  "identification_nat": "Identification nationale",
+  "rccm": "RCCM",
+  "doc_id": "Document d'identification d'entreprise"
+
 }

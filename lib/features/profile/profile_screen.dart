@@ -9,7 +9,6 @@ import 'package:qpay/features/profile/widgets/profile_extended.dart';
 import 'package:qpay/routing/app_routes.dart';
 import 'package:qpay/utils/spacing.dart';
 
-
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
@@ -91,7 +90,10 @@ class ProfileScreen extends StatelessWidget {
                     ParamTile(
                       icon: CupertinoIcons.person_crop_circle,
                       title: "account_m",
-                      onTap: () {},
+                      onTap: () => Navigator.pushNamed(
+                        context,
+                        AppRoutes.registerMarchand,
+                      ),
                     ),
                     const Line(),
                     ParamTile(

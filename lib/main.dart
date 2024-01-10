@@ -3,19 +3,16 @@ import 'package:flutter/services.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:provider/provider.dart';
 import 'package:qpay/features/home/home_view_model.dart';
-import 'package:qpay/features/language/language_screen.dart';
 import 'package:qpay/features/language/language_view_model.dart';
-import 'package:qpay/features/login/login_screen.dart';
-import 'package:qpay/features/main/main_screen.dart';
 import 'package:qpay/features/themes/themes_view_model.dart';
-import 'package:qpay/features/welcome/welcome_screen.dart';
-import 'package:qpay/provider/dropdown_currency_provider.dart';
-import 'package:qpay/provider/dropdown_network_provider.dart';
-import 'package:qpay/provider/main_navigation_provider.dart';
-import 'package:qpay/provider/qr_scanner_provider.dart';
-import 'package:qpay/provider/register_step_provider.dart';
-import 'package:qpay/provider/balance_page_provider.dart';
-import 'package:qpay/provider/welcome_page_provider.dart';
+import 'package:qpay/providers/balance_page_provider.dart';
+import 'package:qpay/providers/dropdown_currency_provider.dart';
+import 'package:qpay/providers/dropdown_network_provider.dart';
+import 'package:qpay/providers/main_navigation_provider.dart';
+import 'package:qpay/providers/qr_scanner_provider.dart';
+import 'package:qpay/providers/register_step_marchand_provider.dart';
+import 'package:qpay/providers/register_step_provider.dart';
+import 'package:qpay/providers/welcome_page_provider.dart';
 import 'package:qpay/routing/app_router.dart';
 import 'package:qpay/routing/app_routes.dart';
 import 'package:qpay/utils/color.dart';
@@ -51,6 +48,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => QrScannerProvider()),
         ChangeNotifierProvider(create: (_) => DropdownCurrencyProvider()),
         ChangeNotifierProvider(create: (_) => DropdownNetworkProvider()),
+        ChangeNotifierProvider(create: (_) => RegisterStepMarchandProvider()),
       ],
       child: LocaleBuilder(
         builder: (locale) {

@@ -4,7 +4,8 @@ import 'package:qpay/features/home/home_screen.dart';
 import 'package:qpay/features/invoice/invoice_screen.dart';
 import 'package:qpay/features/main/widgets/main_navigation_bar.dart';
 import 'package:qpay/features/profile/profile_screen.dart';
-import 'package:qpay/provider/main_navigation_provider.dart';
+
+import '../../providers/main_navigation_provider.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});

@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qpay/common/widgets/m_button.dart';
-import 'package:qpay/features/themes/themes_view_model.dart';
 import 'package:qpay/features/welcome/widgets/page_item.dart';
-import 'package:qpay/provider/welcome_page_provider.dart';
 import 'package:qpay/routing/app_routes.dart';
 import 'package:qpay/utils/constants/image_path.dart';
 import 'package:qpay/utils/spacing.dart';
 import 'package:qpay/features/welcome/widgets/page_indicator.dart';
 
+import '../../providers/welcome_page_provider.dart';
 import '../../utils/color.dart';
 
 class WelcomeScreen extends StatelessWidget {

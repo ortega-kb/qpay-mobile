@@ -1,17 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:qpay/common/widgets/auth_title.dart';
 import 'package:qpay/common/widgets/m_button.dart';
 import 'package:qpay/common/widgets/m_text_field.dart';
-import 'package:qpay/common/widgets/m_title.dart';
 import 'package:qpay/common/widgets/subtitle.dart';
 import 'package:qpay/features/register/widgets/register_indicator.dart';
-import 'package:qpay/provider/register_step_provider.dart';
 import 'package:qpay/routing/app_routes.dart';
 import 'package:qpay/utils/spacing.dart';
 
+import '../../providers/register_step_provider.dart';
 import '../../utils/color.dart';
 
 class RegisterScreen extends StatefulWidget {

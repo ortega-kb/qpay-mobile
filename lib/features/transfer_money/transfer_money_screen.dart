@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qpay/common/widgets/m_button.dart';
@@ -6,22 +5,22 @@ import 'package:qpay/common/widgets/m_text_field.dart';
 import 'package:qpay/common/widgets/m_title.dart';
 import 'package:qpay/common/widgets/supporting_title.dart';
 import 'package:qpay/common/widgets/title_more.dart';
-import 'package:qpay/provider/balance_page_provider.dart';
 import 'package:qpay/utils/color.dart';
 import 'package:qpay/utils/enums/currency.dart';
 import 'package:qpay/utils/operations.dart';
 import 'package:qpay/utils/spacing.dart';
 
 import '../../common/widgets/balance_page.dart';
+import '../../providers/balance_page_provider.dart';
 
 class TransferMoneyScreen extends StatelessWidget {
   const TransferMoneyScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController accountController = TextEditingController();
-    TextEditingController amountController = TextEditingController();
-    TextEditingController totalController = TextEditingController();
+    TextEditingController _accountController = TextEditingController();
+    TextEditingController _amountController = TextEditingController();
+    TextEditingController _totalController = TextEditingController();
 
     return Scaffold(
       appBar: AppBar(
@@ -48,7 +47,7 @@ class TransferMoneyScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   MTextField(
-                    controller: accountController,
+                    controller: _accountController,
                     label: "beneficiary_account",
                     obscureText: false,
                     keyboardType: TextInputType.text,
@@ -57,7 +56,7 @@ class TransferMoneyScreen extends StatelessWidget {
                   Consumer<BalancePageProvider>(
                     builder: (context, provider, child) {
                       return MTextField(
-                        controller: amountController,
+                        controller: _amountController,
                         label: "amount",
                         obscureText: false,
                         keyboardType: TextInputType.numberWithOptions(
@@ -74,9 +73,9 @@ class TransferMoneyScreen extends StatelessWidget {
                         ),
                         onChanged: (value) {
                           if (value!.isEmpty)
-                            totalController.text = "";
+                            _totalController.text = "";
                           else {
-                            totalController.text = Operations()
+                            _totalController.text = Operations()
                                 .transferAmount(double.parse(value), 5)
                                 .toString();
                           }
@@ -95,7 +94,7 @@ class TransferMoneyScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: medium),
                   MTextField(
-                    controller: totalController,
+                    controller: _totalController,
                     label: "total_and_transfer",
                     obscureText: false,
                     readOnly: true,

@@ -7,7 +7,7 @@ import 'package:qpay/common/widgets/m_title.dart';
 import '../../common/widgets/balance_page.dart';
 import '../../common/widgets/supporting_title.dart';
 import '../../common/widgets/title_more.dart';
-import '../../provider/balance_page_provider.dart';
+import '../../providers/balance_page_provider.dart';
 import '../../utils/color.dart';
 import '../../utils/enums/currency.dart';
 import '../../utils/operations.dart';

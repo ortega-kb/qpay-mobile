@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:provider/provider.dart';
-import 'package:qpay/provider/balance_page_provider.dart';
 import 'package:qpay/utils/color.dart';
 import 'package:qpay/utils/enums/currency.dart';
 import 'package:qpay/utils/spacing.dart';
+
+import '../../providers/balance_page_provider.dart';
 
 class Balance extends StatelessWidget {
   final String balance;

@@ -22,4 +22,5 @@ class AppRoutes {
   static const String forgotPassword = "/forgotPassword";
   static const String withdraw = "/withdraw";
   static const String depositList = "/depositList";
+  static const String registerMarchand = "registerMarchand";
 }

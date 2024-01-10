@@ -6,14 +6,13 @@ import 'package:qpay/common/widgets/m_button.dart';
 import 'package:qpay/common/widgets/m_text_field.dart';
 import 'package:qpay/common/widgets/m_title.dart';
 import 'package:qpay/common/widgets/title_more.dart';
-import 'package:qpay/provider/dropdown_currency_provider.dart';
-import 'package:qpay/provider/dropdown_network_provider.dart';
 import 'package:qpay/utils/color.dart';
 import 'package:qpay/utils/enums/currency.dart';
 import 'package:qpay/utils/spacing.dart';
 
 import '../../common/widgets/supporting_title.dart';
-import '../../provider/balance_page_provider.dart';
+import '../../providers/balance_page_provider.dart';
+import '../../providers/dropdown_network_provider.dart';
 import '../../utils/operations.dart';
 
 class BuyCreditScreen extends StatelessWidget {

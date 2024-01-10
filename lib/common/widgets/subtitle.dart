@@ -15,7 +15,7 @@ class Subtitle extends StatelessWidget {
       child: LocaleText(
         text,
         style: TextStyle(
-          fontSize: Theme.of(context).textTheme.bodyMedium?.fontSize,
+          fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
           color: gray
         ),
       ),

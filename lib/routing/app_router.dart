@@ -11,6 +11,7 @@ import 'package:qpay/features/main/main_screen.dart';
 import 'package:qpay/features/my_beneficiary/my_beneficiary_screen.dart';
 import 'package:qpay/features/my_qr_code/my_qr_code_screen.dart';
 import 'package:qpay/features/register/register_screen.dart';
+import 'package:qpay/features/register_marchand/register_marchand_screen.dart';
 import 'package:qpay/features/scanner/scanner_screen.dart';
 import 'package:qpay/features/themes/themes_screen.dart';
 import 'package:qpay/features/transations/details_transaction_screen.dart';
@@ -67,17 +68,15 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => MainScreen());
       case AppRoutes.withdraw:
         return MaterialPageRoute(builder: (_) => WithdrawScreen());
+      case AppRoutes.registerMarchand:
+        return MaterialPageRoute(builder: (_) => RegisterMarchandScreen());
 
       default:
-        return MaterialPageRoute(builder: (_) {
-          return Scaffold(
+        return MaterialPageRoute(
+          builder: (_) => Scaffold(
             body: Text("No page found !"),
-          );
-        });
+          ),
+        );
     }
   }
-// static routes() => {
-//   AppRoutes.main: (BuildContext context) => MainScreen(),
-//   AppRoutes.withdraw: (BuildContext context) => WithdrawScreen()
-// };
 }
