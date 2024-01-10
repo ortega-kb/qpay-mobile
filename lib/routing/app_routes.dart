@@ -8,7 +8,7 @@ class AppRoutes {
   static const String detailsTransactions = "/detailsTransactions";
   static const String generateInvoice = "/generateInvoice";
   static const String deposit = "/deposit";
-  static const String withdraw = "/withdraw";
+  static const String withdrawList = "/withdrawList";
   static const String transferMoney = "/transferMoney";
   static const String buyCredit = "/buyCredit";
   static const String myQrCode = "/myQrCode";
@@ -20,4 +20,6 @@ class AppRoutes {
   static const String register = "/register";
   static const String verifyAccount = "/verifyAccount";
   static const String forgotPassword = "/forgotPassword";
+  static const String withdraw = "/withdraw";
+  static const String depositList = "/depositList";
 }
