@@ -3,20 +3,22 @@ import 'package:flutter_locales/flutter_locales.dart';
 import 'package:qpay/utils/color.dart';
 import 'package:qpay/utils/spacing.dart';
 
-class Subtitle extends StatelessWidget {
-  final String text;
 
-  const Subtitle({super.key, required this.text});
+class AuthTitle extends StatelessWidget {
+  final String title;
+
+  const AuthTitle({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: medium),
       child: LocaleText(
-        text,
+        title,
         style: TextStyle(
-          fontSize: Theme.of(context).textTheme.bodyMedium?.fontSize,
-          color: gray
+          color: black,
+          fontWeight: FontWeight.bold,
+          fontSize: Theme.of(context).textTheme.displaySmall?.fontSize
         ),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qpay/common/widgets/auth_title.dart';
 import 'package:qpay/common/widgets/m_button.dart';
 import 'package:qpay/common/widgets/m_text_field.dart';
 import 'package:qpay/common/widgets/m_title.dart';
@@ -18,11 +19,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: MTitle(text: "forgot_password"),
-      ),
+      appBar: AppBar(),
       body: ListView(
         children: [
+          AuthTitle(title: "forgot_password"),
           const SizedBox(height: medium),
           Subtitle(text: "subtitle_forgot_password"),
           const SizedBox(height: medium),

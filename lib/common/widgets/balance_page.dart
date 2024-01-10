@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qpay/features/home/widgets/balance.dart';
-import 'package:qpay/features/home/widgets/balance_indicator.dart';
+import 'package:qpay/common/widgets/balance.dart';
 import 'package:qpay/provider/balance_page_provider.dart';
 import 'package:qpay/utils/enums/currency.dart';
 import 'package:qpay/utils/spacing.dart';
+
+import 'balance_indicator.dart';
 
 class BalancePage extends StatelessWidget {
   final String balanceCDF;

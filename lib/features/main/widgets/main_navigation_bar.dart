@@ -6,8 +6,11 @@ class MainNavigationBar extends StatelessWidget {
   final int currentIndex;
   final void Function(int)? onTap;
 
-  const MainNavigationBar(
-      {super.key, required this.currentIndex, required this.onTap});
+  const MainNavigationBar({
+    super.key,
+    required this.currentIndex,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -25,6 +25,20 @@ class InvoiceScreen extends StatefulWidget {
 class _InvoiceScreenState extends State<InvoiceScreen> {
   @override
   Widget build(BuildContext context) {
+
+    showMDialog() {
+      showDialog(context: context, builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: surface,
+          surfaceTintColor: surface,
+          title: Text("Ajouter un article"),
+          titleTextStyle: TextStyle(
+            fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize
+          ),
+        );
+      });
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: MTitle(text: "invoice"),
@@ -41,7 +55,7 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
       ),
       body: Column(
         children: [
-          AddItem(onPressed: () {}),
+          AddItem(onPressed: showMDialog),
           const SizedBox(height: medium),
           Expanded(
             child: ListView(
@@ -52,11 +66,13 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                     child: Column(
                       children: [
                         Item(name: "Jus d'orange", price: 5000, qte: 3),
-                        const Line(),
                         Item(name: "Biscuit", price: 3000, qte: 3),
+
                         const Line(),
+
                         RowDetails(title: "sub_total", value: "10000.0"),
                         RowDetails(title: "tax_on_sell", value: "5 %"),
+
                         const Line(),
                         Total()
                       ],

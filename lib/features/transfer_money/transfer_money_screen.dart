@@ -4,23 +4,24 @@ import 'package:provider/provider.dart';
 import 'package:qpay/common/widgets/m_button.dart';
 import 'package:qpay/common/widgets/m_text_field.dart';
 import 'package:qpay/common/widgets/m_title.dart';
-import 'package:qpay/common/widgets/subtitle.dart';
-import 'package:qpay/features/home/widgets/balance_page.dart';
-import 'package:qpay/features/transfer_money/widgets/transfer_amount.dart';
+import 'package:qpay/common/widgets/supporting_title.dart';
+import 'package:qpay/common/widgets/title_more.dart';
 import 'package:qpay/provider/balance_page_provider.dart';
 import 'package:qpay/utils/color.dart';
 import 'package:qpay/utils/enums/currency.dart';
 import 'package:qpay/utils/operations.dart';
 import 'package:qpay/utils/spacing.dart';
 
+import '../../common/widgets/balance_page.dart';
+
 class TransferMoneyScreen extends StatelessWidget {
   const TransferMoneyScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController account = TextEditingController();
-    TextEditingController amount = TextEditingController();
-    TextEditingController total = TextEditingController();
+    TextEditingController accountController = TextEditingController();
+    TextEditingController amountController = TextEditingController();
+    TextEditingController totalController = TextEditingController();
 
     return Scaffold(
       appBar: AppBar(
@@ -35,8 +36,10 @@ class TransferMoneyScreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
+          const SizedBox(height: large),
+          TitleMore(title: "select_wallet"),
           const SizedBox(height: medium),
-          BalancePage(balanceCDF: "5000.00", balanceUSD: "9000.00"),
+          BalancePage(balanceCDF: "5000.0", balanceUSD: "900.0"),
           const SizedBox(height: medium),
           Form(
             child: Padding(
@@ -45,7 +48,7 @@ class TransferMoneyScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   MTextField(
-                    controller: account,
+                    controller: accountController,
                     label: "beneficiary_account",
                     obscureText: false,
                     keyboardType: TextInputType.text,
@@ -54,7 +57,7 @@ class TransferMoneyScreen extends StatelessWidget {
                   Consumer<BalancePageProvider>(
                     builder: (context, provider, child) {
                       return MTextField(
-                        controller: amount,
+                        controller: amountController,
                         label: "amount",
                         obscureText: false,
                         keyboardType: TextInputType.numberWithOptions(
@@ -66,13 +69,14 @@ class TransferMoneyScreen extends StatelessWidget {
                             provider.selectedPage == 0
                                 ? Currency.CDF.name
                                 : Currency.USD.name,
+                            style: TextStyle(color: black),
                           ),
                         ),
                         onChanged: (value) {
                           if (value!.isEmpty)
-                            total.text = "";
+                            totalController.text = "";
                           else {
-                            total.text = Operations()
+                            totalController.text = Operations()
                                 .transferAmount(double.parse(value), 5)
                                 .toString();
                           }
@@ -81,9 +85,17 @@ class TransferMoneyScreen extends StatelessWidget {
                       );
                     },
                   ),
+                  const SizedBox(height: extraSmall),
+                  Consumer<BalancePageProvider>(
+                    builder: (context, provider, child) {
+                      return provider.selectedPage == 0
+                          ? SupportingTitle(title: "Min: 1000 CDF")
+                          : SupportingTitle(title: "Min: 1 USD");
+                    },
+                  ),
                   const SizedBox(height: medium),
                   MTextField(
-                    controller: total,
+                    controller: totalController,
                     label: "total_and_transfer",
                     obscureText: false,
                     readOnly: true,

@@ -30,18 +30,25 @@ class QuickOperationsTile extends StatelessWidget {
             children: [
               const SizedBox(width: medium),
               Container(
-                decoration:
-                    BoxDecoration(shape: BoxShape.circle, color: primary),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: background,
+                ),
                 child: Padding(
                   padding: const EdgeInsets.all(small),
-                  child: Icon(icon, color: surface, size: 15),
+                  child: Icon(
+                    icon,
+                    color: black,
+                    size: 15,
+                  ),
                 ),
               ),
               const SizedBox(width: medium),
               LocaleText(
                 title,
                 style: TextStyle(
-                    fontSize: Theme.of(context).textTheme.titleMedium?.fontSize),
+                    fontSize:
+                        Theme.of(context).textTheme.titleMedium?.fontSize),
               ),
               const SizedBox(width: medium)
             ],

@@ -9,9 +9,9 @@ import 'package:qpay/utils/spacing.dart';
 import '../../utils/color.dart';
 
 class MyQrCodeScreen extends StatefulWidget {
-  final String accountNumber;
+  final String? accountNumber;
 
-  const MyQrCodeScreen({super.key, required this.accountNumber});
+  const MyQrCodeScreen({super.key, this.accountNumber});
 
   @override
   State<MyQrCodeScreen> createState() => _MyQrCodeScreenState();
@@ -118,14 +118,14 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
                                   child: TileContainer(
                                     child: ListTile(
                                       title: Text(
-                                        widget.accountNumber,
+                                        widget.accountNumber!,
                                         style: TextStyle(color: gray),
                                       ),
                                       trailing: IconButton(
                                         onPressed: () {
                                           Clipboard.setData(
                                             ClipboardData(
-                                              text: widget.accountNumber,
+                                              text: widget.accountNumber!,
                                             ),
                                           );
                                         },

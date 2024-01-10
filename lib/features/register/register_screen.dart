@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:qpay/common/widgets/auth_title.dart';
 import 'package:qpay/common/widgets/m_button.dart';
 import 'package:qpay/common/widgets/m_text_field.dart';
 import 'package:qpay/common/widgets/m_title.dart';
@@ -198,8 +199,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 height: 200,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    color: surface,
-                    borderRadius: BorderRadius.circular(medium)),
+                  color: surface,
+                  borderRadius: BorderRadius.circular(medium),
+                ),
                 child: Column(
                   children: [],
                 ),
@@ -221,7 +223,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
               const SizedBox(height: medium),
               MButton(
                 text: "create_account",
-                onTap: () => context.push(AppRoutes.verifyAccount),
+                onTap: () =>
+                    Navigator.pushNamed(context, AppRoutes.verifyAccount),
               )
             ],
           ),
@@ -230,9 +233,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        title: MTitle(text: "creating_account"),
-      ),
+      appBar: AppBar(),
       bottomNavigationBar: Consumer<RegisterStepProvider>(
         builder: (context, provider, child) {
           return Padding(
@@ -265,6 +266,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         builder: (context, provider, child) {
           return ListView(
             children: [
+              AuthTitle(title: "creating_account"),
               const SizedBox(height: medium),
               Subtitle(text: "subtitle_creating_account"),
               const SizedBox(height: medium),

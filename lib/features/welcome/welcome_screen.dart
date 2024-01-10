@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:qpay/common/widgets/m_button.dart';
+import 'package:qpay/features/themes/themes_view_model.dart';
 import 'package:qpay/features/welcome/widgets/page_item.dart';
 import 'package:qpay/provider/welcome_page_provider.dart';
 import 'package:qpay/routing/app_routes.dart';
@@ -16,7 +16,9 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final initialPage = Provider.of<WelcomePageProvider>(context).selectedPage;
+    final initialPage = Provider
+        .of<WelcomePageProvider>(context)
+        .selectedPage;
     var pageController = PageController(initialPage: initialPage);
 
     return Scaffold(
@@ -25,20 +27,17 @@ class WelcomeScreen extends StatelessWidget {
         backgroundColor: surface,
         surfaceTintColor: surface,
         automaticallyImplyLeading: false,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.light_mode,
-            ),
-          )
-        ],
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(medium),
         child: MButton(
           text: "get_started",
-          onTap: () => context.go(AppRoutes.login),
+          onTap: () =>
+              Navigator.pushNamedAndRemoveUntil(
+                context,
+                AppRoutes.login,
+                    (route) => false,
+              ),
         ),
       ),
       body: SafeArea(

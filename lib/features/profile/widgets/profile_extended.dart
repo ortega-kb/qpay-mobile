@@ -27,7 +27,8 @@ class ProfileExtended extends StatelessWidget {
                   Container(
                     width: size,
                     height: size,
-                    decoration: BoxDecoration(color: gray, shape: BoxShape.circle),
+                    decoration:
+                        BoxDecoration(color: gray, shape: BoxShape.circle),
                   ),
                   Container(
                     width: 30,
@@ -41,8 +42,8 @@ class ProfileExtended extends StatelessWidget {
                       child: Container(
                         width: 30,
                         height: 30,
-                        decoration:
-                        BoxDecoration(color: primary, shape: BoxShape.circle),
+                        decoration: BoxDecoration(
+                            color: primary, shape: BoxShape.circle),
                         child: const Icon(
                           CupertinoIcons.camera_fill,
                           color: surface,
@@ -61,8 +62,8 @@ class ProfileExtended extends StatelessWidget {
               title: Text(
                 name,
                 style: TextStyle(
-                    fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
-                    color: black),
+                  fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
+                ),
               ),
               subtitle: Text(
                 id,
@@ -72,7 +73,7 @@ class ProfileExtended extends StatelessWidget {
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

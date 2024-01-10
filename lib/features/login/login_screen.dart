@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:go_router/go_router.dart';
+import 'package:qpay/common/widgets/auth_title.dart';
 import 'package:qpay/common/widgets/m_button.dart';
 import 'package:qpay/common/widgets/m_outlined_button.dart';
 import 'package:qpay/common/widgets/m_text_field.dart';
 import 'package:qpay/common/widgets/m_title.dart';
 import 'package:qpay/common/widgets/subtitle.dart';
 import 'package:qpay/features/login/widgets/forgot_password.dart';
+import 'package:qpay/features/main/main_screen.dart';
 import 'package:qpay/routing/app_routes.dart';
 import 'package:qpay/utils/spacing.dart';
 
@@ -32,11 +34,10 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: MTitle(text: "authentication"),
-      ),
+      appBar: AppBar(),
       body: ListView(
         children: [
+          AuthTitle(title: "authentication"),
           const SizedBox(height: medium),
           Subtitle(text: "subtitle_authentication"),
           const SizedBox(height: medium),
@@ -61,17 +62,23 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const SizedBox(height: medium),
                   ForgotPassword(
-                    onTap: () => context.push(AppRoutes.forgotPassword),
+                    onTap: () =>
+                        Navigator.pushNamed(context, AppRoutes.forgotPassword),
                   ),
                   const SizedBox(height: medium),
                   MButton(
                     text: "login",
-                    onTap: () => context.go(AppRoutes.main),
+                    onTap: () => Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      AppRoutes.main,
+                      (route) => false,
+                    ),
                   ),
                   const SizedBox(height: medium),
                   MOutlinedButton(
                     text: "create_account",
-                    onTap: () => context.push(AppRoutes.register),
+                    onTap: () =>
+                        Navigator.pushNamed(context, AppRoutes.register),
                   ),
                   const SizedBox(height: large),
                 ],

@@ -6,8 +6,9 @@ import 'package:qpay/utils/spacing.dart';
 class TitleMore extends StatelessWidget {
   final void Function()? onTap;
   final String title;
+  final Color? color;
 
-  const TitleMore({super.key, required this.title, this.onTap});
+  const TitleMore({super.key, required this.title, this.onTap, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +20,10 @@ class TitleMore extends StatelessWidget {
           LocaleText(
             title,
             style: TextStyle(
-                fontSize: Theme.of(context).textTheme.titleMedium?.fontSize,
-                color: black,
-                fontWeight: FontWeight.bold),
+              fontSize: Theme.of(context).textTheme.titleMedium?.fontSize,
+              color: color,
+              fontWeight: FontWeight.bold
+            ),
           ),
           if (onTap != null)
             InkWell(

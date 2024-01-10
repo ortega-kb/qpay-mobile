@@ -29,10 +29,8 @@ class ParamTile extends StatelessWidget {
           borderRadius: BorderRadius.circular(middleSmall),
           child: ListTile(
             dense: false,
-            leading: Icon(icon, color: black),
-            title: LocaleText(
-              title
-            ),
+            leading: Icon(icon),
+            title: LocaleText(title),
             trailing: Icon(CupertinoIcons.chevron_forward, size: 20),
           ),
         ),

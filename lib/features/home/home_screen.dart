@@ -1,16 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:qpay/common/widgets/profile.dart';
 import 'package:qpay/common/widgets/transaction_tile.dart';
-import 'package:qpay/features/home/widgets/balance_page.dart';
 import 'package:qpay/features/home/widgets/greeting.dart';
 import 'package:qpay/features/home/widgets/quick_operations_tile.dart';
-import 'package:qpay/features/home/widgets/balance.dart';
-import 'package:qpay/features/home/widgets/title_more.dart';
+import 'package:qpay/common/widgets/title_more.dart';
 import 'package:qpay/routing/app_routes.dart';
 import 'package:qpay/utils/color.dart';
 import 'package:qpay/utils/spacing.dart';
+
+import '../../common/widgets/balance_page.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -21,11 +20,13 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
-          children: [Greeting(name: "Ortega")],
+          children: [
+            Greeting(name: "Ortega"),
+          ],
         ),
         actions: [
           IconButton(
-            onPressed: () => context.push(AppRoutes.scanner),
+            onPressed: () => Navigator.pushNamed(context, AppRoutes.scanner),
             icon: Icon(CupertinoIcons.qrcode_viewfinder),
           )
         ],
@@ -37,11 +38,9 @@ class HomeScreen extends StatelessWidget {
           shrinkWrap: true,
           children: [
             const SizedBox(height: medium),
-            BalancePage(balanceCDF: "500000.00", balanceUSD: "500"),
-
+            BalancePage(balanceCDF: "5000.0", balanceUSD: "500.0"),
             const SizedBox(height: large),
             TitleMore(title: "quick_operations"),
-
             const SizedBox(height: medium),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -51,25 +50,37 @@ class HomeScreen extends StatelessWidget {
                   QuickOperationsTile(
                     title: "transfer_money",
                     icon: CupertinoIcons.arrow_right_arrow_left,
-                    onTap: () => context.push(AppRoutes.transferMoney),
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      AppRoutes.transferMoney,
+                    ),
                   ),
                   const SizedBox(width: small),
                   QuickOperationsTile(
                     title: "credit",
                     icon: Icons.phone_callback,
-                    onTap: () => context.push(AppRoutes.buyCredit),
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      AppRoutes.buyCredit,
+                    ),
                   ),
                   const SizedBox(width: small),
                   QuickOperationsTile(
                     title: "do_deposit",
                     icon: CupertinoIcons.arrow_down_left,
-                    onTap: () => context.push(AppRoutes.deposit),
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      AppRoutes.depositList,
+                    ),
                   ),
                   const SizedBox(width: small),
                   QuickOperationsTile(
                     title: "do_withdraw",
                     icon: CupertinoIcons.arrow_up_right,
-                    onTap: () => context.push(AppRoutes.withdraw),
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      AppRoutes.withdrawList,
+                    ),
                   ),
                   const SizedBox(width: medium)
                 ],
@@ -78,7 +89,7 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: large),
             TitleMore(
               title: "transactions_history",
-              onTap: () => context.push(AppRoutes.transactions),
+              onTap: () => Navigator.pushNamed(context, AppRoutes.transactions),
             ),
             const SizedBox(height: medium),
             TransactionTile(
