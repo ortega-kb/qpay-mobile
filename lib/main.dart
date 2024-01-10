@@ -63,8 +63,8 @@ class MyApp extends StatelessWidget {
                 supportedLocales: Locales.supportedLocales,
                 locale: locale,
                 themeMode: viewModel.selectedTheme,
-                routes: AppRouter.routes(),
-                initialRoute: AppRoutes.main,
+                onGenerateRoute: AppRouter.generateRoute,
+                initialRoute: AppRoutes.welcome,
                 theme: ThemeData(
                   useMaterial3: true,
                   fontFamily: 'Helvetica',
