@@ -6,7 +6,7 @@ import 'package:qpay/utils/spacing.dart';
 /// Class messages provides
 /// all messages toasts for any categories (Success, Error, Warning)
 class Messages {
-  static final duration = 2;
+  static final duration = 1;
 
   static void error(String message, BuildContext context) {
     showFlushbar(

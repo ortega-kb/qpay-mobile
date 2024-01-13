@@ -8,6 +8,7 @@ import 'package:qpay/data/services/auth_service.dart';
 import 'package:qpay/features/home/home_view_model.dart';
 import 'package:qpay/features/language/language_view_model.dart';
 import 'package:qpay/features/login/login_view_model.dart';
+import 'package:qpay/features/profile/profile_view_model.dart';
 import 'package:qpay/features/themes/themes_view_model.dart';
 import 'package:qpay/providers/balance_page_provider.dart';
 import 'package:qpay/providers/dropdown_currency_provider.dart';
@@ -20,6 +21,7 @@ import 'package:qpay/providers/welcome_page_provider.dart';
 import 'package:qpay/routing/app_router.dart';
 import 'package:qpay/routing/app_routes.dart';
 import 'package:qpay/utils/color.dart';
+import 'package:qpay/wrapper.dart';
 
 import 'firebase_options.dart';
 
@@ -37,11 +39,20 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  runApp(const MyApp());
+  final Wrapper _wrapper = Wrapper();
+  final bool isLogged = await _wrapper.isLogged();
+
+  runApp(
+    MyApp(
+      initialRoute: isLogged ? AppRoutes.main : AppRoutes.welcome,
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final String initialRoute;
+
+  const MyApp({super.key, required this.initialRoute});
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +63,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => HomeViewModel()),
         ChangeNotifierProvider(create: (_) => ThemesViewModel()),
         ChangeNotifierProvider(create: (_) => LoginViewModel()),
+        ChangeNotifierProvider(create: (_) => ProfileViewModel()),
 
         // provider
         ChangeNotifierProvider(create: (_) => MainNavigationProvider()),
@@ -62,23 +74,20 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => DropdownCurrencyProvider()),
         ChangeNotifierProvider(create: (_) => DropdownNetworkProvider()),
         ChangeNotifierProvider(create: (_) => RegisterStepMarchandProvider()),
-
-        // service
-        Provider(create: (_) => AuthService())
       ],
       child: LocaleBuilder(
         builder: (locale) {
           return Consumer<ThemesViewModel>(
-            builder: (context, viewModel, child) {
+            builder: (context, themeViewModel, child) {
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
                 title: 'Qpay',
                 localizationsDelegates: Locales.delegates,
                 supportedLocales: Locales.supportedLocales,
                 locale: locale,
-                themeMode: viewModel.selectedTheme,
+                themeMode: themeViewModel.selectedTheme,
                 onGenerateRoute: AppRouter.generateRoute,
-                initialRoute: AppRoutes.welcome,
+                initialRoute: initialRoute,
                 theme: ThemeData(
                   useMaterial3: true,
                   fontFamily: 'Helvetica',

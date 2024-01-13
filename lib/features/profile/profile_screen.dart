@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:qpay/common/widgets/line.dart';
 import 'package:qpay/common/widgets/m_title.dart';
 import 'package:qpay/common/widgets/subtitle.dart';
 import 'package:qpay/common/widgets/tile_container.dart';
+import 'package:qpay/features/profile/profile_view_model.dart';
 import 'package:qpay/features/profile/widgets/param_tile.dart';
 import 'package:qpay/features/profile/widgets/profile_extended.dart';
 import 'package:qpay/routing/app_routes.dart';
@@ -96,14 +98,21 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                     const Line(),
-                    ParamTile(
-                      icon: Icons.logout,
-                      title: "logout",
-                      onTap: () => Navigator.pushNamedAndRemoveUntil(
-                        context,
-                        AppRoutes.login,
-                        (route) => false,
-                      ),
+                    Consumer<ProfileViewModel>(
+                      builder: (context, viewModel, child) {
+                        return ParamTile(
+                          icon: Icons.logout,
+                          title: "logout",
+                          onTap: () {
+                            viewModel.logout();
+                            Navigator.pushNamedAndRemoveUntil(
+                              context,
+                              AppRoutes.login,
+                                  (route) => false,
+                            );
+                          }
+                        );
+                      },
                     ),
                   ],
                 ),
@@ -116,21 +125,3 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 }
-
-//                     ParamTile(
-//                       icon: Icons.password,
-//                       title: "change_my_pin",
-//                       onTap: () => Navigator.pushNamed(
-//                         context,
-//                         AppRoutes.changeMyPin,
-//                       ),
-//                     ),
-//                     const Line(),
-//                     ParamTile(
-//                       icon: Icons.lock,
-//                       title: "change_my_passwd",
-//                       onTap: () => Navigator.pushNamed(
-//                         context,
-//                         AppRoutes.changeMyPasswd,
-//                       ),
-//                     ),

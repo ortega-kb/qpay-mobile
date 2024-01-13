@@ -72,11 +72,7 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => RegisterMarchandScreen());
 
       default:
-        return MaterialPageRoute(
-          builder: (_) => Scaffold(
-            body: Text("No page found !"),
-          ),
-        );
+        return MaterialPageRoute(builder: (_) => WelcomeScreen());
     }
   }
 }
