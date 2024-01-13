@@ -1,7 +1,10 @@
+import 'dart:io' show Platform;
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:provider/provider.dart';
+import 'package:qpay/data/services/auth_service.dart';
 import 'package:qpay/features/home/home_view_model.dart';
 import 'package:qpay/features/language/language_view_model.dart';
 import 'package:qpay/features/themes/themes_view_model.dart';
@@ -19,11 +22,16 @@ import 'package:qpay/utils/color.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+
   await Locales.init(['fr', 'en']);
+  Platform.isAndroid
+      ? await Firebase.initializeApp()
+      : await Firebase.initializeApp();
 
   runApp(const MyApp());
 }
@@ -49,6 +57,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => DropdownCurrencyProvider()),
         ChangeNotifierProvider(create: (_) => DropdownNetworkProvider()),
         ChangeNotifierProvider(create: (_) => RegisterStepMarchandProvider()),
+
+        // service
+        Provider(create: (_) => AuthService())
       ],
       child: LocaleBuilder(
         builder: (locale) {

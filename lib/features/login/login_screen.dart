@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_locales/flutter_locales.dart';
-import 'package:go_router/go_router.dart';
 import 'package:qpay/common/widgets/auth_title.dart';
 import 'package:qpay/common/widgets/m_button.dart';
 import 'package:qpay/common/widgets/m_outlined_button.dart';
 import 'package:qpay/common/widgets/m_text_field.dart';
-import 'package:qpay/common/widgets/m_title.dart';
 import 'package:qpay/common/widgets/subtitle.dart';
 import 'package:qpay/features/login/widgets/forgot_password.dart';
-import 'package:qpay/features/main/main_screen.dart';
 import 'package:qpay/routing/app_routes.dart';
 import 'package:qpay/utils/spacing.dart';
 
@@ -20,14 +16,14 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController _phoneNumberController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
   TextEditingController _passwdController = TextEditingController();
 
   @override
   void dispose() {
     super.dispose();
 
-    this._phoneNumberController.dispose();
+    this._emailController.dispose();
     this._passwdController.dispose();
   }
 
@@ -48,10 +44,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   MTextField(
-                    controller: _phoneNumberController,
-                    label: "phone_number",
+                    controller: _emailController,
+                    label: "electronic_address",
                     obscureText: false,
-                    keyboardType: TextInputType.phone,
+                    keyboardType: TextInputType.emailAddress,
                   ),
                   const SizedBox(height: medium),
                   MTextField(

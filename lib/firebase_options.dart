@@ -50,19 +50,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDHpWm2NQlJQXRzRM5m3uQ0bBywOtJFphc',
-    appId: '1:938452985046:android:25a6132f83515432ced577',
-    messagingSenderId: '938452985046',
-    projectId: 'qpay-40c5e',
-    storageBucket: 'qpay-40c5e.appspot.com',
+    apiKey: 'AIzaSyB3sBLuEtzVUrp40QC34c20ikkjA98IjcU',
+    appId: '1:840155582379:android:1770fce00394ac8c49ccee',
+    messagingSenderId: '840155582379',
+    projectId: 'qpay-95b40',
+    storageBucket: 'qpay-95b40.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDgf1TLxhsPXiZo-55omdDVtTshrjkejbk',
-    appId: '1:938452985046:ios:11bd845e9a94c955ced577',
-    messagingSenderId: '938452985046',
-    projectId: 'qpay-40c5e',
-    storageBucket: 'qpay-40c5e.appspot.com',
+    apiKey: 'AIzaSyDXZrScFH76HMuoL1J0BQgilBW6WkgYFe0',
+    appId: '1:840155582379:ios:518208fd5d3342e849ccee',
+    messagingSenderId: '840155582379',
+    projectId: 'qpay-95b40',
+    storageBucket: 'qpay-95b40.appspot.com',
     iosBundleId: 'com.ortega.qpay',
   );
 }
