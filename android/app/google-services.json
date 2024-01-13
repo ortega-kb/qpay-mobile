@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "938452985046",
+    "project_id": "qpay-40c5e",
+    "storage_bucket": "qpay-40c5e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:938452985046:android:25a6132f83515432ced577",
+        "android_client_info": {
+          "package_name": "com.ortega.qpay"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHpWm2NQlJQXRzRM5m3uQ0bBywOtJFphc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
