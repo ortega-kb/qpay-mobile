@@ -14,19 +14,19 @@ class Messages {
       flushbar: Flushbar(
         forwardAnimationCurve: Curves.decelerate,
         borderRadius: BorderRadius.circular(large),
+        margin: EdgeInsets.all(large),
         padding: EdgeInsets.all(medium),
         duration: Duration(seconds: duration),
-        flushbarPosition: FlushbarPosition.TOP,
+        flushbarPosition: FlushbarPosition.BOTTOM,
         backgroundColor: Colors.red,
         reverseAnimationCurve: Curves.easeInOut,
-        positionOffset: 20,
         icon: Icon(
           Icons.error_rounded,
           color: Colors.white,
         ),
         message: message,
         messageColor: Colors.white,
-      ),
+      )..show(context),
     );
   }
 

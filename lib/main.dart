@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:qpay/data/services/auth_service.dart';
 import 'package:qpay/features/home/home_view_model.dart';
 import 'package:qpay/features/language/language_view_model.dart';
+import 'package:qpay/features/login/login_view_model.dart';
 import 'package:qpay/features/themes/themes_view_model.dart';
 import 'package:qpay/providers/balance_page_provider.dart';
 import 'package:qpay/providers/dropdown_currency_provider.dart';
@@ -20,6 +21,8 @@ import 'package:qpay/routing/app_router.dart';
 import 'package:qpay/routing/app_routes.dart';
 import 'package:qpay/utils/color.dart';
 
+import 'firebase_options.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -29,9 +32,10 @@ void main() async {
   ]);
 
   await Locales.init(['fr', 'en']);
-  Platform.isAndroid
-      ? await Firebase.initializeApp()
-      : await Firebase.initializeApp();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   runApp(const MyApp());
 }
@@ -47,6 +51,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => LanguageViewModel()),
         ChangeNotifierProvider(create: (_) => HomeViewModel()),
         ChangeNotifierProvider(create: (_) => ThemesViewModel()),
+        ChangeNotifierProvider(create: (_) => LoginViewModel()),
 
         // provider
         ChangeNotifierProvider(create: (_) => MainNavigationProvider()),

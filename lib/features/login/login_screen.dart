@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:qpay/common/widgets/auth_title.dart';
 import 'package:qpay/common/widgets/m_button.dart';
 import 'package:qpay/common/widgets/m_outlined_button.dart';
 import 'package:qpay/common/widgets/m_text_field.dart';
 import 'package:qpay/common/widgets/subtitle.dart';
+import 'package:qpay/features/login/login_view_model.dart';
 import 'package:qpay/features/login/widgets/forgot_password.dart';
 import 'package:qpay/routing/app_routes.dart';
+import 'package:qpay/utils/messages.dart';
 import 'package:qpay/utils/spacing.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -16,6 +19,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _formKey = GlobalKey<FormState>();
+
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwdController = TextEditingController();
 
@@ -38,6 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
           Subtitle(text: "subtitle_authentication"),
           const SizedBox(height: medium),
           Form(
+            key: _formKey,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: medium),
               child: Column(
@@ -48,6 +54,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     label: "electronic_address",
                     obscureText: false,
                     keyboardType: TextInputType.emailAddress,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Enter email";
+                      }
+                      return null;
+                    },
                   ),
                   const SizedBox(height: medium),
                   MTextField(
@@ -55,6 +67,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     label: "passwd",
                     obscureText: true,
                     keyboardType: TextInputType.visiblePassword,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Enter password";
+                      }
+                      return null;
+                    },
                   ),
                   const SizedBox(height: medium),
                   ForgotPassword(
@@ -62,13 +80,28 @@ class _LoginScreenState extends State<LoginScreen> {
                         Navigator.pushNamed(context, AppRoutes.forgotPassword),
                   ),
                   const SizedBox(height: medium),
-                  MButton(
-                    text: "login",
-                    onTap: () => Navigator.pushNamedAndRemoveUntil(
-                      context,
-                      AppRoutes.main,
-                      (route) => false,
-                    ),
+                  Consumer<LoginViewModel>(
+                    builder: (context, viewModel, child) {
+                      return MButton(
+                        text: "login",
+                        onTap: () async {
+                          if (_formKey.currentState!.validate()) {
+                            if (!await viewModel.signInWithEmailAndPassword(
+                              _emailController.text.trim(),
+                              _passwdController.text.trim(),
+                            )) {
+                              Messages.error("Erreur d'authentification", context);
+                            } else {
+                              Navigator.pushNamedAndRemoveUntil(
+                                context,
+                                AppRoutes.main,
+                                    (route) => false,
+                              );
+                            }
+                          }
+                        },
+                      );
+                    },
                   ),
                   const SizedBox(height: medium),
                   MOutlinedButton(

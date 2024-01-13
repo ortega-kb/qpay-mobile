@@ -5,13 +5,21 @@ import 'package:firebase_auth/firebase_auth.dart';
 // Provide all services of authentication
 class AuthService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   Future<UserCredential?> signInWithEmailAndPassword(
-      String email, String password) async {
-    return await _firebaseAuth.signInWithEmailAndPassword(
-      email: email,
-      password: password,
-    );
+    String email,
+    String password,
+  ) async {
+    try {
+
+      return await _firebaseAuth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+    } on FirebaseAuthException catch (e) {
+      print("[Error code ${e.code}] message ${e.message} ********************");
+      return null;
+    }
   }
 }
