@@ -118,14 +118,14 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
                                   child: TileContainer(
                                     child: ListTile(
                                       title: Text(
-                                        widget.accountNumber!,
+                                        "qp4514521",
                                         style: TextStyle(color: gray),
                                       ),
                                       trailing: IconButton(
                                         onPressed: () {
                                           Clipboard.setData(
                                             ClipboardData(
-                                              text: widget.accountNumber!,
+                                              text: "qp4514521",
                                             ),
                                           );
                                         },

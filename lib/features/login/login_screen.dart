@@ -12,6 +12,7 @@ import 'package:qpay/features/login/widgets/forgot_password.dart';
 import 'package:qpay/routing/app_routes.dart';
 import 'package:qpay/utils/messages.dart';
 import 'package:qpay/utils/spacing.dart';
+import 'package:qpay/utils/validator.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -64,10 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           obscureText: false,
                           keyboardType: TextInputType.emailAddress,
                           validator: (value) {
-                            if (value!.isEmpty) {
-                              return "Enter email";
-                            }
-                            return null;
+                            return Validator.emailValidator(value);
                           },
                         ),
                         const SizedBox(height: medium),
@@ -77,10 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           obscureText: true,
                           keyboardType: TextInputType.visiblePassword,
                           validator: (value) {
-                            if (value!.isEmpty) {
-                              return "Enter password";
-                            }
-                            return null;
+                            return Validator.passwordValidator(value);
                           },
                         ),
                         const SizedBox(height: medium),
