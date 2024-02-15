@@ -9,8 +9,8 @@ const background = Color(0xfffafafa);
 // FAFAFA
 // FF4B00
 
-
-const primary = Color(0xfad95117);
+//const primary = Color(0xfad95117);
+const primary = Color(0xff274603);
 const gray = Color(0xff6E7986);
 const black = Color(0xff121212);
 const darkGray = Color(0xff1b1b1b);

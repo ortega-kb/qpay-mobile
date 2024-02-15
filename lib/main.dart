@@ -1,10 +1,8 @@
-import 'dart:io' show Platform;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:provider/provider.dart';
-import 'package:qpay/data/services/auth_service.dart';
 import 'package:qpay/features/home/home_view_model.dart';
 import 'package:qpay/features/language/language_view_model.dart';
 import 'package:qpay/features/login/login_view_model.dart';
@@ -43,16 +41,16 @@ void main() async {
   final bool isLogged = await _wrapper.isLogged();
 
   runApp(
-    MyApp(
-      initialRoute: isLogged ? AppRoutes.main : AppRoutes.welcome,
+    QPayApp(
+      initialRoute: isLogged ? AppRoutes.main : AppRoutes.language,
     ),
   );
 }
 
-class MyApp extends StatelessWidget {
+class QPayApp extends StatelessWidget {
   final String initialRoute;
 
-  const MyApp({super.key, required this.initialRoute});
+  const QPayApp({super.key, required this.initialRoute});
 
   @override
   Widget build(BuildContext context) {
