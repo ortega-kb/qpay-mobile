@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qpay/common/widgets/m_button.dart';
+import 'package:qpay/features/welcome/widgets/page_indicator.dart';
 import 'package:qpay/features/welcome/widgets/page_item.dart';
 import 'package:qpay/routing/app_routes.dart';
 import 'package:qpay/utils/constants/image_path.dart';
 import 'package:qpay/utils/spacing.dart';
-import 'package:qpay/features/welcome/widgets/page_indicator.dart';
 
 import '../../providers/welcome_page_provider.dart';
 import '../../utils/color.dart';
@@ -15,9 +15,7 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final initialPage = Provider
-        .of<WelcomePageProvider>(context)
-        .selectedPage;
+    final initialPage = Provider.of<WelcomePageProvider>(context).selectedPage;
     var pageController = PageController(initialPage: initialPage);
 
     return Scaffold(
@@ -31,12 +29,11 @@ class WelcomeScreen extends StatelessWidget {
         padding: const EdgeInsets.all(medium),
         child: MButton(
           text: "get_started",
-          onTap: () =>
-              Navigator.pushNamedAndRemoveUntil(
-                context,
-                AppRoutes.login,
-                    (route) => false,
-              ),
+          onTap: () => Navigator.pushNamedAndRemoveUntil(
+            context,
+            AppRoutes.login,
+            (route) => false,
+          ),
         ),
       ),
       body: SafeArea(
@@ -50,17 +47,17 @@ class WelcomeScreen extends StatelessWidget {
                     controller: pageController,
                     children: const [
                       PageItem(
-                        image: ImagePath.transfer,
+                        image: ImagePath.svgTransfer,
                         title: "transfer_money",
                         subtitle: "subtitle_transfer_money",
                       ),
                       PageItem(
-                        image: ImagePath.qrCode,
+                        image: ImagePath.svgQrCode,
                         title: "qr_code_payment",
                         subtitle: "subtitle_qr_code_payment",
                       ),
                       PageItem(
-                        image: ImagePath.paymentReceive,
+                        image: ImagePath.svgPaymentReceive,
                         title: "receive_payment",
                         subtitle: "subtitle_receive_payment",
                       )

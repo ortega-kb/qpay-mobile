@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:qpay/utils/color.dart';
 import 'package:qpay/utils/spacing.dart';
 
@@ -19,7 +20,7 @@ class PageItem extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          Image.asset(image),
+          SvgPicture.asset(image),
           LocaleText(
             title,
             style: TextStyle(
