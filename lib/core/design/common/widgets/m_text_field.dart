@@ -49,10 +49,9 @@ class MTextField extends StatelessWidget {
       decoration: InputDecoration(
           isDense: false,
           suffixIcon: suffixIcon,
-          prefixIcon: prefixIcon,
+          prefix: prefixIcon,
           filled: false,
-          hintText: Locales.string(context, label),
-          hintStyle: const TextStyle(color: gray),
+          labelText: Locales.string(context, label),
           errorText: errorMsg,
           focusedBorder:
               UnderlineInputBorder(borderSide: BorderSide(color: primary)),

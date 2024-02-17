@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:qpay/core/design/app_lang.dart';
 import 'package:qpay/core/design/app_theme.dart';
-import 'package:qpay/core/design/messages.dart';
-import 'package:qpay/features/language/language_screen.dart';
+import 'package:qpay/feature/auth/screen/login_screen.dart';
 
 import 'firebase_options.dart';
 
@@ -43,13 +41,6 @@ class QPayApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final appLang = ref.watch(appLangNotifierProvider);
-    final lang = appLang.getLang();
-
-    lang
-        .then((value) => Locales.change(context, value))
-        .catchError((onError) => Messages.error(onError, context));
-
     return LocaleBuilder(
       builder: (locale) {
         return MaterialApp(
@@ -60,7 +51,7 @@ class QPayApp extends ConsumerWidget {
           locale: locale,
           theme: lightTheme,
           darkTheme: darkTheme,
-          home: LanguageScreen(),
+          home: LoginScreen(),
         );
       },
     );

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:qpay/features/welcome/widgets/page_indicator/page_indicator.dart';
-import 'package:qpay/features/welcome/widgets/page_indicator/page_indicator_provider.dart';
-import 'package:qpay/features/welcome/widgets/page_item.dart';
+import 'package:qpay/feature/welcome/widgets/page_indicator/page_indicator.dart';
+import 'package:qpay/feature/welcome/widgets/page_indicator/page_indicator_provider.dart';
+import 'package:qpay/feature/welcome/widgets/page_item.dart';
 import 'package:qpay/utils/constants/image_path.dart';
 
 import '../../core/design/color.dart';

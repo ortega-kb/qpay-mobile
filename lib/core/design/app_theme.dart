@@ -13,6 +13,7 @@ ThemeData get lightTheme {
     useMaterial3: true,
     fontFamily: 'Helvetica',
     scaffoldBackgroundColor: background,
+    visualDensity: VisualDensity.adaptivePlatformDensity,
     appBarTheme: const AppBarTheme(
       surfaceTintColor: background,
       backgroundColor: background,
@@ -33,6 +34,7 @@ ThemeData get darkTheme {
   return ThemeData(
     brightness: Brightness.dark,
     scaffoldBackgroundColor: black,
+    visualDensity: VisualDensity.adaptivePlatformDensity,
     appBarTheme: AppBarTheme(color: black, surfaceTintColor: black),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       elevation: 1,

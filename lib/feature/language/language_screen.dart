@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qpay/core/design/app_lang.dart';
-import 'package:qpay/features/welcome/welcome_screen.dart';
+import 'package:qpay/feature/welcome/welcome_screen.dart';
 
 import '../../core/design/animator_route.dart';
 import '../../core/design/common/widgets/line.dart';
@@ -37,7 +37,9 @@ class LanguageScreen extends ConsumerWidget {
                   title: "french",
                   active: ref.watch(appLangNotifierProvider.notifier) == "fr",
                   onChanged: (value) {
-                    ref.read(appLangNotifierProvider).changeToFr(context);
+                    ref
+                        .read(appLangNotifierProvider.notifier)
+                        .changeToFr(context);
                   },
                 ),
                 const Line(),
@@ -45,7 +47,9 @@ class LanguageScreen extends ConsumerWidget {
                   title: "english",
                   active: ref.watch(appLangNotifierProvider.notifier) == "en",
                   onChanged: (value) {
-                    ref.read(appLangNotifierProvider).changeToEn(context);
+                    ref
+                        .read(appLangNotifierProvider.notifier)
+                        .changeToEn(context);
                   },
                 )
               ],
