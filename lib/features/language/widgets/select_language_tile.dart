@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 
-import '../../../utils/color.dart';
-import '../../../utils/spacing.dart';
+import '../../../core/design/color.dart';
 
 class SelectLanguageTile extends StatelessWidget {
   final String title;
