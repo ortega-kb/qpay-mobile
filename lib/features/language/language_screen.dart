@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qpay/core/design/app_lang.dart';
+import 'package:qpay/features/welcome/welcome_screen.dart';
 
 import '../../core/design/animator_route.dart';
 import '../../core/design/common/widgets/line.dart';
@@ -22,7 +23,7 @@ class LanguageScreen extends ConsumerWidget {
         child: MButton(
           text: "continue",
           onTap: () {
-            Navigator.pushReplacement(context, animateRoute(Column()));
+            Navigator.pushReplacement(context, animateRoute(WelcomeScreen()));
           },
         ),
       ),
