@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:qpay/utils/enums/network.dart';
+
+import '../core/utils/enums/network.dart';
 
 class DropdownNetworkProvider with ChangeNotifier {
   final networks = [

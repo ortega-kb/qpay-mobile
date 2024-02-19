@@ -12,6 +12,7 @@
   "receive_payment": "Receive a payment",
   "subtitle_receive_payment": "Générez facilement des factures en ajoutant toutes les informations nécessaires, puis créez un QR code pour permettre un paiement rapide et pratique.",
   "hello": "Hello,",
+  "subtitle_authentication": "Enter your phone number and your password.",
   "sold_in": "Sold in ",
   "balance": "Balance ",
   "show": "SHOW",
@@ -50,5 +51,11 @@
   "account_settings": "Account settings",
   "type_of_network": "Type of network*",
   "buy_credit": "Buy",
-  "account_number": "Account number"
+  "account_number": "Account number",
+  "enter_phone_number": "Enter your phone number",
+  "create_an_account": "Create an account",
+  "next": "Next",
+  "verify": "Verify",
+  "verification_code": "Verification code",
+  "sent_verification_code": "Verification code has been sent to "
 }

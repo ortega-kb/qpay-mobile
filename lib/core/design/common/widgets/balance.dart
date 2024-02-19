@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:provider/provider.dart';
-import 'package:qpay/utils/enums/currency.dart';
 
 import '../../../../providers/balance_page_provider.dart';
+import '../../../utils/enums/currency.dart';
 import '../../color.dart';
 import '../../spacing.dart';
 

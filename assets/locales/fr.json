@@ -52,7 +52,7 @@
   "dark": "Sombre",
   "subtitle_my_qr_code": "Servez-vous de votre QR code ou du numéro de compte pour récevoir des transactions.",
   "authentication": "Connexion",
-  "subtitle_authentication": "Pour accéder à l'interface d'accueil, veuillez vous authentifier afin de garantir un accès sécurisé et personnalisé.",
+  "subtitle_authentication": "Entrer votre numéro de téléphone ainsi que votre mot de passe.",
   "phone_number": "Numéro de téléphone",
   "passwd": "Mot de passe",
   "login": "Se connecter",
@@ -107,6 +107,13 @@
   "activity_sector": "Sécteur d'activité",
   "identification_nat": "Identification nationale",
   "rccm": "RCCM",
-  "doc_id": "Document d'identification d'entreprise"
+  "doc_id": "Document d'identification d'entreprise",
+
+  "enter_phone_number": "Entrer votre numéro de téléphone",
+  "create_an_account": "Création compte",
+  "next": "Suivant",
+  "verify": "Vérifier",
+  "verification_code": "Code de vérification",
+  "sent_verification_code": "Code de vérification envoyé au"
 
 }

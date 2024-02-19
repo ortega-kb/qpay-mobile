@@ -3,11 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qpay/feature/welcome/widgets/page_indicator/page_indicator.dart';
 import 'package:qpay/feature/welcome/widgets/page_indicator/page_indicator_provider.dart';
 import 'package:qpay/feature/welcome/widgets/page_item.dart';
-import 'package:qpay/utils/constants/image_path.dart';
 
 import '../../core/design/color.dart';
 import '../../core/design/common/widgets/m_button.dart';
 import '../../core/design/spacing.dart';
+import '../../core/utils/constants/image_path.dart';
 
 class WelcomeScreen extends ConsumerWidget {
   const WelcomeScreen({super.key});

@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
-import 'package:qpay/utils/enums/currency.dart';
+
+import '../core/utils/enums/currency.dart';
 
 class DropdownCurrencyProvider with ChangeNotifier {
-
   final currencies = [Currency.CDF, Currency.USD];
 
   Currency _selectedCurrency = Currency.CDF;
@@ -12,5 +12,4 @@ class DropdownCurrencyProvider with ChangeNotifier {
     _selectedCurrency = value;
     notifyListeners();
   }
-
 }

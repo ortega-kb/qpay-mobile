@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 
-import '../../color.dart';
 import '../../spacing.dart';
 
 class AuthTitle extends StatelessWidget {
@@ -16,7 +15,6 @@ class AuthTitle extends StatelessWidget {
       child: LocaleText(
         title,
         style: TextStyle(
-            color: black,
             fontWeight: FontWeight.bold,
             fontSize: Theme.of(context).textTheme.displaySmall?.fontSize),
       ),
