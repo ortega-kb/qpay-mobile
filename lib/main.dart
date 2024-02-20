@@ -4,8 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qpay/core/design/app_theme.dart';
-import 'package:qpay/feature/auth/screen/login_screen.dart';
 
+import 'feature/login/login_screen.dart';
 import 'firebase_options.dart';
 
 void main() async {

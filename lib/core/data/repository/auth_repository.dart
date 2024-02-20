@@ -1,4 +1,4 @@
-abstract class AuthService {
+abstract class AuthRepository {
   Future<void> sendOtp({
     required String phoneNumber,
     required Function(String) onCodeSent,

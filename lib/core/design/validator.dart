@@ -22,7 +22,7 @@ class Validator {
   }
 
   static String? phoneValidator(String? phoneNumber) {
-    String pattern = r'^\+243(8|9)[0-9]{7}$';
+    String pattern = r'^[0-9][0-9]{8}$';
     RegExp regExp = new RegExp(pattern);
     if (phoneNumber!.isEmpty) {
       return 'Please enter mobile number';

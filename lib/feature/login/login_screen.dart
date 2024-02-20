@@ -4,17 +4,20 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:qpay/core/design/animator_route.dart';
 import 'package:qpay/core/design/color.dart';
+import 'package:qpay/core/design/messages.dart';
 import 'package:qpay/core/provider/m_password_field_provider.dart';
-import 'package:qpay/feature/auth/screen/register_screen.dart';
+import 'package:qpay/feature/login/login_state.dart';
+import 'package:qpay/feature/login/login_view_model.dart';
 
-import '../../../core/design/common/widgets/auth_title.dart';
-import '../../../core/design/common/widgets/full_progress_indicator.dart';
-import '../../../core/design/common/widgets/m_button.dart';
-import '../../../core/design/common/widgets/m_outlined_button.dart';
-import '../../../core/design/common/widgets/m_text_field.dart';
-import '../../../core/design/common/widgets/subtitle.dart';
-import '../../../core/design/spacing.dart';
-import '../../../core/design/validator.dart';
+import '../../core/design/common/widgets/auth_title.dart';
+import '../../core/design/common/widgets/full_progress_indicator.dart';
+import '../../core/design/common/widgets/m_button.dart';
+import '../../core/design/common/widgets/m_outlined_button.dart';
+import '../../core/design/common/widgets/m_text_field.dart';
+import '../../core/design/common/widgets/subtitle.dart';
+import '../../core/design/spacing.dart';
+import '../../core/design/validator.dart';
+import '../register/register_screen.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -25,22 +28,31 @@ class LoginScreen extends ConsumerStatefulWidget {
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-
-  TextEditingController _phoneController = TextEditingController();
-  TextEditingController _passwdController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   void dispose() {
-    this._phoneController.dispose();
-    this._passwdController.dispose();
+    _phoneController.dispose();
+    _passwordController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    final state = ref.watch(loginViewModelProvider);
+
+    ref.listen(loginViewModelProvider, (previous, next) {
+      if (next is Error) {
+        Messages.error(next.e.toString(), context);
+      } else if (next is Success) {
+        Messages.success("Login success", context);
+      }
+    });
+
     return ModalProgressHUD(
       progressIndicator: FullProgressIndicator(),
-      inAsyncCall: false,
+      inAsyncCall: (state is Loading) ? true : false,
       opacity: 0.3,
       blur: 1,
       child: Scaffold(
@@ -74,14 +86,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           ],
                         ),
                         obscureText: false,
-                        keyboardType: TextInputType.emailAddress,
+                        keyboardType: TextInputType.phone,
                         validator: (value) {
                           return Validator.phoneValidator(value!);
                         },
                       ),
                       const SizedBox(height: medium),
                       MTextField(
-                        controller: _passwdController,
+                        controller: _passwordController,
                         label: "passwd",
                         obscureText: ref.watch(mPasswordFieldProvider),
                         keyboardType: TextInputType.visiblePassword,
@@ -116,21 +128,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       MButton(
                         text: "login",
                         onTap: () async {
-                          // if (_formKey.currentState!.validate()) {
-                          //   if (!await viewModel.signInWithEmailAndPassword(
-                          //     _emailController.text.trim(),
-                          //     _passwdController.text.trim(),
-                          //   )) {
-                          //     Messages.error(
-                          //         "Erreur d'authentification", context);
-                          //   } else {
-                          //     Navigator.pushNamedAndRemoveUntil(
-                          //       context,
-                          //       AppRoutes.main,
-                          //       (route) => false,
-                          //     );
-                          //   }
-                          // }
+                          if (_formKey.currentState!.validate()) {
+                            ref.read(loginViewModelProvider.notifier).login(
+                                  _phoneController.text.trim(),
+                                  _passwordController.text.trim(),
+                                );
+                          }
                         },
                       ),
                       const SizedBox(height: medium),
@@ -149,7 +152,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     ],
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
