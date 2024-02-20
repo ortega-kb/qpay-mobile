@@ -71,7 +71,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                       obscureText: false,
                       keyboardType: TextInputType.emailAddress,
                       validator: (value) {
-                        return Validator.validateMobile(value!);
+                        return Validator.phoneValidator(value!);
                       },
                     ),
                     const SizedBox(height: medium),
