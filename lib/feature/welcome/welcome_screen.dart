@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:qpay/feature/login/login_screen.dart';
 import 'package:qpay/feature/welcome/widgets/page_indicator/page_indicator.dart';
 import 'package:qpay/feature/welcome/widgets/page_indicator/page_indicator_provider.dart';
 import 'package:qpay/feature/welcome/widgets/page_item.dart';
 
+import '../../core/design/animator_route.dart';
 import '../../core/design/color.dart';
 import '../../core/design/common/widgets/m_button.dart';
 import '../../core/design/spacing.dart';
@@ -28,7 +30,9 @@ class WelcomeScreen extends ConsumerWidget {
         padding: const EdgeInsets.all(medium),
         child: MButton(
           text: "get_started",
-          onTap: () {},
+          onTap: () {
+            Navigator.pushReplacement(context, animateRoute(LoginScreen()));
+          },
         ),
       ),
       body: SafeArea(

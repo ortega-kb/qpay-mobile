@@ -4,8 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qpay/core/design/app_theme.dart';
+import 'package:qpay/wrapper.dart';
 
-import 'feature/login/login_screen.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -21,9 +21,6 @@ void main() async {
   );
 
   await Locales.init(['fr', 'en']);
-
-  //final Wrapper _wrapper = Wrapper();
-  //final bool isLogged = await _wrapper.isLogged();
 
   runApp(
     ProviderScope(
@@ -51,7 +48,7 @@ class QPayApp extends ConsumerWidget {
           locale: locale,
           theme: lightTheme,
           darkTheme: darkTheme,
-          home: LoginScreen(),
+          home: Wrapper(),
         );
       },
     );

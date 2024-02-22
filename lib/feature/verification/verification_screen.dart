@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:qpay/core/design/animator_route.dart';
+import 'package:qpay/feature/information/information_screen.dart';
 import 'package:qpay/feature/verification/verification_state.dart';
 import 'package:qpay/feature/verification/verification_view_model.dart';
 
@@ -44,7 +46,7 @@ class _VerificationScreenState extends ConsumerState<VerificationScreen> {
         if (next is Error) {
           Messages.error(next.e.toString(), context);
         } else if (next is Success) {
-          Messages.success("Auth success", context);
+          Navigator.push(context, animateRoute(InformationScreen()));
         }
       },
     );
