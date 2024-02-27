@@ -1,10 +1,14 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qpay/core/local/language_preferences.dart';
 import 'package:qpay/core/local/preferences.dart';
+import 'package:qpay/core/utils/enums/language.dart';
 
 class LanguagePreferencesImpl extends LanguagePreferences {
-  LanguagePreferencesImpl(this._prefs);
+  LanguagePreferencesImpl(this._prefs, this._ref);
 
   final Preferences _prefs;
+  final Ref _ref;
+
   static const String key = "lang";
 
   @override
@@ -14,14 +18,20 @@ class LanguagePreferencesImpl extends LanguagePreferences {
   }
 
   @override
-  Future<String> getLanguage() async {
+  Future<Language> getLanguage() async {
     final prefs = await _prefs.instance();
-    return prefs.getString(key) ?? "fr";
+    final code = prefs.getString(key);
+
+    for (var value in Language.values) {
+      if (value.code == code) return value;
+    }
+    return Language.French;
   }
 
   @override
-  Future<void> saveLanguage(String lang) async {
+  Future<void> saveLanguage(Language language) async {
     final prefs = await _prefs.instance();
-    prefs.setString(key, lang);
+    await prefs.setString(key, language.code);
+    _ref.read(languageProvider.notifier).update((_) => language);
   }
 }

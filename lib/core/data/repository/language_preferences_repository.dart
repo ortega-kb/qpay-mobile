@@ -1,5 +1,7 @@
+import 'package:qpay/core/utils/enums/language.dart';
+
 abstract class LanguagePreferencesRepository {
-  Future<String> getLanguage();
-  Future<void> saveLanguage(String lang);
+  Future<Language> getLanguage();
+  Future<void> saveLanguage(Language language);
   Future<void> clear();
 }

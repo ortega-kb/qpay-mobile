@@ -1,5 +1,6 @@
 import 'package:qpay/core/data/repository/language_preferences_repository.dart';
 import 'package:qpay/core/local/language_preferences.dart';
+import 'package:qpay/core/utils/enums/language.dart';
 
 class LanguagePreferencesRepositoryImpl
     implements LanguagePreferencesRepository {
@@ -15,12 +16,12 @@ class LanguagePreferencesRepositoryImpl
   }
 
   @override
-  Future<String> getLanguage() {
+  Future<Language> getLanguage() {
     return _languagePreferences.getLanguage();
   }
 
   @override
-  Future<void> saveLanguage(String lang) {
-    return _languagePreferences.saveLanguage(lang);
+  Future<void> saveLanguage(Language language) {
+    return _languagePreferences.saveLanguage(language);
   }
 }
