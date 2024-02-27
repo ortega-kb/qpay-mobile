@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_locales/flutter_locales.dart';
 
 import '../../spacing.dart';
 
@@ -12,7 +11,7 @@ class AuthTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: medium),
-      child: LocaleText(
+      child: Text(
         title,
         style: TextStyle(
             fontWeight: FontWeight.bold,

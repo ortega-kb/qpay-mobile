@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:qpay/core/design/app_lang.dart';
+import 'package:qpay/core/utils/constants/image_path.dart';
+import 'package:qpay/feature/language/language_view_model.dart';
 import 'package:qpay/feature/welcome/welcome_screen.dart';
 
 import '../../core/design/animator_route.dart';
@@ -16,6 +17,8 @@ class LanguageScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final language = ref.watch(languageProvider);
+
     return Scaffold(
       appBar: AppBar(title: MTitle(text: "select_language")),
       bottomNavigationBar: Padding(
@@ -34,22 +37,24 @@ class LanguageScreen extends ConsumerWidget {
             child: Column(
               children: [
                 SelectLanguageTile(
-                  title: "french",
-                  active: ref.watch(appLangNotifierProvider.notifier) == "fr",
-                  onChanged: (value) {
+                  image: ImagePath.fr,
+                  title: Language.French.name,
+                  active: language.code == Language.French.code,
+                  onTap: () {
                     ref
-                        .read(appLangNotifierProvider.notifier)
-                        .changeToFr(context);
+                        .read(languageProvider.notifier)
+                        .update((_) => Language.French);
                   },
                 ),
                 const Line(),
                 SelectLanguageTile(
-                  title: "english",
-                  active: ref.watch(appLangNotifierProvider.notifier) == "en",
-                  onChanged: (value) {
+                  image: ImagePath.us,
+                  title: Language.English.name,
+                  active: language.code == Language.English.code,
+                  onTap: () {
                     ref
-                        .read(appLangNotifierProvider.notifier)
-                        .changeToEn(context);
+                        .read(languageProvider.notifier)
+                        .update((_) => Language.English);
                   },
                 )
               ],

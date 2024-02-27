@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_locales/flutter_locales.dart';
 
 import '../../color.dart';
 import '../../spacing.dart';
@@ -13,7 +12,7 @@ class Subtitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: medium),
-      child: LocaleText(
+      child: Text(
         text,
         style: TextStyle(
             fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,

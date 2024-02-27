@@ -1,26 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_locales/flutter_locales.dart';
-
-import '../../../core/design/color.dart';
+import 'package:qpay/core/design/color.dart';
 
 class SelectLanguageTile extends StatelessWidget {
+  final String image;
   final String title;
   final bool active;
-  final Function(bool?)? onChanged;
+  final Function()? onTap;
 
   const SelectLanguageTile(
       {super.key,
+      required this.image,
       required this.title,
       required this.active,
-      required this.onChanged});
+      required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return CheckboxListTile(
-      activeColor: primary,
-      title: LocaleText(title),
-      value: active,
-      onChanged: onChanged,
+    return ListTile(
+      leading: CircleAvatar(
+        backgroundImage: AssetImage(image),
+      ),
+      title: Text(title),
+      onTap: onTap,
+      trailing: Checkbox(
+        value: active,
+        onChanged: (value) {},
+        activeColor: primary,
+      ),
     );
   }
 }

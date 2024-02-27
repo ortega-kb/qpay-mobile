@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_locales/flutter_locales.dart';
 
 import '../../color.dart';
 import '../../spacing.dart';
@@ -18,7 +17,7 @@ class TitleMore extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          LocaleText(
+          Text(
             title,
             style: TextStyle(
                 fontSize: Theme.of(context).textTheme.titleMedium?.fontSize,
@@ -34,7 +33,7 @@ class TitleMore extends StatelessWidget {
                   vertical: extraSmall,
                   horizontal: small,
                 ),
-                child: LocaleText(
+                child: Text(
                   "see_more",
                   style: TextStyle(
                     fontSize: Theme.of(context).textTheme.titleMedium?.fontSize,

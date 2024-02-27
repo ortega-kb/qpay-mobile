@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:qpay/core/design/animator_route.dart';
@@ -77,7 +76,7 @@ class _VerificationScreenState extends ConsumerState<VerificationScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const SizedBox(width: medium),
-                  LocaleText(
+                  Text(
                     "sent_verification_code",
                     style: TextStyle(
                         fontSize:

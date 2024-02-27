@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_locales/flutter_locales.dart';
 
 import '../../color.dart';
 import '../../spacing.dart';
@@ -26,7 +25,7 @@ class MOutlinedButton extends StatelessWidget {
           ),
           child: Padding(
             padding: const EdgeInsets.all(middleSmall),
-            child: LocaleText(
+            child: Text(
               text,
               style: TextStyle(
                   color: gray,

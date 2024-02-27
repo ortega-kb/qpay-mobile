@@ -1,8 +1,4 @@
 class ImagePath {
-  static const transfer = "assets/images/transfert.png";
-  static const qrCode = "assets/images/qr-code.png";
-  static const paymentReceive = "assets/images/payment-receive.png";
-
   static const svgTransfer = "assets/images/transfert.svg";
   static const svgQrCode = "assets/images/qr-code.svg";
   static const svgPaymentReceive = "assets/images/payment-receive.svg";
@@ -13,4 +9,7 @@ class ImagePath {
   static const mPesa = "assets/images/mpesa.png";
   static const visa = "assets/images/visa.jpg";
   static const logo = "assets/images/logo.png";
+
+  static const fr = "assets/images/fr.png";
+  static const us = "assets/images/us.png";
 }

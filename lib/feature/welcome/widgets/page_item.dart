@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../core/design/color.dart';
@@ -22,7 +21,7 @@ class PageItem extends StatelessWidget {
       child: Column(
         children: [
           SvgPicture.asset(image),
-          LocaleText(
+          Text(
             title,
             style: TextStyle(
               fontSize: Theme.of(context).textTheme.titleLarge?.fontSize,
@@ -33,7 +32,7 @@ class PageItem extends StatelessWidget {
           const SizedBox(height: medium),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: medium),
-            child: LocaleText(
+            child: Text(
               subtitle,
               style: TextStyle(
                   fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,

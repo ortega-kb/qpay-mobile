@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_locales/flutter_locales.dart';
 
 import '../../color.dart';
 import '../../spacing.dart';
@@ -21,7 +20,7 @@ class RowDetails extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          LocaleText(
+          Text(
             title,
             style: TextStyle(
               fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,

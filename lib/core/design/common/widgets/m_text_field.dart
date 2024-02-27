@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_locales/flutter_locales.dart';
 
 import '../../color.dart';
 
@@ -51,7 +50,7 @@ class MTextField extends StatelessWidget {
           suffixIcon: suffixIcon,
           prefix: prefixIcon,
           filled: false,
-          labelText: Locales.string(context, label),
+          labelText: label,
           errorText: errorMsg,
           focusedBorder:
               UnderlineInputBorder(borderSide: BorderSide(color: primary)),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_locales/flutter_locales.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../providers/balance_page_provider.dart';
@@ -52,7 +51,7 @@ class Balance extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(medium),
                         child: provider.showBalance
-                            ? LocaleText(
+                            ? Text(
                                 "hide",
                                 style: TextStyle(
                                   color: surface,
@@ -63,7 +62,7 @@ class Balance extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                 ),
                               )
-                            : LocaleText(
+                            : Text(
                                 "show",
                                 style: TextStyle(
                                   color: surface,

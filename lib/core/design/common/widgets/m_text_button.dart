@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_locales/flutter_locales.dart';
 
 import '../../color.dart';
 
@@ -14,7 +13,7 @@ class MTextButton extends StatelessWidget {
     return TextButton(
       onPressed: onPressed,
       isSemanticButton: false,
-      child: LocaleText(
+      child: Text(
         text,
         style: TextStyle(
             fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
