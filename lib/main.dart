@@ -5,6 +5,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qpay/core/design/app_theme.dart';
 import 'package:qpay/core/provider/language_preferences_repository_provider.dart';
+import 'package:qpay/core/provider/messaging_service_provider.dart';
 import 'package:qpay/wrapper.dart';
 
 import 'core/utils/enums/language.dart';
@@ -23,6 +24,8 @@ Future<void> main() async {
   );
 
   final container = ProviderContainer();
+  await container.read(messagingServiceProvider).initMessaging();
+
   final language =
       await container.read(languagePreferencesRepositoryProvider).getLanguage();
 
