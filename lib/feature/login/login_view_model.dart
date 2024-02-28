@@ -8,7 +8,7 @@ final loginViewModelProvider =
 class LoginViewModel extends StateNotifier<LoginState> {
   LoginViewModel() : super(LoginState.initial());
 
-  Future<void> login(String phoneNumber, String password) async {
+  Future<void> login(String phoneNumber) async {
     state = const LoginState.loading();
     await Future.delayed(Duration(seconds: 5));
 

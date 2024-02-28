@@ -30,7 +30,7 @@ class LanguageScreen extends ConsumerWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(medium),
         child: MButton(
-          text: "continue",
+          text: AppLocalizations.of(context)!.go,
           onTap: () {
             Navigator.pushReplacement(
               context,
@@ -49,7 +49,7 @@ class LanguageScreen extends ConsumerWidget {
               children: [
                 SelectLanguageTile(
                   image: ImagePath.fr,
-                  title: Language.French.name,
+                  title: AppLocalizations.of(context)!.french,
                   active: language.code == Language.French.code,
                   onTap: () {
                     ref
@@ -60,7 +60,7 @@ class LanguageScreen extends ConsumerWidget {
                 const Line(),
                 SelectLanguageTile(
                   image: ImagePath.us,
-                  title: Language.English.name,
+                  title: AppLocalizations.of(context)!.english,
                   active: language.code == Language.English.code,
                   onTap: () {
                     ref

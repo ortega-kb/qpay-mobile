@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:qpay/core/design/animator_route.dart';
@@ -75,9 +76,9 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: extraLarge),
-              AuthTitle(title: "create_an_account"),
+              AuthTitle(title: AppLocalizations.of(context)!.creating_account),
               const SizedBox(height: middleSmall),
-              Subtitle(text: "enter_phone_number"),
+              Subtitle(text: AppLocalizations.of(context)!.enter_phone_number),
               const SizedBox(height: medium),
               Form(
                 key: _formKey,
@@ -88,7 +89,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                     children: [
                       MTextField(
                         controller: _phoneController,
-                        label: "phone_number",
+                        label: AppLocalizations.of(context)!.phone_number,
                         prefixIcon: Column(
                           children: [
                             Text(
@@ -106,7 +107,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                       ),
                       const SizedBox(height: medium),
                       MButton(
-                        text: "next",
+                        text: AppLocalizations.of(context)!.next,
                         onTap: () async {
                           if (_formKey.currentState!.validate()) {
                             ref

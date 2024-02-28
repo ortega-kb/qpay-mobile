@@ -18,16 +18,22 @@ class MButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(large),
         child: Container(
           decoration: BoxDecoration(
-              color: primary,
-              backgroundBlendMode: BlendMode.darken,
-              borderRadius: BorderRadius.circular(large)),
+            color: primary,
+            backgroundBlendMode: BlendMode.darken,
+            borderRadius: BorderRadius.circular(
+              medium,
+            ),
+          ),
           child: Padding(
-            padding: const EdgeInsets.all(middleSmall),
+            padding: const EdgeInsets.all(
+              middleSmall,
+            ),
             child: Text(
               text,
               style: TextStyle(
-                  color: surface,
-                  fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize),
+                color: surface,
+                fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
+              ),
               textAlign: TextAlign.center,
             ),
           ),

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:qpay/core/design/animator_route.dart';
+import 'package:qpay/core/design/common/widgets/subtitle.dart';
 import 'package:qpay/feature/information/information_screen.dart';
 import 'package:qpay/feature/verification/verification_state.dart';
 import 'package:qpay/feature/verification/verification_view_model.dart';
 
-import '../../core/design/color.dart';
 import '../../core/design/common/widgets/auth_title.dart';
 import '../../core/design/common/widgets/full_progress_indicator.dart';
 import '../../core/design/common/widgets/m_button.dart';
@@ -69,29 +70,12 @@ class _VerificationScreenState extends ConsumerState<VerificationScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: extraLarge),
-              AuthTitle(title: "verification_code"),
+              AuthTitle(title: AppLocalizations.of(context)!.verification_code),
               const SizedBox(height: middleSmall),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const SizedBox(width: medium),
-                  Text(
-                    "sent_verification_code",
-                    style: TextStyle(
-                        fontSize:
-                            Theme.of(context).textTheme.bodyLarge?.fontSize,
-                        color: gray),
-                  ),
-                  const SizedBox(width: small),
-                  Text(
-                    widget.phoneNumber,
-                    style: TextStyle(
-                      fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
-                      color: gray,
-                    ),
-                  ),
-                ],
+              Subtitle(
+                text: AppLocalizations.of(context)!.sent_sms(
+                  widget.phoneNumber,
+                ),
               ),
               const SizedBox(height: medium),
               Form(
@@ -102,7 +86,7 @@ class _VerificationScreenState extends ConsumerState<VerificationScreen> {
                     children: [
                       MTextField(
                         controller: _optController,
-                        label: "verification_code",
+                        label: AppLocalizations.of(context)!.verification_code,
                         obscureText: false,
                         keyboardType: TextInputType.number,
                         validator: (value) {
@@ -111,7 +95,7 @@ class _VerificationScreenState extends ConsumerState<VerificationScreen> {
                       ),
                       const SizedBox(height: medium),
                       MButton(
-                        text: "verify",
+                        text: AppLocalizations.of(context)!.verify,
                         onTap: () async {
                           ref
                               .read(verificationViewModelProvider.notifier)

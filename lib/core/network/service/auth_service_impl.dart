@@ -64,6 +64,7 @@ class AuthServiceImpl extends AuthService {
   @override
   Future<bool> isLoggedIn() async {
     final user = _firebaseAuth.currentUser;
+    // debugPrint('[+] ${user?.phoneNumber.toString()}');
     return user != null;
   }
 }

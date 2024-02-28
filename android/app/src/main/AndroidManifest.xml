@@ -3,7 +3,7 @@
     <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
-        android:label="qpay"
+        android:label="Qpay"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

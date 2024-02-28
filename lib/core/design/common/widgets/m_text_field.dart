@@ -54,7 +54,10 @@ class MTextField extends StatelessWidget {
           errorText: errorMsg,
           focusedBorder:
               UnderlineInputBorder(borderSide: BorderSide(color: primary)),
-          labelStyle: TextStyle(color: gray),
+          labelStyle: TextStyle(
+            color: gray,
+            fontSize: Theme.of(context).textTheme.bodyMedium?.fontSize,
+          ),
           border: UnderlineInputBorder(borderSide: BorderSide(color: gray))),
     );
   }

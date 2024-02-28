@@ -20,7 +20,7 @@ class MOutlinedButton extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.transparent,
             backgroundBlendMode: BlendMode.darken,
-            borderRadius: BorderRadius.circular(large),
+            borderRadius: BorderRadius.circular(medium),
             border: Border.all(color: gray),
           ),
           child: Padding(

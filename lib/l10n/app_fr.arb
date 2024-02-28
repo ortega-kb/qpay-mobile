@@ -1,3 +1,26 @@
 {
-  "languages": "Langues"
+  "languages": "Langues",
+  "french": "Français",
+  "english": "Anglais",
+  "go": "Continuez",
+  "transfer_money": "Transférez de l’argent",
+  "text_transfer_money": "Facilitez le transfert d'argent vers un compte abonné et approvisionnez aisément tous vos comptes variés avec simplicité.",
+  "qr_payment": "Payement par code QR",
+  "text_qr_payment": "Effectuez rapidement et facilement des paiements en scannant simplement le QR code, grâce à cette méthode pratique et sécurisée.",
+  "receive_payment": "Récevoir un payement",
+  "text_receive_payment": "Générez facilement des factures en ajoutant toutes les informations nécessaires, puis créez un code QR pour permettre un paiement rapide et pratique.",
+  "get_started": "Commencez",
+  "connection": "Connexion",
+  "text_connection": "Entrez des informations correctes afin d'accéder à l'interface d'accueil",
+  "phone_number": "Numéro de téléphone",
+  "passwd": "Mot de passe",
+  "create_account": "Créer un compte",
+  "login": "Se connecter",
+  "see_policy": "Voir notre police de confidentialité",
+  "creating_account": "Création compte",
+  "enter_phone_number": "Entrez votre numéro de téléphone",
+  "next": "Suivant",
+  "verification_code": "Vérification code",
+  "verify": "Vérifier",
+  "sent_sms": "SMS envoyé au {phone}"
 }

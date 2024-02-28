@@ -1,16 +1,18 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:qpay/core/design/animator_route.dart';
 import 'package:qpay/core/design/color.dart';
 import 'package:qpay/core/design/messages.dart';
-import 'package:qpay/core/provider/m_password_field_provider.dart';
+import 'package:qpay/core/utils/constants/link.dart';
+import 'package:qpay/core/utils/launcher.dart';
 import 'package:qpay/feature/login/login_state.dart';
 import 'package:qpay/feature/login/login_view_model.dart';
 
 import '../../core/design/common/widgets/auth_title.dart';
 import '../../core/design/common/widgets/full_progress_indicator.dart';
+import '../../core/design/common/widgets/link_text.dart';
 import '../../core/design/common/widgets/m_button.dart';
 import '../../core/design/common/widgets/m_outlined_button.dart';
 import '../../core/design/common/widgets/m_text_field.dart';
@@ -29,12 +31,10 @@ class LoginScreen extends ConsumerStatefulWidget {
 class _LoginScreenState extends ConsumerState<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _phoneController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
 
   @override
   void dispose() {
     _phoneController.dispose();
-    _passwordController.dispose();
     super.dispose();
   }
 
@@ -62,10 +62,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: extraLarge),
-              AuthTitle(title: "authentication"),
+              AuthTitle(title: AppLocalizations.of(context)!.connection),
               const SizedBox(height: middleSmall),
-              Subtitle(text: "subtitle_authentication"),
-              const SizedBox(height: medium),
+              Subtitle(text: AppLocalizations.of(context)!.text_connection),
+              const SizedBox(height: middleSmall),
               Form(
                 key: _formKey,
                 child: Padding(
@@ -75,7 +75,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     children: [
                       MTextField(
                         controller: _phoneController,
-                        label: "phone_number",
+                        label: AppLocalizations.of(context)!.phone_number,
                         prefixIcon: Column(
                           children: [
                             Text(
@@ -92,53 +92,26 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         },
                       ),
                       const SizedBox(height: medium),
-                      MTextField(
-                        controller: _passwordController,
-                        label: "passwd",
-                        obscureText: ref.watch(mPasswordFieldProvider),
-                        keyboardType: TextInputType.visiblePassword,
-                        validator: (value) {
-                          return Validator.passwordValidator(value);
+                      LinkText(
+                        text: AppLocalizations.of(context)!.see_policy,
+                        onTap: () {
+                          Launcher.linkLauncher(Link.privacy);
                         },
-                        suffixIcon: ref.watch(mPasswordFieldProvider)
-                            ? IconButton(
-                                onPressed: () {
-                                  ref
-                                      .read(mPasswordFieldProvider.notifier)
-                                      .setObscuredText(false);
-                                },
-                                icon: Icon(CupertinoIcons.eye_solid))
-                            : IconButton(
-                                onPressed: () {
-                                  ref
-                                      .read(mPasswordFieldProvider.notifier)
-                                      .setObscuredText(true);
-                                },
-                                icon: Icon(
-                                  CupertinoIcons.eye_slash_fill,
-                                ),
-                              ),
                       ),
                       const SizedBox(height: medium),
-                      // ForgotPassword(
-                      //   onTap: () => Navigator.pushNamed(
-                      //       context, AppRoutes.forgotPassword),
-                      // ),
-                      const SizedBox(height: medium),
                       MButton(
-                        text: "login",
+                        text: AppLocalizations.of(context)!.login,
                         onTap: () async {
                           if (_formKey.currentState!.validate()) {
-                            ref.read(loginViewModelProvider.notifier).login(
-                                  _phoneController.text.trim(),
-                                  _passwordController.text.trim(),
-                                );
+                            ref
+                                .read(loginViewModelProvider.notifier)
+                                .login(_phoneController.text.trim());
                           }
                         },
                       ),
                       const SizedBox(height: medium),
                       MOutlinedButton(
-                        text: "create_account",
+                        text: AppLocalizations.of(context)!.create_account,
                         onTap: () {
                           Navigator.push(
                             context,
@@ -160,3 +133,31 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     );
   }
 }
+
+// MTextField(
+//   controller: _passwordController,
+//   label: AppLocalizations.of(context)!.passwd,
+//   obscureText: ref.watch(mPasswordFieldProvider),
+//   keyboardType: TextInputType.visiblePassword,
+//   validator: (value) {
+//     return Validator.passwordValidator(value);
+//   },
+//   suffixIcon: ref.watch(mPasswordFieldProvider)
+//       ? IconButton(
+//           onPressed: () {
+//             ref
+//                 .read(mPasswordFieldProvider.notifier)
+//                 .setObscuredText(false);
+//           },
+//           icon: Icon(CupertinoIcons.eye_solid))
+//       : IconButton(
+//           onPressed: () {
+//             ref
+//                 .read(mPasswordFieldProvider.notifier)
+//                 .setObscuredText(true);
+//           },
+//           icon: Icon(
+//             CupertinoIcons.eye_slash_fill,
+//           ),
+//         ),
+// ),

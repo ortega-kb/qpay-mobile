@@ -3,7 +3,7 @@
 import 'dart:ui';
 
 const surface = Color(0xffffffff);
-const background = Color(0xfffafafa);
+const background = Color(0xfff2f3f5);
 
 // F0F2F5
 // FAFAFA

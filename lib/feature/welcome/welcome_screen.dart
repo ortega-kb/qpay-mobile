@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qpay/feature/login/login_screen.dart';
 import 'package:qpay/feature/welcome/widgets/page_indicator/page_indicator.dart';
@@ -29,7 +30,7 @@ class WelcomeScreen extends ConsumerWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(medium),
         child: MButton(
-          text: "get_started",
+          text: AppLocalizations.of(context)!.get_started,
           onTap: () {
             Navigator.pushReplacement(context, animateRoute(LoginScreen()));
           },
@@ -42,21 +43,22 @@ class WelcomeScreen extends ConsumerWidget {
             Expanded(
               child: PageView(
                 controller: pageController,
-                children: const [
+                children: [
                   PageItem(
                     image: ImagePath.svgTransfer,
-                    title: "transfer_money",
-                    subtitle: "subtitle_transfer_money",
+                    title: AppLocalizations.of(context)!.transfer_money,
+                    subtitle: AppLocalizations.of(context)!.text_transfer_money,
                   ),
                   PageItem(
                     image: ImagePath.svgQrCode,
-                    title: "qr_code_payment",
-                    subtitle: "subtitle_qr_code_payment",
+                    title: AppLocalizations.of(context)!.qr_payment,
+                    subtitle: AppLocalizations.of(context)!.text_qr_payment,
                   ),
                   PageItem(
                     image: ImagePath.svgPaymentReceive,
-                    title: "receive_payment",
-                    subtitle: "subtitle_receive_payment",
+                    title: AppLocalizations.of(context)!.receive_payment,
+                    subtitle:
+                        AppLocalizations.of(context)!.text_receive_payment,
                   )
                 ],
                 onPageChanged: (value) {
