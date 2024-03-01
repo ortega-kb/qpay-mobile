@@ -3,7 +3,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qpay/core/utils/constants/link.dart';
 import 'package:qpay/core/utils/enums/account_type.dart';
-import 'package:qpay/feature/information/information_screen.dart';
+import 'package:qpay/feature/account/corporate_account_screen.dart';
+import 'package:qpay/feature/account/particular_account_screen.dart';
+import 'package:qpay/feature/account/public_account_screen.dart';
 
 import '../../core/design/animator_route.dart';
 import '../../core/design/common/widgets/auth_title.dart';
@@ -38,12 +40,27 @@ class TypeOfAccount extends ConsumerWidget {
         child: MButton(
           text: AppLocalizations.of(context)!.go,
           onTap: () {
-            Navigator.pushReplacement(
-              context,
-              animateRoute(
-                InformationScreen(),
-              ),
-            );
+            if (accountType == AccountType.PUBLIC)
+              Navigator.pushReplacement(
+                context,
+                animateRoute(
+                  PublicAccountScreen(),
+                ),
+              );
+            if (accountType == AccountType.PARTICULAR)
+              Navigator.pushReplacement(
+                context,
+                animateRoute(
+                  ParticularAccountScreen(),
+                ),
+              );
+            if (accountType == AccountType.CORPORATE)
+              Navigator.pushReplacement(
+                context,
+                animateRoute(
+                  CorporateAccountScreen(),
+                ),
+              );
           },
         ),
       ),

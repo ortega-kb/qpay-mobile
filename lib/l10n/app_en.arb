@@ -29,5 +29,11 @@
   "find_out_more": "Find out more",
   "corporate": "Corporate",
   "particular": "Particular",
-  "public": "Public"
+  "public": "Public",
+  "ipsum": "It is a long established fact that a reader will be distracted by the readable content.",
+  "account": "Account {type}",
+  "text_account": "Enter the information required to create your account",
+  "name": "Name",
+  "post_name": "Post-Name",
+  "date_of_birth": "Date of birth"
 }

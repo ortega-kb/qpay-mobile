@@ -14,7 +14,7 @@ class AuthServiceImpl extends AuthService {
   }) async {
     await _firebaseAuth
         .verifyPhoneNumber(
-          timeout: Duration(seconds: 30),
+          timeout: Duration(seconds: 20),
           phoneNumber: phoneNumber,
           verificationCompleted: (phoneAuthCredential) async {
             return;
@@ -29,6 +29,7 @@ class AuthServiceImpl extends AuthService {
             return;
           },
         )
+        .timeout(Duration(seconds: 20))
         .onError((error, stackTrace) => onError(error.toString()));
   }
 

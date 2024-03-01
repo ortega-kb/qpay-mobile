@@ -5,6 +5,7 @@ class SelectLanguageTile extends StatelessWidget {
   final String? image;
   final String title;
   final String? subtitle;
+  final IconData? icon;
   final bool active;
   final Function()? onTap;
 
@@ -12,6 +13,7 @@ class SelectLanguageTile extends StatelessWidget {
       {super.key,
       this.image,
       this.subtitle,
+      this.icon,
       required this.title,
       required this.active,
       required this.onTap});
@@ -21,9 +23,16 @@ class SelectLanguageTile extends StatelessWidget {
     return ListTile(
       leading: image != null
           ? CircleAvatar(
-              backgroundImage: AssetImage(image!),
+              backgroundImage: AssetImage(
+                image!,
+              ),
             )
-          : null,
+          : icon != null
+              ? Icon(
+                  icon,
+                  size: 22,
+                )
+              : null,
       title: Text(title),
       subtitle: subtitle != null ? Text(subtitle!) : null,
       onTap: onTap,

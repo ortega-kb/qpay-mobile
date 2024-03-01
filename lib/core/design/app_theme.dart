@@ -18,6 +18,7 @@ ThemeData get lightTheme {
       surfaceTintColor: background,
       backgroundColor: background,
     ),
+    listTileTheme: ListTileThemeData(iconColor: black),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       elevation: 1,
       backgroundColor: surface,
@@ -36,6 +37,7 @@ ThemeData get darkTheme {
     scaffoldBackgroundColor: black,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     appBarTheme: AppBarTheme(color: black, surfaceTintColor: black),
+    listTileTheme: ListTileThemeData(iconColor: Colors.white),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       elevation: 1,
       backgroundColor: black,
