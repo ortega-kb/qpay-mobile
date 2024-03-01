@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qpay/core/design/app_theme.dart';
 import 'package:qpay/core/provider/language_preferences_repository_provider.dart';
 import 'package:qpay/core/provider/messaging_service_provider.dart';
-import 'package:qpay/wrapper.dart';
+import 'package:qpay/feature/type_of_account/type_of_account.dart';
 
 import 'core/utils/enums/language.dart';
 import 'firebase_options.dart';
@@ -55,7 +55,7 @@ class QPayApp extends ConsumerWidget {
       locale: Locale(language.code),
       theme: lightTheme,
       darkTheme: darkTheme,
-      home: Wrapper(),
+      home: TypeOfAccount(),
     );
   }
 }

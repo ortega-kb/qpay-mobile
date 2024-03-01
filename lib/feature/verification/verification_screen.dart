@@ -4,12 +4,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:qpay/core/design/animator_route.dart';
 import 'package:qpay/core/design/common/widgets/subtitle.dart';
-import 'package:qpay/feature/information/information_screen.dart';
+import 'package:qpay/feature/type_of_account/type_of_account.dart';
 import 'package:qpay/feature/verification/verification_state.dart';
 import 'package:qpay/feature/verification/verification_view_model.dart';
 
 import '../../core/design/common/widgets/auth_title.dart';
 import '../../core/design/common/widgets/full_progress_indicator.dart';
+import '../../core/design/common/widgets/link_text.dart';
 import '../../core/design/common/widgets/m_button.dart';
 import '../../core/design/common/widgets/m_text_field.dart';
 import '../../core/design/messages.dart';
@@ -46,7 +47,7 @@ class _VerificationScreenState extends ConsumerState<VerificationScreen> {
         if (next is Error) {
           Messages.error(next.e.toString(), context);
         } else if (next is Success) {
-          Navigator.push(context, animateRoute(InformationScreen()));
+          Navigator.push(context, animateRoute(TypeOfAccount()));
         }
       },
     );
@@ -104,6 +105,11 @@ class _VerificationScreenState extends ConsumerState<VerificationScreen> {
                                 verificationId: widget.verificationId,
                               );
                         },
+                      ),
+                      const SizedBox(height: medium),
+                      LinkText(
+                        text: AppLocalizations.of(context)!.resend_sms("1:09"),
+                        onTap: () {},
                       ),
                       const SizedBox(height: large),
                     ],

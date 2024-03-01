@@ -22,5 +22,12 @@
   "next": "Suivant",
   "verification_code": "Vérification code",
   "verify": "Vérifier",
-  "sent_sms": "SMS envoyé au {phone}"
+  "sent_sms": "SMS envoyé au {phone}",
+  "resend_sms": "Renvoyez le code dans {time}",
+  "account_type": "Type compte",
+  "text_account_type": "Choisissez votre type de compte Qpay",
+  "find_out_more": "En savoir plus",
+  "corporate": "Entreprise",
+  "particular": "Particulier",
+  "public": "Publique"
 }

@@ -19,7 +19,6 @@ class MButton extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             color: primary,
-            backgroundBlendMode: BlendMode.darken,
             borderRadius: BorderRadius.circular(
               medium,
             ),

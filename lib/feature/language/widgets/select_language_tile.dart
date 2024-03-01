@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:qpay/core/design/color.dart';
 
 class SelectLanguageTile extends StatelessWidget {
-  final String image;
+  final String? image;
   final String title;
+  final String? subtitle;
   final bool active;
   final Function()? onTap;
 
   const SelectLanguageTile(
       {super.key,
-      required this.image,
+      this.image,
+      this.subtitle,
       required this.title,
       required this.active,
       required this.onTap});
@@ -17,10 +19,13 @@ class SelectLanguageTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: CircleAvatar(
-        backgroundImage: AssetImage(image),
-      ),
+      leading: image != null
+          ? CircleAvatar(
+              backgroundImage: AssetImage(image!),
+            )
+          : null,
       title: Text(title),
+      subtitle: subtitle != null ? Text(subtitle!) : null,
       onTap: onTap,
       trailing: Checkbox(
         value: active,

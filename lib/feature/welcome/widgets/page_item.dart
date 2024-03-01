@@ -35,8 +35,9 @@ class PageItem extends StatelessWidget {
             child: Text(
               subtitle,
               style: TextStyle(
-                  fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
-                  color: gray),
+                fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
+                color: gray,
+              ),
               textAlign: TextAlign.center,
             ),
           ),

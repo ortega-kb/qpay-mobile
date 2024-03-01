@@ -14,8 +14,9 @@ class AuthTitle extends StatelessWidget {
       child: Text(
         title,
         style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: Theme.of(context).textTheme.displaySmall?.fontSize),
+          fontWeight: FontWeight.bold,
+          fontSize: Theme.of(context).textTheme.displaySmall?.fontSize,
+        ),
       ),
     );
   }
