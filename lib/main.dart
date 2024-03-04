@@ -1,4 +1,3 @@
-import 'package:camera/camera.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,22 +8,14 @@ import 'package:intl/intl_standalone.dart'
 import 'package:qpay/core/design/app_theme.dart';
 import 'package:qpay/core/provider/language_preferences_repository_provider.dart';
 import 'package:qpay/core/provider/messaging_service_provider.dart';
-import 'package:qpay/feature/account/public_account_screen.dart';
-import 'package:qpay/feature/success/account_success_creation_screen.dart';
-import 'package:qpay/feature/type_of_account/type_of_account.dart';
 import 'package:qpay/feature/upload_picture/upload_picture_screen.dart';
-import 'package:qpay/wrapper.dart';
 
 import 'core/utils/enums/language.dart';
 import 'firebase_options.dart';
 
-late List<CameraDescription> _cameras;
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await findSystemLocale();
-
-  _cameras = await availableCameras();
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -67,7 +58,7 @@ class QPayApp extends ConsumerWidget {
       locale: Locale(language.code),
       theme: lightTheme,
       darkTheme: darkTheme,
-      home: UploadPictureScreen(cameras: _cameras),
+      home: UploadPictureScreen(),
     );
   }
 }
