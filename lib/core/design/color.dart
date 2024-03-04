@@ -15,5 +15,5 @@ const gray = Color(0xff6E7986);
 const black = Color(0xff121212);
 const darkGray = Color(0xff1b1b1b);
 
-const green = Color(0xff77bd49);
+const green = Color(0xFF77BD49);
 const darkBlue = Color(0xff052569);

@@ -12,4 +12,6 @@ class ImagePath {
 
   static const fr = "assets/images/fr.png";
   static const us = "assets/images/us.png";
+
+  static const svgSuccess = "assets/images/fete.svg";
 }

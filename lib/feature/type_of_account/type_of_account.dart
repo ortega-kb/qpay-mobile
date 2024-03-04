@@ -41,21 +41,21 @@ class TypeOfAccount extends ConsumerWidget {
           text: AppLocalizations.of(context)!.go,
           onTap: () {
             if (accountType == AccountType.PUBLIC)
-              Navigator.pushReplacement(
+              Navigator.push(
                 context,
                 animateRoute(
                   PublicAccountScreen(),
                 ),
               );
             if (accountType == AccountType.PARTICULAR)
-              Navigator.pushReplacement(
+              Navigator.push(
                 context,
                 animateRoute(
                   ParticularAccountScreen(),
                 ),
               );
             if (accountType == AccountType.CORPORATE)
-              Navigator.pushReplacement(
+              Navigator.push(
                 context,
                 animateRoute(
                   CorporateAccountScreen(),

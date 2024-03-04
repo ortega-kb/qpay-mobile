@@ -35,5 +35,14 @@
   "text_account": "Entrez les informations nécessaires à la création du compte",
   "name": "Nom",
   "post_name": "Post-Nom",
-  "date_of_birth": "Date de naissance"
+  "date_of_birth": "Date de naissance",
+  "gender": "Genre",
+  "male": "Masculin",
+  "female": "Féminin",
+  "city": "Ville",
+  "commune": "Commune",
+  "avenue": "Avenue",
+  "number": "Numéro",
+  "well_done": "Bravo !",
+  "success_created":"Vous avez créé votre compte avec succès"
 }

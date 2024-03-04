@@ -12,6 +12,7 @@ ThemeData get lightTheme {
   return ThemeData(
     useMaterial3: true,
     fontFamily: 'Helvetica',
+    colorScheme: ColorScheme.light(primary: primary),
     scaffoldBackgroundColor: background,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     appBarTheme: const AppBarTheme(
@@ -33,9 +34,12 @@ ThemeData get lightTheme {
 
 ThemeData get darkTheme {
   return ThemeData(
+    useMaterial3: true,
+    fontFamily: 'Helvetica',
     brightness: Brightness.dark,
     scaffoldBackgroundColor: black,
     visualDensity: VisualDensity.adaptivePlatformDensity,
+    colorScheme: ColorScheme.dark(primary: primary),
     appBarTheme: AppBarTheme(color: black, surfaceTintColor: black),
     listTileTheme: ListTileThemeData(iconColor: Colors.white),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(

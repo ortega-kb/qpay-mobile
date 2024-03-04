@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:qpay/core/provider/public_account_provider.dart';
+import 'package:qpay/core/utils/enums/gender.dart';
+import 'package:qpay/feature/account/widget/header_public_account.dart';
 
-import '../../core/design/common/widgets/auth_title.dart';
+import '../../core/design/color.dart';
 import '../../core/design/common/widgets/m_button.dart';
+import '../../core/design/common/widgets/m_date_field.dart';
+import '../../core/design/common/widgets/m_select_fied.dart';
 import '../../core/design/common/widgets/m_text_field.dart';
-import '../../core/design/common/widgets/subtitle.dart';
 import '../../core/design/spacing.dart';
+import '../../core/design/validator.dart';
 
 class PublicAccountScreen extends ConsumerStatefulWidget {
   const PublicAccountScreen({super.key});
@@ -17,24 +22,57 @@ class PublicAccountScreen extends ConsumerStatefulWidget {
 
 class _InformationScreenState extends ConsumerState<PublicAccountScreen> {
   final _formKey = GlobalKey<FormState>();
+
+  // first form
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _postNameController = TextEditingController();
-  final TextEditingController _dateOfBirth = TextEditingController();
+  final TextEditingController _dateOfBirthController = TextEditingController();
+  final TextEditingController _genderController = TextEditingController();
+
+  // second form
+  final TextEditingController _cityController = TextEditingController();
+  final TextEditingController _communeController = TextEditingController();
+  final TextEditingController _avenueController = TextEditingController();
+  final TextEditingController _numberAvenueController = TextEditingController();
+
+  @override
+  void initState() {
+    _genderController.text = Gender.M.value;
+    super.initState();
+  }
 
   @override
   void dispose() {
     _nameController.dispose();
+    _postNameController.dispose();
+    _dateOfBirthController.dispose();
+    _genderController.dispose();
+
+    _cityController.dispose();
+    _avenueController.dispose();
+    _communeController.dispose();
+    _numberAvenueController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    var currentPage = ref.watch(publicAccountProvider);
+    var pageController = PageController(initialPage: currentPage);
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            if (pageController.page?.round() == 0) {
+              Navigator.pop(context);
+            } else {
+              pageController.previousPage(
+                duration: Duration(milliseconds: 300),
+                curve: Curves.linear,
+              );
+            }
           },
           icon: Icon(
             Icons.arrow_back,
@@ -45,61 +83,166 @@ class _InformationScreenState extends ConsumerState<PublicAccountScreen> {
         padding: const EdgeInsets.all(medium),
         child: MButton(
           text: AppLocalizations.of(context)!.go,
-          onTap: () {},
+          onTap: () {
+            pageController.nextPage(
+              duration: Duration(milliseconds: 300),
+              curve: Curves.linear,
+            );
+
+            debugPrint("[+] current page ${pageController.page}");
+          },
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const SizedBox(height: extraLarge),
-            AuthTitle(
-              title: AppLocalizations.of(context)!.account(
-                AppLocalizations.of(context)!.public,
+      body: PageView(
+        physics: NeverScrollableScrollPhysics(),
+        controller: pageController,
+        children: [
+                      // first form
+            SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  HeaderPublicAccount(),
+                  Form(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: medium),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          MTextField(
+                            controller: _nameController,
+                            label: AppLocalizations.of(context)!.name,
+                            obscureText: false,
+                            keyboardType: TextInputType.text,
+                            validator: (value) {
+                              return Validator.nameValidator(value);
+                            },
+                          ),
+                          const SizedBox(height: medium),
+                          MTextField(
+                            controller: _postNameController,
+                            label: AppLocalizations.of(context)!.post_name,
+                            obscureText: false,
+                            keyboardType: TextInputType.text,
+                            validator: (value) {
+                              return Validator.nameValidator(value);
+                            },
+                          ),
+                          const SizedBox(height: medium),
+                          MDateField(
+                            label: AppLocalizations.of(context)!.date_of_birth,
+                            dateTime: ref.watch(dateStateProvider),
+                            onChanged: (value) {
+                              ref
+                                  .read(dateStateProvider.notifier)
+                                  .update((state) => value);
+
+                              _dateOfBirthController.text =
+                                  ref.watch(dateStateProvider).toString();
+
+                              debugPrint("[+] $_dateOfBirthController");
+                            },
+                          ),
+                          const SizedBox(height: medium),
+                          MSelectField(
+                            selectEditingController: _genderController,
+                            initialValue: null,
+                            label: AppLocalizations.of(context)!.gender,
+                            items: [
+                              {
+                                'value': Gender.M.value,
+                                'label': AppLocalizations.of(context)!.male,
+                                'textStyle': TextStyle(
+                                  color: gray,
+                                  fontSize: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium
+                                      ?.fontSize,
+                                )
+                              },
+                              {
+                                'value': Gender.F.value,
+                                'label': AppLocalizations.of(context)!.female,
+                                'textStyle': TextStyle(
+                                  color: gray,
+                                  fontSize: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium
+                                      ?.fontSize,
+                                ),
+                              },
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-            const SizedBox(height: middleSmall),
-            Subtitle(
-              text: AppLocalizations.of(context)!.text_account,
-            ),
-            const SizedBox(
-              height: middleSmall,
-            ),
-            Form(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: medium),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    MTextField(
-                      controller: _nameController,
-                      label: AppLocalizations.of(context)!.name,
-                      obscureText: false,
-                      keyboardType: TextInputType.text,
-                      validator: (value) {},
+
+            // second form
+            SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  HeaderPublicAccount(),
+                  Form(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: medium),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          MTextField(
+                            controller: _cityController,
+                            label: AppLocalizations.of(context)!.city,
+                            obscureText: false,
+                            keyboardType: TextInputType.text,
+                            validator: (value) {
+                              return Validator.nameValidator(value);
+                            },
+                          ),
+                          const SizedBox(height: medium),
+                          MTextField(
+                            controller: _communeController,
+                            label: AppLocalizations.of(context)!.commune,
+                            obscureText: false,
+                            keyboardType: TextInputType.text,
+                            validator: (value) {
+                              return Validator.nameValidator(value);
+                            },
+                          ),
+                          const SizedBox(height: medium),
+                          MTextField(
+                            controller: _avenueController,
+                            label: AppLocalizations.of(context)!.avenue,
+                            obscureText: false,
+                            keyboardType: TextInputType.text,
+                            validator: (value) {
+                              return Validator.nameValidator(value);
+                            },
+                          ),
+                          const SizedBox(height: medium),
+                          MTextField(
+                            controller: _numberAvenueController,
+                            label: AppLocalizations.of(context)!.number,
+                            obscureText: false,
+                            keyboardType: TextInputType.text,
+                            validator: (value) {
+                              return Validator.nameValidator(value);
+                            },
+                          ),
+                        ],
+                      ),
                     ),
-                    const SizedBox(height: medium),
-                    MTextField(
-                      controller: _postNameController,
-                      label: AppLocalizations.of(context)!.post_name,
-                      obscureText: false,
-                      keyboardType: TextInputType.text,
-                      validator: (value) {},
-                    ),
-                    const SizedBox(height: medium),
-                    MTextField(
-                      controller: _dateOfBirth,
-                      label: AppLocalizations.of(context)!.date_of_birth,
-                      obscureText: false,
-                      keyboardType: TextInputType.datetime,
-                      validator: (value) {},
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            )
-          ],
-        ),
+            ),
+        ],
+        onPageChanged: (value) {
+          ref.read(publicAccountProvider.notifier).update((_) => value);
+        },
       ),
     );
   }

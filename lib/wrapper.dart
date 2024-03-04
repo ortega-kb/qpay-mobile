@@ -4,6 +4,9 @@ import 'package:qpay/feature/home/home_screen.dart';
 import 'package:qpay/feature/language/language_screen.dart';
 import 'package:qpay/wrapper_view_model.dart';
 
+/// Class Wrapper
+/// Check if current user is authenticated, redirect to principal screen
+/// If not authenticated, redirect to first screen of application
 class Wrapper extends ConsumerWidget {
   const Wrapper({super.key});
 

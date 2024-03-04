@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:qpay/core/provider/page_indicator_provider.dart';
 import 'package:qpay/feature/login/login_screen.dart';
 import 'package:qpay/feature/welcome/widgets/page_indicator/page_indicator.dart';
-import 'package:qpay/feature/welcome/widgets/page_indicator/page_indicator_provider.dart';
 import 'package:qpay/feature/welcome/widgets/page_item.dart';
 
 import '../../core/design/animator_route.dart';
@@ -17,8 +17,8 @@ class WelcomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final initialPage = ref.watch(pageIndicatorProvider);
-    var pageController = PageController(initialPage: initialPage);
+    final currentPage = ref.watch(pageIndicatorProvider);
+    var pageController = PageController(initialPage: currentPage);
 
     return Scaffold(
       backgroundColor: surface,
@@ -62,7 +62,7 @@ class WelcomeScreen extends ConsumerWidget {
                   )
                 ],
                 onPageChanged: (value) {
-                  ref.read(pageIndicatorProvider.notifier).setPage(value);
+                  ref.read(pageIndicatorProvider.notifier).update((_) => value);
                 },
               ),
             ),
