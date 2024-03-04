@@ -44,5 +44,10 @@
   "avenue": "Avenue",
   "number": "Numéro",
   "well_done": "Bravo !",
-  "success_created":"Vous avez créé votre compte avec succès"
+  "success_created": "Vous avez créé votre compte avec succès",
+  "add_profile": "Ajouter une photo de profil à votre compte",
+  "picture_profile": "Photo",
+  "not_yet": "Passer",
+  "take_picture": "Prednre une photo",
+  "choose_picture": "Choisir une photo"
 }

@@ -5,8 +5,9 @@ import '../../spacing.dart';
 
 class Subtitle extends StatelessWidget {
   final String text;
+  final Color? color;
 
-  const Subtitle({super.key, required this.text});
+  const Subtitle({super.key, required this.text, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class Subtitle extends StatelessWidget {
         text,
         style: TextStyle(
           fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
-          color: gray,
+          color: color ?? gray,
         ),
       ),
     );
