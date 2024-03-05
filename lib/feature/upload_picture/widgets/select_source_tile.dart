@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:qpay/core/design/color.dart';
 
 class SelectSourceTile extends StatelessWidget {
   final String title;
@@ -14,6 +13,7 @@ class SelectSourceTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      splashColor: Colors.transparent,
       leading: Icon(
         icon,
         size: 22,

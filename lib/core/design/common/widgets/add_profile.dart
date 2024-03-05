@@ -15,7 +15,7 @@ class AddProfile extends StatelessWidget {
         width: 100,
         height: 100,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(100 / 2),
+          borderRadius: BorderRadius.circular(large),
           color: gray,
         ),
         child: Icon(
