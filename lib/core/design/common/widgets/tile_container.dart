@@ -11,7 +11,7 @@ class TileContainer extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           color: Theme.of(context).cardColor,
-          borderRadius: BorderRadius.circular(large)),
+          borderRadius: BorderRadius.circular(medium)),
       child: child,
     );
   }

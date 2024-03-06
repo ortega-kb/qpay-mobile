@@ -36,6 +36,7 @@ class SelectLanguageTile extends StatelessWidget {
       title: Text(title),
       subtitle: subtitle != null ? Text(subtitle!) : null,
       onTap: onTap,
+      splashColor: Colors.transparent,
       trailing: Checkbox(
         value: active,
         onChanged: (value) {},

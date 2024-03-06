@@ -7,10 +7,10 @@ import 'package:intl/intl_standalone.dart'
     if (dart.library.html) 'package:intl/intl_browser.dart';
 import 'package:qpay/core/design/app_theme.dart';
 import 'package:qpay/core/provider/language_preferences_repository_provider.dart';
+import 'package:qpay/core/provider/language_provider.dart';
 import 'package:qpay/core/provider/messaging_service_provider.dart';
-import 'package:qpay/feature/upload_picture/upload_picture_screen.dart';
+import 'package:qpay/feature/type_of_account/type_of_account.dart';
 
-import 'core/utils/enums/language.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -57,8 +57,7 @@ class QPayApp extends ConsumerWidget {
       ],
       locale: Locale(language.code),
       theme: lightTheme,
-      darkTheme: darkTheme,
-      home: UploadPictureScreen(),
+      home: TypeOfAccount(),
     );
   }
 }

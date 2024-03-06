@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qpay/core/provider/language_preferences_repository_provider.dart';
+import 'package:qpay/core/provider/language_provider.dart';
 import 'package:qpay/core/utils/constants/image_path.dart';
 import 'package:qpay/feature/welcome/welcome_screen.dart';
 
@@ -44,31 +45,34 @@ class LanguageScreen extends ConsumerWidget {
       body: ListView(
         children: [
           const SizedBox(height: medium),
-          TileContainer(
-            child: Column(
-              children: [
-                SelectLanguageTile(
-                  image: ImagePath.fr,
-                  title: AppLocalizations.of(context)!.french,
-                  active: language.code == Language.French.code,
-                  onTap: () {
-                    ref
-                        .read(languagePreferencesRepositoryProvider)
-                        .saveLanguage(Language.French);
-                  },
-                ),
-                const Line(),
-                SelectLanguageTile(
-                  image: ImagePath.us,
-                  title: AppLocalizations.of(context)!.english,
-                  active: language.code == Language.English.code,
-                  onTap: () {
-                    ref
-                        .read(languagePreferencesRepositoryProvider)
-                        .saveLanguage(Language.English);
-                  },
-                )
-              ],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: medium),
+            child: TileContainer(
+              child: Column(
+                children: [
+                  SelectLanguageTile(
+                    image: ImagePath.fr,
+                    title: AppLocalizations.of(context)!.french,
+                    active: language.code == Language.French.code,
+                    onTap: () {
+                      ref
+                          .read(languagePreferencesRepositoryProvider)
+                          .saveLanguage(Language.French);
+                    },
+                  ),
+                  const Line(),
+                  SelectLanguageTile(
+                    image: ImagePath.us,
+                    title: AppLocalizations.of(context)!.english,
+                    active: language.code == Language.English.code,
+                    onTap: () {
+                      ref
+                          .read(languagePreferencesRepositoryProvider)
+                          .saveLanguage(Language.English);
+                    },
+                  )
+                ],
+              ),
             ),
           )
         ],

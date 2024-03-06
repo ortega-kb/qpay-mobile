@@ -1,4 +1,3 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 enum Gender {
   M(value: "M"),
@@ -8,4 +7,3 @@ enum Gender {
   final String value;
 }
 
-final genderProvider = StateProvider<Gender>((ref) => Gender.M);

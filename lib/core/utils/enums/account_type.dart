@@ -9,5 +9,3 @@ enum AccountType {
   final String type;
 }
 
-final accountTypeProvider =
-    StateProvider<AccountType>((ref) => AccountType.PUBLIC);

@@ -49,5 +49,6 @@
   "picture_profile": "Photo",
   "not_yet": "Passer",
   "take_picture": "Prednre une photo",
-  "choose_picture": "Choisir une photo"
+  "choose_picture": "Choisir une photo",
+  "delete_picture":"Supprimer la photo"
 }

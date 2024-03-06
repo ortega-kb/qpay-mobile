@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:qpay/core/provider/account_type_provider.dart';
 import 'package:qpay/core/utils/constants/link.dart';
 import 'package:qpay/core/utils/enums/account_type.dart';
 import 'package:qpay/feature/account/corporate_account_screen.dart';
@@ -77,39 +78,42 @@ class TypeOfAccount extends ConsumerWidget {
             const SizedBox(
               height: middleSmall,
             ),
-            TileContainer(
-              child: Column(
-                children: [
-                  SelectLanguageTile(
-                    title: AppLocalizations.of(context)!.public,
-                    active: accountType == AccountType.PUBLIC,
-                    onTap: () {
-                      ref
-                          .read(accountTypeProvider.notifier)
-                          .update((_) => AccountType.PUBLIC);
-                    },
-                  ),
-                  const Line(),
-                  SelectLanguageTile(
-                    title: AppLocalizations.of(context)!.particular,
-                    active: accountType == AccountType.PARTICULAR,
-                    onTap: () {
-                      ref
-                          .read(accountTypeProvider.notifier)
-                          .update((_) => AccountType.PARTICULAR);
-                    },
-                  ),
-                  const Line(),
-                  SelectLanguageTile(
-                    title: AppLocalizations.of(context)!.corporate,
-                    active: accountType == AccountType.CORPORATE,
-                    onTap: () {
-                      ref
-                          .read(accountTypeProvider.notifier)
-                          .update((_) => AccountType.CORPORATE);
-                    },
-                  )
-                ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: medium),
+              child: TileContainer(
+                child: Column(
+                  children: [
+                    SelectLanguageTile(
+                      title: AppLocalizations.of(context)!.public,
+                      active: accountType == AccountType.PUBLIC,
+                      onTap: () {
+                        ref
+                            .read(accountTypeProvider.notifier)
+                            .update((_) => AccountType.PUBLIC);
+                      },
+                    ),
+                    const Line(),
+                    SelectLanguageTile(
+                      title: AppLocalizations.of(context)!.particular,
+                      active: accountType == AccountType.PARTICULAR,
+                      onTap: () {
+                        ref
+                            .read(accountTypeProvider.notifier)
+                            .update((_) => AccountType.PARTICULAR);
+                      },
+                    ),
+                    const Line(),
+                    SelectLanguageTile(
+                      title: AppLocalizations.of(context)!.corporate,
+                      active: accountType == AccountType.CORPORATE,
+                      onTap: () {
+                        ref
+                            .read(accountTypeProvider.notifier)
+                            .update((_) => AccountType.CORPORATE);
+                      },
+                    )
+                  ],
+                ),
               ),
             ),
             const SizedBox(height: medium),

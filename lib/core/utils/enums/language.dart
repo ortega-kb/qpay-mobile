@@ -10,4 +10,3 @@ enum Language {
   final String code;
 }
 
-final languageProvider = StateProvider<Language>((ref) => Language.French);
