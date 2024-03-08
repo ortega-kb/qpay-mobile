@@ -36,7 +36,8 @@ class _InformationScreenState extends ConsumerState<ParticularAccountScreen> {
   final TextEditingController _communeController = TextEditingController();
   final TextEditingController _avenueController = TextEditingController();
   final TextEditingController _numberAvenueController = TextEditingController();
-  final TextEditingController _sectorOfActivity = TextEditingController();
+  final TextEditingController _sectorOfActivityController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -224,7 +225,7 @@ class _InformationScreenState extends ConsumerState<ParticularAccountScreen> {
                         ),
                         const SizedBox(height: medium),
                         MTextField(
-                          controller: _sectorOfActivity,
+                          controller: _sectorOfActivityController,
                           label:
                               AppLocalizations.of(context)!.sector_of_activity,
                           obscureText: false,

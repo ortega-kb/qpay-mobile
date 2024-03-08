@@ -51,5 +51,8 @@
   "take_picture": "Take a picture",
   "choose_picture": "Chosse a picture",
   "delete_picture": "Delete picture",
-  "sector_of_activity": "Sector of activity"
+  "sector_of_activity": "Sector of activity",
+  "company_name": "Company name",
+  "rccm_number": "RCCM number",
+  "date_of_creation": "Date of creation"
 }
