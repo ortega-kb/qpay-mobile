@@ -36,8 +36,9 @@ class SubtitleDyn extends StatelessWidget {
       child: Text(
         text,
         style: TextStyle(
-            fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
-            color: gray),
+          fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
+          color: gray,
+        ),
       ),
     );
   }

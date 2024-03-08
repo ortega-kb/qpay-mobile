@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:qpay/core/provider/corporate_account_provider.dart';
+import 'package:qpay/feature/account/widget/header_corporate_account.dart';
 
-import '../../core/design/common/widgets/auth_title.dart';
-import '../../core/design/common/widgets/subtitle.dart';
+import '../../core/design/animator_route.dart';
+import '../../core/design/common/widgets/m_button.dart';
 import '../../core/design/spacing.dart';
+import '../upload_picture/upload_picture_screen.dart';
 
 class CorporateAccountScreen extends ConsumerStatefulWidget {
   const CorporateAccountScreen({super.key});
@@ -16,37 +19,113 @@ class CorporateAccountScreen extends ConsumerStatefulWidget {
 class _InformationScreenState extends ConsumerState<CorporateAccountScreen> {
   @override
   Widget build(BuildContext context) {
+    var currentPage = ref.watch(corporateAccountProvider);
+    var pageController = PageController(initialPage: currentPage);
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            if (pageController.page?.round() == 0) {
+              Navigator.pop(context);
+            } else {
+              pageController.previousPage(
+                duration: Duration(milliseconds: 400),
+                curve: Curves.easeInOut,
+              );
+            }
           },
           icon: Icon(
             Icons.arrow_back,
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const SizedBox(height: extraLarge),
-            AuthTitle(
-              title: AppLocalizations.of(context)!.account(
-                AppLocalizations.of(context)!.corporate,
-              ),
-            ),
-            const SizedBox(height: middleSmall),
-            Subtitle(
-              text: AppLocalizations.of(context)!.text_account,
-            ),
-            const SizedBox(
-              height: middleSmall,
-            ),
-          ],
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(medium),
+        child: MButton(
+          text: AppLocalizations.of(context)!.go,
+          onTap: () {
+            if (pageController.page?.round() == 2) {
+              Navigator.push(
+                context,
+                animateRoute(
+                  UploadPictureScreen(),
+                ),
+              );
+            } else {
+              pageController.nextPage(
+                duration: Duration(milliseconds: 400),
+                curve: Curves.easeInOut,
+              );
+            }
+          },
         ),
+      ),
+      body: PageView(
+        physics: NeverScrollableScrollPhysics(),
+        controller: pageController,
+        children: [
+          // first form
+          SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                HeaderCorporateAccount(),
+                Form(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: medium),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          // second form
+          SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                HeaderCorporateAccount(),
+                Form(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: medium),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          // third form
+          SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                HeaderCorporateAccount(),
+                Form(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: medium),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+        onPageChanged: (value) {
+          ref.read(corporateAccountProvider.notifier).update((_) => value);
+        },
       ),
     );
   }

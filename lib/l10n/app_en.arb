@@ -50,5 +50,6 @@
   "not_yet": "Skip",
   "take_picture": "Take a picture",
   "choose_picture": "Chosse a picture",
-  "delete_picture": "Delete picture"
+  "delete_picture": "Delete picture",
+  "sector_of_activity": "Sector of activity"
 }

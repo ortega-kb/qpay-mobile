@@ -96,8 +96,8 @@ class _InformationScreenState extends ConsumerState<PublicAccountScreen> {
               );
             } else {
               pageController.nextPage(
-                duration: Duration(milliseconds: 300),
-                curve: Curves.linear,
+                duration: Duration(milliseconds: 400),
+                curve: Curves.easeInOut,
               );
             }
           },
@@ -182,7 +182,8 @@ class _InformationScreenState extends ConsumerState<PublicAccountScreen> {
                               ),
                             },
                           ],
-                        )
+                        ),
+                        const SizedBox(height: medium),
                       ],
                     ),
                   ),
@@ -242,6 +243,7 @@ class _InformationScreenState extends ConsumerState<PublicAccountScreen> {
                             return Validator.nameValidator(value);
                           },
                         ),
+                        const SizedBox(height: medium),
                       ],
                     ),
                   ),

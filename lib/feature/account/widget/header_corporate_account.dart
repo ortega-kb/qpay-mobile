@@ -5,8 +5,8 @@ import '../../../core/design/common/widgets/auth_title.dart';
 import '../../../core/design/common/widgets/subtitle.dart';
 import '../../../core/design/spacing.dart';
 
-class HeaderPublicAccount extends StatelessWidget {
-  const HeaderPublicAccount({super.key});
+class HeaderCorporateAccount extends StatelessWidget {
+  const HeaderCorporateAccount({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class HeaderPublicAccount extends StatelessWidget {
         const SizedBox(height: extraLarge),
         AuthTitle(
           title: AppLocalizations.of(context)!.account(
-            AppLocalizations.of(context)!.public,
+            AppLocalizations.of(context)!.corporate,
           ),
         ),
         const SizedBox(height: middleSmall),

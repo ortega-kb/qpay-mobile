@@ -50,5 +50,6 @@
   "not_yet": "Passer",
   "take_picture": "Prednre une photo",
   "choose_picture": "Choisir une photo",
-  "delete_picture":"Supprimer la photo"
+  "delete_picture":"Supprimer la photo",
+  "sector_of_activity": "Secteur d'activité"
 }
