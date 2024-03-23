@@ -49,7 +49,6 @@ class AuthServiceImpl extends AuthService {
       final user = await _firebaseAuth.signInWithCredential(credential);
       if (user.user != null) {
         onSuccess();
-        logout();
       }
     } on FirebaseAuthException catch (e) {
       onError(e.message.toString());

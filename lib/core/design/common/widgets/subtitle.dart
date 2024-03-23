@@ -6,19 +6,26 @@ import '../../spacing.dart';
 class Subtitle extends StatelessWidget {
   final String text;
   final Color? color;
+  final double? padding;
+  final FontWeight? fontWeight;
 
-  const Subtitle({super.key, required this.text, this.color});
+  const Subtitle(
+      {super.key,
+      required this.text,
+      this.color,
+      this.padding,
+      this.fontWeight});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: medium),
+      padding: EdgeInsets.symmetric(horizontal: padding ?? medium),
       child: Text(
         text,
         style: TextStyle(
-          fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
-          color: color ?? gray,
-        ),
+            fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
+            color: color ?? gray,
+            fontWeight: fontWeight),
       ),
     );
   }

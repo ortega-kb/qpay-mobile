@@ -10,6 +10,7 @@ import '../../core/design/animator_route.dart';
 import '../../core/design/common/widgets/line.dart';
 import '../../core/design/common/widgets/m_button.dart';
 import '../../core/design/common/widgets/m_title.dart';
+import '../../core/design/common/widgets/subtitle.dart';
 import '../../core/design/common/widgets/tile_container.dart';
 import '../../core/design/spacing.dart';
 import '../../core/utils/enums/language.dart';
@@ -45,6 +46,12 @@ class LanguageScreen extends ConsumerWidget {
       body: ListView(
         children: [
           const SizedBox(height: medium),
+          Subtitle(
+            text: AppLocalizations.of(context)!.choose_language,
+          ),
+          const SizedBox(
+            height: middleSmall,
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: medium),
             child: TileContainer(

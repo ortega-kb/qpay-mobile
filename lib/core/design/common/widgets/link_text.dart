@@ -12,12 +12,15 @@ class LinkText extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      child: Text(
-        text,
-        style: TextStyle(
-          fontSize: Theme.of(context).textTheme.bodyMedium?.fontSize,
-          color: primary,
-          decoration: TextDecoration.underline,
+      child: Padding(
+        padding: const EdgeInsets.all(2.0),
+        child: Text(
+          text,
+          style: TextStyle(
+            fontSize: Theme.of(context).textTheme.bodyMedium?.fontSize,
+            color: primary,
+            decoration: TextDecoration.underline,
+          ),
         ),
       ),
     );
