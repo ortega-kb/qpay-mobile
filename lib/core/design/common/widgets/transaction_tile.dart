@@ -21,7 +21,7 @@ class TransactionTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: medium),
+      padding: const EdgeInsets.only(top: 0, bottom: small),
       child: Container(
         decoration: BoxDecoration(
             color: surface, borderRadius: BorderRadius.circular(middleSmall)),
@@ -29,8 +29,10 @@ class TransactionTile extends StatelessWidget {
           onTap: onTap,
           borderRadius: BorderRadius.circular(middleSmall),
           child: ListTile(
+            dense: true,
             title: Text(
               action,
+              style: Theme.of(context).textTheme.bodyLarge,
               overflow: TextOverflow.ellipsis,
             ),
             subtitle: Text(
@@ -44,7 +46,7 @@ class TransactionTile extends StatelessWidget {
               amount + " ${currency}",
               style: TextStyle(
                 color: black,
-                fontSize: Theme.of(context).textTheme.titleSmall?.fontSize,
+                fontSize: Theme.of(context).textTheme.bodyMedium?.fontSize,
                 fontWeight: FontWeight.bold,
               ),
             ),

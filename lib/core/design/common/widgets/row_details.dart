@@ -23,13 +23,13 @@ class RowDetails extends StatelessWidget {
           Text(
             title,
             style: TextStyle(
-              fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
+              fontSize: Theme.of(context).textTheme.bodyMedium?.fontSize,
             ),
           ),
           Text(
             value,
             style: TextStyle(
-              fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
+              fontSize: Theme.of(context).textTheme.bodyMedium?.fontSize,
               color: black,
             ),
           )

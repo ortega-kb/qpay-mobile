@@ -62,5 +62,23 @@
   "information_we_collect": "Information we collect",
   "how_use_your_information": "How we use your information",
   "contact": "Contact",
-  "scan_qr_code": "Scan a QR code"
+  "scan_qr_code": "Scan a QR code",
+  "wallet": "Wallet",
+  "text_wallet": "Dear user, please configure a default wallet.",
+  "quick_operation": "Quick operation",
+  "transactions": "Transactions (History)",
+  "details_transaction": "Transaction details",
+  "amount": "Amount",
+  "reference": "Reference",
+  "operation": "Operation",
+  "date": "Date",
+  "beneficiary_account": "Beneficiary account",
+  "see_more": "See more",
+  "qr_scanner": "QR code scanner",
+  "wallet_cap": "WALLET",
+  "total_balance": "Total balance",
+  "cdf": "CDF {balance}",
+  "usd": "USD {balance}",
+  "hello": "Hello"
+
 }

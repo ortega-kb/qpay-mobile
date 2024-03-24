@@ -9,7 +9,7 @@ import 'package:qpay/core/design/app_theme.dart';
 import 'package:qpay/core/provider/language_preferences_repository_provider.dart';
 import 'package:qpay/core/provider/language_provider.dart';
 import 'package:qpay/core/provider/messaging_service_provider.dart';
-import 'package:qpay/feature/type_of_account/type_of_account.dart';
+import 'package:qpay/feature/index/index_screen.dart';
 
 import 'firebase_options.dart';
 
@@ -17,18 +17,22 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await findSystemLocale();
 
+  // init screen orientation
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
 
+  // init firebase platform
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+  // init fcm service
   final container = ProviderContainer();
   await container.read(messagingServiceProvider).initMessaging();
 
+  // get preference language
   final language =
       await container.read(languagePreferencesRepositoryProvider).getLanguage();
 
@@ -57,7 +61,7 @@ class QPayApp extends ConsumerWidget {
       ],
       locale: Locale(language.code),
       theme: lightTheme,
-      home: TypeOfAccount(),
+      home: IndexScreen(),
     );
   }
 }

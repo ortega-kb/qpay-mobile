@@ -62,5 +62,22 @@
   "information_we_collect": "Informations que nous recueillons",
   "how_use_your_information": "Comment nous utilisons vos informations",
   "contact": "Contact",
-  "scan_qr_code": "Scannez un code QR"
+  "scan_qr_code": "Scannez un code QR",
+  "wallet": "Portefeuille",
+  "text_wallet": "Cher utilisateur, veuillez configurer un portefeuille par défaut.",
+  "quick_operation": "Opérations rapides",
+  "transactions": "Transactions",
+  "details_transaction": "Détails transaction",
+  "amount": "Montant",
+  "reference": "Référence",
+  "operation": "Opération",
+  "date": "Date",
+  "beneficiary_account": "Compte bénéficiaire",
+  "see_more": "Voir plus",
+  "qr_scanner": "Scanner QR code",
+  "wallet_cap": "PORTEFEUILLE",
+  "total_balance": "Solde total",
+  "cdf": "CDF {balance}",
+  "usd": "USD {balance}",
+  "hello": "Salut"
 }
