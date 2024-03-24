@@ -90,7 +90,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     title: AppLocalizations.of(context)!.rate_app,
                     iconData: CupertinoIcons.star_fill,
                     onTap: () {
-                      OpenStore.instance.open(androidAppBundleId: Link.qpayApp);
+                      OpenStore.instance.open(
+                        androidAppBundleId: Link.androidBundleApp,
+                      );
                     },
                   ),
                   const Line(),
