@@ -19,7 +19,7 @@
   "see_policy": "Privacy policy",
   "creating_account": "Account creation",
   "enter_phone_number": "Enter your phone number",
-  "next": "Suivant",
+  "next": "Next",
   "verification_code": "Code verification",
   "verify": "Verify",
   "sent_sms": "SMS sent to {phone}",
@@ -79,6 +79,10 @@
   "total_balance": "Total balance",
   "cdf": "CDF {balance}",
   "usd": "USD {balance}",
-  "hello": "Hello"
+  "hello": "Hello",
+  "settings": "Settings",
+  "my_qr_code": "My QR code",
+  "invite_friends": "Invite friends",
+  "rate_app": "Rate application"
 
 }

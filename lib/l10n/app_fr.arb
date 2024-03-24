@@ -79,5 +79,9 @@
   "total_balance": "Solde total",
   "cdf": "CDF {balance}",
   "usd": "USD {balance}",
-  "hello": "Salut"
+  "hello": "Salut",
+  "settings": "Paramètres",
+  "my_qr_code": "Mon code QR",
+  "invite_friends": "Inviter des amis",
+  "rate_app": "Noter l'application"
 }
