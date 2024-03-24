@@ -18,6 +18,7 @@ class ParamTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: onTap,
+      splashColor: Colors.transparent,
       leading: Icon(iconData),
       title: Text(title, style: Theme.of(context).textTheme.bodyLarge),
       trailing: Icon(

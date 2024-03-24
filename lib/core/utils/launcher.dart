@@ -18,4 +18,11 @@ class Launcher {
       await Clipboard.setData(ClipboardData(text: email));
     }
   }
+
+  static Future<void> linkStore(String link) async {
+    final Uri url = Uri.parse(link);
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
+  }
 }

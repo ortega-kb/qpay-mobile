@@ -17,7 +17,7 @@ void privacyPolicy(BuildContext context) {
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.zero,
     ),
-    backgroundColor: background,
+    backgroundColor: surface,
     builder: (BuildContext context) {
       return SingleChildScrollView(
         child: Column(

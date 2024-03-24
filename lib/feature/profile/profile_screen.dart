@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:open_store/open_store.dart';
 import 'package:qpay/core/design/animator_route.dart';
 import 'package:qpay/core/design/color.dart';
 import 'package:qpay/core/design/common/widgets/line.dart';
@@ -8,9 +9,11 @@ import 'package:qpay/core/design/common/widgets/profile.dart';
 import 'package:qpay/core/design/common/widgets/subtitle.dart';
 import 'package:qpay/core/design/common/widgets/tile_container.dart';
 import 'package:qpay/core/design/spacing.dart';
+import 'package:qpay/core/utils/constants/link.dart';
 import 'package:qpay/core/utils/privacy_policy.dart';
 import 'package:qpay/feature/my_qr_code/my_qr_code_screen.dart';
 import 'package:qpay/feature/profile/widgets/param_tile.dart';
+import 'package:share_plus/share_plus.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -26,12 +29,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: AppBar(),
       body: ListView(
         children: [
-          const SizedBox(height: medium),
-          Profile(size: 120, onTap: () {}),
-          const SizedBox(height: medium),
-          Center(child: Subtitle(text: "Ortega", color: primary)),
-          const SizedBox(height: extraSmall),
-          Center(child: Subtitle(text: "+243996875512")),
+          const SizedBox(
+            height: medium,
+          ),
+          Profile(
+            size: 120,
+            onTap: () {},
+          ),
+          const SizedBox(
+            height: medium,
+          ),
+          Center(
+            child: Subtitle(
+              text: "Ortega",
+              color: primary,
+            ),
+          ),
+          const SizedBox(
+            height: extraSmall,
+          ),
+          Center(
+            child: Subtitle(
+              text: "+243996875512",
+            ),
+          ),
           const SizedBox(height: medium),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: medium),
@@ -68,13 +89,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ParamTile(
                     title: AppLocalizations.of(context)!.rate_app,
                     iconData: CupertinoIcons.star_fill,
-                    onTap: () {},
+                    onTap: () {
+                      OpenStore.instance.open(androidAppBundleId: Link.qpayApp);
+                    },
                   ),
                   const Line(),
                   ParamTile(
                     title: AppLocalizations.of(context)!.invite_friends,
                     iconData: Icons.share,
-                    onTap: () {},
+                    onTap: () {
+                      Share.shareUri(Uri.parse(Link.qpayApp));
+                    },
                   ),
                 ],
               ),
