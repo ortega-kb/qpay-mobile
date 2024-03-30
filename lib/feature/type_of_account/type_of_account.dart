@@ -121,6 +121,7 @@ class TypeOfAccount extends ConsumerWidget {
           icon: Icon(Icons.arrow_back),
         ),
       ),
+      // TODO: change checkbox
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(medium),
         child: MButton(

@@ -1,3 +1,1 @@
-enum Currency {
-  CDF, USD, YN
-}
+enum Currency { CDF, USD }

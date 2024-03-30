@@ -13,9 +13,9 @@ class ChipOperationList extends StatelessWidget {
         children: [
           const SizedBox(width: medium),
           ChipOperation(label: "Toutes", selected: true),
-          const SizedBox(width: medium),
+          const SizedBox(width: middleSmall),
           ChipOperation(label: "Transfert", selected: false),
-          const SizedBox(width: medium),
+          const SizedBox(width: middleSmall),
           ChipOperation(label: "Paiement", selected: false),
           const SizedBox(width: medium),
         ],

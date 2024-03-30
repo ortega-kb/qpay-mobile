@@ -1,10 +1,10 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
 import '../../core/design/color.dart';
+import '../../core/design/common/widgets/subtitle.dart';
 import '../../core/design/spacing.dart';
 
 class ScannerScreen extends StatefulWidget {
@@ -24,6 +24,61 @@ class _ScannerScreenState extends State<ScannerScreen> {
 
   @override
   Widget build(BuildContext context) {
+    void scanAndPay() {
+      showModalBottomSheet(
+        context: context,
+        isDismissible: false,
+        isScrollControlled: true,
+        useSafeArea: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.zero,
+        ),
+        backgroundColor: background,
+        builder: (BuildContext context) {
+          return Padding(
+            padding: MediaQuery.of(context).viewInsets,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  ListTile(
+                    title: Subtitle(
+                      text: AppLocalizations.of(context)!.payment,
+                      color: black,
+                      fontWeight: FontWeight.bold,
+                      padding: 0,
+                    ),
+                    dense: true,
+                    trailing: InkWell(
+                      onTap: () {
+                        scannerController.start();
+                        Navigator.pop(context);
+                      },
+                      child: Icon(
+                        FontAwesomeIcons.xmark,
+                        size: 20,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: medium,
+                      right: medium,
+                      top: medium,
+                      bottom: medium,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.qr_scanner),
@@ -49,16 +104,8 @@ class _ScannerScreenState extends State<ScannerScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "subtitle_qr_scanner",
-                      style: TextStyle(
-                        color: black,
-                        fontWeight: FontWeight.bold,
-                        fontSize:
-                            Theme.of(context).textTheme.bodyLarge?.fontSize,
-                      ),
-                    ),
-                    Text(
-                      "automatically_scan",
+                      AppLocalizations.of(context)!.automatically,
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         color: gray,
                         fontSize:
@@ -76,13 +123,15 @@ class _ScannerScreenState extends State<ScannerScreen> {
                 child: MobileScanner(
                   controller: scannerController,
                   onDetect: (qrCode) {
-                    try {
-                      final data = json.decode(qrCode.raw[0]["rawValue"]);
-                      print("Json qr code " + data.toString());
-                    } catch (e) {
-                      print("Normal qr code " +
-                          qrCode.raw[0]["rawValue"].toString());
-                    }
+                    // try {
+                    //   final data = json.decode(qrCode.raw[0]["rawValue"]);
+                    //   print("Json qr code " + data.toString());
+                    // } catch (e) {
+                    //   print("Normal qr code " +
+                    //       qrCode.raw[0]["rawValue"].toString());
+                    // }
+                    scanAndPay();
+                    scannerController.stop();
                   },
                   startDelay: true,
                 ),
@@ -94,17 +143,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
                 child: Column(
                   children: [
                     Text(
-                      "warning",
-                      style: TextStyle(
-                        color: black,
-                        fontSize:
-                            Theme.of(context).textTheme.bodyLarge?.fontSize,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    Text(
-                      "problem_scan",
+                      AppLocalizations.of(context)!.problem_scan,
                       style: TextStyle(
                         color: gray,
                         fontSize:

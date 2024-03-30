@@ -34,6 +34,7 @@ class FreezedToastMessage extends StatelessWidget {
         ],
       ),
       child: ListTile(
+        onTap: onTap,
         leading: Icon(
           FontAwesomeIcons.triangleExclamation,
           color: Colors.yellow,

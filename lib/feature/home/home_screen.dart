@@ -11,6 +11,7 @@ import 'package:qpay/feature/home/widgets/greeting.dart';
 import 'package:qpay/feature/home/widgets/quick_operation_list.dart';
 import 'package:qpay/feature/scanner/scanner_screen.dart';
 import 'package:qpay/feature/transaction/transactions_screen.dart';
+import 'package:qpay/feature/wallets/wallets_screen.dart';
 
 import '../transaction/widgets/transaction_list.dart';
 
@@ -25,7 +26,9 @@ class HomeScreen extends ConsumerWidget {
         appBar: AppBar(
           title: Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: [Greeting(name: "Ortega")],
+            children: [
+              Greeting(name: "Ortega"),
+            ],
           ),
           actions: [
             IconButton(
@@ -45,6 +48,7 @@ class HomeScreen extends ConsumerWidget {
           ],
         ),
         body: ListView(
+          shrinkWrap: true,
           children: [
             Padding(
               padding: const EdgeInsets.only(
@@ -55,15 +59,27 @@ class HomeScreen extends ConsumerWidget {
               child: FreezedToastMessage(
                 title: AppLocalizations.of(context)!.wallet,
                 subtitle: AppLocalizations.of(context)!.text_wallet,
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    animateRoute(
+                      WalletsScreen(),
+                    ),
+                  );
+                },
               ),
             ),
             const SizedBox(height: medium),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: medium),
-              child: AllWallet(
-                onTap: () {},
-              ),
+            AllWallet(
+              title: AppLocalizations.of(context)!.wallet_cap,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  animateRoute(
+                    WalletsScreen(),
+                  ),
+                );
+              },
             ),
             const SizedBox(height: small),
             TitleAction(

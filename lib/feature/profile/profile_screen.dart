@@ -13,6 +13,7 @@ import 'package:qpay/core/utils/constants/link.dart';
 import 'package:qpay/core/utils/privacy_policy.dart';
 import 'package:qpay/feature/my_qr_code/my_qr_code_screen.dart';
 import 'package:qpay/feature/profile/widgets/param_tile.dart';
+import 'package:qpay/feature/settings/settings_screen.dart';
 import 'package:share_plus/share_plus.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -75,7 +76,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ParamTile(
                     title: AppLocalizations.of(context)!.settings,
                     iconData: Icons.settings,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        animateRoute(
+                          SettingsScreen(),
+                        ),
+                      );
+                    },
                   ),
                   const Line(),
                   ParamTile(

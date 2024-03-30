@@ -5,13 +5,11 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:qpay/core/design/animator_route.dart';
 import 'package:qpay/core/design/color.dart';
 import 'package:qpay/core/design/messages.dart';
-import 'package:qpay/core/utils/privacy_policy.dart';
 import 'package:qpay/feature/login/login_state.dart';
 import 'package:qpay/feature/login/login_view_model.dart';
 
 import '../../core/design/common/widgets/auth_title.dart';
 import '../../core/design/common/widgets/full_progress_indicator.dart';
-import '../../core/design/common/widgets/link_text.dart';
 import '../../core/design/common/widgets/m_button.dart';
 import '../../core/design/common/widgets/m_outlined_button.dart';
 import '../../core/design/common/widgets/m_text_field.dart';
@@ -61,9 +59,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: extraLarge),
-              AuthTitle(title: AppLocalizations.of(context)!.connection),
-              const SizedBox(height: middleSmall),
-              Subtitle(text: AppLocalizations.of(context)!.text_connection),
+              Center(
+                child: AuthTitle(
+                  title: AppLocalizations.of(context)!.connection,
+                ),
+              ),
               const SizedBox(height: middleSmall),
               Form(
                 key: _formKey,
@@ -91,13 +91,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         },
                       ),
                       const SizedBox(height: medium),
-                      LinkText(
-                        text: AppLocalizations.of(context)!.see_policy,
-                        onTap: () {
-                          privacyPolicy(context);
-                        },
-                      ),
-                      const SizedBox(height: medium),
                       MButton(
                         text: AppLocalizations.of(context)!.login,
                         onTap: () async {
@@ -108,7 +101,13 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           }
                         },
                       ),
-                      const SizedBox(height: medium),
+                      const SizedBox(height: small),
+                      Center(
+                        child: Subtitle(
+                          text: AppLocalizations.of(context)!.or,
+                        ),
+                      ),
+                      const SizedBox(height: small),
                       MOutlinedButton(
                         text: AppLocalizations.of(context)!.create_account,
                         onTap: () {
@@ -132,31 +131,3 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     );
   }
 }
-
-// MTextField(
-//   controller: _passwordController,
-//   label: AppLocalizations.of(context)!.passwd,
-//   obscureText: ref.watch(mPasswordFieldProvider),
-//   keyboardType: TextInputType.visiblePassword,
-//   validator: (value) {
-//     return Validator.passwordValidator(value);
-//   },
-//   suffixIcon: ref.watch(mPasswordFieldProvider)
-//       ? IconButton(
-//           onPressed: () {
-//             ref
-//                 .read(mPasswordFieldProvider.notifier)
-//                 .setObscuredText(false);
-//           },
-//           icon: Icon(CupertinoIcons.eye_solid))
-//       : IconButton(
-//           onPressed: () {
-//             ref
-//                 .read(mPasswordFieldProvider.notifier)
-//                 .setObscuredText(true);
-//           },
-//           icon: Icon(
-//             CupertinoIcons.eye_slash_fill,
-//           ),
-//         ),
-// ),

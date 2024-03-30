@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../../../../providers/balance_page_provider.dart';
 import '../../spacing.dart';
 import 'balance_indicator.dart';
 
@@ -17,10 +15,8 @@ class BalancePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final initialPage = Provider.of<BalancePageProvider>(context).selectedPage;
-
     final pageController = PageController(
-      initialPage: initialPage,
+      initialPage: 0,
       viewportFraction: 0.9,
     );
 
@@ -28,33 +24,23 @@ class BalancePage extends StatelessWidget {
       children: [
         SizedBox(
           height: 150,
-          child: Consumer<BalancePageProvider>(
-            builder: (context, provider, child) {
-              return PageView(
-                controller: pageController,
-                children: [
-                  // Balance(
-                  //   balance: balanceCDF,
-                  //   currency: Currency.CDF,
-                  // ),
-                  // Balance(
-                  //   balance: balanceUSD,
-                  //   currency: Currency.USD,
-                  // ),
-                ],
-                onPageChanged: (page) {
-                  provider.setPage(page);
-                },
-              );
-            },
+          child: PageView(
+            controller: pageController,
+            children: [
+              // Balance(
+              //   balance: balanceCDF,
+              //   currency: Currency.CDF,
+              // ),
+              // Balance(
+              //   balance: balanceUSD,
+              //   currency: Currency.USD,
+              // ),
+            ],
+            onPageChanged: (page) {},
           ),
         ),
         const SizedBox(height: extraSmall),
-        Consumer<BalancePageProvider>(
-          builder: (context, provider, child) {
-            return BalanceIndicator(page: provider.selectedPage);
-          },
-        )
+        BalanceIndicator(page: 0)
       ],
     );
   }
