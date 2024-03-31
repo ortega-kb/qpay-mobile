@@ -10,14 +10,14 @@ import '../../core/design/color.dart';
 import '../../core/design/common/widgets/m_text_field.dart';
 import '../../core/design/common/widgets/subtitle.dart';
 
-class QrCodeListScreen extends ConsumerStatefulWidget {
-  const QrCodeListScreen({super.key});
+class QRStaticScreen extends ConsumerStatefulWidget {
+  const QRStaticScreen({super.key});
 
   @override
   ConsumerState createState() => _QrCodeListScreenState();
 }
 
-class _QrCodeListScreenState extends ConsumerState<QrCodeListScreen> {
+class _QrCodeListScreenState extends ConsumerState<QRStaticScreen> {
   final _formKey = GlobalKey<FormState>();
   final _titleController = TextEditingController();
   final _priceController = TextEditingController();

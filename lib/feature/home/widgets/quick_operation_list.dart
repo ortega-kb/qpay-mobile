@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:qpay/core/design/animator_route.dart';
 import 'package:qpay/core/design/spacing.dart';
 import 'package:qpay/feature/home/widgets/quick_operation_tile.dart';
-import 'package:qpay/feature/my_qr_code/qr_code_list_screen.dart';
+import 'package:qpay/feature/my_qr_code/qr_static_screen.dart';
 import 'package:qpay/feature/transfer_money/transfer_money_screen.dart';
 
 class QuickOperationList extends StatelessWidget {
@@ -43,7 +43,7 @@ class QuickOperationList extends StatelessWidget {
               Navigator.push(
                 context,
                 animateRoute(
-                  QrCodeListScreen(),
+                  QRStaticScreen(),
                 ),
               );
             },

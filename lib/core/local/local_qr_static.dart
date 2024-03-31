@@ -2,8 +2,8 @@ import 'package:hive/hive.dart';
 
 import '../domain/model/qr_static_model.dart';
 
-class QRStatic {
-  QRStatic(this._qrStaticBox);
+class LocalQRStatic {
+  LocalQRStatic(this._qrStaticBox);
   final Box<QRStaticModel> _qrStaticBox;
 
   List<QRStaticModel> getAllQRStatic() {
