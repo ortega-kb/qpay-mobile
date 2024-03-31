@@ -1,9 +1,10 @@
 import 'package:qpay/core/utils/enums/currency.dart';
+import 'package:qpay/core/utils/enums/operation.dart';
 
 class QRResponse {
   final String account;
   final double? amount;
-  final String type;
+  final Operation type;
   final Currency? currency;
 
   QRResponse({

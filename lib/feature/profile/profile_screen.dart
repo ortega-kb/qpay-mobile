@@ -67,7 +67,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Navigator.push(
                         context,
                         animateRoute(
-                          MyQrCodeScreen(),
+                          MyQrCodeScreen(
+                            accountNumber: "QP1000000000",
+                          ),
                         ),
                       );
                     },

@@ -79,6 +79,63 @@ class _ScannerScreenState extends State<ScannerScreen> {
       );
     }
 
+    void errorScan() {
+      showModalBottomSheet(
+        context: context,
+        isDismissible: false,
+        isScrollControlled: true,
+        useSafeArea: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.zero,
+        ),
+        backgroundColor: background,
+        builder: (BuildContext context) {
+          return Padding(
+            padding: MediaQuery.of(context).viewInsets,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  ListTile(
+                    title: Subtitle(
+                      text: AppLocalizations.of(context)!.scan_error,
+                      color: black,
+                      fontWeight: FontWeight.bold,
+                      padding: 0,
+                    ),
+                    dense: true,
+                    trailing: InkWell(
+                      onTap: () {
+                        scannerController.start();
+                        Navigator.pop(context);
+                      },
+                      child: Icon(
+                        FontAwesomeIcons.xmark,
+                        size: 20,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: medium,
+                      right: medium,
+                      top: medium,
+                      bottom: medium,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Text(AppLocalizations.of(context)!.desc_scan_error)
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.qr_scanner),
@@ -123,15 +180,21 @@ class _ScannerScreenState extends State<ScannerScreen> {
                 child: MobileScanner(
                   controller: scannerController,
                   onDetect: (qrCode) {
-                    // try {
-                    //   final data = json.decode(qrCode.raw[0]["rawValue"]);
-                    //   print("Json qr code " + data.toString());
-                    // } catch (e) {
-                    //   print("Normal qr code " +
-                    //       qrCode.raw[0]["rawValue"].toString());
-                    // }
-                    scanAndPay();
-                    scannerController.stop();
+                    try {
+                      // final data = json.decode(qrCode.raw[0]["rawValue"]);
+                      // print("Json qr code " + data.toString());
+                      final data = qrCode.raw[0];
+                      debugPrint("[+] QR Detected $data");
+
+                      scanAndPay();
+                      scannerController.stop();
+                    } catch (e) {
+                      // print("Normal qr code " +
+                      //     qrCode.raw[0]["rawValue"].toString());
+                      errorScan();
+                      scannerController.stop();
+                      debugPrint("[!] Error $e");
+                    }
                   },
                   startDelay: true,
                 ),

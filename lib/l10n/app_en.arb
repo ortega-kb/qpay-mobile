@@ -99,5 +99,7 @@
   "add_wallet": "Add wallet",
   "problem_scan": "If you encounter scanning problems, authorize access to the camera and relaunch the application.",
   "automatically": "The QR code will automatically detected when you position in between guide lines",
-  "payment": "Payment"
+  "payment": "Payment",
+  "scan_error": "Scan error",
+  "desc_scan_error": "Please scan a valid QR code"
 }

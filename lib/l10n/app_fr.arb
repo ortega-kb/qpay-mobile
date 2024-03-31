@@ -99,5 +99,7 @@
   "add_wallet": "Ajouter un portefuille",
   "problem_scan": "Si vous rencontrez des problèmes de scan, autorisez l'accès à l'appareil photo et relancez l'application.",
   "automatically": "Le code QR est automatiquement détecté lorsque vous le positionnez entre les lignes de guidage.",
-  "payment": "Paiement"
+  "payment": "Paiement",
+  "scan_error": "Erreur scan",
+  "desc_scan_error": "Veuillez scanner un code QR valide"
 }

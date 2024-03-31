@@ -3,38 +3,55 @@ import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
+import 'package:qpay/core/domain/model/qr_response.dart';
 import 'package:qpay/core/utils/constants/image_path.dart';
 
 import '../../core/design/color.dart';
 import '../../core/design/common/widgets/tile_container.dart';
 import '../../core/design/spacing.dart';
+import '../../core/utils/enums/operation.dart';
+import '../../core/utils/qr_code_encrypt.dart';
 
 class MyQrCodeScreen extends StatefulWidget {
-  final String? accountNumber;
+  final String accountNumber;
 
-  const MyQrCodeScreen({super.key, this.accountNumber});
+  const MyQrCodeScreen({super.key, required this.accountNumber});
 
   @override
   State<MyQrCodeScreen> createState() => _MyQrCodeScreenState();
 }
 
 class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
-  late QrCode qrCode;
-  late QrImage qrImage;
-  late PrettyQrDecoration prettyQrDecoration;
-  late Map<String, String> metadata;
+  late QrCode _qrCode;
+  late QrImage _qrImage;
+  late PrettyQrDecoration _prettyQrDecoration;
+  late QRResponse _qrResponse;
 
   @override
   void initState() {
+    initialize();
     super.initState();
+  }
 
-    qrCode = QrCode.fromData(
-      data: '''{"name": "ortega", "total": "45000"}''',
+  initialize() {
+    _qrResponse = QRResponse(
+      account: widget.accountNumber,
+      amount: null,
+      type: Operation.TRANSFER,
+      currency: null,
+    );
+
+    final data = QRCodeEncrypt.encryptQRCode(
+      _qrResponse.toJson().toString(),
+    );
+
+    _qrCode = QrCode.fromData(
+      data: data.base64,
       errorCorrectLevel: QrErrorCorrectLevel.H,
     );
 
-    qrImage = QrImage(qrCode);
-    prettyQrDecoration = const PrettyQrDecoration(
+    _qrImage = QrImage(_qrCode);
+    _prettyQrDecoration = const PrettyQrDecoration(
       image: PrettyQrDecorationImage(
         image: AssetImage(
           ImagePath.logo,
@@ -78,8 +95,8 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
                           child: Padding(
                             padding: const EdgeInsets.all(large),
                             child: PrettyQrView(
-                              qrImage: qrImage,
-                              decoration: prettyQrDecoration,
+                              qrImage: _qrImage,
+                              decoration: _prettyQrDecoration,
                             ),
                           ),
                         ),
@@ -104,8 +121,8 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
                                 child: Padding(
                                   padding: const EdgeInsets.all(large),
                                   child: PrettyQrView(
-                                    qrImage: qrImage,
-                                    decoration: prettyQrDecoration,
+                                    qrImage: _qrImage,
+                                    decoration: _prettyQrDecoration,
                                   ),
                                 ),
                               ),
@@ -124,14 +141,14 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
                                   child: TileContainer(
                                     child: ListTile(
                                       title: Text(
-                                        "QP4514521",
+                                        widget.accountNumber,
                                         style: TextStyle(color: gray),
                                       ),
                                       trailing: IconButton(
                                         onPressed: () {
                                           Clipboard.setData(
                                             ClipboardData(
-                                              text: "QP4514521",
+                                              text: widget.accountNumber,
                                             ),
                                           );
                                         },

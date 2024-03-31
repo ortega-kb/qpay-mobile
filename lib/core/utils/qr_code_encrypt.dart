@@ -1,18 +1,21 @@
-import 'dart:convert';
-
+import 'package:encrypt/encrypt.dart' as encrypt;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:pointycastle/api.dart';
-import 'package:pointycastle/export.dart';
 
 class QRCodeEncrypt {
-  Future<String> encryptQRCode(String data) async {
-    final secretKey = dotenv.get("");
-    final key = Digest('SHA-256').process(utf8.encode(secretKey));
+  static String _secretKey = dotenv.get("ENCRYPT_KEY");
+  static final _iv = encrypt.IV.fromLength(16);
 
-    return "";
+  static encrypt.Encrypted encryptQRCode(data) {
+    final key = encrypt.Key.fromUtf8(_secretKey);
+
+    final encrypter = encrypt.Encrypter(encrypt.AES(key));
+    return encrypter.encrypt(data, iv: _iv);
   }
 
-  Future<String> decryptQRCode(String data) async {
-    return "";
+  static String decryptQRCode(encrypt.Encrypted data) {
+    final key = encrypt.Key.fromUtf8(_secretKey);
+
+    final encrypter = encrypt.Encrypter(encrypt.AES(key));
+    return encrypter.decrypt(data, iv: _iv);
   }
 }
