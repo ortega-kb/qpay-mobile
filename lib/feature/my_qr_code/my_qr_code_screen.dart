@@ -57,9 +57,7 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
           ImagePath.logo,
         ),
       ),
-      shape: PrettyQrRoundedSymbol(
-        color: primary,
-      ),
+      shape: PrettyQrSmoothSymbol(color: primary, roundFactor: 0.5),
     );
   }
 
