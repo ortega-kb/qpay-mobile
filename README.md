@@ -1,6 +1,6 @@
 # qpay
 
-A smart application providing sexure and rapid payment by qr code for mobile wallets holders in Africa.
+A smart application providing secure and rapid payment by qr code for mobile wallets holders in Africa.
 
 ## Getting Started
 
