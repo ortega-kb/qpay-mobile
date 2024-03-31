@@ -12,10 +12,11 @@ class QRCodeEncrypt {
     return encrypter.encrypt(data, iv: _iv);
   }
 
-  static String decryptQRCode(encrypt.Encrypted data) {
+  static String decryptQRCode(String data) {
+    final encryptData = encrypt.Encrypted.from64(data);
     final key = encrypt.Key.fromUtf8(_secretKey);
 
     final encrypter = encrypt.Encrypter(encrypt.AES(key));
-    return encrypter.decrypt(data, iv: _iv);
+    return encrypter.decrypt(encryptData, iv: _iv);
   }
 }
