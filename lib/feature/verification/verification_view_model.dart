@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qpay/feature/verification/verification_state.dart';
 
-import '../../core/data/repository/auth_repository.dart';
+import '../../core/domain/repository/auth_repository.dart';
 import '../../core/provider/auth_repository_provider.dart';
 
 final verificationViewModelProvider =

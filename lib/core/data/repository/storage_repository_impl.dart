@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:qpay/core/data/repository/storage_repository.dart';
+import 'package:qpay/core/domain/repository/storage_repository.dart';
 import 'package:qpay/core/network/service/storage_service.dart';
 
 class StorageRepositoryImpl implements StorageRepository {

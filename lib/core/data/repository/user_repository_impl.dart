@@ -1,5 +1,5 @@
-import 'package:qpay/core/data/repository/user_repository.dart';
 import 'package:qpay/core/domain/model/user_model.dart';
+import 'package:qpay/core/domain/repository/user_repository.dart';
 import 'package:qpay/core/network/service/user_service.dart';
 
 class UserRepositoryImpl implements UserRepository {

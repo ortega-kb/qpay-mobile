@@ -1,4 +1,4 @@
-import 'package:qpay/core/data/repository/auth_repository.dart';
+import 'package:qpay/core/domain/repository/auth_repository.dart';
 import 'package:qpay/core/network/service/auth_service.dart';
 
 class AuthRepositoryImpl implements AuthRepository {

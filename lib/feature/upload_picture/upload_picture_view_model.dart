@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:qpay/core/data/repository/storage_repository.dart';
+import 'package:qpay/core/domain/repository/storage_repository.dart';
 import 'package:qpay/core/provider/storage_repository_provider.dart';
 import 'package:qpay/feature/upload_picture/upload_picture_state.dart';
 

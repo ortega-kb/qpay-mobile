@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:qpay/core/data/repository/auth_repository.dart';
+import 'package:qpay/core/domain/repository/auth_repository.dart';
 import 'package:qpay/core/provider/auth_repository_provider.dart';
 
 final wrapperViewModelProvider = StateNotifierProvider<WrapperViewModel, bool>(

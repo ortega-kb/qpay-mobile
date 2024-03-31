@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:qpay/core/data/repository/theme_preferences_repository.dart';
+import 'package:qpay/core/domain/repository/theme_preferences_repository.dart';
 import 'package:qpay/core/provider/theme_preferences_repository_provider.dart';
 
 import 'color.dart';
