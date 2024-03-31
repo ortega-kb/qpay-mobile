@@ -1,6 +1,6 @@
 import 'package:flutter/src/material/app.dart';
+import 'package:qpay/core/domain/repository/theme_preferences.dart';
 import 'package:qpay/core/domain/repository/theme_preferences_repository.dart';
-import 'package:qpay/core/local/theme_preferences.dart';
 
 class ThemePreferencesRepositoryImpl implements ThemePreferencesRepository {
   final ThemePreferences _themePreferences;

@@ -1,7 +1,7 @@
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/src/material/app.dart';
+import 'package:qpay/core/domain/repository/theme_preferences.dart';
 import 'package:qpay/core/local/preferences.dart';
-import 'package:qpay/core/local/theme_preferences.dart';
 
 class ThemePreferencesImpl extends ThemePreferences {
   ThemePreferencesImpl(this._prefs);

@@ -1,5 +1,5 @@
+import 'package:qpay/core/domain/repository/language_preferences.dart';
 import 'package:qpay/core/domain/repository/language_preferences_repository.dart';
-import 'package:qpay/core/local/language_preferences.dart';
 import 'package:qpay/core/utils/enums/language.dart';
 
 class LanguagePreferencesRepositoryImpl

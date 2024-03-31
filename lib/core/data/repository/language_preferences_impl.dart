@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:qpay/core/local/language_preferences.dart';
+import 'package:qpay/core/domain/repository/language_preferences.dart';
 import 'package:qpay/core/local/preferences.dart';
 import 'package:qpay/core/provider/language_provider.dart';
 import 'package:qpay/core/utils/enums/language.dart';
