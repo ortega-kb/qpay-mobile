@@ -8,11 +8,12 @@ class QuickOperationTile extends StatelessWidget {
   final IconData icon;
   final void Function()? onTap;
 
-  const QuickOperationTile(
-      {super.key,
-      required this.title,
-      required this.icon,
-      required this.onTap});
+  const QuickOperationTile({
+    super.key,
+    required this.title,
+    required this.icon,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -6,11 +6,11 @@ import 'package:qpay/core/domain/repository/qr_static_repository.dart';
 import 'package:qpay/core/local/local_qr_static.dart';
 
 final localQRStaticProvider = Provider((ref) {
-  final Box<QRStaticModel> qrStaticBox = Hive.box("qr_static");
+  final Box<QRStaticModel> qrStaticBox = Hive.box("qrStatic");
   return LocalQRStatic(qrStaticBox);
 });
 
-final qrStaticProvider = Provider<QRStaticRepository>(
+final qrStaticRepositoryProvider = Provider<QRStaticRepository>(
   (ref) => QRStaticRepositoryImpl(
     ref.watch(localQRStaticProvider),
   ),

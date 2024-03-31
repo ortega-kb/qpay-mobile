@@ -4,9 +4,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive/hive.dart';
 import 'package:intl/intl_standalone.dart'
     if (dart.library.html) 'package:intl/intl_browser.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:qpay/core/design/app_theme.dart';
+import 'package:qpay/core/domain/model/qr_static_model.dart';
 import 'package:qpay/core/provider/language_preferences_repository_provider.dart';
 import 'package:qpay/core/provider/language_provider.dart';
 import 'package:qpay/core/provider/messaging_service_provider.dart';
@@ -23,6 +26,12 @@ Future<void> main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+
+  // init hive
+  final appDocumentDirectory = await getApplicationDocumentsDirectory();
+  Hive.init(appDocumentDirectory.path);
+
+  await Hive.openBox<QRStaticModel>("qrStatic");
 
   // init env file
   await dotenv.load();

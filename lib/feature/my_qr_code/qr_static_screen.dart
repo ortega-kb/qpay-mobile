@@ -5,6 +5,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:qpay/core/design/common/widgets/m_button.dart';
 import 'package:qpay/core/design/spacing.dart';
 import 'package:qpay/core/design/validator.dart';
+import 'package:qpay/core/domain/entity/qr_static.dart';
+import 'package:qpay/feature/my_qr_code/qr_static_view_model.dart';
+import 'package:qpay/feature/my_qr_code/widgets/qr_static_tile.dart';
 
 import '../../core/design/color.dart';
 import '../../core/design/common/widgets/m_text_field.dart';
@@ -31,6 +34,10 @@ class _QrCodeListScreenState extends ConsumerState<QRStaticScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final List<QRStatic> qrStaticList =
+        ref.watch(qrStaticViewModelProvider).qrStatic;
+    final isLoading = ref.watch(qrStaticViewModelProvider).isLoading;
+
     void addUpdateQrCode() {
       showModalBottomSheet(
         context: context,
@@ -131,6 +138,21 @@ class _QrCodeListScreenState extends ConsumerState<QRStaticScreen> {
           const SizedBox(width: medium)
         ],
       ),
+      body: isLoading
+          ? Center(child: CircularProgressIndicator())
+          : ListView.builder(
+              scrollDirection: Axis.vertical,
+              itemCount: qrStaticList.length,
+              padding: EdgeInsets.only(bottom: 80),
+              shrinkWrap: false,
+              itemBuilder: (_, index) {
+                return QRStaticTile(
+                  qrStatic: qrStaticList[index],
+                  onDelete: () {},
+                  onTap: () {},
+                );
+              },
+            ),
     );
   }
 }
