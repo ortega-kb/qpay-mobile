@@ -101,5 +101,6 @@
   "automatically": "The QR code will automatically detected when you position in between guide lines",
   "payment": "Payment",
   "scan_error": "Scan error",
-  "desc_scan_error": "Please scan a valid QR code"
+  "desc_scan_error": "Please scan a valid QR code",
+  "currency": "Currency"
 }

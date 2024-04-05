@@ -20,7 +20,7 @@ class QRStaticModelAdapter extends TypeAdapter<QRStaticModel> {
       account: fields[0] as String,
       amount: fields[2] as double,
       motif: fields[3] as String,
-      currency: fields[4] as Currency,
+      currency: fields[4] as String,
     );
   }
 

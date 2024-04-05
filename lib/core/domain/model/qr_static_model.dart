@@ -1,8 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:qpay/core/domain/entity/qr_static.dart';
 
-import '../../utils/enums/currency.dart';
-
 part 'qr_static_model.g.dart';
 
 @HiveType(typeId: 0)
@@ -14,7 +12,7 @@ class QRStaticModel {
   @HiveField(3)
   final String motif;
   @HiveField(4)
-  final Currency currency;
+  final String currency;
 
   QRStaticModel({
     required this.account,

@@ -101,5 +101,6 @@
   "automatically": "Le code QR est automatiquement détecté lorsque vous le positionnez entre les lignes de guidage.",
   "payment": "Paiement",
   "scan_error": "Erreur scan",
-  "desc_scan_error": "Veuillez scanner un code QR valide"
+  "desc_scan_error": "Veuillez scanner un code QR valide",
+  "currency": "Devise"
 }

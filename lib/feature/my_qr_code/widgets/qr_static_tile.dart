@@ -43,7 +43,10 @@ class QRStaticTile extends StatelessWidget {
             ),
             trailing: IconButton(
               onPressed: onDelete,
-              icon: Icon(FontAwesomeIcons.trash),
+              icon: Icon(
+                FontAwesomeIcons.trash,
+                size: 17,
+              ),
             ),
           ),
         ),

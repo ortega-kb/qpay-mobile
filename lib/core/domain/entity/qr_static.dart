@@ -1,10 +1,8 @@
-import '../../utils/enums/currency.dart';
-
 class QRStatic {
   final String account;
   final double amount;
   final String motif;
-  final Currency currency;
+  final String currency;
 
   QRStatic({
     required this.account,

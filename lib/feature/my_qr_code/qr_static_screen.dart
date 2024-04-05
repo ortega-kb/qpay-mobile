@@ -6,10 +6,12 @@ import 'package:qpay/core/design/common/widgets/m_button.dart';
 import 'package:qpay/core/design/spacing.dart';
 import 'package:qpay/core/design/validator.dart';
 import 'package:qpay/core/domain/entity/qr_static.dart';
+import 'package:qpay/core/utils/enums/currency.dart';
 import 'package:qpay/feature/my_qr_code/qr_static_view_model.dart';
 import 'package:qpay/feature/my_qr_code/widgets/qr_static_tile.dart';
 
 import '../../core/design/color.dart';
+import '../../core/design/common/widgets/m_select_fied.dart';
 import '../../core/design/common/widgets/m_text_field.dart';
 import '../../core/design/common/widgets/subtitle.dart';
 
@@ -22,13 +24,16 @@ class QRStaticScreen extends ConsumerStatefulWidget {
 
 class _QrCodeListScreenState extends ConsumerState<QRStaticScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _titleController = TextEditingController();
+  final _motifController = TextEditingController();
   final _priceController = TextEditingController();
+  final _currencyController = TextEditingController();
 
   @override
   void dispose() {
-    _titleController.dispose();
+    _motifController.dispose();
     _priceController.dispose();
+    _currencyController.dispose();
+
     super.dispose();
   }
 
@@ -91,7 +96,7 @@ class _QrCodeListScreenState extends ConsumerState<QRStaticScreen> {
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
                                 MTextField(
-                                  controller: _titleController,
+                                  controller: _motifController,
                                   label: AppLocalizations.of(context)!.motif,
                                   obscureText: false,
                                   keyboardType: TextInputType.text,
@@ -110,9 +115,60 @@ class _QrCodeListScreenState extends ConsumerState<QRStaticScreen> {
                                   },
                                 ),
                                 const SizedBox(height: medium),
+                                MSelectField(
+                                  selectEditingController: _currencyController,
+                                  initialValue: null,
+                                  label: AppLocalizations.of(context)!.currency,
+                                  items: [
+                                    {
+                                      'value': Currency.CDF.value,
+                                      'label': Currency.CDF.value,
+                                      'textStyle': TextStyle(
+                                        color: gray,
+                                        fontSize: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium
+                                            ?.fontSize,
+                                      )
+                                    },
+                                    {
+                                      'value': Currency.USD.value,
+                                      'label': Currency.USD.value,
+                                      'textStyle': TextStyle(
+                                        color: gray,
+                                        fontSize: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium
+                                            ?.fontSize,
+                                      ),
+                                    },
+                                  ],
+                                ),
+                                const SizedBox(height: medium),
                                 MButton(
                                   text: AppLocalizations.of(context)!.add,
-                                  onTap: () {},
+                                  onTap: () {
+                                    if (_formKey.currentState!.validate()) {
+                                      QRStatic qrStatic = QRStatic(
+                                          account: "QP7878984152",
+                                          amount: double.parse(
+                                              _priceController.text.trim()),
+                                          motif: _motifController.text.trim(),
+                                          currency:
+                                              _currencyController.text.trim());
+                                      ref
+                                          .read(qrStaticViewModelProvider
+                                              .notifier)
+                                          .addQRStatic(qrStatic);
+
+                                      ref
+                                          .read(qrStaticViewModelProvider
+                                              .notifier)
+                                          .getAllQRStatic();
+
+                                      Navigator.pop(context);
+                                    }
+                                  },
                                 ),
                                 const SizedBox(height: medium),
                               ],
@@ -146,10 +202,13 @@ class _QrCodeListScreenState extends ConsumerState<QRStaticScreen> {
               padding: EdgeInsets.only(bottom: 80),
               shrinkWrap: false,
               itemBuilder: (_, index) {
-                return QRStaticTile(
-                  qrStatic: qrStaticList[index],
-                  onDelete: () {},
-                  onTap: () {},
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: medium),
+                  child: QRStaticTile(
+                    qrStatic: qrStaticList[index],
+                    onDelete: () {},
+                    onTap: () {},
+                  ),
                 );
               },
             ),

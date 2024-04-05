@@ -31,7 +31,8 @@ Future<void> main() async {
   final appDocumentDirectory = await getApplicationDocumentsDirectory();
   Hive.init(appDocumentDirectory.path);
 
-  await Hive.openBox<QRStaticModel>("qrStatic");
+  Hive.registerAdapter(QRStaticModelAdapter());
+  await Hive.openBox<QRStaticModel>("qr_static");
 
   // init env file
   await dotenv.load();
