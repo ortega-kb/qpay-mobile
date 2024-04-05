@@ -13,7 +13,7 @@ class TransactionList extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        for (var i = 0; i < 10; i++)
+        for (var i = 0; i < 5; i++)
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: medium),
             child: TransactionTile(

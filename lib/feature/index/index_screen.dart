@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:qpay/core/design/color.dart';
 import 'package:qpay/feature/home/home_screen.dart';
@@ -35,6 +36,25 @@ class _IndexScreenState extends State<IndexScreen> {
     );
 
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: SpeedDial(
+        backgroundColor: primary,
+        foregroundColor: Colors.white,
+        useRotationAnimation: true,
+        animatedIcon: AnimatedIcons.menu_close,
+        children: [
+          SpeedDialChild(
+            onTap: () {},
+            child: Icon(FontAwesomeIcons.person),
+            label: "Add teacher",
+          ),
+          SpeedDialChild(
+            onTap: () {},
+            child: Icon(FontAwesomeIcons.bookBookmark),
+            label: "Add course",
+          ),
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: currentIndex,
