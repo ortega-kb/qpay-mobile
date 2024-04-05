@@ -15,7 +15,7 @@ void privacyPolicy(BuildContext context) {
     useSafeArea: true,
     isScrollControlled: true,
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.zero,
+      borderRadius: BorderRadius.circular(small),
     ),
     backgroundColor: surface,
     builder: (BuildContext context) {

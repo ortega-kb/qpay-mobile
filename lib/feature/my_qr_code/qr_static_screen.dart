@@ -186,6 +186,41 @@ class _QrCodeListScreenState extends ConsumerState<QRStaticScreen> {
       );
     }
 
+    void confirmDeleteQrCode(int index) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(small),
+            ),
+            title: Text(AppLocalizations.of(context)!.delete),
+            content: Text(AppLocalizations.of(context)!.confirm_delete),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text(AppLocalizations.of(context)!.cancel),
+              ),
+              TextButton(
+                onPressed: () {
+                  ref
+                      .read(qrStaticViewModelProvider.notifier)
+                      .deleteQRStatic(index);
+
+                  ref.read(qrStaticViewModelProvider.notifier).getAllQRStatic();
+
+                  Navigator.pop(context);
+                },
+                child: Text(AppLocalizations.of(context)!.confirm),
+              ),
+            ],
+          );
+        },
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.my_qr_codes),
@@ -206,7 +241,9 @@ class _QrCodeListScreenState extends ConsumerState<QRStaticScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: medium),
                   child: QRStaticTile(
                     qrStatic: qrStaticList[index],
-                    onDelete: () {},
+                    onDelete: () {
+                      confirmDeleteQrCode(index);
+                    },
                     onTap: () {},
                   ),
                 );

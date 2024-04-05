@@ -102,5 +102,9 @@
   "payment": "Paiement",
   "scan_error": "Erreur scan",
   "desc_scan_error": "Veuillez scanner un code QR valide",
-  "currency": "Devise"
+  "currency": "Devise",
+  "delete": "Suppression",
+  "confirm_delete": "Voulez-vous vraiment supprimer ce code QR ?",
+  "confirm": "Confirmer",
+  "cancel": "Annuler"
 }
