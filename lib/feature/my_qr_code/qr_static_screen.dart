@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:qpay/core/design/animator_route.dart';
 import 'package:qpay/core/design/common/widgets/m_button.dart';
 import 'package:qpay/core/design/spacing.dart';
 import 'package:qpay/core/design/validator.dart';
 import 'package:qpay/core/domain/entity/qr_static.dart';
 import 'package:qpay/core/utils/enums/currency.dart';
 import 'package:qpay/feature/my_qr_code/qr_static_view_model.dart';
+import 'package:qpay/feature/my_qr_code/show_qr_static_screen.dart';
 import 'package:qpay/feature/my_qr_code/widgets/qr_static_tile.dart';
 
 import '../../core/design/color.dart';
@@ -49,7 +51,7 @@ class _QrCodeListScreenState extends ConsumerState<QRStaticScreen> {
         isScrollControlled: true,
         useSafeArea: true,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.zero,
+          borderRadius: BorderRadius.circular(small),
         ),
         backgroundColor: background,
         builder: (BuildContext context) {
@@ -244,7 +246,14 @@ class _QrCodeListScreenState extends ConsumerState<QRStaticScreen> {
                     onDelete: () {
                       confirmDeleteQrCode(index);
                     },
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        animateRoute(
+                          ShowQrStaticScreen(qrStatic: qrStaticList[index]),
+                        ),
+                      );
+                    },
                   ),
                 );
               },

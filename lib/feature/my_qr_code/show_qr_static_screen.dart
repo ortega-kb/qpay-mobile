@@ -1,27 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
-import 'package:qpay/core/domain/model/qr_response.dart';
-import 'package:qpay/core/utils/constants/image_path.dart';
+import 'package:qpay/core/domain/entity/qr_static.dart';
 
 import '../../core/design/color.dart';
 import '../../core/design/common/widgets/tile_container.dart';
 import '../../core/design/spacing.dart';
+import '../../core/domain/model/qr_response.dart';
+import '../../core/utils/constants/image_path.dart';
 import '../../core/utils/enums/operation.dart';
 import '../../core/utils/qr_code_encrypt.dart';
 
-class MyQrCodeScreen extends StatefulWidget {
-  final String accountNumber;
-
-  const MyQrCodeScreen({super.key, required this.accountNumber});
+class ShowQrStaticScreen extends StatefulWidget {
+  final QRStatic qrStatic;
+  const ShowQrStaticScreen({super.key, required this.qrStatic});
 
   @override
-  State<MyQrCodeScreen> createState() => _MyQrCodeScreenState();
+  State<ShowQrStaticScreen> createState() => _ShowQrStaticScreenState();
 }
 
-class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
+class _ShowQrStaticScreenState extends State<ShowQrStaticScreen> {
   late QrCode _qrCode;
   late QrImage _qrImage;
   late PrettyQrDecoration _prettyQrDecoration;
@@ -35,10 +34,10 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
 
   initialize() {
     _qrResponse = QRResponse(
-      account: widget.accountNumber,
-      amount: null,
-      type: Operation.TRANSFER,
-      currency: null,
+      account: widget.qrStatic.account,
+      amount: widget.qrStatic.amount,
+      type: Operation.PAYMENT,
+      currency: widget.qrStatic.currency,
     );
 
     final data = QRCodeEncrypt.encryptQRCode(
@@ -65,7 +64,7 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.my_qr_code),
+        title: Text(widget.qrStatic.motif),
       ),
       body: Align(
         alignment: Alignment.topCenter,
@@ -139,14 +138,14 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
                                   child: TileContainer(
                                     child: ListTile(
                                       title: Text(
-                                        widget.accountNumber,
+                                        widget.qrStatic.account,
                                         style: TextStyle(color: gray),
                                       ),
                                       trailing: IconButton(
                                         onPressed: () {
                                           Clipboard.setData(
                                             ClipboardData(
-                                              text: widget.accountNumber,
+                                              text: widget.qrStatic.account,
                                             ),
                                           );
                                         },

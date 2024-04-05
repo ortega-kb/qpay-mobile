@@ -35,7 +35,7 @@ class _WalletsScreenState extends ConsumerState<WalletsScreen> {
         isScrollControlled: true,
         useSafeArea: true,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.zero,
+          borderRadius: BorderRadius.circular(small),
         ),
         backgroundColor: background,
         builder: (BuildContext context) {
