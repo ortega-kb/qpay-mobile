@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:qpay/core/domain/entity/qr_static.dart';
@@ -29,9 +30,20 @@ class QRStaticTile extends StatelessWidget {
           borderRadius: BorderRadius.circular(middleSmall),
           child: ListTile(
             dense: true,
+            leading: Container(
+              decoration:
+                  BoxDecoration(color: background, shape: BoxShape.circle),
+              child: Padding(
+                padding: const EdgeInsets.all(extraSmall),
+                child: Icon(
+                  CupertinoIcons.qrcode,
+                  size: 20,
+                ),
+              ),
+            ),
             title: Text(
               qrStatic.motif,
-              style: Theme.of(context).textTheme.bodyLarge,
+              style: Theme.of(context).textTheme.bodyMedium,
               overflow: TextOverflow.ellipsis,
             ),
             subtitle: Text(

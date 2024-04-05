@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../color.dart';
@@ -29,10 +30,21 @@ class TransactionTile extends StatelessWidget {
           onTap: onTap,
           borderRadius: BorderRadius.circular(middleSmall),
           child: ListTile(
+            leading: Container(
+              decoration:
+                  BoxDecoration(color: background, shape: BoxShape.circle),
+              child: Padding(
+                padding: const EdgeInsets.all(extraSmall),
+                child: Icon(
+                  CupertinoIcons.arrow_up_right,
+                  size: 20,
+                ),
+              ),
+            ),
             dense: true,
             title: Text(
               action,
-              style: Theme.of(context).textTheme.bodyLarge,
+              style: Theme.of(context).textTheme.bodyMedium,
               overflow: TextOverflow.ellipsis,
             ),
             subtitle: Text(
