@@ -106,5 +106,7 @@
   "delete": "Suppression",
   "confirm_delete": "Voulez-vous vraiment supprimer ce code QR ?",
   "confirm": "Confirmer",
-  "cancel": "Annuler"
+  "cancel": "Annuler",
+  "all": "Toutes",
+  "transfer": "Transfert"
 }

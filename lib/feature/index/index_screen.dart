@@ -62,7 +62,7 @@ class _IndexScreenState extends State<IndexScreen> {
             child: Icon(
               FontAwesomeIcons.moneyBills,
               color: surface,
-              size: 20,
+              size: 18,
             ),
             label: AppLocalizations.of(context)!.payment_link,
           ),
