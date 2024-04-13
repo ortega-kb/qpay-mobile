@@ -1,13 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qpay/core/design/color.dart';
 import 'package:qpay/core/design/spacing.dart';
 import 'package:qpay/core/utils/enums/currency.dart';
 
+import '../../../provider/wallet_indicator_provider.dart';
 import 'balance_indicator.dart';
 
-class AllWallet extends StatefulWidget {
+class AllWallet extends ConsumerStatefulWidget {
   final String title;
   final Function()? onTap;
 
@@ -18,20 +20,23 @@ class AllWallet extends StatefulWidget {
   });
 
   @override
-  State<AllWallet> createState() => _AllWalletState();
+  ConsumerState createState() => _AllWalletState();
 }
 
-class _AllWalletState extends State<AllWallet> {
-  var pageController = PageController(initialPage: 0, viewportFraction: 0.9);
-
+class _AllWalletState extends ConsumerState<AllWallet> {
   @override
   void dispose() {
-    pageController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    final currentPage = ref.watch(walletIndicatorProvider);
+    var pageController = PageController(
+      initialPage: currentPage,
+      viewportFraction: 0.9,
+    );
+
     return Column(
       children: [
         SizedBox(
@@ -50,7 +55,9 @@ class _AllWalletState extends State<AllWallet> {
                 currency: Currency.USD,
               ),
             ],
-            onPageChanged: (page) {},
+            onPageChanged: (page) {
+              ref.read(walletIndicatorProvider.notifier).update((_) => page);
+            },
           ),
         ),
         const SizedBox(height: small),

@@ -108,5 +108,7 @@
   "confirm": "Confirm",
   "cancel": "Cancel",
   "all": "All",
-  "transfer": "Transfer"
+  "transfer": "Transfer",
+  "select_wallet": "Select wallet",
+  "total_and_transfer": "Total + Transfer"
 }

@@ -12,7 +12,6 @@ import 'package:qpay/core/design/app_theme.dart';
 import 'package:qpay/core/domain/model/qr_static_model.dart';
 import 'package:qpay/core/provider/language_preferences_repository_provider.dart';
 import 'package:qpay/core/provider/language_provider.dart';
-import 'package:qpay/core/provider/messaging_service_provider.dart';
 import 'package:qpay/feature/index/index_screen.dart';
 
 import 'firebase_options.dart';
@@ -44,7 +43,7 @@ Future<void> main() async {
 
   // init fcm service
   final container = ProviderContainer();
-  await container.read(messagingServiceProvider).initMessaging();
+  //await container.read(messagingServiceProvider).initMessaging();
 
   // get preference language
   final language =

@@ -108,5 +108,7 @@
   "confirm": "Confirmer",
   "cancel": "Annuler",
   "all": "Toutes",
-  "transfer": "Transfert"
+  "transfer": "Transfert",
+  "select_wallet": "Selectionner un portefeuille",
+  "total_and_transfer": "Total + Frais de transfert"
 }
