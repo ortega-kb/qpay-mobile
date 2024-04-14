@@ -110,5 +110,6 @@
   "all": "All",
   "transfer": "Transfer",
   "select_wallet": "Select wallet",
-  "total_and_transfer": "Total + Transfer"
+  "total_and_transfer": "Total + Transfer",
+  "qr_no_valid": "No valid QR code !"
 }

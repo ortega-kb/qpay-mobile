@@ -10,7 +10,6 @@ import '../../core/design/color.dart';
 import '../../core/design/common/widgets/tile_container.dart';
 import '../../core/design/spacing.dart';
 import '../../core/utils/enums/operation.dart';
-import '../../core/utils/qr_code_encrypt.dart';
 
 class MyQrCodeScreen extends StatefulWidget {
   final String accountNumber;
@@ -41,13 +40,9 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
       currency: null,
     );
 
-    final data = QRCodeEncrypt.encryptQRCode(
-      _qrResponse.toJson().toString(),
-    );
-
     _qrCode = QrCode.fromData(
-      data: data.base64,
-      errorCorrectLevel: QrErrorCorrectLevel.H,
+      data: _qrResponse.toValidQRCode(),
+      errorCorrectLevel: QrErrorCorrectLevel.Q,
     );
 
     _qrImage = QrImage(_qrCode);
@@ -57,7 +52,7 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
           ImagePath.logo,
         ),
       ),
-      shape: PrettyQrSmoothSymbol(color: primary, roundFactor: 0.5),
+      shape: PrettyQrRoundedSymbol(color: primary),
     );
   }
 

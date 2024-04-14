@@ -10,7 +10,6 @@ import '../../core/design/spacing.dart';
 import '../../core/domain/model/qr_response.dart';
 import '../../core/utils/constants/image_path.dart';
 import '../../core/utils/enums/operation.dart';
-import '../../core/utils/qr_code_encrypt.dart';
 
 class ShowQrStaticScreen extends StatefulWidget {
   final QRStatic qrStatic;
@@ -40,13 +39,9 @@ class _ShowQrStaticScreenState extends State<ShowQrStaticScreen> {
       currency: widget.qrStatic.currency,
     );
 
-    final data = QRCodeEncrypt.encryptQRCode(
-      _qrResponse.toJson().toString(),
-    );
-
     _qrCode = QrCode.fromData(
-      data: data.base64,
-      errorCorrectLevel: QrErrorCorrectLevel.H,
+      data: _qrResponse.toValidQRCode(),
+      errorCorrectLevel: QrErrorCorrectLevel.Q,
     );
 
     _qrImage = QrImage(_qrCode);
@@ -56,7 +51,7 @@ class _ShowQrStaticScreenState extends State<ShowQrStaticScreen> {
           ImagePath.logo,
         ),
       ),
-      shape: PrettyQrSmoothSymbol(color: primary, roundFactor: 0.5),
+      shape: PrettyQrRoundedSymbol(color: primary),
     );
   }
 

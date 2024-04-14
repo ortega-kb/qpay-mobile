@@ -110,5 +110,6 @@
   "all": "Toutes",
   "transfer": "Transfert",
   "select_wallet": "Selectionner un portefeuille",
-  "total_and_transfer": "Total + Frais de transfert"
+  "total_and_transfer": "Total + Frais de transfert",
+  "qr_no_valid": "Code QR non valide !"
 }

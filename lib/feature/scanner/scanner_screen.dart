@@ -3,7 +3,7 @@ import 'dart:io' show Platform;
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:qpay/core/utils/qr_code_encrypt.dart';
+import 'package:qpay/core/utils/qr_validity.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 import '../../core/design/color.dart';
@@ -48,14 +48,14 @@ class _ScannerScreenState extends State<ScannerScreen> {
       }
     }
 
-    void scanAndPay(data) {
+    void scanAndPay(List<String> data) {
       showModalBottomSheet(
         context: context,
         isDismissible: false,
         isScrollControlled: true,
         useSafeArea: true,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.zero,
+          borderRadius: BorderRadius.circular(small),
         ),
         backgroundColor: background,
         builder: (BuildContext context) {
@@ -92,7 +92,9 @@ class _ScannerScreenState extends State<ScannerScreen> {
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [Text(data)],
+                      children: [
+                        Text(data[1]),
+                      ],
                     ),
                   ),
                 ],
@@ -110,7 +112,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
         isScrollControlled: true,
         useSafeArea: true,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.zero,
+          borderRadius: BorderRadius.circular(small),
         ),
         backgroundColor: background,
         builder: (BuildContext context) {
@@ -167,12 +169,19 @@ class _ScannerScreenState extends State<ScannerScreen> {
         (scanData) {
           try {
             if (scanData.code != null) {
-              final data = QRCodeEncrypt.decryptQRCode(scanData.code!);
-              scanAndPay(data);
+              if (QrValidity.qrValidity(scanData.code!)) {
+                scanAndPay(scanData.code!.split("-"));
+                pauseScan();
+              } else {
+                errorScan(AppLocalizations.of(context)!.qr_no_valid);
+                pauseScan();
+              }
+            } else {
+              errorScan(AppLocalizations.of(context)!.qr_no_valid);
               pauseScan();
             }
           } catch (e) {
-            errorScan(e.toString());
+            errorScan(AppLocalizations.of(context)!.qr_no_valid);
             pauseScan();
           }
         },

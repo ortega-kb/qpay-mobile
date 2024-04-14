@@ -14,7 +14,16 @@ import '../../core/design/spacing.dart';
 import '../../core/utils/enums/currency.dart';
 
 class TransferMoneyScreen extends ConsumerStatefulWidget {
-  const TransferMoneyScreen({super.key});
+  final String? accountNumber;
+  final String? amount;
+  final String? currency;
+
+  const TransferMoneyScreen({
+    super.key,
+    this.accountNumber,
+    this.amount,
+    this.currency,
+  });
 
   @override
   ConsumerState createState() => _TransferMoneyScreenState();
@@ -24,6 +33,22 @@ class _TransferMoneyScreenState extends ConsumerState<TransferMoneyScreen> {
   TextEditingController _accountController = TextEditingController();
   TextEditingController _amountController = TextEditingController();
   TextEditingController _totalController = TextEditingController();
+
+  @override
+  void initState() {
+    initFields();
+    super.initState();
+  }
+
+  initFields() {
+    if (widget.accountNumber != null) {
+      _accountController.text = widget.accountNumber!;
+    }
+
+    if (widget.amount != null) {
+      _amountController.text = widget.amount!;
+    }
+  }
 
   @override
   void dispose() {
@@ -42,7 +67,7 @@ class _TransferMoneyScreenState extends ConsumerState<TransferMoneyScreen> {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(medium),
         child: MButton(
-          text: AppLocalizations.of(context)!.transfer,
+          text: AppLocalizations.of(context)!.confirm,
           onTap: () {},
         ),
       ),

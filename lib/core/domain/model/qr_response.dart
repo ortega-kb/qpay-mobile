@@ -22,10 +22,7 @@ class QRResponse {
     );
   }
 
-  Map<String, dynamic> toJson() => {
-        "account": account,
-        "amount": amount,
-        "type": type,
-        "currency": currency,
-      };
+  String toValidQRCode() {
+    return """qpay-${account}-${amount}-${type}-${currency}""";
+  }
 }
