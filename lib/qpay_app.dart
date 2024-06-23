@@ -10,6 +10,10 @@ class QpayApp extends StatefulWidget {
 class _QpayAppState extends State<QpayApp> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Column(
+        children: [],
+      ),
+    );
   }
 }
