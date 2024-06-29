@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qpay/config/app_router_config.dart';
+import 'package:qpay/core/theme/app_theme.dart';
 import 'package:qpay/core/utils/constants.dart';
 
 class QpayAppWrapper extends StatefulWidget {
@@ -22,6 +23,7 @@ class _QpayAppWrapperState extends State<QpayAppWrapper> {
         Locale('en')
       ],
       locale: Constants.locale,
+      theme: AppTheme.lightTheme,
       routerConfig: AppRouterConfig().router,
     );
   }
