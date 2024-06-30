@@ -6,41 +6,37 @@ class Messages {
 
   static info(title, description, BuildContext context) {
     return toastification.show(
-      type: ToastificationType.info,
-      context: context,
-      title: title,
-      description: Text(description),
-      autoCloseDuration: Duration(seconds: duration)
-    );
+        type: ToastificationType.info,
+        context: context,
+        title: Text(title),
+        description: Text(description),
+        autoCloseDuration: Duration(seconds: duration));
   }
 
   static error(title, description, BuildContext context) {
     return toastification.show(
-      type: ToastificationType.error,
-      context: context,
-      title: title,
-      description: Text(description),
-      autoCloseDuration: Duration(seconds: duration)
-    );
+        type: ToastificationType.error,
+        context: context,
+        title: Text(title),
+        description: Text(description),
+        autoCloseDuration: Duration(seconds: duration));
   }
 
   static warning(title, description, BuildContext context) {
     return toastification.show(
-      type: ToastificationType.warning,
-      context: context,
-      title: title,
-      description: Text(description),
-      autoCloseDuration: Duration(seconds: duration)
-    );
+        type: ToastificationType.warning,
+        context: context,
+        title: Text(title),
+        description: Text(description),
+        autoCloseDuration: Duration(seconds: duration));
   }
 
   static success(title, description, BuildContext context) {
     return toastification.show(
-      type: ToastificationType.success,
-      context: context,
-      title: title,
-      description: Text(description),
-      autoCloseDuration: Duration(seconds: duration)
-    );
+        type: ToastificationType.success,
+        context: context,
+        title: Text(title),
+        description: Text(description),
+        autoCloseDuration: Duration(seconds: duration));
   }
 }
