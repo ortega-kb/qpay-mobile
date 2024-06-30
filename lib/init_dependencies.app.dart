@@ -8,6 +8,8 @@ Future<void> initDependencies() async {
     DeviceOrientation.portraitDown,
   ]);
 
+  _initSVG();
+
   await dotenv.load();
   await Supabase.initialize(
     url: Secrets.supabaseUrl,
@@ -16,3 +18,18 @@ Future<void> initDependencies() async {
 
   locator.registerLazySingleton(() => Supabase.instance.client);
 }
+
+
+void _initSVG() async {
+  await preloadSVG([
+    ImagePath.svgTransfer,
+    ImagePath.svgQrCode,
+    ImagePath.svgPaymentReceive,
+  ]);
+}
+
+void _initAuth() async {}
+
+void _initTransaction() async {}
+
+void _initWallet() async {}

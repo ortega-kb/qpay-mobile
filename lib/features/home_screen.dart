@@ -3,7 +3,12 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:go_router/go_router.dart';
 import 'package:qpay/core/theme/app_color.dart';
+import 'package:qpay/features/account/presentation/screens/account_screen.dart';
+import 'package:qpay/features/dashboard/presentation/screens/dashboard_screen.dart';
+import 'package:qpay/features/qr_code/presentation/screens/qr_code_dynamic_screen.dart';
+import 'package:qpay/features/qr_code/presentation/screens/qr_code_static_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -29,7 +34,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final _screens = [Column(), Column(), Column(), Column()];
+    final _screens = [
+      DashboardScreen(),
+      QrCodeDynamicScreen(),
+      QrCodeStaticScreen(),
+      AccountScreen()
+    ];
 
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -44,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           SpeedDialChild(
             backgroundColor: Colors.brown,
-            onTap: () {},
+            onTap: () => context.push('/link-transaction'),
             child: Icon(
               FluentIcons.building_bank_link_48_filled,
               color: AppColor.surface,
@@ -54,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           SpeedDialChild(
             backgroundColor: Colors.redAccent,
-            onTap: () {},
+            onTap: () => context.push('/add-transaction'),
             child: Icon(
               FluentIcons.arrow_up_right_48_filled,
               size: 24,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddWalletScreen extends StatefulWidget {
   const AddWalletScreen({super.key});
@@ -10,6 +11,10 @@ class AddWalletScreen extends StatefulWidget {
 class _AddWalletScreenState extends State<AddWalletScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(AppLocalizations.of(context)!.add_wallet),
+      ),
+    );
   }
 }
