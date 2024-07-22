@@ -25,7 +25,7 @@ class MButton extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(AppDimen.p12),
+        padding: const EdgeInsets.all(AppDimen.p16),
         child: Text(
           text,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(

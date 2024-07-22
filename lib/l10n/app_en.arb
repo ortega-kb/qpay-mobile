@@ -11,7 +11,7 @@
   "text_receive_payment": "Request and make quick secure payments without hassle.",
   "get_started": "Get started",
   "connection": "Login",
-  "text_connection": "Enter the correct information",
+  "text_connection": "Enter your credentials to log in your account.",
   "phone_number": "Phone number",
   "passwd": "Password",
   "create_account": "Create new account",
@@ -111,5 +111,8 @@
   "transfer": "Transfer",
   "select_wallet": "Select wallet",
   "total_and_transfer": "Total + Transfer",
-  "qr_no_valid": "No valid QR code !"
+  "qr_no_valid": "No valid QR code !",
+  "enter_information_link_payment": "Enter the information required to generate the payment link",
+  "description": "Description",
+  "generate_link": "Generate link"
 }

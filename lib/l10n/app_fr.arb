@@ -11,7 +11,7 @@
   "text_receive_payment": "Générer facilement des factures en ajoutant toutes les informations nécessaires, puis créez un code QR pour permettre un paiement rapide et pratique.",
   "get_started": "Commencer",
   "connection": "Connexion",
-  "text_connection": "Entrez des informations correctes",
+  "text_connection": "Saisissez vos identifiants pour vous connecter à votre compte.",
   "phone_number": "Numéro de téléphone",
   "passwd": "Mot de passe",
   "create_account": "Créer un compte",
@@ -111,5 +111,8 @@
   "transfer": "Transfert",
   "select_wallet": "Selectionner un portefeuille",
   "total_and_transfer": "Total + Frais de transfert",
-  "qr_no_valid": "Code QR non valide !"
+  "qr_no_valid": "Code QR non valide !",
+  "enter_information_link_payment": "Saisissez les informations nécessaires pour générer le lien de paiement",
+  "description": "Description",
+  "generate_link": "Générer le lien"
 }

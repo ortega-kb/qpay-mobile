@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:toastification/toastification.dart';
 
 class Messages {
-  static final duration = 4;
+  static final duration = 2;
 
   static info(title, description, BuildContext context) {
     return _settings(

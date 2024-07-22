@@ -7,6 +7,7 @@ import 'package:qpay/core/utils/image_path.dart';
 import 'package:qpay/features/auth/presentation/widgets/on_boarding_image.dart';
 import 'package:qpay/features/auth/presentation/widgets/on_boarding_page.dart';
 
+import '../../../../core/theme/app_dimen.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
@@ -16,12 +17,19 @@ class OnBoardingScreen extends StatefulWidget {
 }
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
       body: OnBoardingSlider(
+        finishButtonStyle: FinishButtonStyle(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AppDimen.p32),
+          ),
+        ),
+        finishButtonTextStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(
+          color: AppColor.white,
+        ),
         controllerColor: AppColor.primary,
         onFinish: () {
           context.push('/sign-in');

@@ -17,7 +17,7 @@ import '../features/auth/presentation/screens/sign_in_screen.dart';
 class AppRouterConfig {
   late final router = GoRouter(
     debugLogDiagnostics: true,
-    initialLocation: '/wallet-list',
+    initialLocation: '/home',
     routes: [
       GoRoute(
         path: '/on-boarding',
