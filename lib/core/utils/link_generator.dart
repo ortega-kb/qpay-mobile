@@ -5,6 +5,6 @@ Future<Uri> linkGenerator({
   required String wallet,
 }) async {
   return Uri.parse(
-    "https://qpay.app/payment-link?id=$id&amount=$amount&description=$description&wallet=$wallet",
+    "https://qpay.app/payment?id=$id&at=$amount&desc=$description&wt=$wallet",
   );
 }

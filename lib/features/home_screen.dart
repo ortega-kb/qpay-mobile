@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           SpeedDialChild(
             backgroundColor: Colors.brown,
-            onTap: () => context.push('/link-transaction'),
+            onTap: () => context.go('/link-generator'),
             child: Icon(
               FluentIcons.building_bank_link_48_filled,
               color: AppColor.surface,
@@ -64,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           SpeedDialChild(
             backgroundColor: Colors.redAccent,
-            onTap: () => context.push('/add-transaction'),
+            onTap: () => context.go('/add-transaction'),
             child: Icon(
               FluentIcons.arrow_up_right_48_filled,
               size: 24,

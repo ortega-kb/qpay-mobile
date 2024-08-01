@@ -11,14 +11,14 @@ import 'package:qpay/core/utils/link_generator.dart';
 import 'package:qpay/core/utils/validator.dart';
 import 'package:share_plus/share_plus.dart';
 
-class LinkTransactionScreen extends StatefulWidget {
-  const LinkTransactionScreen({super.key});
+class LinkGeneratorScreen extends StatefulWidget {
+  const LinkGeneratorScreen({super.key});
 
   @override
-  State<LinkTransactionScreen> createState() => _LinkTransactionScreenState();
+  State<LinkGeneratorScreen> createState() => _LinkGeneratorScreenState();
 }
 
-class _LinkTransactionScreenState extends State<LinkTransactionScreen> {
+class _LinkGeneratorScreenState extends State<LinkGeneratorScreen> {
   final _formKey = GlobalKey<FormState>();
   final _amountController = TextEditingController();
   final _descriptionController = TextEditingController();
@@ -26,6 +26,7 @@ class _LinkTransactionScreenState extends State<LinkTransactionScreen> {
 
   @override
   void initState() {
+    super.initState();
     _walletTypeController.text = Currency.CDF.name;
   }
 
