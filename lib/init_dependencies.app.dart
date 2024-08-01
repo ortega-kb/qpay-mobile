@@ -9,6 +9,11 @@ Future<void> initDependencies() async {
   ]);
 
   _initSVG();
+  _initQRCode();
+
+  final appDocumentDirectory = await getApplicationDocumentsDirectory();
+  Hive.init(appDocumentDirectory.path);
+  Hive.registerAdapter(QRStaticModelAdapter());
 
   await dotenv.load();
   await Supabase.initialize(
@@ -16,7 +21,10 @@ Future<void> initDependencies() async {
     anonKey: Secrets.supabaseKey,
   );
 
+  final qrStaticBox = await Hive.openBox<QRStaticModel>('qr_static');
+
   locator.registerLazySingleton(() => Supabase.instance.client);
+  locator.registerLazySingleton(() => qrStaticBox);
 }
 
 
@@ -28,8 +36,40 @@ void _initSVG() async {
   ]);
 }
 
-void _initAuth() async {}
+void _initAuth() async {
 
-void _initTransaction() async {}
+}
 
-void _initWallet() async {}
+void _initTransaction() async {
+
+}
+
+void _initWallet() async {
+
+}
+
+void _initQRCode() async {
+  locator
+    ..registerFactory<QrStaticLocalDatasource>(
+          () => QRStaticLocalDatasourceImpl(locator()),
+    )
+    ..registerFactory<QRStaticRepository>(
+          () => QRStaticRepositoryImpl(locator()),
+    )
+    ..registerFactory(
+          () => GetQRStatic(locator()),
+    )
+    ..registerFactory(
+          () => AddQRStatic(locator()),
+    )
+    ..registerFactory(
+          () => DeleteQRStatic(locator()),
+    )
+    ..registerLazySingleton(
+          () => QRCodeBloc(
+        getQRStatic: locator(),
+        addQRStatic: locator(),
+        deleteQRStatic: locator(),
+      ),
+    );
+}
