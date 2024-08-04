@@ -3,8 +3,10 @@ import 'dart:ffi';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
+import 'package:qpay/features/qr_code/presentation/screens/qr_static_detail_screen.dart';
 import 'package:qpay/features/qr_code/presentation/widgets/qr_static_tile.dart';
 import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -52,7 +54,12 @@ class _QrCodeStaticScreenState extends State<QrCodeStaticScreen> {
         pageListBuilder: (context) {
           return [
             WoltModalSheetPage(
-              topBarTitle: Text(AppLocalizations.of(context)!.add_qr_code),
+              topBarTitle: Text(
+                AppLocalizations.of(context)!.add_qr_code,
+                style: Theme.of(context)!.textTheme.bodyLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+              ),
               isTopBarLayerAlwaysVisible: true,
               child: Form(
                 key: _formKey,
@@ -142,6 +149,37 @@ class _QrCodeStaticScreenState extends State<QrCodeStaticScreen> {
       );
     }
 
+    void confirmDeleteQRStatic(int index) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppDimen.p16),
+            ),
+            title: Text(AppLocalizations.of(context)!.delete),
+            content: Text(AppLocalizations.of(context)!.confirm_delete),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text(AppLocalizations.of(context)!.cancel),
+              ),
+              TextButton(
+                onPressed: () {
+                  context.read<QRCodeBloc>().add(DeleteQRStaticEvent(index));
+                  context.read<QRCodeBloc>().add(GetAllQRStatic());
+                  Navigator.pop(context);
+                },
+                child: Text(AppLocalizations.of(context)!.confirm),
+              ),
+            ],
+          );
+        },
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.my_qr_codes),
@@ -166,11 +204,9 @@ class _QrCodeStaticScreenState extends State<QrCodeStaticScreen> {
                 final qrStatic = state.qrStatics[index];
                 return QRStaticTile(
                   qrStatic: qrStatic,
-                  onTap: () {},
-                  onDelete: () {
-                    context.read<QRCodeBloc>().add(DeleteQRStaticEvent(index));
-                    context.read<QRCodeBloc>().add(GetAllQRStatic());
-                  },
+                  index: index,
+                  onTap: () => context.push('/qr-static-details', extra: qrStatic),
+                  onDelete: () => confirmDeleteQRStatic(index),
                 );
               },
               separatorBuilder: (context, int) {

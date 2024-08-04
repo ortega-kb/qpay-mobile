@@ -4,8 +4,12 @@ import 'package:go_router/go_router.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/features/auth/presentation/screens/sign_up_screen.dart';
 import 'package:qpay/features/auth/presentation/screens/on_boarding_screen.dart';
+import 'package:qpay/features/dashboard/presentation/screens/reports_screen.dart';
 import 'package:qpay/features/home_screen.dart';
+import 'package:qpay/features/notifications/presentation/screens/notifications_screen.dart';
+import 'package:qpay/features/qr_code/domain/entities/qr_static.dart';
 import 'package:qpay/features/qr_code/presentation/screens/qr_scanner_screen.dart';
+import 'package:qpay/features/qr_code/presentation/screens/qr_static_detail_screen.dart';
 import 'package:qpay/features/transaction/presentation/screens/add_transaction_screen.dart';
 import 'package:qpay/features/transaction/presentation/screens/link_generator_screen.dart';
 import 'package:qpay/features/transaction/presentation/screens/transaction_list_screen.dart';
@@ -101,6 +105,18 @@ class AppRouterConfig {
               );
             },
           ),
+          GoRoute(
+            path: 'reports-transaction',
+            builder: (context, state) {
+              return const AnnotatedRegion(
+                value: SystemUiOverlayStyle(
+                  statusBarColor: AppColor.background,
+                  systemNavigationBarColor: AppColor.background,
+                ),
+                child: ReportsScreen(),
+              );
+            },
+          ),
         ],
       ),
       GoRoute(
@@ -140,6 +156,31 @@ class AppRouterConfig {
               systemNavigationBarColor: AppColor.background,
             ),
             child: SignUpScreen(),
+          );
+        },
+      ),
+      GoRoute(
+        path: '/notifications',
+        builder: (context, state) {
+          return const AnnotatedRegion(
+            value: SystemUiOverlayStyle(
+              statusBarColor: AppColor.background,
+              systemNavigationBarColor: AppColor.background,
+            ),
+            child: NotificationsScreen(),
+          );
+        },
+      ),
+      GoRoute(
+        path: '/qr-static-details',
+        builder: (context, state) {
+          final qrStatic = state.extra as QRStatic;
+          return AnnotatedRegion(
+            value: SystemUiOverlayStyle(
+              statusBarColor: AppColor.background,
+              systemNavigationBarColor: AppColor.background,
+            ),
+            child: QRStaticDetailScreen(qrStatic: qrStatic),
           );
         },
       ),

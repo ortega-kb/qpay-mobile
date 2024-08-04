@@ -12,7 +12,7 @@ class AppTheme {
       backgroundColor: AppColor.background,
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      elevation: 1,
+      elevation: 2,
       backgroundColor: AppColor.surface,
       selectedIconTheme: IconThemeData(color: AppColor.primary),
       selectedLabelStyle: TextStyle(color: AppColor.primary),
