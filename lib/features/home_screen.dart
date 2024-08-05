@@ -1,15 +1,10 @@
 import 'package:animate_icons/animate_icons.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:go_router/go_router.dart';
-import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/features/account/presentation/screens/account_screen.dart';
 import 'package:qpay/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:qpay/features/dashboard/presentation/screens/reports_screen.dart';
-import 'package:qpay/features/qr_code/presentation/screens/qr_code_dynamic_screen.dart';
 import 'package:qpay/features/qr_code/presentation/screens/qr_code_static_screen.dart';
 import 'package:qpay/features/wallet/presentation/screens/wallet_list_screen.dart';
 

@@ -6,6 +6,7 @@ import 'package:qpay/core/shared/widgets/wallet.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:qpay/features/dashboard/presentation/widgets/quick_action_list.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -65,6 +66,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
           children: [
             const SizedBox(height: AppDimen.p16),
             WalletUSDCDF(),
+            const SizedBox(height: AppDimen.p16),
+            QuickActionList()
           ],
         ),
       ),
