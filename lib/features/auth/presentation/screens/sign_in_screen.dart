@@ -22,6 +22,14 @@ class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
+
+  @override
+  void dispose() {
+    _phoneController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,24 +80,24 @@ class _SignInScreenState extends State<SignInScreen> {
                         return Validator.passwordValidator(value!);
                       },
                     ),
-                    const SizedBox(height: AppDimen.p16),
-                    MButton(
-                      text: AppLocalizations.of(context)!.login,
-                      onPressed: () async {
-                        if (_formKey.currentState!.validate()) {}
-                      },
-                    ),
-                    const SizedBox(height: AppDimen.p32),
-                    MButton(
-                      text: AppLocalizations.of(context)!.login,
-                      onPressed: () {
-                        privacyPolicy(
-                          context: context,
-                          onTap: () async {
-                          },
-                        );
-                      },
-                    ),
+                    // const SizedBox(height: AppDimen.p16),
+                    // MButton(
+                    //   text: AppLocalizations.of(context)!.login,
+                    //   onPressed: () async {
+                    //     if (_formKey.currentState!.validate()) {}
+                    //   },
+                    // ),
+                    // const SizedBox(height: AppDimen.p32),
+                    // MButton(
+                    //   text: AppLocalizations.of(context)!.login,
+                    //   onPressed: () {
+                    //     privacyPolicy(
+                    //       context: context,
+                    //       onTap: () async {
+                    //       },
+                    //     );
+                    //   },
+                    // ),
                     const SizedBox(height: AppDimen.p8),
                   ],
                 ),

@@ -1,4 +1,5 @@
 import 'package:qpay/core/shared/entities/user.dart';
+import 'package:qpay/core/utils/account_type.dart';
 
 class UserModel extends User {
   UserModel({
@@ -7,7 +8,7 @@ class UserModel extends User {
     required super.phone,
     required super.fullName,
     required super.password,
-    required super.dateOfBirth,
+    required super.accountType,
     required super.createdAt,
   });
 
@@ -18,7 +19,7 @@ class UserModel extends User {
       phone: json['phone'],
       fullName: json['fullName'],
       password: json['password'],
-      dateOfBirth: json['dateOfBirth'],
+      accountType: json['accountType'],
       createdAt: json['createdAt'],
     );
   }
@@ -29,7 +30,7 @@ class UserModel extends User {
     String? phone,
     String? fullName,
     String? password,
-    String? dateOfBirth,
+    AccountType? accountType,
     DateTime? createdAt,
   }) {
     return UserModel(
@@ -38,7 +39,7 @@ class UserModel extends User {
       phone: phone ?? this.phone,
       fullName: fullName ?? this.fullName,
       password: password ?? this.password,
-      dateOfBirth: dateOfBirth ?? this.dateOfBirth,
+      accountType: accountType ?? this.accountType,
       createdAt: createdAt ?? this.createdAt,
     );
   }
