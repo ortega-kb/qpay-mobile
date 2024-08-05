@@ -35,7 +35,7 @@ class AuthRepositoryImpl implements AuthRepository {
     required String email,
     required String fullName,
     required String password,
-    required String dateOfBirth,
+    required String accountType,
   }) async {
     return _user(
       func: () async => authRemoteDataSource.signUpWithPhoneAndPassword(
@@ -43,7 +43,7 @@ class AuthRepositoryImpl implements AuthRepository {
         email: email,
         fullName: fullName,
         password: password,
-        dateOfBirth: dateOfBirth,
+        accountType: accountType,
       ),
     );
   }

@@ -1,15 +1,15 @@
 
 import 'dart:math';
 
-class IDGenerator {
+class CodeGenerator {
 
-  // generate unique user ID for customers
-  static String userID() {
+  // generate unique user code for customers
+  static String userCode() {
     return "qp${_uniqueNumericCode()}";
   }
 
   // generate unique numeric code for transaction IDs
-  static String transactionID() {
+  static String transactionCode() {
     return "#qp${_uniqueNumericCode()}";
   }
 

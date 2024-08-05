@@ -118,5 +118,8 @@
   "notifications": "Notifications",
   "reports": "Rapports",
   "greeting": "Bienvenue,",
-  "reload": "Recharger"
+  "reload": "Recharger",
+  "forgot_password": "Mot de passe oublié ?",
+  "dont_have_account": "Pas de compte ?",
+  "already_have_account": "Déjà un compte ?"
 }

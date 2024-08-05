@@ -1,11 +1,15 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:go_router/go_router.dart';
+import 'package:qpay/core/shared/widgets/m_button.dart';
 import 'package:qpay/core/shared/widgets/privacy_policy.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:qpay/features/auth/presentation/widgets/auth_subtitle.dart';
+import 'package:qpay/features/auth/presentation/widgets/m_password_field.dart';
+import 'package:qpay/features/auth/presentation/widgets/sign_in_sign_up_text.dart';
 
-import '../../../../core/shared/widgets/m_button.dart';
 import '../../../../core/shared/widgets/m_text_field.dart';
 import '../../../../core/utils/validator.dart';
 import '../widgets/auth_title.dart';
@@ -22,7 +26,6 @@ class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-
   @override
   void dispose() {
     _phoneController.dispose();
@@ -38,13 +41,11 @@ class _SignInScreenState extends State<SignInScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const SizedBox(height: AppDimen.p64),
-            AuthTitle(
-              title: AppLocalizations.of(context)!.connection,
-            ),
+            const SizedBox(height: AppDimen.p32),
+            AuthTitle(title: AppLocalizations.of(context)!.connection),
             const SizedBox(height: AppDimen.p16),
             AuthSubtitle(title: AppLocalizations.of(context)!.text_connection),
-            const SizedBox(height: AppDimen.p16),
+            const SizedBox(height: AppDimen.p32),
             Form(
               key: _formKey,
               child: Padding(
@@ -71,39 +72,46 @@ class _SignInScreenState extends State<SignInScreen> {
                       },
                     ),
                     const SizedBox(height: AppDimen.p16),
-                    MTextField(
+                    MPasswordField(
                       controller: _passwordController,
                       label: AppLocalizations.of(context)!.passwd,
-                      obscureText: false,
-                      keyboardType: TextInputType.phone,
+                      keyboardType: TextInputType.visiblePassword,
                       validator: (value) {
                         return Validator.passwordValidator(value!);
                       },
                     ),
-                    // const SizedBox(height: AppDimen.p16),
-                    // MButton(
-                    //   text: AppLocalizations.of(context)!.login,
-                    //   onPressed: () async {
-                    //     if (_formKey.currentState!.validate()) {}
-                    //   },
-                    // ),
-                    // const SizedBox(height: AppDimen.p32),
-                    // MButton(
-                    //   text: AppLocalizations.of(context)!.login,
-                    //   onPressed: () {
-                    //     privacyPolicy(
-                    //       context: context,
-                    //       onTap: () async {
-                    //       },
-                    //     );
-                    //   },
-                    // ),
-                    const SizedBox(height: AppDimen.p8),
+                    const SizedBox(height: AppDimen.p16),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            AppLocalizations.of(context)!.forgot_password,
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
+                        )
+                      ],
+                    ),
+                    const SizedBox(height: AppDimen.p16),
+                    MButton(
+                      text: AppLocalizations.of(context)!.login,
+                      onPressed: () {},
+                    )
                   ],
                 ),
               ),
             ),
           ],
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(AppDimen.p16),
+        child: SignInSignUpText(
+          title: AppLocalizations.of(context)!.dont_have_account,
+          titleAction: AppLocalizations.of(context)!.create_account,
+          onTap: () => context.push('/sign-up'),
         ),
       ),
     );

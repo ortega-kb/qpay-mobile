@@ -20,7 +20,7 @@ import '../features/auth/presentation/screens/sign_in_screen.dart';
 
 class AppRouterConfig {
   late final router = GoRouter(
-    initialLocation: '/on-boarding',
+    initialLocation: '/sign-up',
     routes: [
       GoRoute(
         path: '/',

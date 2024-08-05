@@ -58,7 +58,7 @@ class MTextField extends StatelessWidget {
         ),
         labelStyle: TextStyle(
           color: AppColor.gray,
-          fontSize: Theme.of(context).textTheme.bodyMedium?.fontSize,
+          fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
         ),
         border: UnderlineInputBorder(
           borderSide: BorderSide(color: AppColor.gray),

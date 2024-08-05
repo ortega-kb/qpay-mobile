@@ -1,4 +1,5 @@
 import 'package:qpay/core/errors/exception.dart';
+import 'package:qpay/core/utils/code_generator.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../../core/utils/constants.dart';
@@ -10,7 +11,7 @@ abstract interface class AuthRemoteDataSource {
     required String email,
     required String fullName,
     required String password,
-    required String dateOfBirth,
+    required String accountType,
   });
 
   Future<UserModel> signInWithPhoneAndPassword({
@@ -55,17 +56,17 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     required String email,
     required String fullName,
     required String password,
-    required String dateOfBirth,
+    required String accountType,
   }) async {
     try {
       final response = await supabaseClient.auth.signUp(
         phone: phone,
         password: password,
         data: {
+          "userCode": CodeGenerator.userCode(),
           "fullName": fullName,
           "email": email,
-          "password": password,
-          "dateOfBirth": dateOfBirth
+          "accountType": accountType
         },
       );
 

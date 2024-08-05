@@ -14,7 +14,7 @@ abstract interface class AuthRepository {
     required String email,
     required String fullName,
     required String password,
-    required String dateOfBirth,
+    required String accountType,
   });
 
   Future<void> logout();

@@ -119,5 +119,8 @@
   "reports": "Reports",
   "account_user": "Account",
   "greeting": "Welcome,",
-  "reload": "Reload"
+  "reload": "Reload",
+  "forgot_password": "Forgot password ?",
+  "dont_have_account": "Don't have an account ?",
+  "already_have_account": "Already have an account ?"
 }
