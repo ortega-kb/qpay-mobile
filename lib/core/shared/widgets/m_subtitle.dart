@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../theme/app_color.dart';
-import '../../theme/app_dimen.dart';
 
 class MSubtitle extends StatelessWidget {
   final String title;

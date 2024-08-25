@@ -21,8 +21,7 @@ class DeepLink {
       final desc = uri.queryParameters['desc'];
       final wt = uri.queryParameters['wt'];
 
-
-      if (id != null && at!= null && desc!= null && wt!= null) {
+      if (id != null && at != null && desc != null && wt != null) {
         log("$id, $at, $desc, $wt: Received deep link! Redirecting to payment page");
         context.go('/payment', extra: {
           'id': id,
@@ -30,10 +29,7 @@ class DeepLink {
           'desc': desc,
           'wt': wt,
         });
-      } else {
-
-      }
+      } else {}
     }
   }
-
 }

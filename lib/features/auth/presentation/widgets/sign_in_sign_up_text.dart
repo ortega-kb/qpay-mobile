@@ -16,24 +16,25 @@ class SignInSignUpText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle defaultStyle =
-        Theme.of(context).textTheme.bodyLarge!.copyWith(color: AppColor.gray);
+    TextStyle defaultStyle = Theme.of(context).textTheme.bodyLarge!.copyWith(
+          color: AppColor.gray,
+          fontWeight: FontWeight.w500,
+        );
+
     TextStyle textStyle = Theme.of(context)
         .textTheme
         .bodyLarge!
-        .copyWith(color: AppColor.primary);
+        .copyWith(color: AppColor.primary, fontWeight: FontWeight.w500);
 
     return RichText(
-      textAlign: TextAlign.center,
+        textAlign: TextAlign.center,
         text: TextSpan(style: defaultStyle, children: [
-      TextSpan(text: title),
-      TextSpan(text: ' '),
-      TextSpan(
-        text: titleAction,
-        style: textStyle,
-        recognizer: TapGestureRecognizer()
-          ..onTap = onTap
-      )
-    ]));
+          TextSpan(text: title),
+          TextSpan(text: ' '),
+          TextSpan(
+              text: titleAction,
+              style: textStyle,
+              recognizer: TapGestureRecognizer()..onTap = onTap)
+        ]));
   }
 }

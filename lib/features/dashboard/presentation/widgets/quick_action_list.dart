@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:qpay/features/dashboard/presentation/widgets/quick_action.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../../core/theme/app_color.dart';
 import '../../../../core/theme/app_dimen.dart';
 
 class QuickActionList extends StatelessWidget {
@@ -28,7 +27,7 @@ class QuickActionList extends StatelessWidget {
           QuickAction(
             iconData: FluentIcons.building_bank_link_24_filled,
             title: AppLocalizations.of(context)!.payment_link,
-            onTap: () => context.push('/link-generator'),
+            onTap: () => context.push('/payment-link'),
           ),
           const SizedBox(width: AppDimen.p16),
         ],

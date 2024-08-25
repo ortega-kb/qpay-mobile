@@ -9,7 +9,6 @@ import '../../../../core/theme/app_dimen.dart';
 import '../../../../core/utils/validator.dart';
 import '../widgets/auth_subtitle.dart';
 import '../widgets/auth_title.dart';
-import '../widgets/m_password_field.dart';
 import '../widgets/sign_in_sign_up_text.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -78,14 +77,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
             ),
           ],
-        ),
-      ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(AppDimen.p16),
-        child: SignInSignUpText(
-          title: AppLocalizations.of(context)!.already_have_account,
-          titleAction: AppLocalizations.of(context)!.login,
-          onTap: () => context.pop(),
         ),
       ),
     );

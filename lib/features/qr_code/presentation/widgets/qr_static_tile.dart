@@ -1,7 +1,5 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:qpay/features/qr_code/domain/entities/qr_static.dart';

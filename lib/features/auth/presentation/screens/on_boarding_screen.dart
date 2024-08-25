@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_onboarding_slider/flutter_onboarding_slider.dart';
 import 'package:go_router/go_router.dart';
+import 'package:qpay/core/shared/widgets/m_button.dart';
+import 'package:qpay/core/shared/widgets/m_outlined_button.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qpay/core/utils/image_path.dart';
@@ -22,18 +24,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     return Scaffold(
       appBar: AppBar(),
       body: OnBoardingSlider(
-        finishButtonStyle: FinishButtonStyle(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppDimen.p32),
-          ),
-        ),
-        finishButtonTextStyle: Theme.of(context).textTheme.bodyLarge!.copyWith(
-          color: AppColor.white,
-        ),
+        addButton: false,
         controllerColor: AppColor.primary,
-        onFinish: () {
-          context.push('/sign-in');
-        },
         totalPage: 3,
         headerBackgroundColor: AppColor.surface,
         finishButtonText: AppLocalizations.of(context)!.get_started,
@@ -44,6 +36,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         ],
         speed: 1.8,
         centerBackground: true,
+        addController: true,
+        hasFloatingButton: false,
+        hasSkip: false,
         pageBodies: [
           OnBoardingPage(
             title: AppLocalizations.of(context)!.transfer_money,
@@ -58,6 +53,24 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             text: AppLocalizations.of(context)!.text_receive_payment,
           ),
         ],
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(AppDimen.p16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            MButton(
+              text: AppLocalizations.of(context)!.login,
+              onPressed: () => context.push('/sign-in'),
+            ),
+            const SizedBox(height: AppDimen.p8),
+            MOutlinedButton(
+              text: AppLocalizations.of(context)!.create_account,
+              onPressed: () => context.push('/sign-up'),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -121,5 +121,8 @@
   "reload": "Recharger",
   "forgot_password": "Mot de passe oublié ?",
   "dont_have_account": "Pas de compte ?",
-  "already_have_account": "Déjà un compte ?"
+  "already_have_account": "Déjà un compte ?",
+  "validate": "Valider",
+  "enter_correct_mobile_money": "Entrer le numéro de téléphone associé à un mobile money (Vodacom, Airtel, Orange et Africell).",
+  "validate_informations": "Entrer des informations valides."
 }

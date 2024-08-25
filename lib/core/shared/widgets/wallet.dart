@@ -159,14 +159,15 @@ class Wallet extends StatelessWidget {
                             ),
                       ),
                       InkWell(
-                          onTap: null,
-                          child: Tooltip(
-                            message: AppLocalizations.of(context)!.reload,
-                            child: Icon(
-                              FluentIcons.arrow_rotate_clockwise_24_filled,
-                              color: AppColor.white,
-                            ),
-                          )),
+                        onTap: null,
+                        child: Tooltip(
+                          message: AppLocalizations.of(context)!.reload,
+                          child: Icon(
+                            FluentIcons.arrow_rotate_clockwise_24_filled,
+                            color: AppColor.white,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -182,7 +183,7 @@ class Wallet extends StatelessWidget {
                     currency == Currency.CDF
                         ? AppLocalizations.of(context)!.cdf("1500.00")
                         : AppLocalizations.of(context)!.usd("10.00"),
-                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                           color: AppColor.white,
                           fontWeight: FontWeight.bold,
                         ),

@@ -11,15 +11,11 @@ class OnBoardingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      width: MediaQuery.of(context).size.width,
       padding: const EdgeInsets.symmetric(horizontal: 40),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          const SizedBox(
-            height: 480,
-          ),
           Text(
             title,
             style: TextStyle(
@@ -38,6 +34,9 @@ class OnBoardingPage extends StatelessWidget {
               color: AppColor.gray,
             ),
             textAlign: TextAlign.center,
+          ),
+          const SizedBox(
+            height: 40,
           ),
         ],
       ),

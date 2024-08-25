@@ -1,12 +1,10 @@
-import 'dart:ffi';
-
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:qpay/core/shared/widgets/m_subtitle.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
-import 'package:qpay/features/qr_code/presentation/screens/qr_static_detail_screen.dart';
 import 'package:qpay/features/qr_code/presentation/widgets/qr_static_tile.dart';
 import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -56,7 +54,7 @@ class _QrCodeStaticScreenState extends State<QrCodeStaticScreen> {
             WoltModalSheetPage(
               topBarTitle: Text(
                 AppLocalizations.of(context)!.add_qr_code,
-                style: Theme.of(context)!.textTheme.bodyLarge?.copyWith(
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
               ),
@@ -68,6 +66,11 @@ class _QrCodeStaticScreenState extends State<QrCodeStaticScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
+                      MSubtitle(
+                        title: AppLocalizations.of(context)!
+                            .validate_informations,
+                      ),
+                      const SizedBox(height: AppDimen.p16),
                       MTextField(
                         controller: _motifController,
                         label: AppLocalizations.of(context)!.motif,
@@ -185,10 +188,12 @@ class _QrCodeStaticScreenState extends State<QrCodeStaticScreen> {
         title: Text(AppLocalizations.of(context)!.my_qr_codes),
         actions: [
           IconButton(
-              onPressed: () {
-                addQRCode();
-              },
-              icon: Icon(FluentIcons.add_circle_24_filled)),
+            onPressed: () {
+              addQRCode();
+            },
+            tooltip: AppLocalizations.of(context)!.add_qr_code,
+            icon: Icon(FluentIcons.add_circle_24_filled),
+          ),
           const SizedBox(width: AppDimen.p8)
         ],
       ),
@@ -205,7 +210,8 @@ class _QrCodeStaticScreenState extends State<QrCodeStaticScreen> {
                 return QRStaticTile(
                   qrStatic: qrStatic,
                   index: index,
-                  onTap: () => context.push('/qr-static-details', extra: qrStatic),
+                  onTap: () =>
+                      context.push('/qr-static-details', extra: qrStatic),
                   onDelete: () => confirmDeleteQRStatic(index),
                 );
               },

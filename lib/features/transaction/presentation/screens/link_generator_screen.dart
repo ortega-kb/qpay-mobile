@@ -97,7 +97,8 @@ class _LinkGeneratorScreenState extends State<LinkGeneratorScreen> {
                           });
                           Navigator.pop(context);
                         },
-                        isChecked: _walletTypeController.text == Currency.CDF.name,
+                        isChecked:
+                            _walletTypeController.text == Currency.CDF.name,
                       ),
                       WalletTile(
                         currency: Currency.USD.name,
@@ -107,7 +108,8 @@ class _LinkGeneratorScreenState extends State<LinkGeneratorScreen> {
                           });
                           Navigator.pop(context);
                         },
-                        isChecked: _walletTypeController.text == Currency.USD.name,
+                        isChecked:
+                            _walletTypeController.text == Currency.USD.name,
                       ),
                     ],
                   );

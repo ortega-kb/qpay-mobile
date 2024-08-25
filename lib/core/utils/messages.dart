@@ -48,9 +48,11 @@ class Messages {
   }) {
     return toastification.show(
         type: type,
+        alignment: Alignment.center,
         context: context,
+        showProgressBar: false,
         title: Text(title),
-        description: Text(description),
-        autoCloseDuration: Duration(seconds: duration));
+        style: ToastificationStyle.flat,
+        description: Text(description));
   }
 }

@@ -8,9 +8,14 @@ class OnBoardingImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.asset(
-      height: 400,
-      imagePath,
+    return Container(
+      child: AspectRatio(
+        aspectRatio: 16.0 / 13.0,
+        child: SvgPicture.asset(
+          height: 300,
+          imagePath,
+        ),
+      ),
     );
   }
 }

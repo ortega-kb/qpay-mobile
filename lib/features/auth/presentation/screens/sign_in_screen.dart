@@ -1,11 +1,11 @@
-import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
+import 'package:local_auth/local_auth.dart';
 import 'package:qpay/core/shared/widgets/m_button.dart';
-import 'package:qpay/core/shared/widgets/privacy_policy.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
+import 'package:qpay/core/utils/messages.dart';
 import 'package:qpay/features/auth/presentation/widgets/auth_subtitle.dart';
 import 'package:qpay/features/auth/presentation/widgets/m_password_field.dart';
 import 'package:qpay/features/auth/presentation/widgets/sign_in_sign_up_text.dart';
@@ -31,6 +31,27 @@ class _SignInScreenState extends State<SignInScreen> {
     _phoneController.dispose();
     _passwordController.dispose();
     super.dispose();
+  }
+
+  final _auth = LocalAuthentication();
+
+  Future<bool> hasBiometrics() async {
+    final isAvailable = await _auth.canCheckBiometrics;
+    final isDeviceSupported = await _auth.isDeviceSupported();
+    return isAvailable && isDeviceSupported;
+  }
+
+  Future<bool> authenticate() async {
+    final isAuthAvailable = await hasBiometrics();
+    if (!isAuthAvailable) return false;
+    try {
+      return await _auth.authenticate(
+          localizedReason: 'Touch your finger on the sensor to login',
+          options: const AuthenticationOptions(useErrorDialogs: false)
+    );
+    } catch (e) {
+    return false;
+    }
   }
 
   @override
@@ -89,7 +110,10 @@ class _SignInScreenState extends State<SignInScreen> {
                           onPressed: () {},
                           child: Text(
                             AppLocalizations.of(context)!.forgot_password,
-                            style: Theme.of(context).textTheme.bodyLarge,
+                            style: Theme
+                                .of(context)
+                                .textTheme
+                                .bodyLarge,
                           ),
                         )
                       ],
@@ -97,21 +121,20 @@ class _SignInScreenState extends State<SignInScreen> {
                     const SizedBox(height: AppDimen.p16),
                     MButton(
                       text: AppLocalizations.of(context)!.login,
-                      onPressed: () {},
-                    )
+                      onPressed: () async {
+                        final isAuthenticated = await authenticate();
+                        if (isAuthenticated) {
+                          Messages.success("Auth", "Auth success", context);
+                        } else {
+                          Messages.error("Auth", "Auth failed", context);
+                        }
+                      },
+                    ),
                   ],
                 ),
               ),
             ),
           ],
-        ),
-      ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(AppDimen.p16),
-        child: SignInSignUpText(
-          title: AppLocalizations.of(context)!.dont_have_account,
-          titleAction: AppLocalizations.of(context)!.create_account,
-          onTap: () => context.push('/sign-up'),
         ),
       ),
     );

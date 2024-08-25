@@ -1,12 +1,22 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:qpay/core/shared/widgets/m_button.dart';
+import 'package:qpay/core/shared/widgets/m_select_fied.dart';
+import 'package:qpay/core/shared/widgets/m_subtitle.dart';
+import 'package:qpay/core/shared/widgets/m_text_field.dart';
+import 'package:qpay/core/shared/widgets/select_wallet.dart';
 import 'package:qpay/core/shared/widgets/wallet.dart';
+import 'package:qpay/core/shared/widgets/wallet_tile.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:qpay/core/utils/currency.dart';
+import 'package:qpay/core/utils/link_generator.dart';
+import 'package:qpay/core/utils/validator.dart';
 import 'package:qpay/features/dashboard/presentation/widgets/quick_action_list.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -16,6 +26,17 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
