@@ -124,5 +124,16 @@
   "already_have_account": "Déjà un compte ?",
   "validate": "Valider",
   "enter_correct_mobile_money": "Entrer le numéro de téléphone associé à un mobile money (Vodacom, Airtel, Orange et Africell).",
-  "validate_informations": "Entrer des informations valides."
+  "validate_informations": "Entrer des informations valides.",
+  "on_click_create_account": "En cliquant sur créer un compte, vous acceptez",
+  "and": "et",
+  "terms_of_use": " les conditions d'utilisation ",
+  "privacy_policy": " la politique de confidentialité.",
+  "complete_your_profil": "Complétez votre profil",
+  "enter_correctly_information": "Saisissez correctement vos informations",
+  "full_name": "Nom complet",
+  "email": "E-mail",
+  "pin": "Pin",
+  "pin_confirm": "Confirmation pin",
+  "finish": "Terminer"
 }

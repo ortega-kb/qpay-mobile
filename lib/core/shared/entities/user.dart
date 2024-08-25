@@ -1,11 +1,10 @@
-import 'package:qpay/core/utils/account_type.dart';
 
 class User {
   final String? id;
   final String userCode;
   final String fullName;
   final String? email;
-  final String password;
+  final String pin;
   final String phone;
   final String accountType;
   final DateTime? createdAt;
@@ -17,7 +16,7 @@ class User {
     required this.userCode,
     required this.accountType,
     required this.fullName,
-    required this.password,
+    required this.pin,
     required this.phone,
   });
 }

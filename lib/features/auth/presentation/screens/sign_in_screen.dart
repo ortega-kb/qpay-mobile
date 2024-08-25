@@ -47,10 +47,9 @@ class _SignInScreenState extends State<SignInScreen> {
     try {
       return await _auth.authenticate(
           localizedReason: 'Touch your finger on the sensor to login',
-          options: const AuthenticationOptions(useErrorDialogs: false)
-    );
+          options: const AuthenticationOptions(useErrorDialogs: false));
     } catch (e) {
-    return false;
+      return false;
     }
   }
 
@@ -62,11 +61,6 @@ class _SignInScreenState extends State<SignInScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const SizedBox(height: AppDimen.p32),
-            AuthTitle(title: AppLocalizations.of(context)!.connection),
-            const SizedBox(height: AppDimen.p16),
-            AuthSubtitle(title: AppLocalizations.of(context)!.text_connection),
-            const SizedBox(height: AppDimen.p32),
             Form(
               key: _formKey,
               child: Padding(
@@ -74,6 +68,15 @@ class _SignInScreenState extends State<SignInScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    const SizedBox(height: AppDimen.p32),
+                    AuthTitle(
+                      title: AppLocalizations.of(context)!.connection,
+                    ),
+                    const SizedBox(height: AppDimen.p16),
+                    AuthSubtitle(
+                      title: AppLocalizations.of(context)!.text_connection,
+                    ),
+                    const SizedBox(height: AppDimen.p32),
                     MTextField(
                       controller: _phoneController,
                       label: AppLocalizations.of(context)!.phone_number,
@@ -110,10 +113,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           onPressed: () {},
                           child: Text(
                             AppLocalizations.of(context)!.forgot_password,
-                            style: Theme
-                                .of(context)
-                                .textTheme
-                                .bodyLarge,
+                            style: Theme.of(context).textTheme.bodyLarge,
                           ),
                         )
                       ],

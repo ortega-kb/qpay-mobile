@@ -27,14 +27,19 @@ class SignInSignUpText extends StatelessWidget {
         .copyWith(color: AppColor.primary, fontWeight: FontWeight.w500);
 
     return RichText(
-        textAlign: TextAlign.center,
-        text: TextSpan(style: defaultStyle, children: [
+      textAlign: TextAlign.center,
+      text: TextSpan(
+        style: defaultStyle,
+        children: [
           TextSpan(text: title),
           TextSpan(text: ' '),
           TextSpan(
-              text: titleAction,
-              style: textStyle,
-              recognizer: TapGestureRecognizer()..onTap = onTap)
-        ]));
+            text: titleAction,
+            style: textStyle,
+            recognizer: TapGestureRecognizer()..onTap = onTap,
+          )
+        ],
+      ),
+    );
   }
 }

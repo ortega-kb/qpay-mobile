@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:go_router/go_router.dart';
+import 'package:qpay/features/auth/presentation/widgets/terms_of_use_and_privacy_policy.dart';
 
 import '../../../../core/shared/widgets/m_button.dart';
 import '../../../../core/shared/widgets/m_text_field.dart';
@@ -9,7 +9,6 @@ import '../../../../core/theme/app_dimen.dart';
 import '../../../../core/utils/validator.dart';
 import '../widgets/auth_subtitle.dart';
 import '../widgets/auth_title.dart';
-import '../widgets/sign_in_sign_up_text.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -21,7 +20,6 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _phoneController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
 
   @override
   void dispose() {
@@ -33,52 +31,59 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const SizedBox(height: AppDimen.p32),
-            AuthTitle(title: AppLocalizations.of(context)!.creating_account),
-            const SizedBox(height: AppDimen.p16),
-            AuthSubtitle(title: AppLocalizations.of(context)!.text_connection),
-            const SizedBox(height: AppDimen.p32),
-            Form(
-              key: _formKey,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: AppDimen.p16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    MTextField(
-                      controller: _phoneController,
-                      label: AppLocalizations.of(context)!.phone_number,
-                      prefixIcon: Column(
-                        children: [
-                          Text(
-                            "🇨🇩 +243 ",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(color: AppColor.gray),
-                          )
-                        ],
-                      ),
-                      obscureText: false,
-                      keyboardType: TextInputType.phone,
-                      validator: (value) {
-                        return Validator.phoneValidator(value!);
-                      },
-                    ),
-                    const SizedBox(height: AppDimen.p16),
-                    MButton(
-                      text: AppLocalizations.of(context)!.create_account,
-                      onPressed: () {},
-                    )
-                  ],
+      body: Form(
+        key: _formKey,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: AppDimen.p16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const SizedBox(height: AppDimen.p32),
+                AuthTitle(
+                  title: AppLocalizations.of(context)!.creating_account,
                 ),
-              ),
+                const SizedBox(height: AppDimen.p16),
+                AuthSubtitle(
+                  title: AppLocalizations.of(context)!.text_connection,
+                ),
+                const SizedBox(height: AppDimen.p32),
+                MTextField(
+                  controller: _phoneController,
+                  label: AppLocalizations.of(context)!.phone_number,
+                  prefixIcon: Column(
+                    children: [
+                      Text(
+                        "🇨🇩 +243 ",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: AppColor.gray),
+                      )
+                    ],
+                  ),
+                  obscureText: false,
+                  keyboardType: TextInputType.phone,
+                  validator: (value) {
+                    return Validator.phoneValidator(value!);
+                  },
+                ),
+                const SizedBox(height: AppDimen.p16),
+                MButton(
+                  text: AppLocalizations.of(context)!.create_account,
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {}
+                  },
+                )
+              ],
             ),
-          ],
+          ),
         ),
       ),
+      bottomNavigationBar: Padding(
+          padding: const EdgeInsets.all(AppDimen.p16),
+          child: TermsOfUseAndPrivacyPolicy(
+            onTapPrivacyPolicy: () {},
+            onTapTermsOfUse: () {},
+          )),
     );
   }
 }
