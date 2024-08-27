@@ -17,5 +17,14 @@ abstract interface class AuthRepository {
     required String accountType,
   });
 
+  Future<Either<Failure, User>> verifyOTP({
+    required String otp,
+    required String phone,
+  });
+
+  Future<Either<Failure, String>> resendOTP({
+    required String phone,
+  });
+
   Future<void> logout();
 }

@@ -7,7 +7,7 @@ class UserModel extends User {
     required super.userCode,
     required super.phone,
     required super.fullName,
-    required super.pin,
+    required super.password,
     required super.accountType,
     required super.createdAt,
   });
@@ -15,13 +15,13 @@ class UserModel extends User {
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
       id: json['id'],
-      userCode: json['userCode'],
-      email: json['email'],
+      userCode: json['user_metadata']['user_code'],
+      email: json['email'] ?? '',
       phone: json['phone'],
-      fullName: json['fullName'],
-      pin: json['pin'],
-      accountType: json['accountType'],
-      createdAt: json['createdAt'],
+      fullName: json['user_metadata']['full_name'],
+      password: json['password'] ?? '',
+      accountType: json['user_metadata']['account_type'],
+      createdAt: DateTime.parse(json['created_at']),
     );
   }
 
@@ -41,7 +41,7 @@ class UserModel extends User {
       userCode: userCode ?? this.userCode,
       phone: phone ?? this.phone,
       fullName: fullName ?? this.fullName,
-      pin: password ?? this.pin,
+      password: password ?? this.password,
       accountType: accountType ?? this.accountType,
       createdAt: createdAt ?? this.createdAt,
     );

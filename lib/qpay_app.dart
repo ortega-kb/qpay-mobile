@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qpay/core/shared/cubits/account_type_cubit.dart';
+import 'package:qpay/core/shared/cubits/timer_otp_cubit.dart';
+import 'package:qpay/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:qpay/init_dependencies.dart';
 import 'package:qpay/qpay_app_wrapper.dart';
 
@@ -18,7 +21,10 @@ class _QpayAppState extends State<QpayApp> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => locator<QRCodeBloc>())
+        BlocProvider(create: (_) => locator<AuthBloc>()),
+        BlocProvider(create: (_) => locator<QRCodeBloc>()),
+        BlocProvider(create: (_) => TimerOtpCubit()),
+        BlocProvider(create: (_) => AccountTypeCubit()),
       ],
       child: QpayAppWrapper(),
     );

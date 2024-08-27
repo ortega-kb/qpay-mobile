@@ -10,7 +10,7 @@ class AddQRStatic implements UseCase<void, AddQRStaticParams> {
   AddQRStatic(this.qrStaticRepository);
 
   @override
-  Future<Either<Failure, void>> invoke(AddQRStaticParams params) {
+  Future<Either<Failure, void>> call(AddQRStaticParams params) {
     return qrStaticRepository.addQRStatic(
       QRStatic(
         account: params.account,

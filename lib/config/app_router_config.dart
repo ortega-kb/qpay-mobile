@@ -5,6 +5,7 @@ import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/features/auth/presentation/screens/sign_up_screen.dart';
 import 'package:qpay/features/auth/presentation/screens/on_boarding_screen.dart';
 import 'package:qpay/features/auth/presentation/screens/user_information_screen.dart';
+import 'package:qpay/features/auth/presentation/screens/verify_phone_number_screen.dart';
 import 'package:qpay/features/dashboard/presentation/screens/reports_screen.dart';
 import 'package:qpay/features/home_screen.dart';
 import 'package:qpay/features/notifications/presentation/screens/notifications_screen.dart';
@@ -24,7 +25,7 @@ class AppRouterConfig {
 
   late final router = GoRouter(
     debugLogDiagnostics: true,
-    initialLocation: '/user-informations',
+    initialLocation: '/on-boarding',
     navigatorKey: _rootNavigatorKey,
     routes: [
       GoRoute(
@@ -181,6 +182,19 @@ class AppRouterConfig {
               systemNavigationBarColor: AppColor.background,
             ),
             child: SignUpScreen(),
+          );
+        },
+      ),
+      GoRoute(
+        path: '/verify-phone-number',
+        builder: (context, state) {
+          String phone = state.extra.toString();
+          return AnnotatedRegion(
+            value: SystemUiOverlayStyle(
+              statusBarColor: AppColor.background,
+              systemNavigationBarColor: AppColor.background,
+            ),
+            child: VerifyPhoneNumberScreen(phone: phone),
           );
         },
       ),

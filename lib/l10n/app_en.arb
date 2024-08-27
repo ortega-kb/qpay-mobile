@@ -28,7 +28,7 @@
   "text_account_type": "Choose your Qpay account type",
   "find_out_more": "Find out more",
   "corporate": "Corporate",
-  "particular": "Particular",
+  "dealer": "Dealer",
   "public": "Public",
   "ipsum": "It is a long established fact that a reader will be distracted by the readable content.",
   "account": "Account {type}",
@@ -136,5 +136,16 @@
   "email": "E-mail",
   "pin": "Pin",
   "pin_confirm": "Pin confirm",
-  "finish": "Finish"
+  "finish": "Finish",
+  "confirm_password": "Confirm password",
+  "authentication": "Authentication",
+  "authentication_error": "Authentication error",
+  "passwords_doesnt_match": "Passwords doesn't match",
+  "verification": "Verification",
+  "enter_6_digits_sent_to": "Enter the 6-digit code sent to {code}",
+  "otp_code": "OTP code",
+  "successful_verification": "Successful verification",
+  "verification_failed": "Verification failed",
+  "resent_otp_code": "OTP code sent back",
+  "failed_resent_otp_code": "OTP code return error"
 }

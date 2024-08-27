@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:qpay/core/theme/app_color.dart';
 
 class MTextField extends StatelessWidget {
@@ -6,6 +7,7 @@ class MTextField extends StatelessWidget {
   final String label;
   final bool obscureText;
   final TextInputType keyboardType;
+  final List<TextInputFormatter>? inputFormatters;
   final bool readOnly;
   final Widget? suffixIcon;
   final VoidCallback? onTap;
@@ -24,6 +26,7 @@ class MTextField extends StatelessWidget {
       this.suffixIcon,
       this.readOnly = false,
       this.onTap,
+      this.inputFormatters,
       this.prefixIcon,
       this.validator,
       this.focusNode,
@@ -44,6 +47,7 @@ class MTextField extends StatelessWidget {
       readOnly: readOnly,
       textInputAction: TextInputAction.next,
       onChanged: onChanged,
+      inputFormatters: inputFormatters,
       decoration: InputDecoration(
         isDense: false,
         suffixIcon: suffixIcon,

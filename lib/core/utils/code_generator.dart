@@ -1,8 +1,6 @@
-
 import 'dart:math';
 
 class CodeGenerator {
-
   // generate unique user code for customers
   static String userCode() {
     return "qp${_uniqueNumericCode()}";

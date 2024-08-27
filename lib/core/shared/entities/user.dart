@@ -4,7 +4,7 @@ class User {
   final String userCode;
   final String fullName;
   final String? email;
-  final String pin;
+  final String password;
   final String phone;
   final String accountType;
   final DateTime? createdAt;
@@ -16,7 +16,7 @@ class User {
     required this.userCode,
     required this.accountType,
     required this.fullName,
-    required this.pin,
+    required this.password,
     required this.phone,
   });
 }

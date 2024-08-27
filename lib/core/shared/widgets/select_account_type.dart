@@ -4,7 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../theme/app_dimen.dart';
 
-Future selectWallet(
+Future selectAccountType(
     {required BuildContext context, required List<Widget> widgets}) {
   return WoltModalSheet.show(
     context: context,
@@ -14,7 +14,7 @@ Future selectWallet(
         WoltModalSheetPage(
           scrollController: ScrollController(),
           topBarTitle: Text(
-            AppLocalizations.of(context)!.wallet,
+            AppLocalizations.of(context)!.account_type,
             style: Theme.of(context)
                 .textTheme
                 .titleMedium

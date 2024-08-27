@@ -28,7 +28,7 @@
   "text_account_type": "Choisissez votre type de compte Qpay",
   "find_out_more": "En savoir plus",
   "corporate": "Entreprise",
-  "particular": "Particulier",
+  "dealer": "Marchand",
   "public": "Publique",
   "ipsum": "It is a long established fact that a reader will be distracted by the readable content.",
   "account": "Compte {type}",
@@ -135,5 +135,16 @@
   "email": "E-mail",
   "pin": "Pin",
   "pin_confirm": "Confirmation pin",
-  "finish": "Terminer"
+  "finish": "Terminer",
+  "confirm_password": "Confirmation mot de passe",
+  "authentication": "Authentification",
+  "authentication_error": "Erreur d'authentification",
+  "passwords_doesnt_match": "Les mots de passe ne correspondent pas",
+  "verification": "Vérification",
+  "enter_6_digits_sent_to": "Saisir le code à 6 chiffres envoyé au {code}",
+  "otp_code": "Code OTP",
+  "successful_verification": "Vérification réussie",
+  "verification_failed": "Vérification échouée",
+  "resent_otp_code": "Code OTP renvoyé",
+  "failed_resent_otp_code": "Erreur de renvoi du code OTP"
 }

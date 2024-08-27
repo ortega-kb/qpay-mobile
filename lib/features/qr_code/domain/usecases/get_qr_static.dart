@@ -9,7 +9,7 @@ class GetQRStatic implements UseCase<List<QRStatic>, NoParams> {
   GetQRStatic(this.qrStaticRepository);
 
   @override
-  Future<Either<Failure, List<QRStatic>>> invoke(NoParams params) {
+  Future<Either<Failure, List<QRStatic>>> call(NoParams params) {
     return qrStaticRepository.getAllQRStatic();
   }
 

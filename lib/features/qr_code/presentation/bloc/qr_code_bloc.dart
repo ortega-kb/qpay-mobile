@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:qpay/core/utils/usecase.dart';
@@ -27,14 +25,14 @@ class QRCodeBloc extends Bloc<QRCodeEvent, QRCodeState> {
         _getQRStatic = getQRStatic,
         super(QRCodeInitial()) {
     on<QRCodeEvent>((event, emit) {
-      log("Event $event");
+      emit(QRCodeInitial());
     });
 
     // QRStatic Events
     on<GetAllQRStatic>((event, emit) async {
       emit(QRStaticLoadingState());
 
-      final response = await _getQRStatic.invoke(NoParams());
+      final response = await _getQRStatic.call(NoParams());
 
       response.fold(
         (err) {},
@@ -45,7 +43,7 @@ class QRCodeBloc extends Bloc<QRCodeEvent, QRCodeState> {
     on<AddQRStaticEvent>((event, emit) async {
       emit(QRStaticLoadingState());
 
-      final response = await _addQRStatic.invoke(AddQRStaticParams(
+      final response = await _addQRStatic.call(AddQRStaticParams(
         account: event.account,
         amount: event.amount,
         motif: event.motif,
@@ -61,7 +59,7 @@ class QRCodeBloc extends Bloc<QRCodeEvent, QRCodeState> {
     on<DeleteQRStaticEvent>((event, emit) async {
       emit(QRStaticLoadingState());
 
-      final response = await _deleteQRStatic.invoke(
+      final response = await _deleteQRStatic.call(
         DeleteQRStaticParams(index: event.index),
       );
 

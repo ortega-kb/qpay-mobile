@@ -6,13 +6,13 @@ import 'package:qpay/features/auth/domain/repositories/auth_repository.dart';
 import '../../../../core/shared/entities/user.dart';
 
 class SignUpUseCase implements UseCase<User, SignUpParams> {
-  final AuthRepository authRepository;
+  final AuthRepository _authRepository;
 
-  SignUpUseCase(this.authRepository);
+  SignUpUseCase(this._authRepository);
 
   @override
-  Future<Either<Failure, User>> invoke(SignUpParams params) async {
-    return await authRepository.signUpWithPhoneAndPassword(
+  Future<Either<Failure, User>> call(SignUpParams params) async {
+    return await _authRepository.signUpWithPhoneAndPassword(
       phone: params.phone,
       email: params.email,
       fullName: params.fullName,

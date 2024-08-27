@@ -9,6 +9,7 @@ Future<void> initDependencies() async {
   ]);
 
   _initSVG();
+  _initAuth();
   _initQRCode();
 
   final appDocumentDirectory = await getApplicationDocumentsDirectory();
@@ -27,7 +28,6 @@ Future<void> initDependencies() async {
   locator.registerLazySingleton(() => qrStaticBox);
 }
 
-
 void _initSVG() async {
   await preloadSVG([
     ImagePath.svgTransfer,
@@ -37,36 +37,58 @@ void _initSVG() async {
 }
 
 void _initAuth() async {
-
+  locator
+    ..registerFactory<AuthRemoteDataSource>(
+      () => AuthRemoteDataSourceImpl(locator()),
+    )
+    ..registerFactory<AuthRepository>(
+      () => AuthRepositoryImpl(locator()),
+    )
+    ..registerFactory(
+      () => SignInUseCase(locator()),
+    )
+    ..registerFactory(
+      () => SignUpUseCase(locator()),
+    )
+    ..registerFactory(
+      () => VerifyPhoneUseCase(locator()),
+    )
+    ..registerFactory(
+      () => ResendOtpCodeUseCase(locator()),
+    )
+    ..registerLazySingleton(
+      () => AuthBloc(
+        signInUseCase: locator(),
+        signUpUseCase: locator(),
+        verifyPhoneUseCase: locator(),
+        resendOtpCodeUseCase: locator(),
+      ),
+    );
 }
 
-void _initTransaction() async {
+void _initTransaction() async {}
 
-}
-
-void _initWallet() async {
-
-}
+void _initWallet() async {}
 
 void _initQRCode() async {
   locator
     ..registerFactory<QrStaticLocalDatasource>(
-          () => QRStaticLocalDatasourceImpl(locator()),
+      () => QRStaticLocalDatasourceImpl(locator()),
     )
     ..registerFactory<QRStaticRepository>(
-          () => QRStaticRepositoryImpl(locator()),
+      () => QRStaticRepositoryImpl(locator()),
     )
     ..registerFactory(
-          () => GetQRStatic(locator()),
+      () => GetQRStatic(locator()),
     )
     ..registerFactory(
-          () => AddQRStatic(locator()),
+      () => AddQRStatic(locator()),
     )
     ..registerFactory(
-          () => DeleteQRStatic(locator()),
+      () => DeleteQRStatic(locator()),
     )
     ..registerLazySingleton(
-          () => QRCodeBloc(
+      () => QRCodeBloc(
         getQRStatic: locator(),
         addQRStatic: locator(),
         deleteQRStatic: locator(),

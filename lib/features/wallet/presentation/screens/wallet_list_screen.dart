@@ -1,14 +1,12 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:go_router/go_router.dart';
 import 'package:qpay/core/shared/widgets/m_button.dart';
 import 'package:qpay/core/shared/widgets/m_subtitle.dart';
 import 'package:qpay/core/shared/widgets/m_text_field.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:qpay/core/utils/validator.dart';
-import 'package:qpay/features/auth/presentation/widgets/auth_subtitle.dart';
 import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
 
 class WalletListScreen extends StatefulWidget {

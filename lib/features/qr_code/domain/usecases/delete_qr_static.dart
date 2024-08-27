@@ -10,7 +10,7 @@ class DeleteQRStatic implements UseCase<void, DeleteQRStaticParams> {
   DeleteQRStatic(this.qrStaticRepository);
 
   @override
-  Future<Either<Failure, void>> invoke(DeleteQRStaticParams params) {
+  Future<Either<Failure, void>> call(DeleteQRStaticParams params) {
     return qrStaticRepository.deleteQRStatic(params.index);
   }
 

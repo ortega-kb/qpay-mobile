@@ -1,5 +1,6 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../../../core/theme/app_color.dart';
 
@@ -8,6 +9,7 @@ class MPasswordField extends StatefulWidget {
   final String label;
   final TextInputType keyboardType;
   final bool readOnly;
+  final List<TextInputFormatter>? inputFormatters;
   final VoidCallback? onTap;
   final Widget? prefixIcon;
   final String? Function(String?)? validator;
@@ -20,6 +22,7 @@ class MPasswordField extends StatefulWidget {
     required this.controller,
     required this.label,
     required this.keyboardType,
+    this.inputFormatters,
     this.readOnly = false,
     this.onTap,
     this.prefixIcon,
@@ -51,6 +54,7 @@ class _MPasswordFieldState extends State<MPasswordField> {
       keyboardType: widget.keyboardType,
       focusNode: widget.focusNode,
       maxLines: 1,
+      inputFormatters: widget.inputFormatters,
       cursorColor: AppColor.primary,
       onTap: widget.onTap,
       readOnly: widget.readOnly,
