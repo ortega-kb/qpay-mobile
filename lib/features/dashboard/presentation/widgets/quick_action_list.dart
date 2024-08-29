@@ -7,7 +7,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../core/theme/app_dimen.dart';
 
 class QuickActionList extends StatelessWidget {
-  const QuickActionList({super.key});
+  final Function()? onGenerateLinkPayment;
+  const QuickActionList({super.key, required this.onGenerateLinkPayment});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class QuickActionList extends StatelessWidget {
           QuickAction(
             iconData: FluentIcons.building_bank_link_24_filled,
             title: AppLocalizations.of(context)!.payment_link,
-            onTap: () => context.push('/payment-link'),
+            onTap: onGenerateLinkPayment,
           ),
           const SizedBox(width: AppDimen.p16),
         ],

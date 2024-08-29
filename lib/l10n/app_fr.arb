@@ -112,7 +112,7 @@
   "select_wallet": "Selectionner un portefeuille",
   "total_and_transfer": "Total + Frais de transfert",
   "qr_no_valid": "Code QR non valide !",
-  "enter_information_link_payment": "Saisissez les informations nécessaires pour générer le lien de paiement",
+  "enter_information_link_payment": "Saisissez les informations nécessaires pour générer le lien de paiement.",
   "description": "Description",
   "generate_link": "Générer le lien",
   "notifications": "Notifications",
