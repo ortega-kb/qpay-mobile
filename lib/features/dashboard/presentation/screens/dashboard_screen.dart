@@ -1,22 +1,13 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:qpay/core/shared/widgets/m_button.dart';
-import 'package:qpay/core/shared/widgets/m_select_fied.dart';
-import 'package:qpay/core/shared/widgets/m_subtitle.dart';
-import 'package:qpay/core/shared/widgets/m_text_field.dart';
-import 'package:qpay/core/shared/widgets/select_wallet.dart';
+import 'package:qpay/core/shared/services/user_information_service.dart';
 import 'package:qpay/core/shared/widgets/wallet.dart';
-import 'package:qpay/core/shared/widgets/wallet_tile.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:qpay/core/utils/currency.dart';
-import 'package:qpay/core/utils/link_generator.dart';
-import 'package:qpay/core/utils/validator.dart';
 import 'package:qpay/features/dashboard/presentation/widgets/quick_action_list.dart';
-import 'package:share_plus/share_plus.dart';
-import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
+import 'package:qpay/init_dependencies.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -52,7 +43,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ?.copyWith(color: AppColor.gray),
             ),
             Text(
-              "Ortega",
+              locator<UserInformationService>().username,
               style: Theme.of(context)
                   .textTheme
                   .bodyMedium

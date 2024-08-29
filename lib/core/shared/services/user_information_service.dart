@@ -18,4 +18,11 @@ class UserInformationService {
     // Set authenticated to true
     _sharedPreferencesService.userAuthenticated = true;
   }
+
+  String get username => _sharedPreferencesService.username;
+  String get userId => _sharedPreferencesService.userId;
+  String get userCode => _sharedPreferencesService.userCode;
+  String get accountType => _sharedPreferencesService.accountType;
+  String get userCreatedAt => _sharedPreferencesService.userCreatedAt;
+
 }
