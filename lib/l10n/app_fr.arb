@@ -146,5 +146,6 @@
   "successful_verification": "Vérification réussie",
   "verification_failed": "Vérification échouée",
   "resent_otp_code": "Code OTP renvoyé",
-  "failed_resent_otp_code": "Erreur de renvoi du code OTP"
+  "failed_resent_otp_code": "Erreur de renvoi du code OTP",
+  "welcome_user": "Bienvenue {user}"
 }

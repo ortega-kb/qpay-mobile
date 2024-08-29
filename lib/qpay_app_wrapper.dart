@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qpay/config/app_router_config.dart';
+import 'package:qpay/core/shared/services/shared_preferences_service.dart';
 import 'package:qpay/core/theme/app_theme.dart';
 import 'package:qpay/core/utils/constants.dart';
+import 'package:qpay/init_dependencies.dart';
 
 import 'core/utils/deep_link.dart';
 
@@ -24,7 +26,7 @@ class _QpayAppWrapperState extends State<QpayAppWrapper> {
         Locale('fr'),
         Locale('en'),
       ],
-      routerConfig: AppRouterConfig().router,
+      routerConfig: AppRouterConfig(locator<SharedPreferencesService>()).router,
       locale: Constants.locale,
       theme: AppTheme.lightTheme,
       builder: (context, child) {

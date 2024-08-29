@@ -147,5 +147,6 @@
   "successful_verification": "Successful verification",
   "verification_failed": "Verification failed",
   "resent_otp_code": "OTP code sent back",
-  "failed_resent_otp_code": "OTP code return error"
+  "failed_resent_otp_code": "OTP code return error",
+  "welcome_user": "Welcome {user}"
 }

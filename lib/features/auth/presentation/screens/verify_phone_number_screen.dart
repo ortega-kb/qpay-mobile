@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:qpay/core/shared/cubits/timer_otp_cubit.dart';
+import 'package:qpay/features/auth/presentation/bloc/cubits/timer_otp_cubit.dart';
 import 'package:qpay/core/shared/widgets/m_button.dart';
 import 'package:qpay/core/shared/widgets/m_outlined_button.dart';
 import 'package:qpay/core/shared/widgets/m_progress.dart';

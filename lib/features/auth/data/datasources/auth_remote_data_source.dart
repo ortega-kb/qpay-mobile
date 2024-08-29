@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:qpay/core/errors/exception.dart';
+import 'package:qpay/core/shared/services/user_information_service.dart';
 import 'package:qpay/core/utils/check_registered_account.dart';
 import 'package:qpay/core/utils/code_generator.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -31,8 +31,9 @@ abstract interface class AuthRemoteDataSource {
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   final SupabaseClient _supabaseClient;
+  final UserInformationService _userInformationService;
 
-  AuthRemoteDataSourceImpl(this._supabaseClient);
+  AuthRemoteDataSourceImpl(this._supabaseClient, this._userInformationService);
 
   @override
   Future<UserModel> signInWithPhoneAndPassword({
@@ -49,7 +50,10 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         throw const ServerException(Constants.userIsNull);
       }
 
-      return UserModel.fromJson(response.user!.toJson());
+      final userRegistered = response.user!.toJson();
+      _userInformationService.storeUserInformation(userRegistered);
+
+      return UserModel.fromJson(userRegistered);
     } on AuthException catch (e) {
       throw ServerException(e.message);
     } catch (e) {
@@ -77,11 +81,12 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         },
       );
 
-      final userAlreadyRegistered = checkRegisteredAccount(response.user!.toJson());
+      final userAlreadyRegistered =
+          checkRegisteredAccount(response.user!.toJson());
       if (userAlreadyRegistered) {
         throw AuthException('User already registered');
       }
-      
+
       return UserModel.fromJson(response.user!.toJson());
     } on AuthException catch (e) {
       throw ServerException(e.message);

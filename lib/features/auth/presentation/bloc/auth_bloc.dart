@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:qpay/core/shared/entities/user.dart';
 import 'package:qpay/features/auth/domain/usecases/resend_otp_code_use_case.dart';
 import 'package:qpay/features/auth/domain/usecases/sign_in_use_case.dart';
 import 'package:qpay/features/auth/domain/usecases/sign_up_use_case.dart';
@@ -103,7 +103,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     response.fold(
       (err) => emit(AuthSignInErrorState(err.message)),
-      (response) => emit(AuthSignUpSuccessState()),
+      (response) => emit(AuthSignInSuccessState(response)),
     );
   }
 

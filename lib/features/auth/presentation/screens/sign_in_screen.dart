@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:local_auth/local_auth.dart';
+import 'package:go_router/go_router.dart';
 import 'package:qpay/core/shared/widgets/m_button.dart';
 import 'package:qpay/core/shared/widgets/m_progress.dart';
 import 'package:qpay/core/theme/app_color.dart';
@@ -33,7 +33,7 @@ class _SignInScreenState extends State<SignInScreen> {
     _passwordController.dispose();
     super.dispose();
   }
-
+  /*
   final _auth = LocalAuthentication();
 
   Future<bool> hasBiometrics() async {
@@ -52,7 +52,7 @@ class _SignInScreenState extends State<SignInScreen> {
     } catch (e) {
       return false;
     }
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +64,17 @@ class _SignInScreenState extends State<SignInScreen> {
             state.errorMessage,
             context,
           );
+        }
+        if (state is AuthSignInSuccessState) {
+          // Show welcome message
+          Messages.success(
+            AppLocalizations.of(context)!.authentication,
+            AppLocalizations.of(context)!.welcome_user(state.user.fullName),
+            context,
+          );
+
+          // If login success, redirect user to home
+          context.go('/');
         }
       },
       builder: (context, state) {

@@ -33,7 +33,8 @@ final class AuthSignInErrorState extends AuthState {
 }
 
 final class AuthSignInSuccessState extends AuthState {
-  const AuthSignInSuccessState();
+  final User user;
+  const AuthSignInSuccessState(this.user);
 
   @override
   List<Object> get props => [];

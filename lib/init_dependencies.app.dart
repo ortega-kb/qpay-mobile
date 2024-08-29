@@ -10,6 +10,8 @@ Future<void> initDependencies() async {
 
   _initSVG();
   _initAuth();
+  _initWallet();
+  _initTransaction();
   _initQRCode();
 
   final appDocumentDirectory = await getApplicationDocumentsDirectory();
@@ -23,9 +25,14 @@ Future<void> initDependencies() async {
   );
 
   final qrStaticBox = await Hive.openBox<QRStaticModel>('qr_static');
+  final sharedPreferencesService = await SharedPreferencesService.getInstance();
+  final userInformationService =
+      UserInformationService(sharedPreferencesService);
 
   locator.registerLazySingleton(() => Supabase.instance.client);
   locator.registerLazySingleton(() => qrStaticBox);
+  locator.registerLazySingleton(() => sharedPreferencesService);
+  locator.registerLazySingleton(() => userInformationService);
 }
 
 void _initSVG() async {
@@ -39,7 +46,10 @@ void _initSVG() async {
 void _initAuth() async {
   locator
     ..registerFactory<AuthRemoteDataSource>(
-      () => AuthRemoteDataSourceImpl(locator()),
+      () => AuthRemoteDataSourceImpl(
+        locator(),
+        locator(),
+      ),
     )
     ..registerFactory<AuthRepository>(
       () => AuthRepositoryImpl(locator()),
