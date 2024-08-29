@@ -5,8 +5,9 @@ class WalletModel extends Wallet {
     super.id,
     super.createdAt,
     required super.userId,
-    required super.providerType,
+    required super.walletPin,
     required super.walletPhone,
+    required super.providerType,
   });
 
   factory WalletModel.fromJson(Map<String, dynamic> json) {
@@ -14,6 +15,7 @@ class WalletModel extends Wallet {
       id: json['id'],
       createdAt: DateTime.parse(json['created_at']),
       userId: json['user_id'],
+      walletPin: json['wallet_pin'],
       providerType: json['provider_type'],
       walletPhone: json['wallet_phone'],
     );
@@ -24,22 +26,25 @@ class WalletModel extends Wallet {
       'user_id': userId,
       'provider_type': providerType,
       'wallet_phone': walletPhone,
+      'wallet_pin': walletPin,
     };
   }
 
   WalletModel copyWith({
     String? id,
     DateTime? createdAt,
+    String? walletPin,
     String? userId,
     String? providerType,
     String? walletPhone,
   }) {
     return WalletModel(
       id: id ?? this.id,
-      createdAt: createdAt ?? this.createdAt,
       userId: userId ?? this.userId,
-      providerType: providerType ?? this.providerType,
+      walletPin: walletPin ?? this.walletPin,
+      createdAt: createdAt ?? this.createdAt,
       walletPhone: walletPhone ?? this.walletPhone,
+      providerType: providerType ?? this.providerType,
     );
   }
 }

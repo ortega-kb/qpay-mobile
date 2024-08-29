@@ -6,7 +6,7 @@ import 'package:qpay/core/shared/widgets/m_progress.dart';
 import 'package:qpay/core/shared/widgets/m_text_field.dart';
 import 'package:qpay/core/shared/widgets/select_account_type.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
-import 'package:qpay/core/utils/account_type.dart';
+import 'package:qpay/core/utils/enums/account_type.dart';
 import 'package:qpay/core/utils/messages.dart';
 import 'package:qpay/core/utils/validator.dart';
 import 'package:qpay/features/auth/presentation/bloc/auth_bloc.dart';

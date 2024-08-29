@@ -1,5 +1,6 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qpay/core/shared/widgets/m_button.dart';
 import 'package:qpay/core/shared/widgets/m_subtitle.dart';
@@ -18,7 +19,15 @@ class WalletListScreen extends StatefulWidget {
 
 class _WalletListScreenState extends State<WalletListScreen> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _phoneController = TextEditingController();
+  final _phoneController = TextEditingController();
+  final _pinController = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    _phoneController.dispose();
+    _pinController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +74,21 @@ class _WalletListScreenState extends State<WalletListScreen> {
                             )
                           ],
                         ),
+                      ),
+                      const SizedBox(height: AppDimen.p16),
+                      MTextField(
+                        controller: _phoneController,
+                        label: AppLocalizations.of(context)!.pin,
+                        obscureText: false,
+                        keyboardType: TextInputType.number,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly,
+                          // 4 length of pin providers
+                          LengthLimitingTextInputFormatter(4),
+                        ],
+                        validator: (value) {
+                          return Validator.allValidator(value);
+                        },
                       ),
                       const SizedBox(height: AppDimen.p16),
                       MButton(

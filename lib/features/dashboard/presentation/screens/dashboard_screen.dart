@@ -171,9 +171,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           IconButton(
             tooltip: AppLocalizations.of(context)!.qr_scanner,
             onPressed: () {
-              //context.push('/qr-scanner');
-              //privacyPolicy(context: context, onTap: () {});
-              generateLinkPayment();
+              context.push('/qr-scanner');
             },
             icon: Icon(FluentIcons.scan_dash_24_filled),
           ),

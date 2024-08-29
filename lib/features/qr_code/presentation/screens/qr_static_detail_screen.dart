@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
-import 'package:qpay/core/utils/operation_type.dart';
+import 'package:qpay/core/utils/enums/operation_type.dart';
 
 import '../../../../core/utils/image_path.dart';
 import '../../../../core/utils/qr_response.dart';

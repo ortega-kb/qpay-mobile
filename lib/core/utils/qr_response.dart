@@ -1,4 +1,4 @@
-import 'package:qpay/core/utils/operation_type.dart';
+import 'package:qpay/core/utils/enums/operation_type.dart';
 
 class QRResponse {
   final String account;

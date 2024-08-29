@@ -42,24 +42,32 @@ class _WalletUSDCDFState extends State<WalletUSDCDF> {
         AspectRatio(
           aspectRatio: 16.0 / 8.5,
           child: SizedBox(
-            child: PageView(
-              controller: pageController,
-              children: [
-                Wallet(
-                  title: AppLocalizations.of(context)!.wallet_cap,
-                  onTap: () => context.push('/wallet-list'),
-                  walletIndicator: WalletIndicator(index: currentPage),
-                  currency: Currency.CDF,
-                ),
-                Wallet(
-                  title: AppLocalizations.of(context)!.wallet_cap,
-                  onTap: () => context.push('/wallet-list'),
-                  walletIndicator: WalletIndicator(index: currentPage),
-                  currency: Currency.USD,
-                ),
-              ],
-              onPageChanged: (page) {
-                context.read<WalletPageCubit>().onChangePage(page);
+            child: BlocBuilder<WalletPageCubit, int>(
+              builder: (context, state) {
+                return PageView(
+                  controller: pageController,
+                  children: [
+                    Wallet(
+                      title: AppLocalizations.of(context)!.wallet_cap,
+                      onTap: () => context.push('/wallet-list'),
+                      walletIndicator: WalletIndicator(
+                        index: state,
+                      ),
+                      currency: Currency.CDF,
+                    ),
+                    Wallet(
+                      title: AppLocalizations.of(context)!.wallet_cap,
+                      onTap: () => context.push('/wallet-list'),
+                      walletIndicator: WalletIndicator(
+                        index: state,
+                      ),
+                      currency: Currency.USD,
+                    ),
+                  ],
+                  onPageChanged: (page) {
+                    context.read<WalletPageCubit>().onChangePage(page);
+                  },
+                );
               },
             ),
           ),
@@ -70,30 +78,24 @@ class _WalletUSDCDFState extends State<WalletUSDCDF> {
 }
 
 /// WalletIndicator [index]
-class WalletIndicator extends StatefulWidget {
+class WalletIndicator extends StatelessWidget {
   final int index;
-
   const WalletIndicator({super.key, required this.index});
 
   @override
-  State<WalletIndicator> createState() => _WalletIndicatorState();
-}
-
-class _WalletIndicatorState extends State<WalletIndicator> {
-  @override
   Widget build(BuildContext context) {
-    print("Current index: ${widget.index}");
+    debugPrint('Wallet indicator: $index');
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Indicator(
-          active: widget.index == 0,
+          active: index == 0,
           activeColor: AppColor.white,
           inactiveColor: AppColor.white,
         ),
         const SizedBox(width: AppDimen.p8),
         Indicator(
-          active: widget.index == 1,
+          active: index == 1,
           activeColor: AppColor.white,
           inactiveColor: AppColor.white,
         )

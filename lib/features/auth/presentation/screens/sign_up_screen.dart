@@ -6,7 +6,7 @@ import 'package:qpay/core/shared/cubits/account_type_cubit.dart';
 import 'package:qpay/core/shared/widgets/account_type_tile.dart';
 import 'package:qpay/core/shared/widgets/m_progress.dart';
 import 'package:qpay/core/shared/widgets/select_account_type.dart';
-import 'package:qpay/core/utils/account_type.dart';
+import 'package:qpay/core/utils/enums/account_type.dart';
 import 'package:qpay/core/utils/messages.dart';
 import 'package:qpay/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:qpay/features/auth/presentation/widgets/m_password_field.dart';
