@@ -2,6 +2,7 @@
 class Wallet {
   final String? id;
   final String userId;
+  final String userCode;
   final String providerType;
   final String walletPhone;
   final String walletPin;
@@ -13,6 +14,7 @@ class Wallet {
     this.createdAt,
     this.balance,
     required this.userId,
+    required this.userCode,
     required this.walletPin,
     required this.providerType,
     required this.walletPhone,

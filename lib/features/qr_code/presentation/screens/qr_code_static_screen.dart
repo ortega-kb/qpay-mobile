@@ -2,11 +2,14 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:qpay/core/shared/services/user_information_service.dart';
 import 'package:qpay/core/shared/widgets/m_subtitle.dart';
 import 'package:qpay/core/shared/widgets/separator.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
+import 'package:qpay/features/auth/presentation/screens/user_information_screen.dart';
 import 'package:qpay/features/qr_code/presentation/widgets/qr_static_tile.dart';
+import 'package:qpay/init_dependencies.dart';
 import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -68,8 +71,8 @@ class _QrCodeStaticScreenState extends State<QrCodeStaticScreen> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       MSubtitle(
-                        title: AppLocalizations.of(context)!
-                            .validate_informations,
+                        title:
+                            AppLocalizations.of(context)!.validate_informations,
                       ),
                       const SizedBox(height: AppDimen.p16),
                       MTextField(
@@ -128,7 +131,7 @@ class _QrCodeStaticScreenState extends State<QrCodeStaticScreen> {
                           if (_formKey.currentState!.validate()) {
                             context.read<QRCodeBloc>().add(
                                   AddQRStaticEvent(
-                                    "qp7878968",
+                                    locator<UserInformationService>().userCode,
                                     double.parse(_amountController.text),
                                     _motifController.text.trim(),
                                     _currencyController.text.trim(),

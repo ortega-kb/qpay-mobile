@@ -173,6 +173,8 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
               //   errorScan(AppLocalizations.of(context)!.qr_no_valid);
               //   pauseScan();
               // }
+              debugPrint(scanData.code);
+              pauseScan();
             } else {
               errorScan(AppLocalizations.of(context)!.qr_no_valid);
               pauseScan();

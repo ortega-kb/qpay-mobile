@@ -6,6 +6,7 @@ class WalletModel extends Wallet {
     super.createdAt,
     super.balance,
     required super.userId,
+    required super.userCode,
     required super.walletPin,
     required super.walletPhone,
     required super.providerType,
@@ -16,6 +17,7 @@ class WalletModel extends Wallet {
       id: json['id'],
       createdAt: DateTime.parse(json['created_at']),
       userId: json['user_id'],
+      userCode: json['user_code'],
       walletPin: json['wallet_pin'],
       providerType: json['provider_type'],
       walletPhone: json['wallet_phone'],
@@ -26,6 +28,7 @@ class WalletModel extends Wallet {
     return {
       'user_id': userId,
       'provider_type': providerType,
+      'user_code': userCode,
       'wallet_phone': walletPhone,
       'wallet_pin': walletPin,
     };
@@ -37,6 +40,7 @@ class WalletModel extends Wallet {
     String? walletPin,
     String? userId,
     double? balance,
+    String? userCode,
     String? providerType,
     String? walletPhone,
   }) {
@@ -44,6 +48,7 @@ class WalletModel extends Wallet {
       id: id ?? this.id,
       userId: userId ?? this.userId,
       balance: balance ?? this.balance,
+      userCode: userCode ?? this.userCode,
       walletPin: walletPin ?? this.walletPin,
       createdAt: createdAt ?? this.createdAt,
       walletPhone: walletPhone ?? this.walletPhone,

@@ -106,17 +106,17 @@ class _WalletListScreenState extends State<WalletListScreen> {
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
                             final phone = _phoneController.text.trim();
-
                             wallets.add(
                               Wallet(
                                 userId: locator<UserInformationService>().userId,
+                                userCode: locator<UserInformationService>().userCode,
                                 walletPin: _pinController.text.trim(),
                                 providerType: RecognizeProvider.recognize(phone)!,
                                 walletPhone: phone,
                               ),
                             );
 
-                            setState(() {});
+                            // setState(() {});
                             Navigator.pop(context);
                           }
                         },

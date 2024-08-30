@@ -5,6 +5,7 @@ import 'package:pretty_qr_code/pretty_qr_code.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:qpay/core/utils/enums/operation_type.dart';
+import 'package:qpay/core/utils/qr_payload.dart';
 
 import '../../../../core/utils/image_path.dart';
 import '../../../../core/utils/qr_response.dart';
@@ -29,23 +30,25 @@ class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
     _qrResponse = QRResponse(
       account: widget.qrStatic.account,
       amount: widget.qrStatic.amount,
-      type: OperationType.PAYMENT,
+      type: OperationType.PAYMENT.name,
       currency: widget.qrStatic.currency,
     );
 
     _qrCode = QrCode.fromData(
-      data: _qrResponse.toValidQRCode(),
-      errorCorrectLevel: QrErrorCorrectLevel.Q,
+      data: QrPayload.toPayload(_qrResponse),
+      errorCorrectLevel: QrErrorCorrectLevel.L,
     );
 
     _qrImage = QrImage(_qrCode);
     _prettyQrDecoration = const PrettyQrDecoration(
-      image: PrettyQrDecorationImage(
+      image: const PrettyQrDecorationImage(
         image: AssetImage(
           ImagePath.logo,
         ),
       ),
-      shape: PrettyQrRoundedSymbol(color: AppColor.primary),
+      shape: PrettyQrRoundedSymbol(
+        color: AppColor.primary,
+      ),
     );
   }
 
@@ -58,7 +61,15 @@ class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(FluentIcons.print_24_filled),
+          ),
+          const SizedBox(width: AppDimen.p8)
+        ],
+      ),
       body: Align(
         alignment: Alignment.topCenter,
         child: ConstrainedBox(
@@ -84,9 +95,7 @@ class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
                         child: Padding(
                           padding: const EdgeInsets.all(AppDimen.p32),
                           child: Container(
-                            decoration: BoxDecoration(
-                              color: AppColor.white
-                            ),
+                            decoration: BoxDecoration(color: AppColor.white),
                             child: PrettyQrView(
                               qrImage: _qrImage,
                               decoration: _prettyQrDecoration,
@@ -107,32 +116,46 @@ class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
                               bottom: 0,
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: AppDimen.p32,
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(AppDimen.p32),
-                                child: PrettyQrView(
-                                  qrImage: _qrImage,
-                                  decoration: _prettyQrDecoration,
+                              padding: const EdgeInsets.all(AppDimen.p16),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: AppColor.white,
+                                  borderRadius: BorderRadius.circular(AppDimen.p16)
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(AppDimen.p32),
+                                  child: PrettyQrView(
+                                    qrImage: _qrImage,
+                                    decoration: _prettyQrDecoration,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        const SizedBox(height: AppDimen.p16),
+                        const SizedBox(height: AppDimen.p0),
                         Expanded(
                           child: SingleChildScrollView(
                             padding: safePadding.copyWith(top: 0),
                             child: Column(
                               children: [
                                 Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: AppDimen.p16,
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: AppDimen.p16,
+                                  ),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: AppColor.white,
+                                      borderRadius: BorderRadius.circular(
+                                        AppDimen.p16,
+                                      ),
                                     ),
                                     child: ListTile(
                                       title: Text(
                                         widget.qrStatic.account,
-                                        style: TextStyle(color: AppColor.gray),
+                                        style: TextStyle(
+                                          color: AppColor.gray,
+                                          fontWeight: FontWeight.w500
+                                        ),
                                       ),
                                       trailing: IconButton(
                                         onPressed: () {
@@ -144,10 +167,12 @@ class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
                                         },
                                         icon: Icon(
                                           FluentIcons.copy_24_filled,
-                                          size: 20,
+                                          size: 24,
                                         ),
                                       ),
-                                    )),
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
