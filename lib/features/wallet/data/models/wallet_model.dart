@@ -4,6 +4,7 @@ class WalletModel extends Wallet {
   WalletModel({
     super.id,
     super.createdAt,
+    super.balance,
     required super.userId,
     required super.walletPin,
     required super.walletPhone,
@@ -35,12 +36,14 @@ class WalletModel extends Wallet {
     DateTime? createdAt,
     String? walletPin,
     String? userId,
+    double? balance,
     String? providerType,
     String? walletPhone,
   }) {
     return WalletModel(
       id: id ?? this.id,
       userId: userId ?? this.userId,
+      balance: balance ?? this.balance,
       walletPin: walletPin ?? this.walletPin,
       createdAt: createdAt ?? this.createdAt,
       walletPhone: walletPhone ?? this.walletPhone,

@@ -9,6 +9,4 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:qpay/core/utils/code_generator.dart';
 
-void main() {
-
-}
+void main() {}

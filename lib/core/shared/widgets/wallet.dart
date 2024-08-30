@@ -47,7 +47,7 @@ class _WalletUSDCDFState extends State<WalletUSDCDF> {
                 return PageView(
                   controller: pageController,
                   children: [
-                    Wallet(
+                    WalletPage(
                       title: AppLocalizations.of(context)!.wallet_cap,
                       onTap: () => context.push('/wallet-list'),
                       walletIndicator: WalletIndicator(
@@ -55,7 +55,7 @@ class _WalletUSDCDFState extends State<WalletUSDCDF> {
                       ),
                       currency: Currency.CDF,
                     ),
-                    Wallet(
+                    WalletPage(
                       title: AppLocalizations.of(context)!.wallet_cap,
                       onTap: () => context.push('/wallet-list'),
                       walletIndicator: WalletIndicator(
@@ -105,14 +105,14 @@ class WalletIndicator extends StatelessWidget {
 }
 
 /// Wallet [title, onTap, onDelete]
-class Wallet extends StatelessWidget {
+class WalletPage extends StatelessWidget {
   final String title;
   final void Function()? onTap;
   final void Function()? onDelete;
   final Currency currency;
   final Widget walletIndicator;
 
-  const Wallet({
+  const WalletPage({
     super.key,
     this.onTap,
     this.onDelete,

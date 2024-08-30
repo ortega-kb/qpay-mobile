@@ -2,12 +2,20 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:qpay/core/shared/services/user_information_service.dart';
 import 'package:qpay/core/shared/widgets/m_button.dart';
 import 'package:qpay/core/shared/widgets/m_subtitle.dart';
 import 'package:qpay/core/shared/widgets/m_text_field.dart';
+import 'package:qpay/core/shared/widgets/separator.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
+import 'package:qpay/core/utils/enums/provider_type.dart';
+import 'package:qpay/core/utils/recognize_provider.dart';
 import 'package:qpay/core/utils/validator.dart';
+import 'package:qpay/features/auth/presentation/screens/user_information_screen.dart';
+import 'package:qpay/features/wallet/domain/entities/wallet.dart';
+import 'package:qpay/features/wallet/presentation/widgets/wallet_tile.dart';
+import 'package:qpay/init_dependencies.dart';
 import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
 
 class WalletListScreen extends StatefulWidget {
@@ -21,6 +29,8 @@ class _WalletListScreenState extends State<WalletListScreen> {
   final _formKey = GlobalKey<FormState>();
   final _phoneController = TextEditingController();
   final _pinController = TextEditingController();
+
+  List<Wallet> wallets = [];
 
   @override
   void dispose() {
@@ -77,7 +87,7 @@ class _WalletListScreenState extends State<WalletListScreen> {
                       ),
                       const SizedBox(height: AppDimen.p16),
                       MTextField(
-                        controller: _phoneController,
+                        controller: _pinController,
                         label: AppLocalizations.of(context)!.pin,
                         obscureText: false,
                         keyboardType: TextInputType.number,
@@ -94,7 +104,21 @@ class _WalletListScreenState extends State<WalletListScreen> {
                       MButton(
                         text: AppLocalizations.of(context)!.add,
                         onPressed: () {
-                          if (_formKey.currentState!.validate()) {}
+                          if (_formKey.currentState!.validate()) {
+                            final phone = _phoneController.text.trim();
+
+                            wallets.add(
+                              Wallet(
+                                userId: locator<UserInformationService>().userId,
+                                walletPin: _pinController.text.trim(),
+                                providerType: RecognizeProvider.recognize(phone)!,
+                                walletPhone: phone,
+                              ),
+                            );
+
+                            setState(() {});
+                            Navigator.pop(context);
+                          }
                         },
                       ),
                       const SizedBox(height: AppDimen.p16),
@@ -121,6 +145,12 @@ class _WalletListScreenState extends State<WalletListScreen> {
           ),
           const SizedBox(width: AppDimen.p8)
         ],
+      ),
+      body: ListView.separated(
+        padding: EdgeInsets.symmetric(vertical: AppDimen.p16),
+        itemBuilder: (context, index) => WalletTile(wallet: wallets[index]),
+        separatorBuilder: (context, index) => Separator(),
+        itemCount: wallets.length,
       ),
     );
   }

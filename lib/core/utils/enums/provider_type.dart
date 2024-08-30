@@ -3,4 +3,4 @@
 /// [AIRTEL] All features,
 /// [ORANGE] Intermediate features
 /// [AFRICELL] Intermediate feature
-enum AccountType { VODACOM, AIRTEL, ORANGE, AFRICELL }
+enum ProviderType { VODACOM, AIRTEL, ORANGE, AFRICELL }

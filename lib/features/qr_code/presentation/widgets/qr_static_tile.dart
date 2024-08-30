@@ -23,20 +23,7 @@ class QRStaticTile extends StatelessWidget {
     return ListTile(
       dense: true,
       onTap: onTap,
-      leading: Hero(
-        tag: index,
-        child: Container(
-          decoration:
-              BoxDecoration(color: AppColor.background, shape: BoxShape.circle),
-          child: Padding(
-            padding: const EdgeInsets.all(AppDimen.p2),
-            child: Icon(
-              FluentIcons.qr_code_28_filled,
-              size: 24,
-            ),
-          ),
-        ),
-      ),
+      leading: LeadingTile(iconData: FluentIcons.qr_code_28_filled),
       title: Text(
         qrStatic.motif,
         style: Theme.of(context).textTheme.bodyMedium,
@@ -54,6 +41,29 @@ class QRStaticTile extends StatelessWidget {
         icon: Icon(
           FluentIcons.delete_24_filled,
           size: 19,
+        ),
+      ),
+    );
+  }
+}
+
+class LeadingTile extends StatelessWidget {
+  final IconData iconData;
+  const LeadingTile({
+    super.key,
+    required this.iconData
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration:
+          BoxDecoration(color: AppColor.background, shape: BoxShape.circle),
+      child: Padding(
+        padding: const EdgeInsets.all(AppDimen.p2),
+        child: Icon(
+          iconData,
+          size: 24,
         ),
       ),
     );

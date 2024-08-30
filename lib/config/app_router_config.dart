@@ -14,7 +14,6 @@ import 'package:qpay/features/qr_code/domain/entities/qr_static.dart';
 import 'package:qpay/features/qr_code/presentation/screens/qr_scanner_screen.dart';
 import 'package:qpay/features/qr_code/presentation/screens/qr_static_detail_screen.dart';
 import 'package:qpay/features/transaction/presentation/screens/add_transaction_screen.dart';
-import 'package:qpay/features/transaction/presentation/screens/link_generator_screen.dart';
 import 'package:qpay/features/transaction/presentation/screens/transaction_list_screen.dart';
 import 'package:qpay/features/wallet/presentation/screens/wallet_list_screen.dart';
 
@@ -126,18 +125,6 @@ class AppRouterConfig {
                   systemNavigationBarColor: AppColor.background,
                 ),
                 child: QrScannerScreen(),
-              );
-            },
-          ),
-          GoRoute(
-            path: '/link-generator',
-            builder: (context, state) {
-              return const AnnotatedRegion(
-                value: SystemUiOverlayStyle(
-                  statusBarColor: AppColor.background,
-                  systemNavigationBarColor: AppColor.background,
-                ),
-                child: LinkGeneratorScreen(),
               );
             },
           ),

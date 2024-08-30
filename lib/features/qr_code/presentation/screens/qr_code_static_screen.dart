@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:qpay/core/shared/widgets/m_subtitle.dart';
+import 'package:qpay/core/shared/widgets/separator.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:qpay/features/qr_code/presentation/widgets/qr_static_tile.dart';
@@ -215,15 +216,7 @@ class _QrCodeStaticScreenState extends State<QrCodeStaticScreen> {
                   onDelete: () => confirmDeleteQRStatic(index),
                 );
               },
-              separatorBuilder: (context, int) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: AppDimen.p16),
-                  child: Container(
-                    height: .5,
-                    color: AppColor.greyColor.withOpacity(.5),
-                  ),
-                );
-              },
+              separatorBuilder: (context, int) => Separator(),
               itemCount: state.qrStatics.length,
             );
           }

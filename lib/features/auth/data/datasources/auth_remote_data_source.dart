@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qpay/core/errors/exception.dart';
 import 'package:qpay/core/shared/services/user_information_service.dart';
-import 'package:qpay/core/utils/check_registered_account.dart';
 import 'package:qpay/core/utils/code_generator.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -82,7 +81,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       );
 
       final userAlreadyRegistered =
-          checkRegisteredAccount(response.user!.toJson());
+          _checkRegisteredAccount(response.user!.toJson());
       if (userAlreadyRegistered) {
         throw AuthException('User already registered');
       }
@@ -144,5 +143,9 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   @override
   Future<void> signOut() async {
     await _supabaseClient.auth.signOut(scope: SignOutScope.local);
+  }
+
+  bool _checkRegisteredAccount(Map<String, dynamic> json) {
+    return (json['identities'] as List).isEmpty ? true : false;
   }
 }
