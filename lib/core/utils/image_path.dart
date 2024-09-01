@@ -14,4 +14,7 @@ class ImagePath {
   static const us = "assets/images/us.png";
 
   static const svgSuccess = "assets/images/fete.svg";
+  static const qpayLogoBgSvg = "assets/images/qpay-logo-bg.svg";
+
+  static const qpayLogoBgPng = "assets/images/qpay-logo-bg.png";
 }

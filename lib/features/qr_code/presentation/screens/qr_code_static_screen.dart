@@ -7,7 +7,6 @@ import 'package:qpay/core/shared/widgets/m_subtitle.dart';
 import 'package:qpay/core/shared/widgets/separator.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
-import 'package:qpay/features/auth/presentation/screens/user_information_screen.dart';
 import 'package:qpay/features/qr_code/presentation/widgets/qr_static_tile.dart';
 import 'package:qpay/init_dependencies.dart';
 import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';

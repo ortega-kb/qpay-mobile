@@ -25,7 +25,7 @@ class _AccountTypeTileState extends State<AccountTypeTile> {
     return ListTile(
       onTap: widget.onTap,
       title: Text(widget.accountType),
-      subtitle: Text(widget.accountTypeDesc ?? '') ,
+      subtitle: Text(widget.accountTypeDesc ?? ''),
       trailing: widget.isChecked
           ? Icon(
               Icons.check_circle,

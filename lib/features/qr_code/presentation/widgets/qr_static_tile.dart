@@ -1,7 +1,7 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:qpay/core/shared/widgets/leading_tile.dart';
 import 'package:qpay/core/theme/app_color.dart';
-import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:qpay/features/qr_code/domain/entities/qr_static.dart';
 
 class QRStaticTile extends StatelessWidget {
@@ -41,29 +41,6 @@ class QRStaticTile extends StatelessWidget {
         icon: Icon(
           FluentIcons.delete_24_filled,
           size: 19,
-        ),
-      ),
-    );
-  }
-}
-
-class LeadingTile extends StatelessWidget {
-  final IconData iconData;
-  const LeadingTile({
-    super.key,
-    required this.iconData
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration:
-          BoxDecoration(color: AppColor.background, shape: BoxShape.circle),
-      child: Padding(
-        padding: const EdgeInsets.all(AppDimen.p2),
-        child: Icon(
-          iconData,
-          size: 24,
         ),
       ),
     );

@@ -119,6 +119,7 @@
   "reports": "Rapports",
   "greeting": "Bienvenue,",
   "reload": "Recharger",
+  "profile": "Profil",
   "forgot_password": "Mot de passe oublié ?",
   "dont_have_account": "Pas de compte ?",
   "already_have_account": "Déjà un compte ?",
@@ -149,3 +150,4 @@
   "failed_resent_otp_code": "Erreur de renvoi du code OTP",
   "welcome_user": "Bienvenue {user}"
 }
+

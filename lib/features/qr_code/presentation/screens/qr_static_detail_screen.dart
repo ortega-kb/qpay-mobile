@@ -1,11 +1,13 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
+import 'package:qpay/core/shared/widgets/qr_code_view.dart';
+import 'package:qpay/core/shared/widgets/separator.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:qpay/core/utils/enums/operation_type.dart';
 import 'package:qpay/core/utils/qr_payload.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../core/utils/image_path.dart';
 import '../../../../core/utils/qr_response.dart';
@@ -21,9 +23,6 @@ class QRStaticDetailScreen extends StatefulWidget {
 }
 
 class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
-  late QrCode _qrCode;
-  late QrImage _qrImage;
-  late PrettyQrDecoration _prettyQrDecoration;
   late QRResponse _qrResponse;
 
   initialize() {
@@ -33,29 +32,12 @@ class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
       type: OperationType.PAYMENT.name,
       currency: widget.qrStatic.currency,
     );
-
-    _qrCode = QrCode.fromData(
-      data: QrPayload.toPayload(_qrResponse),
-      errorCorrectLevel: QrErrorCorrectLevel.L,
-    );
-
-    _qrImage = QrImage(_qrCode);
-    _prettyQrDecoration = const PrettyQrDecoration(
-      image: const PrettyQrDecorationImage(
-        image: AssetImage(
-          ImagePath.logo,
-        ),
-      ),
-      shape: PrettyQrRoundedSymbol(
-        color: AppColor.primary,
-      ),
-    );
   }
 
   @override
   void initState() {
-    initialize();
     super.initState();
+    initialize();
   }
 
   @override
@@ -96,10 +78,7 @@ class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
                           padding: const EdgeInsets.all(AppDimen.p32),
                           child: Container(
                             decoration: BoxDecoration(color: AppColor.white),
-                            child: PrettyQrView(
-                              qrImage: _qrImage,
-                              decoration: _prettyQrDecoration,
-                            ),
+                            child: QrCodeView(qrResponse: _qrResponse)
                           ),
                         ),
                       ),
@@ -108,7 +87,7 @@ class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
                     flex: 2,
                     child: Column(
                       children: [
-                        SizedBox(height: AppDimen.p32),
+                        SizedBox(height: AppDimen.p0),
                         if (constraints.maxWidth < 720)
                           Padding(
                             padding: safePadding.copyWith(
@@ -120,14 +99,13 @@ class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
                               child: Container(
                                 decoration: BoxDecoration(
                                   color: AppColor.white,
-                                  borderRadius: BorderRadius.circular(AppDimen.p16)
+                                  borderRadius: BorderRadius.circular(
+                                    AppDimen.p16,
+                                  ),
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.all(AppDimen.p32),
-                                  child: PrettyQrView(
-                                    qrImage: _qrImage,
-                                    decoration: _prettyQrDecoration,
-                                  ),
+                                  child: QrCodeView(qrResponse: _qrResponse)
                                 ),
                               ),
                             ),
@@ -143,35 +121,58 @@ class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
                                     horizontal: AppDimen.p16,
                                   ),
                                   child: Container(
-                                    decoration: BoxDecoration(
-                                      color: AppColor.white,
-                                      borderRadius: BorderRadius.circular(
-                                        AppDimen.p16,
-                                      ),
-                                    ),
-                                    child: ListTile(
-                                      title: Text(
-                                        widget.qrStatic.account,
-                                        style: TextStyle(
-                                          color: AppColor.gray,
-                                          fontWeight: FontWeight.w500
+                                      decoration: BoxDecoration(
+                                        color: AppColor.white,
+                                        borderRadius: BorderRadius.circular(
+                                          AppDimen.p16,
                                         ),
                                       ),
-                                      trailing: IconButton(
-                                        onPressed: () {
-                                          Clipboard.setData(
-                                            ClipboardData(
-                                              text: widget.qrStatic.account,
+                                      child: SingleChildScrollView(
+                                        child: Column(
+                                          children: [
+                                            ListTile(
+                                              title: Text(
+                                                AppLocalizations.of(context)!
+                                                    .motif
+                                                    .toUpperCase(),
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyMedium
+                                                    ?.copyWith(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: AppColor.black),
+                                              ),
+                                              subtitle: Text(
+                                                widget.qrStatic.motif,
+                                              ),
                                             ),
-                                          );
-                                        },
-                                        icon: Icon(
-                                          FluentIcons.copy_24_filled,
-                                          size: 24,
+                                            Separator(),
+                                            ListTile(
+                                              title: Text(
+                                                AppLocalizations.of(context)!
+                                                    .amount
+                                                    .toUpperCase(),
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyMedium
+                                                    ?.copyWith(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: AppColor.black),
+                                              ),
+                                              subtitle: Text(
+                                                widget.qrStatic.amount
+                                                    .toString(),
+                                              ),
+                                              trailing: Text(
+                                                widget.qrStatic.currency
+                                                    .toString(),
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                      ),
-                                    ),
-                                  ),
+                                      )),
                                 ),
                               ],
                             ),
