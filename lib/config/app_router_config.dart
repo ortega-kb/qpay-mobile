@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:qpay/core/shared/services/shared_preferences_service.dart';
 import 'package:qpay/core/theme/app_color.dart';
+import 'package:qpay/core/utils/qr_response.dart';
 import 'package:qpay/features/auth/presentation/screens/sign_up_screen.dart';
 import 'package:qpay/features/auth/presentation/screens/on_boarding_screen.dart';
 import 'package:qpay/features/auth/presentation/screens/user_information_screen.dart';
@@ -16,6 +17,7 @@ import 'package:qpay/features/qr_code/domain/entities/qr_static.dart';
 import 'package:qpay/features/qr_code/presentation/screens/qr_scanner_screen.dart';
 import 'package:qpay/features/qr_code/presentation/screens/qr_static_detail_screen.dart';
 import 'package:qpay/features/transaction/presentation/screens/add_transaction_screen.dart';
+import 'package:qpay/features/transaction/presentation/screens/payment_screen.dart';
 import 'package:qpay/features/transaction/presentation/screens/transaction_list_screen.dart';
 import 'package:qpay/features/wallet/presentation/screens/wallet_list_screen.dart';
 
@@ -26,6 +28,7 @@ class AppRouterConfig {
       GlobalKey<NavigatorState>();
 
   SharedPreferencesService _sharedPreferencesService;
+
   AppRouterConfig(this._sharedPreferencesService);
 
   GoRouter get router => GoRouter(
@@ -59,13 +62,18 @@ class AppRouterConfig {
           ),
           GoRoute(
             path: '/payment',
-            builder: (context, state) {
-              return const AnnotatedRegion(
-                value: SystemUiOverlayStyle(
-                  statusBarColor: AppColor.background,
-                  systemNavigationBarColor: AppColor.background,
+            pageBuilder: (context, state) {
+              final qrResponseDecoded = json.decode(state.extra as String);
+              final qrResponse = QRResponse.fromJson(qrResponseDecoded);
+              return MaterialPage(
+                fullscreenDialog: true,
+                child: AnnotatedRegion(
+                  value: SystemUiOverlayStyle(
+                    statusBarColor: AppColor.background,
+                    systemNavigationBarColor: AppColor.background,
+                  ),
+                  child: PaymentScreen(qrResponse: qrResponse),
                 ),
-                child: WalletListScreen(),
               );
             },
           ),

@@ -150,6 +150,10 @@
   "failed_resent_otp_code": "Erreur de renvoi du code OTP",
   "welcome_user": "Bienvenue {user}",
   "qr_code": "Code QR",
-  "qr_code_registered": "Code QR enregisté"
+  "qr_code_registered": "Code QR enregisté",
+  "check_and_confirm": "Vérifier et confirmer",
+  "account_recipient": "Compte destinataire",
+  "wallets_not_found": "Aucun portefeuille associé à votre compte,\nVeuillez en créer un pour commencer.",
+  "qr_code_not_found": "Aucun code QR n'a été trouvé,\nveuillez en créer un pour commencer."
 }
 

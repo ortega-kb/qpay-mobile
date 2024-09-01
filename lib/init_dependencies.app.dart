@@ -40,6 +40,7 @@ void _initSVG() async {
     ImagePath.svgTransfer,
     ImagePath.svgQrCode,
     ImagePath.svgPaymentReceive,
+    ImagePath.emptyBro
   ]);
 }
 

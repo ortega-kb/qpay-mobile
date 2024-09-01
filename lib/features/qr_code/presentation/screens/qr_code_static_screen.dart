@@ -6,9 +6,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:qpay/core/shared/services/user_information_service.dart';
 import 'package:qpay/core/shared/widgets/m_subtitle.dart';
+import 'package:qpay/core/shared/widgets/not_found.dart';
 import 'package:qpay/core/shared/widgets/separator.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
+import 'package:qpay/core/utils/image_path.dart';
 import 'package:qpay/features/qr_code/presentation/widgets/qr_static_tile.dart';
 import 'package:qpay/init_dependencies.dart';
 import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
@@ -208,25 +210,27 @@ class _QrCodeStaticScreenState extends State<QrCodeStaticScreen> {
           if (state is QRStaticLoadingState) {
             return const CircularProgressIndicator();
           } else if (state is QRStaticLoadedState) {
-            return ListView.separated(
-              padding: EdgeInsets.symmetric(vertical: AppDimen.p16),
-              itemBuilder: (context, index) {
-                final qrStatic = state.qrStatics[index];
-                return QRStaticTile(
-                  qrStatic: qrStatic,
-                  index: index,
-                  onTap: () => context.push(
-                    '/qr-static-details',
-                    extra: json.encode(
-                      qrStatic.toJson(),
-                    ),
-                  ),
-                  onDelete: () => confirmDeleteQRStatic(index),
-                );
-              },
-              separatorBuilder: (context, int) => Separator(),
-              itemCount: state.qrStatics.length,
-            );
+            return state.qrStatics.isEmpty
+                ? NotFound(image: ImagePath.emptyBro, message: AppLocalizations.of(context)!.qr_code_not_found)
+                : ListView.separated(
+                    padding: EdgeInsets.symmetric(vertical: AppDimen.p16),
+                    itemBuilder: (context, index) {
+                      final qrStatic = state.qrStatics[index];
+                      return QRStaticTile(
+                        qrStatic: qrStatic,
+                        index: index,
+                        onTap: () => context.push(
+                          '/qr-static-details',
+                          extra: json.encode(
+                            qrStatic.toJson(),
+                          ),
+                        ),
+                        onDelete: () => confirmDeleteQRStatic(index),
+                      );
+                    },
+                    separatorBuilder: (context, int) => Separator(),
+                    itemCount: state.qrStatics.length,
+                  );
           }
           return const SizedBox.shrink();
         },

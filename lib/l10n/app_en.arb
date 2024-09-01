@@ -150,5 +150,9 @@
   "failed_resent_otp_code": "OTP code return error",
   "welcome_user": "Welcome {user}",
   "qr_code": "QR Code",
-  "qr_code_registered": "QR code registered"
+  "qr_code_registered": "QR code registered",
+  "check_and_confirm": "Check and confirm",
+  "account_recipient": "Account recipient",
+  "wallets_not_found": "There are no wallets associated with your account,\nso please create one to get started.",
+  "qr_code_not_found": "No QR codes found,\nso please create one to get started."
 }

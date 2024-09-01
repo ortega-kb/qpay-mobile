@@ -1,6 +1,7 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:qpay/core/shared/services/user_information_service.dart';
 import 'package:qpay/core/shared/widgets/qr_code_view.dart';
 import 'package:qpay/core/shared/widgets/separator.dart';
 import 'package:qpay/core/theme/app_color.dart';
@@ -8,10 +9,10 @@ import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:qpay/core/utils/enums/operation_type.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qpay/core/utils/messages.dart';
-import 'package:qpay/core/utils/qr_image_save.dart';
 import 'package:screenshot/screenshot.dart';
 
 import '../../../../core/utils/qr_response.dart';
+import '../../../../init_dependencies.dart';
 import '../../domain/entities/qr_static.dart';
 
 class QRStaticDetailScreen extends StatefulWidget {
@@ -29,6 +30,7 @@ class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
 
   initialize() {
     _qrResponse = QRResponse(
+      accountName: locator<UserInformationService>().username,
       account: widget.qrStatic.account,
       amount: widget.qrStatic.amount,
       type: OperationType.PAYMENT.name,
@@ -50,7 +52,7 @@ class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
   _takeScreenshot() async {
     final image = await screenshotController.capture();
     if (image != null) {
-      ImageGallerySaver.saveImage(image, name: 'qpay_qr_static.png');
+      await ImageGallerySaver.saveImage(image, name: 'qpay_qr_static.png');
       Messages.success(
         AppLocalizations.of(context)!.qr_code,
         AppLocalizations.of(context)!.qr_code_registered,
@@ -155,8 +157,7 @@ class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
                                             ListTile(
                                               title: Text(
                                                 AppLocalizations.of(context)!
-                                                    .motif
-                                                    .toUpperCase(),
+                                                    .motif,
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .bodyMedium
@@ -173,8 +174,7 @@ class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
                                             ListTile(
                                               title: Text(
                                                 AppLocalizations.of(context)!
-                                                    .amount
-                                                    .toUpperCase(),
+                                                    .amount,
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .bodyMedium

@@ -17,4 +17,6 @@ class ImagePath {
   static const qpayLogoBgSvg = "assets/images/qpay-logo-bg.svg";
 
   static const qpayLogoBgPng = "assets/images/qpay-logo-bg.png";
+  static const checkout = "assets/images/checkout.png";
+  static const emptyBro = "assets/images/empty-bro.svg";
 }

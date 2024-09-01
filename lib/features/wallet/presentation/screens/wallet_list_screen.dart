@@ -6,6 +6,7 @@ import 'package:qpay/core/shared/services/user_information_service.dart';
 import 'package:qpay/core/shared/widgets/m_button.dart';
 import 'package:qpay/core/shared/widgets/m_subtitle.dart';
 import 'package:qpay/core/shared/widgets/m_text_field.dart';
+import 'package:qpay/core/shared/widgets/not_found.dart';
 import 'package:qpay/core/shared/widgets/separator.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
@@ -15,6 +16,8 @@ import 'package:qpay/features/wallet/domain/entities/wallet.dart';
 import 'package:qpay/features/wallet/presentation/widgets/wallet_tile.dart';
 import 'package:qpay/init_dependencies.dart';
 import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
+
+import '../../../../core/utils/image_path.dart';
 
 class WalletListScreen extends StatefulWidget {
   const WalletListScreen({super.key});
@@ -106,10 +109,13 @@ class _WalletListScreenState extends State<WalletListScreen> {
                             final phone = _phoneController.text.trim();
                             wallets.add(
                               Wallet(
-                                userId: locator<UserInformationService>().userId,
-                                userCode: locator<UserInformationService>().userCode,
+                                userId:
+                                    locator<UserInformationService>().userId,
+                                userCode:
+                                    locator<UserInformationService>().userCode,
                                 walletPin: _pinController.text.trim(),
-                                providerType: RecognizeProvider.recognize(phone)!,
+                                providerType:
+                                    RecognizeProvider.recognize(phone)!,
                                 walletPhone: phone,
                               ),
                             );
@@ -144,12 +150,19 @@ class _WalletListScreenState extends State<WalletListScreen> {
           const SizedBox(width: AppDimen.p8)
         ],
       ),
-      body: ListView.separated(
+      body: NotFound(
+        image: ImagePath.emptyBro,
+        message: AppLocalizations.of(context)!.wallets_not_found,
+      ),
+    );
+  }
+}
+
+/*
+ListView.separated(
         padding: EdgeInsets.symmetric(vertical: AppDimen.p16),
         itemBuilder: (context, index) => WalletTile(wallet: wallets[index]),
         separatorBuilder: (context, index) => Separator(),
         itemCount: wallets.length,
       ),
-    );
-  }
-}
+*/

@@ -184,7 +184,7 @@ class WalletPage extends StatelessWidget {
                   subtitle: Text(
                     currency == Currency.CDF
                         ? AppLocalizations.of(context)!.cdf("1500.00")
-                        : AppLocalizations.of(context)!.usd("10.00"),
+                        : AppLocalizations.of(context)!.usd("5000.00"),
                     style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                           color: AppColor.white,
                           fontWeight: FontWeight.bold,
