@@ -148,5 +148,7 @@
   "verification_failed": "Verification failed",
   "resent_otp_code": "OTP code sent back",
   "failed_resent_otp_code": "OTP code return error",
-  "welcome_user": "Welcome {user}"
+  "welcome_user": "Welcome {user}",
+  "qr_code": "QR Code",
+  "qr_code_registered": "QR code registered"
 }

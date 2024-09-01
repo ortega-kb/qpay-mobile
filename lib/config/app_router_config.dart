@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
@@ -82,7 +84,8 @@ class AppRouterConfig {
           GoRoute(
             path: '/qr-static-details',
             builder: (context, state) {
-              final qrStatic = state.extra as QRStatic;
+              final qrStaticDecoded = json.decode(state.extra as String);
+              final QRStatic qrStatic = QRStatic.fromJson(qrStaticDecoded);
               return AnnotatedRegion(
                 value: SystemUiOverlayStyle(
                   statusBarColor: AppColor.background,

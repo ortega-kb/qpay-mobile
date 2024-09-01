@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -213,8 +215,12 @@ class _QrCodeStaticScreenState extends State<QrCodeStaticScreen> {
                 return QRStaticTile(
                   qrStatic: qrStatic,
                   index: index,
-                  onTap: () =>
-                      context.push('/qr-static-details', extra: qrStatic),
+                  onTap: () => context.push(
+                    '/qr-static-details',
+                    extra: json.encode(
+                      qrStatic.toJson(),
+                    ),
+                  ),
                   onDelete: () => confirmDeleteQRStatic(index),
                 );
               },

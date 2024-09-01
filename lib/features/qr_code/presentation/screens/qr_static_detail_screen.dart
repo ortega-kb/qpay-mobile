@@ -1,15 +1,16 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:pretty_qr_code/pretty_qr_code.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:qpay/core/shared/widgets/qr_code_view.dart';
 import 'package:qpay/core/shared/widgets/separator.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:qpay/core/utils/enums/operation_type.dart';
-import 'package:qpay/core/utils/qr_payload.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:qpay/core/utils/messages.dart';
+import 'package:qpay/core/utils/qr_image_save.dart';
+import 'package:screenshot/screenshot.dart';
 
-import '../../../../core/utils/image_path.dart';
 import '../../../../core/utils/qr_response.dart';
 import '../../domain/entities/qr_static.dart';
 
@@ -23,6 +24,7 @@ class QRStaticDetailScreen extends StatefulWidget {
 }
 
 class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
+  ScreenshotController screenshotController = ScreenshotController();
   late QRResponse _qrResponse;
 
   initialize() {
@@ -41,13 +43,30 @@ class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  _takeScreenshot() async {
+    final image = await screenshotController.capture();
+    if (image != null) {
+      ImageGallerySaver.saveImage(image, name: 'qpay_qr_static.png');
+      Messages.success(
+        AppLocalizations.of(context)!.qr_code,
+        AppLocalizations.of(context)!.qr_code_registered,
+        context,
+      );
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: Icon(FluentIcons.print_24_filled),
+            onPressed: _takeScreenshot,
+            icon: Icon(FluentIcons.save_24_filled),
           ),
           const SizedBox(width: AppDimen.p8)
         ],
@@ -77,9 +96,8 @@ class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
                         child: Padding(
                           padding: const EdgeInsets.all(AppDimen.p32),
                           child: Container(
-                            decoration: BoxDecoration(color: AppColor.white),
-                            child: QrCodeView(qrResponse: _qrResponse)
-                          ),
+                              decoration: BoxDecoration(color: AppColor.white),
+                              child: QrCodeView(qrResponse: _qrResponse)),
                         ),
                       ),
                     ),
@@ -94,18 +112,22 @@ class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
                               top: 0,
                               bottom: 0,
                             ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(AppDimen.p16),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: AppColor.white,
-                                  borderRadius: BorderRadius.circular(
-                                    AppDimen.p16,
+                            child: Screenshot(
+                              controller: screenshotController,
+                              child: Padding(
+                                padding: const EdgeInsets.all(AppDimen.p16),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: AppColor.white,
+                                    borderRadius: BorderRadius.circular(
+                                      AppDimen.p16,
+                                    ),
                                   ),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(AppDimen.p32),
-                                  child: QrCodeView(qrResponse: _qrResponse)
+                                  child: Padding(
+                                      padding:
+                                          const EdgeInsets.all(AppDimen.p32),
+                                      child:
+                                          QrCodeView(qrResponse: _qrResponse)),
                                 ),
                               ),
                             ),

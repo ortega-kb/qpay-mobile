@@ -22,8 +22,7 @@ class QRStaticModel implements QRStatic {
   final String currency;
 
   QRStaticModel(
-      {
-      required this.account,
+      {required this.account,
       required this.amount,
       required this.motif,
       required this.currency});
@@ -44,5 +43,15 @@ class QRStaticModel implements QRStatic {
       motif: motif,
       currency: currency,
     );
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'account': account,
+      'amount': amount,
+      'motif': motif,
+      'currency': currency,
+    };
   }
 }

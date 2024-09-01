@@ -148,6 +148,8 @@
   "verification_failed": "Vérification échouée",
   "resent_otp_code": "Code OTP renvoyé",
   "failed_resent_otp_code": "Erreur de renvoi du code OTP",
-  "welcome_user": "Bienvenue {user}"
+  "welcome_user": "Bienvenue {user}",
+  "qr_code": "Code QR",
+  "qr_code_registered": "Code QR enregisté"
 }
 
