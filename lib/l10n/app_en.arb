@@ -154,5 +154,10 @@
   "check_and_confirm": "Check and confirm",
   "account_recipient": "Account recipient",
   "wallets_not_found": "There are no wallets associated with your account,\nso please create one to get started.",
-  "qr_code_not_found": "No QR codes found,\nso please create one to get started."
+  "qr_code_not_found": "No QR codes found,\nso please create one to get started.",
+  "weekly": "Weekly",
+  "monthly": "Monthly",
+  "yearly": "Yearly",
+  "permission": "Camera permission",
+  "access_permission": "Please grant access to the camera to use the QR scanner."
 }

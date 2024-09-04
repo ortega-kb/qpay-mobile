@@ -154,6 +154,11 @@
   "check_and_confirm": "Vérifier et confirmer",
   "account_recipient": "Compte destinataire",
   "wallets_not_found": "Aucun portefeuille associé à votre compte,\nVeuillez en créer un pour commencer.",
-  "qr_code_not_found": "Aucun code QR n'a été trouvé,\nveuillez en créer un pour commencer."
+  "qr_code_not_found": "Aucun code QR n'a été trouvé,\nveuillez en créer un pour commencer.",
+  "weekly": "Hebdomadaire",
+  "monthly": "Mensuel",
+  "yearly": "Annuel",
+  "permission": "Permission camera",
+  "access_permission": "Veuillez accorder l'accès à la caméra pour utiliser le scanner QR."
 }
 

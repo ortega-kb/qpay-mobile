@@ -1,6 +1,7 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:qpay/core/shared/services/user_information_service.dart';
 import 'package:qpay/core/shared/widgets/m_button.dart';
 import 'package:qpay/core/shared/widgets/m_select_fied.dart';
@@ -12,6 +13,7 @@ import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qpay/core/utils/currency.dart';
 import 'package:qpay/core/utils/link_generator.dart';
+import 'package:qpay/core/utils/messages.dart';
 import 'package:qpay/core/utils/validator.dart';
 import 'package:qpay/features/dashboard/presentation/widgets/quick_action_list.dart';
 import 'package:qpay/init_dependencies.dart';
@@ -170,8 +172,25 @@ class _DashboardScreenState extends State<DashboardScreen> {
         actions: [
           IconButton(
             tooltip: AppLocalizations.of(context)!.qr_scanner,
-            onPressed: () {
-              context.push('/qr-scanner');
+            onPressed: () async {
+              PermissionStatus status = await Permission.camera.status;
+              if (status == PermissionStatus.granted) {
+                // Open QR Scanner
+                context.push('/qr-scanner');
+              } else if (status.isDenied || status.isPermanentlyDenied) {
+                // Request permission
+                await Permission.camera.request();
+                if (await Permission.camera.isGranted) {
+                  // If permission granted, open QR Scanner
+                  context.push('/qr-scanner');
+                } else {
+                  Messages.error(
+                    AppLocalizations.of(context)!.permission,
+                    AppLocalizations.of(context)!.access_permission,
+                    context,
+                  );
+                }
+              }
             },
             icon: Icon(FluentIcons.scan_dash_24_filled),
           ),

@@ -24,9 +24,6 @@ import 'package:qpay/features/wallet/presentation/screens/wallet_list_screen.dar
 import '../features/auth/presentation/screens/sign_in_screen.dart';
 
 class AppRouterConfig {
-  final GlobalKey<NavigatorState> _rootNavigatorKey =
-      GlobalKey<NavigatorState>();
-
   SharedPreferencesService _sharedPreferencesService;
 
   AppRouterConfig(this._sharedPreferencesService);
@@ -34,7 +31,6 @@ class AppRouterConfig {
   GoRouter get router => GoRouter(
         debugLogDiagnostics: true,
         initialLocation: '/on-boarding',
-        navigatorKey: _rootNavigatorKey,
         routes: [
           GoRoute(
             path: '/',
@@ -72,7 +68,12 @@ class AppRouterConfig {
                     statusBarColor: AppColor.background,
                     systemNavigationBarColor: AppColor.background,
                   ),
-                  child: PaymentScreen(qrResponse: qrResponse),
+                  child: PopScope(
+                    onPopInvoked: (value) {
+                      context.go('/');
+                    },
+                    child: PaymentScreen(qrResponse: qrResponse),
+                  ),
                 ),
               );
             },
@@ -106,12 +107,17 @@ class AppRouterConfig {
           GoRoute(
             path: '/add-transaction',
             builder: (context, state) {
-              return const AnnotatedRegion(
+              return AnnotatedRegion(
                 value: SystemUiOverlayStyle(
                   statusBarColor: AppColor.background,
                   systemNavigationBarColor: AppColor.background,
                 ),
-                child: AddTransactionScreen(),
+                child: PopScope(
+                  onPopInvoked: (value) {
+                    context.pop();
+                  },
+                  child: AddTransactionScreen(),
+                ),
               );
             },
           ),
