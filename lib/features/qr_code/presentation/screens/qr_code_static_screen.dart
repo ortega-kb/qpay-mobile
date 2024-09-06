@@ -174,7 +174,12 @@ class _QrCodeStaticScreenState extends State<QrCodeStaticScreen> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text(AppLocalizations.of(context)!.cancel),
+                child: Text(
+                  AppLocalizations.of(context)!.cancel,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: Colors.red,
+                      ),
+                ),
               ),
               TextButton(
                 onPressed: () {
@@ -182,7 +187,9 @@ class _QrCodeStaticScreenState extends State<QrCodeStaticScreen> {
                   context.read<QRCodeBloc>().add(GetAllQRStatic());
                   Navigator.pop(context);
                 },
-                child: Text(AppLocalizations.of(context)!.confirm),
+                child: Text(
+                  AppLocalizations.of(context)!.confirm,
+                ),
               ),
             ],
           );
@@ -211,7 +218,9 @@ class _QrCodeStaticScreenState extends State<QrCodeStaticScreen> {
             return const CircularProgressIndicator();
           } else if (state is QRStaticLoadedState) {
             return state.qrStatics.isEmpty
-                ? NotFound(image: ImagePath.emptyBro, message: AppLocalizations.of(context)!.qr_code_not_found)
+                ? NotFound(
+                    image: ImagePath.emptyBro,
+                    message: AppLocalizations.of(context)!.qr_code_not_found)
                 : ListView.separated(
                     padding: EdgeInsets.symmetric(vertical: AppDimen.p16),
                     itemBuilder: (context, index) {

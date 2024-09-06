@@ -159,6 +159,8 @@
   "monthly": "Mensuel",
   "yearly": "Annuel",
   "permission": "Permission camera",
-  "access_permission": "Veuillez accorder l'accès à la caméra pour utiliser le scanner QR."
+  "access_permission": "Veuillez accorder l'accès à la caméra pour utiliser le scanner QR.",
+  "recent_transactions": "Transactions récentes",
+  "show_hide_wallet_amount": "Voir / Cacher le montant"
 }
 

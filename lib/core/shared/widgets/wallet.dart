@@ -1,8 +1,11 @@
+import 'dart:ui';
+
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
+import 'package:qpay/core/shared/cubits/wallet_show_hide_cubit.dart';
 import 'package:qpay/core/utils/currency.dart';
 import 'package:qpay/features/dashboard/presentation/bloc/cubits/wallet_page_cubit.dart';
 
@@ -80,6 +83,7 @@ class _WalletUSDCDFState extends State<WalletUSDCDF> {
 /// WalletIndicator [index]
 class WalletIndicator extends StatelessWidget {
   final int index;
+
   const WalletIndicator({super.key, required this.index});
 
   @override
@@ -123,12 +127,28 @@ class WalletPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Get screen size
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    // Define padding and aspect ratio based on screen width
+    final double padding = screenWidth > 600 ? 24.0 : 12.0;
+    final double aspectRatio = screenWidth > 600 ? 4 / 3 : 16 / 9;
+    final TextStyle titleStyle = screenWidth > 600
+        ? Theme.of(context).textTheme.headlineSmall!.copyWith(
+              color: AppColor.white,
+              fontWeight: FontWeight.bold,
+            )
+        : Theme.of(context).textTheme.bodyMedium!.copyWith(
+              color: AppColor.white,
+              fontWeight: FontWeight.bold,
+            );
+
     return Padding(
-      padding: const EdgeInsets.only(left: AppDimen.p12, right: AppDimen.p12),
+      padding: EdgeInsets.only(left: padding, right: padding),
       child: InkWell(
         onTap: null,
         child: AspectRatio(
-          aspectRatio: 16.0 / 9.0,
+          aspectRatio: aspectRatio,
           child: Container(
             width: double.infinity,
             decoration: BoxDecoration(
@@ -148,27 +168,43 @@ class WalletPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(AppDimen.p16),
+                  padding: EdgeInsets.all(AppDimen.p16),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         title,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              color: AppColor.white,
-                              fontWeight: FontWeight.bold,
-                            ),
+                        style: titleStyle,
                       ),
-                      InkWell(
-                        onTap: null,
-                        child: Tooltip(
-                          message: AppLocalizations.of(context)!.reload,
-                          child: Icon(
-                            FluentIcons.arrow_rotate_clockwise_24_filled,
-                            color: AppColor.white,
+                      Row(
+                        children: [
+                          BlocBuilder<WalletShowHideCubit, bool>(
+                            builder: (context, state) {
+                              return InkWell(
+                                onTap: () {
+                                  context
+                                      .read<WalletShowHideCubit>()
+                                      .toggleWalletVisibility();
+                                },
+                                child: Tooltip(
+                                  message: AppLocalizations.of(context)!
+                                      .show_hide_wallet_amount,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(AppDimen.p2),
+                                    child: Icon(
+                                      state
+                                          ? FluentIcons.eye_off_24_filled
+                                          : FluentIcons.eye_24_filled,
+                                      color: AppColor.white,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
                           ),
-                        ),
+
+                        ],
                       ),
                     ],
                   ),
@@ -181,20 +217,30 @@ class WalletPage extends StatelessWidget {
                           color: AppColor.white.withOpacity(0.7),
                         ),
                   ),
-                  subtitle: Text(
-                    currency == Currency.CDF
-                        ? AppLocalizations.of(context)!.cdf("0.00")
-                        : AppLocalizations.of(context)!.usd("0.00"),
-                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                          color: AppColor.white,
-                          fontWeight: FontWeight.bold,
+                  subtitle: BlocBuilder<WalletShowHideCubit, bool>(
+                    builder: (context, state) {
+                      return ImageFiltered(
+                        imageFilter: ImageFilter.blur(sigmaX: state ? 0: 13, sigmaY: state ? 0: 13),
+                        child: Text(
+                          currency == Currency.CDF
+                              ? AppLocalizations.of(context)!.cdf("0.00")
+                              : AppLocalizations.of(context)!.usd("0.00"),
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineMedium
+                              ?.copyWith(
+                                color: AppColor.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                         ),
+                      );
+                    },
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(AppDimen.p16),
+                  padding: EdgeInsets.all(AppDimen.p16),
                   child: walletIndicator,
-                )
+                ),
               ],
             ),
           ),

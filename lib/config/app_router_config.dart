@@ -25,7 +25,6 @@ import '../features/auth/presentation/screens/sign_in_screen.dart';
 
 class AppRouterConfig {
   SharedPreferencesService _sharedPreferencesService;
-
   AppRouterConfig(this._sharedPreferencesService);
 
   GoRouter get router => GoRouter(
@@ -225,8 +224,8 @@ class AppRouterConfig {
 
           // If user is authenticated but try to access sign-in or sign-up screen,
           // redirect to home page
-          if (isAuthenticated &&
-              (state.matchedLocation == '/sign-in' ||
+          if (isAuthenticated && (
+                  state.matchedLocation == '/sign-in' ||
                   state.matchedLocation == '/sign-up' ||
                   state.matchedLocation == '/on-boarding')) {
             return '/';

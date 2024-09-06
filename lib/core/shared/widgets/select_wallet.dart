@@ -4,8 +4,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../theme/app_dimen.dart';
 
-Future selectWallet(
-    {required BuildContext context, required List<Widget> widgets}) {
+Future selectWallet({
+  required BuildContext context,
+  required List<Widget> widgets,
+}) {
   return WoltModalSheet.show(
     context: context,
     useSafeArea: true,
@@ -25,10 +27,7 @@ Future selectWallet(
             padding: EdgeInsets.all(AppDimen.p16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                ...widgets,
-                const SizedBox(height: AppDimen.p16)
-              ],
+              children: [...widgets, const SizedBox(height: AppDimen.p16)],
             ),
           ),
         )

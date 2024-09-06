@@ -25,6 +25,7 @@ class QuickAction extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(AppDimen.p12),
           child: Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
               LeadingTile(iconData: iconData),
               const SizedBox(width: AppDimen.p8),

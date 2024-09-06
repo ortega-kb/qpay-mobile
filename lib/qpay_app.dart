@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qpay/core/shared/cubits/account_type_cubit.dart';
+import 'package:qpay/core/shared/cubits/network/network_cubit.dart';
+import 'package:qpay/core/shared/cubits/wallet_show_hide_cubit.dart';
 import 'package:qpay/features/auth/presentation/bloc/cubits/timer_otp_cubit.dart';
 import 'package:qpay/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:qpay/features/dashboard/presentation/bloc/cubits/time_report_cubit.dart';
@@ -28,6 +30,8 @@ class _QpayAppState extends State<QpayApp> {
         BlocProvider(create: (_) => AccountTypeCubit()),
         BlocProvider(create: (_) => WalletPageCubit()),
         BlocProvider(create: (_) => TimeReportCubit()),
+        BlocProvider(create: (_) => NetworkCubit()),
+        BlocProvider(create: (_) => WalletShowHideCubit()),
       ],
       child: QpayAppWrapper(),
     );

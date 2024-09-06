@@ -1,5 +1,6 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:qpay/core/shared/services/user_information_service.dart';
@@ -7,6 +8,7 @@ import 'package:qpay/core/shared/widgets/m_button.dart';
 import 'package:qpay/core/shared/widgets/m_select_fied.dart';
 import 'package:qpay/core/shared/widgets/m_subtitle.dart';
 import 'package:qpay/core/shared/widgets/m_text_field.dart';
+import 'package:qpay/core/shared/widgets/title_section.dart';
 import 'package:qpay/core/shared/widgets/wallet.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
@@ -19,6 +21,8 @@ import 'package:qpay/features/dashboard/presentation/widgets/quick_action_list.d
 import 'package:qpay/init_dependencies.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
+
+import '../../../../core/shared/cubits/network/network_cubit.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -217,10 +221,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
           children: [
             const SizedBox(height: AppDimen.p16),
             WalletUSDCDF(),
-            const SizedBox(height: AppDimen.p16),
-            QuickActionList(
-              onGenerateLinkPayment: () => generateLinkPayment(),
-            )
+            const SizedBox(height: AppDimen.p4),
+            TitleSection(title: AppLocalizations.of(context)!.quick_operation),
+            const SizedBox(height: AppDimen.p4),
+            QuickActionList(onGenerateLinkPayment: () => generateLinkPayment()),
+            const SizedBox(height: AppDimen.p4),
+            TitleSection(
+              title: AppLocalizations.of(context)!.recent_transactions,
+              actionTitle: 'Voir plus',
+              onClickAction: () {}
+            ),
           ],
         ),
       ),

@@ -26,8 +26,9 @@ class PaymentScreen extends StatelessWidget {
             padding: const EdgeInsets.all(AppDimen.p16),
             child: Container(
               decoration: BoxDecoration(
-                  color: AppColor.white,
-                  borderRadius: BorderRadius.circular(AppDimen.p16)),
+                color: AppColor.white,
+                borderRadius: BorderRadius.circular(AppDimen.p16),
+              ),
               child: Column(
                 children: [
                   ListTile(

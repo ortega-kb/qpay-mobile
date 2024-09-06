@@ -3,10 +3,6 @@ part of 'init_dependencies.dart';
 final locator = GetIt.asNewInstance();
 
 Future<void> initDependencies() async {
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
 
   _initSVG();
   _initAuth();

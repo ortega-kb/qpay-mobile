@@ -159,5 +159,7 @@
   "monthly": "Monthly",
   "yearly": "Yearly",
   "permission": "Camera permission",
-  "access_permission": "Please grant access to the camera to use the QR scanner."
+  "access_permission": "Please grant access to the camera to use the QR scanner.",
+  "recent_transactions": "Recent transactions",
+  "show_hide_wallet_amount": "Hide / Show amount"
 }
