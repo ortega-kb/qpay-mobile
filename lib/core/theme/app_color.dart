@@ -18,5 +18,7 @@ class AppColor {
   static const Color greenIntermediate = Color(0xFF1B5E20);
   static const Color dark = Color(0xFF000000);
 
+  static const Color red = Colors.red;
+
 
 }

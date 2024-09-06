@@ -11,7 +11,7 @@ import 'package:qpay/core/shared/widgets/separator.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:qpay/core/utils/image_path.dart';
-import 'package:qpay/features/qr_code/presentation/widgets/qr_static_tile.dart';
+import 'package:qpay/features/qr_code/presentation/widgets/qr_static_item.dart';
 import 'package:qpay/init_dependencies.dart';
 import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -225,7 +225,7 @@ class _QrCodeStaticScreenState extends State<QrCodeStaticScreen> {
                     padding: EdgeInsets.symmetric(vertical: AppDimen.p16),
                     itemBuilder: (context, index) {
                       final qrStatic = state.qrStatics[index];
-                      return QRStaticTile(
+                      return QRStaticItem(
                         qrStatic: qrStatic,
                         index: index,
                         onTap: () => context.push(

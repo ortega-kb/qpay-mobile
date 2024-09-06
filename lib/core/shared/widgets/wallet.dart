@@ -203,7 +203,6 @@ class WalletPage extends StatelessWidget {
                               );
                             },
                           ),
-
                         ],
                       ),
                     ],

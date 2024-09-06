@@ -17,7 +17,7 @@ class QuickActionList extends StatelessWidget {
       runSpacing: AppDimen.p8,
       children: [
         QuickAction(
-          iconData: FluentIcons.arrow_trending_20_filled,
+          iconData: FluentIcons.arrow_trending_24_filled,
           title: AppLocalizations.of(context)!.transfer_money,
           onTap: () => context.push('/add-transaction'),
         ),

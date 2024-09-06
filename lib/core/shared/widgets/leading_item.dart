@@ -2,15 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
 
-class LeadingTile extends StatelessWidget {
+class LeadingItem extends StatelessWidget {
   final IconData iconData;
-  const LeadingTile({super.key, required this.iconData});
+  final Color color;
+
+  const LeadingItem({
+    super.key,
+    required this.iconData,
+    this.color = AppColor.primary,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppColor.primary.withOpacity(0.2),
+        color: color.withOpacity(0.2),
         shape: BoxShape.circle,
       ),
       child: Padding(

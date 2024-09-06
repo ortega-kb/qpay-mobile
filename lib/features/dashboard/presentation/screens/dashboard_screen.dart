@@ -9,6 +9,7 @@ import 'package:qpay/core/shared/widgets/m_select_fied.dart';
 import 'package:qpay/core/shared/widgets/m_subtitle.dart';
 import 'package:qpay/core/shared/widgets/m_text_field.dart';
 import 'package:qpay/core/shared/widgets/title_section.dart';
+import 'package:qpay/core/shared/widgets/transaction_list_loader.dart';
 import 'package:qpay/core/shared/widgets/wallet.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
@@ -228,9 +229,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
             const SizedBox(height: AppDimen.p4),
             TitleSection(
               title: AppLocalizations.of(context)!.recent_transactions,
-              actionTitle: 'Voir plus',
+              actionTitle: AppLocalizations.of(context)!.see_more,
               onClickAction: () {}
             ),
+            const SizedBox(height: AppDimen.p4),
+            TransactionListLoader(itemCount: 4, enabled: false)
           ],
         ),
       ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qpay/core/shared/widgets/leading_tile.dart';
+import 'package:qpay/core/shared/widgets/leading_item.dart';
 
 import '../../../../core/theme/app_color.dart';
 import '../../../../core/theme/app_dimen.dart';
@@ -27,7 +27,7 @@ class QuickAction extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              LeadingTile(iconData: iconData),
+              LeadingItem(iconData: iconData),
               const SizedBox(width: AppDimen.p8),
               Text(
                 title,

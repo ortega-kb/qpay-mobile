@@ -1,6 +1,6 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:qpay/core/shared/widgets/leading_tile.dart';
+import 'package:qpay/core/shared/widgets/leading_item.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:qpay/core/utils/phone_to_country_code.dart';
@@ -14,7 +14,7 @@ class WalletTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: LeadingTile(iconData: FluentIcons.wallet_credit_card_24_filled),
+      leading: LeadingItem(iconData: FluentIcons.wallet_credit_card_24_filled),
       title: Text(
         phoneToCountryCode(wallet.walletPhone),
       ),
