@@ -18,13 +18,15 @@ class WalletRepositoryImpl implements WalletRepository {
     required String walletPhone,
     required String walletPin,
     required bool defaultWallet,
+    required String walletName,
   }) async {
     final wallet = WalletModel(
-      defaultWallet: defaultWallet,
       userCode: userCode,
       walletPin: walletPin,
       walletPhone: walletPhone,
       providerType: providerType,
+      defaultWallet: defaultWallet,
+      walletName: walletName
     );
 
     return _wallet(

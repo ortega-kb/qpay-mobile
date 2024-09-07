@@ -8,6 +8,7 @@ class WalletModel extends Wallet {
     required super.defaultWallet,
     required super.userCode,
     required super.walletPin,
+    required super.walletName,
     required super.walletPhone,
     required super.providerType,
   });
@@ -17,6 +18,7 @@ class WalletModel extends Wallet {
       id: json['id'],
       createdAt: DateTime.parse(json['created_at']),
       userCode: json['user_code'],
+      walletName: json['wallet_name'],
       defaultWallet: json['default_wallet'],
       walletPin: json['wallet_pin'],
       providerType: json['provider_type'],
@@ -29,6 +31,7 @@ class WalletModel extends Wallet {
       'provider_type': providerType,
       'user_code': userCode,
       'wallet_phone': walletPhone,
+      'wallet_name': walletName,
       'wallet_pin': walletPin,
       'default_wallet': false
     };
@@ -40,6 +43,7 @@ class WalletModel extends Wallet {
     String? walletPin,
     double? balance,
     String? userCode,
+    String? walletName,
     bool? defaultWallet,
     String? providerType,
     String? walletPhone,
@@ -51,8 +55,9 @@ class WalletModel extends Wallet {
       walletPin: walletPin ?? this.walletPin,
       createdAt: createdAt ?? this.createdAt,
       walletPhone: walletPhone ?? this.walletPhone,
+      walletName: walletName ?? this.walletName,
       providerType: providerType ?? this.providerType,
-      defaultWallet: defaultWallet?? this.defaultWallet,
+      defaultWallet: defaultWallet ?? this.defaultWallet,
     );
   }
 }

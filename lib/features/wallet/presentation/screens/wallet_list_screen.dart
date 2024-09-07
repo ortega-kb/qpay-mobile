@@ -193,6 +193,28 @@ class _WalletListScreenState extends State<WalletListScreen> {
               // If wallet addition failed, refresh the list
               _getWallets();
             }
+
+            if (state is WalletDeletedSuccessState) {
+              Messages.success(
+                AppLocalizations.of(context)!.wallet,
+                AppLocalizations.of(context)!.wallet_successfully_deleted,
+                context,
+              );
+
+              // If wallet deleted successfully, refresh the list
+              _getWallets();
+            }
+
+            if (state is WalletDeletedErrorState) {
+              Messages.error(
+                AppLocalizations.of(context)!.wallet,
+                AppLocalizations.of(context)!.error_deleting_wallet,
+                context,
+              );
+
+              // If wallet deletion failed, refresh the list
+              _getWallets();
+            }
           },
           builder: (context, state) {
             if (state is WalletLoadingState)

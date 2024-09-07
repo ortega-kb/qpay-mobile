@@ -17,6 +17,7 @@ class AddWalletUseCase implements UseCase<Wallet, AddWalletParams> {
       walletPhone: params.walletPhone,
       walletPin: params.walletPin,
       defaultWallet: params.defaultWallet,
+      walletName: params.walletName,
     );
   }
 }
@@ -26,11 +27,13 @@ class AddWalletParams {
   final String userCode;
   final String walletPhone;
   final String walletPin;
+  final String walletName;
   final bool defaultWallet;
 
   AddWalletParams({
     required this.providerType,
     required this.userCode,
+    required this.walletName,
     required this.walletPhone,
     required this.walletPin,
     required this.defaultWallet,

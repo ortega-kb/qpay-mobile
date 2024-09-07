@@ -178,9 +178,7 @@ class _QrCodeStaticScreenState extends State<QrCodeStaticScreen> {
                 },
                 child: Text(
                   AppLocalizations.of(context)!.cancel,
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Colors.red,
-                      ),
+                  style: Theme.of(context).textTheme.bodyMedium
                 ),
               ),
               TextButton(

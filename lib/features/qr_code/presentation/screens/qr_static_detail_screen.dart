@@ -98,8 +98,9 @@ class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
                         child: Padding(
                           padding: const EdgeInsets.all(AppDimen.p32),
                           child: Container(
-                              decoration: BoxDecoration(color: AppColor.white),
-                              child: QrCodeView(qrResponse: _qrResponse)),
+                            decoration: BoxDecoration(color: AppColor.white),
+                            child: QrCodeView(qrResponse: _qrResponse),
+                          ),
                         ),
                       ),
                     ),

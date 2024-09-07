@@ -19,12 +19,15 @@ import 'package:qpay/features/qr_code/presentation/screens/qr_static_detail_scre
 import 'package:qpay/features/transaction/presentation/screens/add_transaction_screen.dart';
 import 'package:qpay/features/transaction/presentation/screens/payment_screen.dart';
 import 'package:qpay/features/transaction/presentation/screens/transaction_list_screen.dart';
+import 'package:qpay/features/wallet/domain/entities/wallet.dart';
+import 'package:qpay/features/wallet/presentation/screens/wallet_details_screen.dart';
 import 'package:qpay/features/wallet/presentation/screens/wallet_list_screen.dart';
 
 import '../features/auth/presentation/screens/sign_in_screen.dart';
 
 class AppRouterConfig {
   SharedPreferencesService _sharedPreferencesService;
+
   AppRouterConfig(this._sharedPreferencesService);
 
   GoRouter get router => GoRouter(
@@ -157,6 +160,21 @@ class AppRouterConfig {
             },
           ),
           GoRoute(
+            path: '/wallet-details',
+            builder: (context, state) {
+              final walletDecoded = json.decode(state.extra as String);
+              final Wallet wallet = Wallet.fromJson(walletDecoded);
+
+              return AnnotatedRegion(
+                value: SystemUiOverlayStyle(
+                  statusBarColor: AppColor.background,
+                  systemNavigationBarColor: AppColor.background,
+                ),
+                child: WalletDetailsScreen(wallet: wallet),
+              );
+            }
+          ),
+          GoRoute(
             path: '/on-boarding',
             builder: (context, state) {
               return const AnnotatedRegion(
@@ -224,8 +242,8 @@ class AppRouterConfig {
 
           // If user is authenticated but try to access sign-in or sign-up screen,
           // redirect to home page
-          if (isAuthenticated && (
-                  state.matchedLocation == '/sign-in' ||
+          if (isAuthenticated &&
+              (state.matchedLocation == '/sign-in' ||
                   state.matchedLocation == '/sign-up' ||
                   state.matchedLocation == '/on-boarding')) {
             return '/';

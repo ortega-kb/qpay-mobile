@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:qpay/core/shared/widgets/separator.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:qpay/features/wallet/presentation/widgets/wallet_item.dart';
@@ -18,7 +21,16 @@ class WalletList extends StatelessWidget {
     return wallets.isNotEmpty
         ? ListView.separated(
             padding: EdgeInsets.symmetric(vertical: AppDimen.p16),
-            itemBuilder: (_, index) => WalletItem(wallet: wallets[index]),
+            itemBuilder: (_, index) => WalletItem(
+              wallet: wallets[index],
+              onTap: () {
+                print(wallets[index].toParcelable());
+                context.push(
+                    '/wallet-details',
+                    extra: json.encode(wallets[index].toParcelable())
+                );
+              }
+            ),
             separatorBuilder: (_, index) => Separator(),
             itemCount: wallets.length,
           )

@@ -9,6 +9,7 @@ abstract interface class WalletRepository {
     required String walletPhone,
     required String walletPin,
     required bool defaultWallet,
+    required String walletName,
   });
 
   Future<Either<Failure, List<Wallet>>> getWalletsByUserCode({

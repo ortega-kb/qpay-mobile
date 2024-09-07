@@ -47,6 +47,7 @@ class WalletBloc extends Bloc<WalletEvent, WalletState> {
         walletPhone: event.walletPhone,
         walletPin: event.walletPin,
         defaultWallet: event.defaultWallet,
+        walletName: event.walletPhone
       ),
     );
 

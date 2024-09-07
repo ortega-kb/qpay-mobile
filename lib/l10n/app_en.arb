@@ -164,5 +164,15 @@
   "show_hide_wallet_amount": "Hide / Show amount",
   "wallet_successfully_added": "Wallet successfully added.",
   "error_adding_wallet": "Error adding wallet.",
-  "default_wallet": "Default"
+  "default_wallet": "Default",
+  "code": "Code",
+  "provider": "Provider",
+  "created_date": "Created date",
+  "yes": "Yes",
+  "no": "No",
+  "delete_wallet": "Delete wallet",
+  "details": "Details",
+  "confirm_delete_wallet": "Do you really want to remove this wallet ?",
+  "wallet_successfully_deleted": "Wallet deleted successfully.",
+  "error_deleting_wallet": "Error deleting wallet."
 }

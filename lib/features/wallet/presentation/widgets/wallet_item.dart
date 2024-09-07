@@ -10,12 +10,18 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class WalletItem extends StatelessWidget {
   final Wallet wallet;
+  final Function()? onTap;
 
-  const WalletItem({super.key, required this.wallet});
+  const WalletItem({
+    super.key,
+    required this.wallet,
+    required this.onTap
+  });
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: onTap,
       leading: LeadingItem(iconData: FluentIcons.wallet_credit_card_24_filled),
       title: Text(
         wallet.walletPhone,

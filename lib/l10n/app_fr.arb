@@ -164,6 +164,16 @@
   "show_hide_wallet_amount": "Voir / Cacher le montant",
   "wallet_successfully_added": "Portefeuille ajouté avec succès.",
   "error_adding_wallet": "Erreur d'ajout du portefeuille.",
-  "default_wallet": "Par défaut"
+  "default_wallet": "Par défaut",
+  "code": "Code",
+  "provider": "Fournisseur",
+  "created_date": "Date création",
+  "yes": "Oui",
+  "no": "Non",
+  "delete_wallet": "Supprimer le portefeuille",
+  "details": "Détails",
+  "confirm_delete_wallet": "Voulez-vous vraiment supprimer ce portefeuille ?",
+  "wallet_successfully_deleted": "Portefeuille supprimé avec succès.",
+  "error_deleting_wallet": "Erreur de suppression du portefeuille."
 }
 
