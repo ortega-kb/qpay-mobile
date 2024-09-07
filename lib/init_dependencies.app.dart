@@ -3,7 +3,6 @@ part of 'init_dependencies.dart';
 final locator = GetIt.asNewInstance();
 
 Future<void> initDependencies() async {
-
   _initSVG();
   _initAuth();
   _initWallet();
@@ -75,7 +74,35 @@ void _initAuth() async {
 
 void _initTransaction() async {}
 
-void _initWallet() async {}
+void _initWallet() async {
+  locator
+    ..registerFactory<WalletRemoteDataSource>(
+      () => WalletRemoteDataSourceImpl(locator()),
+    )
+    ..registerFactory<WalletRepository>(
+      () => WalletRepositoryImpl(locator()),
+    )
+    ..registerFactory(
+      () => AddWalletUseCase(locator()),
+    )
+    ..registerFactory(
+      () => ChooseDefaultWalletUseCase(locator()),
+    )
+    ..registerFactory(
+      () => DeleteWalletUseCase(locator()),
+    )
+    ..registerFactory(
+      () => GetWalletsByUserCodeUseCase(locator()),
+    )
+    ..registerLazySingleton(
+      () => WalletBloc(
+        addWalletUseCase: locator(),
+        chooseDefaultWalletUseCase: locator(),
+        deleteWalletUseCase: locator(),
+        getWalletsByUserCodeUseCase: locator(),
+      ),
+    );
+}
 
 void _initQRCode() async {
   locator

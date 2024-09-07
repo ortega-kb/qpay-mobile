@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:qpay/core/shared/widgets/separator.dart';
-import 'package:qpay/core/shared/widgets/transaction_item.dart';
 import 'package:qpay/core/theme/app_color.dart';
+import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-class TransactionListLoader extends StatelessWidget {
+class ListLoader extends StatelessWidget {
   final int itemCount;
   final bool enabled;
 
-  const TransactionListLoader({
+  const ListLoader({
     super.key,
     required this.itemCount,
     this.enabled = true,
@@ -25,6 +25,7 @@ class TransactionListLoader extends StatelessWidget {
         duration: Duration(seconds: 2),
       ),
       child: ListView.separated(
+        padding: EdgeInsets.symmetric(vertical: AppDimen.p16),
         shrinkWrap: true,
         itemBuilder: (context, index) => ListTile(
           leading: Bone.circle(size: 40),

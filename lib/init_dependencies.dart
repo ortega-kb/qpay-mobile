@@ -23,9 +23,17 @@ import 'package:qpay/features/qr_code/domain/usecases/add_qr_static.dart';
 import 'package:qpay/features/qr_code/domain/usecases/delete_qr_static.dart';
 import 'package:qpay/features/qr_code/domain/usecases/get_qr_static.dart';
 import 'package:qpay/features/qr_code/presentation/bloc/qr_code_bloc.dart';
+import 'package:qpay/features/wallet/data/repositories/wallet_repository_impl.dart';
+import 'package:qpay/features/wallet/domain/repositories/wallet_repository.dart';
+import 'package:qpay/features/wallet/domain/usecases/add_wallet_use_case.dart';
+import 'package:qpay/features/wallet/domain/usecases/choose_default_wallet_use_case.dart';
+import 'package:qpay/features/wallet/domain/usecases/delete_wallet_use_case.dart';
+import 'package:qpay/features/wallet/domain/usecases/get_wallets_by_user_code_use_case.dart';
+import 'package:qpay/features/wallet/presentation/bloc/wallet_bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'core/utils/preload_svg.dart';
+import 'features/wallet/data/datasources/wallet_remote_data_source.dart';
 
 part 'init_dependencies.app.dart';
 

@@ -11,3 +11,9 @@ extension DatetimeExtension on DateTime {
   }
 }
 
+// String extensions
+extension StringExtension on String {
+  String capitalizeFirstLetter() {
+    return "${this[0].toUpperCase()}${this.substring(1).toLowerCase()}";
+  }
+}

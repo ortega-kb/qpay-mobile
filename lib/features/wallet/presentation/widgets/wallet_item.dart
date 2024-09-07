@@ -3,36 +3,41 @@ import 'package:flutter/material.dart';
 import 'package:qpay/core/shared/widgets/leading_item.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
-import 'package:qpay/core/utils/phone_to_country_code.dart';
+import 'package:qpay/core/utils/extensions/datetime_extension.dart';
 import 'package:qpay/core/utils/recognize_provider.dart';
 import 'package:qpay/features/wallet/domain/entities/wallet.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class WalletTile extends StatelessWidget {
+class WalletItem extends StatelessWidget {
   final Wallet wallet;
-  const WalletTile({super.key, required this.wallet});
+
+  const WalletItem({super.key, required this.wallet});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       leading: LeadingItem(iconData: FluentIcons.wallet_credit_card_24_filled),
       title: Text(
-        phoneToCountryCode(wallet.walletPhone),
+        wallet.walletPhone,
+        style: Theme.of(context).textTheme.bodyMedium,
       ),
       subtitle: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
             decoration: BoxDecoration(
-                color:
-                    RecognizeProvider.bindColorToProvider(wallet.walletPhone),
-                borderRadius: BorderRadius.circular(AppDimen.p8)),
+              color: RecognizeProvider.bindColorToProvider(wallet.walletPhone),
+              borderRadius: BorderRadius.circular(
+                AppDimen.p8,
+              ),
+            ),
             child: Padding(
               padding: EdgeInsets.symmetric(
                 vertical: AppDimen.p2,
                 horizontal: AppDimen.p8,
               ),
               child: Text(
-                wallet.providerType.toLowerCase(),
+                wallet.providerType.capitalizeFirstLetter(),
                 style: Theme.of(context).textTheme.labelSmall?.copyWith(
                       color: AppColor.white,
                     ),
@@ -41,6 +46,14 @@ class WalletTile extends StatelessWidget {
           ),
         ],
       ),
+      trailing: wallet.defaultWallet
+          ? Text(
+              AppLocalizations.of(context)!.default_wallet,
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: Colors.green,
+                  ),
+            )
+          : null,
     );
   }
 }

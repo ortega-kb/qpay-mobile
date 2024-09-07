@@ -7,6 +7,7 @@ import 'package:qpay/features/auth/presentation/bloc/cubits/timer_otp_cubit.dart
 import 'package:qpay/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:qpay/features/dashboard/presentation/bloc/cubits/time_report_cubit.dart';
 import 'package:qpay/features/dashboard/presentation/bloc/cubits/wallet_page_cubit.dart';
+import 'package:qpay/features/wallet/presentation/bloc/wallet_bloc.dart';
 import 'package:qpay/init_dependencies.dart';
 import 'package:qpay/qpay_app_wrapper.dart';
 
@@ -26,6 +27,7 @@ class _QpayAppState extends State<QpayApp> {
       providers: [
         BlocProvider(create: (_) => locator<AuthBloc>()),
         BlocProvider(create: (_) => locator<QRCodeBloc>()),
+        BlocProvider(create: (_) => locator<WalletBloc>()),
         BlocProvider(create: (_) => TimerOtpCubit()),
         BlocProvider(create: (_) => AccountTypeCubit()),
         BlocProvider(create: (_) => WalletPageCubit()),

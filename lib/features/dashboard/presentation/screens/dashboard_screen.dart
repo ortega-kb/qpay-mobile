@@ -9,7 +9,7 @@ import 'package:qpay/core/shared/widgets/m_select_fied.dart';
 import 'package:qpay/core/shared/widgets/m_subtitle.dart';
 import 'package:qpay/core/shared/widgets/m_text_field.dart';
 import 'package:qpay/core/shared/widgets/title_section.dart';
-import 'package:qpay/core/shared/widgets/transaction_list_loader.dart';
+import 'package:qpay/core/shared/widgets/list_loader.dart';
 import 'package:qpay/core/shared/widgets/wallet.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
@@ -24,6 +24,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
 
 import '../../../../core/shared/cubits/network/network_cubit.dart';
+import '../../../wallet/presentation/bloc/wallet_bloc.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -217,24 +218,33 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(height: AppDimen.p16),
-            WalletUSDCDF(),
-            const SizedBox(height: AppDimen.p4),
-            TitleSection(title: AppLocalizations.of(context)!.quick_operation),
-            const SizedBox(height: AppDimen.p4),
-            QuickActionList(onGenerateLinkPayment: () => generateLinkPayment()),
-            const SizedBox(height: AppDimen.p4),
-            TitleSection(
-              title: AppLocalizations.of(context)!.recent_transactions,
-              actionTitle: AppLocalizations.of(context)!.see_more,
-              onClickAction: () {}
+      body: RefreshIndicator(
+        onRefresh: () async {
+          context.read<WalletBloc>().add(
+            WalletGetByUserCodeEvent(
+              userCode: locator<UserInformationService>().userCode,
             ),
-            const SizedBox(height: AppDimen.p4),
-            TransactionListLoader(itemCount: 4, enabled: false)
-          ],
+          );
+        },
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(height: AppDimen.p16),
+              WalletUSDCDF(),
+              const SizedBox(height: AppDimen.p4),
+              TitleSection(title: AppLocalizations.of(context)!.quick_operation),
+              const SizedBox(height: AppDimen.p4),
+              QuickActionList(onGenerateLinkPayment: () => generateLinkPayment()),
+              const SizedBox(height: AppDimen.p4),
+              TitleSection(
+                title: AppLocalizations.of(context)!.recent_transactions,
+                actionTitle: AppLocalizations.of(context)!.see_more,
+                onClickAction: () {}
+              ),
+              const SizedBox(height: AppDimen.p4),
+              ListLoader(itemCount: 4, enabled: false)
+            ],
+          ),
         ),
       ),
     );

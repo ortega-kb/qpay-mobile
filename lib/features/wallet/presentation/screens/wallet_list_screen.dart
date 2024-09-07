@@ -1,8 +1,10 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qpay/core/shared/services/user_information_service.dart';
+import 'package:qpay/core/shared/widgets/list_loader.dart';
 import 'package:qpay/core/shared/widgets/m_button.dart';
 import 'package:qpay/core/shared/widgets/m_subtitle.dart';
 import 'package:qpay/core/shared/widgets/m_text_field.dart';
@@ -10,14 +12,17 @@ import 'package:qpay/core/shared/widgets/not_found.dart';
 import 'package:qpay/core/shared/widgets/separator.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
+import 'package:qpay/core/utils/messages.dart';
 import 'package:qpay/core/utils/recognize_provider.dart';
 import 'package:qpay/core/utils/validator.dart';
 import 'package:qpay/features/wallet/domain/entities/wallet.dart';
-import 'package:qpay/features/wallet/presentation/widgets/wallet_tile.dart';
+import 'package:qpay/features/wallet/presentation/widgets/wallet_list.dart';
+import 'package:qpay/features/wallet/presentation/widgets/wallet_item.dart';
 import 'package:qpay/init_dependencies.dart';
 import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
 
 import '../../../../core/utils/image_path.dart';
+import '../bloc/wallet_bloc.dart';
 
 class WalletListScreen extends StatefulWidget {
   const WalletListScreen({super.key});
@@ -32,6 +37,20 @@ class _WalletListScreenState extends State<WalletListScreen> {
   final _pinController = TextEditingController();
 
   List<Wallet> wallets = [];
+
+  _getWallets() async {
+    context.read<WalletBloc>().add(
+      WalletGetByUserCodeEvent(
+        userCode: locator<UserInformationService>().userCode,
+      ),
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _getWallets();
+  }
 
   @override
   void dispose() {
@@ -107,20 +126,19 @@ class _WalletListScreenState extends State<WalletListScreen> {
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
                             final phone = _phoneController.text.trim();
-                            wallets.add(
-                              Wallet(
-                                userId:
-                                    locator<UserInformationService>().userId,
-                                userCode:
-                                    locator<UserInformationService>().userCode,
-                                walletPin: _pinController.text.trim(),
-                                providerType:
-                                    RecognizeProvider.recognize(phone)!,
-                                walletPhone: phone,
-                              ),
-                            );
 
-                            // setState(() {});
+                            context.read<WalletBloc>().add(
+                                  WalletAddEvent(
+                                    userCode: locator<UserInformationService>()
+                                        .userCode,
+                                    providerType:
+                                        RecognizeProvider.recognize(phone)!,
+                                    walletPhone: '243$phone',
+                                    walletPin: _pinController.text.trim(),
+                                    defaultWallet: false,
+                                  ),
+                                );
+
                             Navigator.pop(context);
                           }
                         },
@@ -150,19 +168,42 @@ class _WalletListScreenState extends State<WalletListScreen> {
           const SizedBox(width: AppDimen.p8)
         ],
       ),
-      body: NotFound(
-        image: ImagePath.emptyBro,
-        message: AppLocalizations.of(context)!.wallets_not_found,
+      body: RefreshIndicator(
+        onRefresh: () => _getWallets(),
+        child: BlocConsumer<WalletBloc, WalletState>(
+          listener: (context, state) {
+            if (state is WalletAddSuccessState) {
+              Messages.success(
+                AppLocalizations.of(context)!.wallet,
+                AppLocalizations.of(context)!.wallet_successfully_added,
+                context,
+              );
+
+              // If wallet added successfully, refresh the list
+              _getWallets();
+            }
+
+            if (state is WalletAddErrorState) {
+              Messages.error(
+                AppLocalizations.of(context)!.wallet,
+                AppLocalizations.of(context)!.error_adding_wallet,
+                context,
+              );
+
+              // If wallet addition failed, refresh the list
+              _getWallets();
+            }
+          },
+          builder: (context, state) {
+            if (state is WalletLoadingState)
+              return ListLoader(itemCount: 4);
+            else if (state is WalletLoadedState)
+              return WalletList(wallets: state.wallets);
+            else
+              return Container();
+          },
+        ),
       ),
     );
   }
 }
-
-/*
-ListView.separated(
-        padding: EdgeInsets.symmetric(vertical: AppDimen.p16),
-        itemBuilder: (context, index) => WalletTile(wallet: wallets[index]),
-        separatorBuilder: (context, index) => Separator(),
-        itemCount: wallets.length,
-      ),
-*/
