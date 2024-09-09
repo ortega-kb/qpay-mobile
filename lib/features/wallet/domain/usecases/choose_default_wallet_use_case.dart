@@ -15,12 +15,14 @@ class ChooseDefaultWalletUseCase
   Future<Either<Failure, Wallet>> call(ChooseDefaultWalletParams params) async {
     return await _walletRepository.chooseDefaultWallet(
       walletId: params.walletId,
+      userCode: params.userCode
     );
   }
 }
 
 class ChooseDefaultWalletParams {
   final String walletId;
+  final String userCode;
 
-  ChooseDefaultWalletParams(this.walletId);
+  ChooseDefaultWalletParams({required this.walletId, required this.userCode});
 }

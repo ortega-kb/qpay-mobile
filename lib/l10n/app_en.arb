@@ -174,5 +174,9 @@
   "details": "Details",
   "confirm_delete_wallet": "Do you really want to remove this wallet ?",
   "wallet_successfully_deleted": "Wallet deleted successfully.",
-  "error_deleting_wallet": "Error deleting wallet."
+  "error_deleting_wallet": "Error deleting wallet.",
+  "set_as_default": "Set as default",
+  "confirm_set_as_default": "Do you really want to set wallet as default ?",
+  "error_set_as_default": "Default wallet definition error.",
+  "success_set_as_default": "Default wallet set successfully."
 }

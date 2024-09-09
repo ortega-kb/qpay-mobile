@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
+import 'package:qpay/core/shared/services/user_information_service.dart';
 import 'package:qpay/core/shared/widgets/separator.dart';
 import 'package:qpay/core/shared/widgets/title_section.dart';
 import 'package:qpay/core/shared/widgets/wallet.dart';
@@ -10,6 +11,7 @@ import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:qpay/core/utils/extensions/datetime_extension.dart';
 import 'package:qpay/features/wallet/domain/entities/wallet.dart';
+import 'package:qpay/init_dependencies.dart';
 
 import '../../../../core/utils/recognize_provider.dart';
 import '../bloc/wallet_bloc.dart';
@@ -36,14 +38,53 @@ class WalletDetailsScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text(
-                    AppLocalizations.of(context)!.cancel,
-                    style: Theme.of(context).textTheme.bodyMedium
-                ),
+                child: Text(AppLocalizations.of(context)!.cancel,
+                    style: Theme.of(context).textTheme.bodyMedium),
               ),
               TextButton(
                 onPressed: () {
-                  context.read<WalletBloc>().add(WalletDeleteEvent(walletId: index));
+                  context
+                      .read<WalletBloc>()
+                      .add(WalletDeleteEvent(walletId: index));
+                  Navigator.pop(context);
+                  context.pop(context);
+                },
+                child: Text(
+                  AppLocalizations.of(context)!.confirm,
+                ),
+              ),
+            ],
+          );
+        },
+      );
+    }
+
+    void confirmSetAsDefaultWallet(String index) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppDimen.p16),
+            ),
+            title: Text(AppLocalizations.of(context)!.set_as_default),
+            content: Text(AppLocalizations.of(context)!.confirm_set_as_default),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text(AppLocalizations.of(context)!.cancel,
+                    style: Theme.of(context).textTheme.bodyMedium),
+              ),
+              TextButton(
+                onPressed: () {
+                  context.read<WalletBloc>().add(
+                        WalletChooseDefaultEvent(
+                          walletId: index,
+                          userCode: locator<UserInformationService>().userCode
+                        ),
+                      );
                   Navigator.pop(context);
                   context.pop(context);
                 },
@@ -90,21 +131,21 @@ class WalletDetailsScreen extends StatelessWidget {
                     ListTile(
                       title: Text(
                         AppLocalizations.of(context)!.code,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              fontWeight: FontWeight.bold,
-                            ),
+                        style:
+                            Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
                       ),
-                      subtitle: Container(
-                        child: Text(wallet.userCode),
-                      ),
+                      subtitle: Text(wallet.userCode),
                     ),
                     Separator(),
                     ListTile(
                       title: Text(
                         AppLocalizations.of(context)!.provider,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              fontWeight: FontWeight.bold,
-                            ),
+                        style:
+                            Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
                       ),
                       subtitle: Text(
                         wallet.providerType.capitalizeFirstLetter(),
@@ -114,9 +155,10 @@ class WalletDetailsScreen extends StatelessWidget {
                     ListTile(
                       title: Text(
                         AppLocalizations.of(context)!.phone_number,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              fontWeight: FontWeight.bold,
-                            ),
+                        style:
+                            Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
                       ),
                       subtitle: Text(wallet.walletPhone),
                     ),
@@ -124,9 +166,10 @@ class WalletDetailsScreen extends StatelessWidget {
                     ListTile(
                       title: Text(
                         AppLocalizations.of(context)!.default_wallet,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              fontWeight: FontWeight.bold,
-                            ),
+                        style:
+                            Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
                       ),
                       subtitle: wallet.defaultWallet
                           ? Text(
@@ -135,18 +178,25 @@ class WalletDetailsScreen extends StatelessWidget {
                             )
                           : Text(
                               AppLocalizations.of(context)!.no,
-                              style: TextStyle(
-                                color: Colors.red,
-                              ),
+                              style: TextStyle(color: Colors.red),
+                            ),
+                      trailing: wallet.defaultWallet
+                          ? null
+                          : TextButton(
+                              onPressed: () =>
+                                  confirmSetAsDefaultWallet(wallet.id!),
+                              child: Text(AppLocalizations.of(context)!
+                                  .set_as_default),
                             ),
                     ),
                     Separator(),
                     ListTile(
                       title: Text(
                         AppLocalizations.of(context)!.created_date,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              fontWeight: FontWeight.bold,
-                            ),
+                        style:
+                            Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
                       ),
                       subtitle: Text(wallet.createdAt!.toDDMMYYYY()),
                     ),

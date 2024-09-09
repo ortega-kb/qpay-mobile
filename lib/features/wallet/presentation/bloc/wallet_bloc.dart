@@ -42,13 +42,12 @@ class WalletBloc extends Bloc<WalletEvent, WalletState> {
     emit(const WalletLoadingState());
     final response = await _addWalletUseCase.call(
       AddWalletParams(
-        providerType: event.providerType,
-        userCode: event.userCode,
-        walletPhone: event.walletPhone,
-        walletPin: event.walletPin,
-        defaultWallet: event.defaultWallet,
-        walletName: event.walletPhone
-      ),
+          providerType: event.providerType,
+          userCode: event.userCode,
+          walletPhone: event.walletPhone,
+          walletPin: event.walletPin,
+          defaultWallet: event.defaultWallet,
+          walletName: event.walletPhone),
     );
 
     response.fold(
@@ -63,7 +62,10 @@ class WalletBloc extends Bloc<WalletEvent, WalletState> {
   ) async {
     emit(const WalletLoadingState());
     final response = await _chooseDefaultWalletUseCase.call(
-      ChooseDefaultWalletParams(event.walletId),
+      ChooseDefaultWalletParams(
+        walletId: event.walletId,
+        userCode: event.userCode,
+      ),
     );
 
     response.fold(

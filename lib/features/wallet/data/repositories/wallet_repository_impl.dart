@@ -39,10 +39,12 @@ class WalletRepositoryImpl implements WalletRepository {
   @override
   Future<Either<Failure, Wallet>> chooseDefaultWallet({
     required String walletId,
+    required String userCode,
   }) async {
     return _wallet(
       func: () async => _walletRemoteDataSource.chooseDefaultWallet(
         walletId: walletId,
+        userCode: userCode
       ),
     );
   }

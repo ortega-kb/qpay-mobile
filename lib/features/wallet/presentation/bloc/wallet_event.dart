@@ -31,8 +31,12 @@ final class WalletAddEvent extends WalletEvent {
 
 final class WalletChooseDefaultEvent extends WalletEvent {
   final String walletId;
+  final String userCode;
 
-  WalletChooseDefaultEvent({required this.walletId});
+  WalletChooseDefaultEvent({
+    required this.walletId,
+    required this.userCode,
+  });
 
   @override
   List<Object> get props => [walletId];

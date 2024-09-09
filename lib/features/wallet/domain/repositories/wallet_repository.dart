@@ -22,5 +22,6 @@ abstract interface class WalletRepository {
 
   Future<Either<Failure, Wallet>> chooseDefaultWallet({
     required String walletId,
+    required String userCode,
   });
 }

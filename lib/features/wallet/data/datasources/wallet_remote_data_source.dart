@@ -13,6 +13,7 @@ abstract interface class WalletRemoteDataSource {
 
   Future<WalletModel> chooseDefaultWallet({
     required String walletId,
+    required String userCode,
   });
 
   Future<bool> deleteWallet({
@@ -31,10 +32,8 @@ class WalletRemoteDataSourceImpl implements WalletRemoteDataSource {
   @override
   Future<WalletModel> addWallet({required WalletModel wallet}) async {
     try {
-      final response = await _supabaseClient
-          .from(_table)
-          .insert(wallet.toJson())
-          .select();
+      final response =
+          await _supabaseClient.from(_table).insert(wallet.toJson()).select();
 
       return WalletModel.fromJson(response.first);
     } on PostgrestException catch (e) {
@@ -47,11 +46,7 @@ class WalletRemoteDataSourceImpl implements WalletRemoteDataSource {
   @override
   Future<bool> deleteWallet({required String walletId}) async {
     try {
-
-      await _supabaseClient
-          .from(_table)
-          .delete()
-          .eq('id', walletId);
+      await _supabaseClient.from(_table).delete().eq('id', walletId);
 
       return true;
     } on PostgrestException catch (e) {
@@ -62,9 +57,29 @@ class WalletRemoteDataSourceImpl implements WalletRemoteDataSource {
   }
 
   @override
-  Future<WalletModel> chooseDefaultWallet({required String walletId}) {
-    // TODO: implement chooseDefaultWallet
-    throw UnimplementedError();
+  Future<WalletModel> chooseDefaultWallet({
+    required String walletId,
+    required String userCode,
+  }) async {
+    try {
+      // Set to false all wallets linked to userCode.
+      await _supabaseClient.from(_table)
+          .update({'default_wallet': false})
+          .eq('user_code', userCode);
+
+      // Set to true wallet with walletId
+      final response = await _supabaseClient.from(_table)
+          .update({'default_wallet': true})
+          .eq('id', walletId)
+          .select();
+
+
+      return WalletModel.fromJson(response.first);
+    } on PostgrestException catch (e) {
+      throw ServerException(e.message);
+    } catch (e) {
+      throw ServerException(e.toString());
+    }
   }
 
   @override

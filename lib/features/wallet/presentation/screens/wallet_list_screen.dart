@@ -40,10 +40,10 @@ class _WalletListScreenState extends State<WalletListScreen> {
 
   _getWallets() async {
     context.read<WalletBloc>().add(
-      WalletGetByUserCodeEvent(
-        userCode: locator<UserInformationService>().userCode,
-      ),
-    );
+          WalletGetByUserCodeEvent(
+            userCode: locator<UserInformationService>().userCode,
+          ),
+        );
   }
 
   @override
@@ -213,6 +213,28 @@ class _WalletListScreenState extends State<WalletListScreen> {
               );
 
               // If wallet deletion failed, refresh the list
+              _getWallets();
+            }
+
+            if (state is WalletChooseDefaultSuccessState) {
+              Messages.success(
+                AppLocalizations.of(context)!.wallet,
+                AppLocalizations.of(context)!.success_set_as_default,
+                context,
+              );
+
+              // If wallet choose default success, refresh the list
+              _getWallets();
+            }
+
+            if (state is WalletChooseErrorState) {
+              Messages.error(
+                AppLocalizations.of(context)!.wallet,
+                AppLocalizations.of(context)!.error_set_as_default,
+                context,
+              );
+
+              // If wallet choose default error, refresh the list
               _getWallets();
             }
           },
