@@ -15,7 +15,7 @@ import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qpay/core/utils/currency.dart';
-import 'package:qpay/core/utils/link_generator.dart';
+import 'package:qpay/core/utils/link_util.dart';
 import 'package:qpay/core/utils/messages.dart';
 import 'package:qpay/core/utils/validator.dart';
 import 'package:qpay/features/dashboard/presentation/widgets/quick_action_list.dart';
@@ -132,14 +132,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         text: AppLocalizations.of(context)!.generate_link,
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            linkGenerator(
-                              id: locator<UserInformationService>().userCode,
+                            final link = LinkUtil.paymentLinkGenerator(
+                              userCode:
+                                  locator<UserInformationService>().userCode,
                               amount: _amountController.text.trim(),
                               description: _descriptionController.text.trim(),
                               wallet: _walletTypeController.text,
-                            ).then((link) {
-                              Share.shareUri(link);
-                            });
+                            );
+
+                            Share.shareUri(link);
                           }
                         },
                       ),
@@ -221,10 +222,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
       body: RefreshIndicator(
         onRefresh: () async {
           context.read<WalletBloc>().add(
-            WalletGetByUserCodeEvent(
-              userCode: locator<UserInformationService>().userCode,
-            ),
-          );
+                WalletGetByUserCodeEvent(
+                  userCode: locator<UserInformationService>().userCode,
+                ),
+              );
         },
         child: SingleChildScrollView(
           child: Column(
@@ -232,15 +233,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
               const SizedBox(height: AppDimen.p16),
               WalletUSDCDF(),
               const SizedBox(height: AppDimen.p4),
-              TitleSection(title: AppLocalizations.of(context)!.quick_operation),
+              TitleSection(
+                  title: AppLocalizations.of(context)!.quick_operation),
               const SizedBox(height: AppDimen.p4),
-              QuickActionList(onGenerateLinkPayment: () => generateLinkPayment()),
+              QuickActionList(
+                  onGenerateLinkPayment: () => generateLinkPayment()),
               const SizedBox(height: AppDimen.p4),
               TitleSection(
-                title: AppLocalizations.of(context)!.recent_transactions,
-                actionTitle: AppLocalizations.of(context)!.see_more,
-                onClickAction: () {}
-              ),
+                  title: AppLocalizations.of(context)!.recent_transactions,
+                  actionTitle: AppLocalizations.of(context)!.see_more,
+                  onClickAction: () {}),
               const SizedBox(height: AppDimen.p4),
               ListLoader(itemCount: 4, enabled: false)
             ],

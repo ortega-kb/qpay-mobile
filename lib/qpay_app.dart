@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qpay/core/shared/cubits/account_type_cubit.dart';
 import 'package:qpay/core/shared/cubits/network/network_cubit.dart';
 import 'package:qpay/core/shared/cubits/wallet_show_hide_cubit.dart';
+import 'package:qpay/core/shared/services/deep_link_service.dart';
 import 'package:qpay/features/auth/presentation/bloc/cubits/timer_otp_cubit.dart';
 import 'package:qpay/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:qpay/features/dashboard/presentation/bloc/cubits/time_report_cubit.dart';
@@ -21,6 +22,7 @@ class QpayApp extends StatefulWidget {
 }
 
 class _QpayAppState extends State<QpayApp> {
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(

@@ -2,6 +2,7 @@ import 'package:animate_icons/animate_icons.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:qpay/core/shared/services/deep_link_service.dart';
 import 'package:qpay/features/account/presentation/screens/account_screen.dart';
 import 'package:qpay/features/dashboard/presentation/screens/dashboard_screen.dart';
 import 'package:qpay/features/dashboard/presentation/screens/reports_screen.dart';
@@ -19,9 +20,14 @@ class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
   late AnimateIconController animateIconController;
 
+  final deepLinkService = DeepLinkService.instance;
+
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      deepLinkService.listenDeepLinks(context);
+    });
     animateIconController = AnimateIconController();
   }
 

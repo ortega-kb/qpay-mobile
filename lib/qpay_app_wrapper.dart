@@ -6,7 +6,6 @@ import 'package:qpay/core/theme/app_theme.dart';
 import 'package:qpay/core/utils/constants.dart';
 import 'package:qpay/init_dependencies.dart';
 
-import 'core/utils/deep_link.dart';
 
 class QpayAppWrapper extends StatefulWidget {
   const QpayAppWrapper({super.key});
@@ -28,11 +27,7 @@ class _QpayAppWrapperState extends State<QpayAppWrapper> {
       ],
       routerConfig: AppRouterConfig(locator<SharedPreferencesService>()).router,
       locale: Constants.locale,
-      theme: AppTheme.lightTheme,
-      builder: (context, child) {
-        DeepLink.initDeepLink(context);
-        return child!;
-      },
+      theme: AppTheme.lightTheme
     );
   }
 }

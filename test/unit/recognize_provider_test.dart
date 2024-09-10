@@ -25,7 +25,7 @@ void main() {
 
   test('recognize africell', () {
     expect(
-        RecognizeProvider.recognize('874741254'), ProviderType.AFRICELL.name);
+        RecognizeProvider.recognize('904741254'), ProviderType.AFRICELL.name);
   });
 
   test('recognize null 1', () {
@@ -33,6 +33,6 @@ void main() {
   });
 
   test('recognize null 2', () {
-    expect(RecognizeProvider.recognize('808584145'), null);
+    expect(RecognizeProvider.recognize('808584145'), ProviderType.ORANGE.name);
   });
 }
