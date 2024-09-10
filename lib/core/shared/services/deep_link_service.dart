@@ -17,7 +17,7 @@ class DeepLinkService {
     _appLinks.uriLinkStream.listen((Uri? uri) {
       // If the link is valid, handle it accordingly.
       if (LinkUtil.validateLink(uri.toString())) {
-        context.push('/notifications');
+        context.push('/payment');
       } 
     });
   }
