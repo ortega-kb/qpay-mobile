@@ -1,24 +1,20 @@
-import 'dart:convert';
 
-class QRResponse {
+class TransactionResponse {
   final String account;
-  final String accountName;
   final double? amount;
   final String type;
   final String? currency;
 
-  QRResponse({
+  TransactionResponse({
     required this.account,
-    required this.accountName,
     required this.amount,
     required this.type,
     required this.currency,
   });
 
-  factory QRResponse.fromJson(Map<String, dynamic> json) {
-    return QRResponse(
+  factory TransactionResponse.fromJson(Map<String, dynamic> json) {
+    return TransactionResponse(
       account: json['account'],
-      accountName: json['accountName'],
       amount: json['amount'] as double?,
       type: json['type'],
       currency: json['currency'],
@@ -28,7 +24,6 @@ class QRResponse {
   Map<String, dynamic> toJson() {
     final map = {
       'account': account,
-      'accountName': accountName,
       'amount': amount,
       'type': type,
       'currency': currency,

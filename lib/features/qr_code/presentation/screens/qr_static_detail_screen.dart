@@ -1,7 +1,6 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
-import 'package:qpay/core/shared/services/user_information_service.dart';
 import 'package:qpay/core/shared/widgets/qr_code_view.dart';
 import 'package:qpay/core/shared/widgets/separator.dart';
 import 'package:qpay/core/theme/app_color.dart';
@@ -12,7 +11,6 @@ import 'package:qpay/core/utils/messages.dart';
 import 'package:screenshot/screenshot.dart';
 
 import '../../../../core/utils/qr_response.dart';
-import '../../../../init_dependencies.dart';
 import '../../domain/entities/qr_static.dart';
 
 class QRStaticDetailScreen extends StatefulWidget {
@@ -26,11 +24,10 @@ class QRStaticDetailScreen extends StatefulWidget {
 
 class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
   ScreenshotController screenshotController = ScreenshotController();
-  late QRResponse _qrResponse;
+  late TransactionResponse _qrResponse;
 
   initialize() {
-    _qrResponse = QRResponse(
-      accountName: locator<UserInformationService>().username,
+    _qrResponse = TransactionResponse(
       account: widget.qrStatic.account,
       amount: widget.qrStatic.amount,
       type: OperationType.PAYMENT.name,

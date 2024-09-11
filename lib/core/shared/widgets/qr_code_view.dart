@@ -6,7 +6,7 @@ import 'package:qpay/core/utils/qr_payload.dart';
 import 'package:qpay/core/utils/qr_response.dart';
 
 class QrCodeView extends StatelessWidget {
-  final QRResponse qrResponse;
+  final TransactionResponse qrResponse;
   const QrCodeView({
     super.key,
     required this.qrResponse,

@@ -7,11 +7,11 @@ import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:qpay/core/utils/qr_response.dart';
 
 class PaymentScreen extends StatelessWidget {
-  final QRResponse qrResponse;
+  final TransactionResponse? transactionResponse;
 
   const PaymentScreen({
     super.key,
-    required this.qrResponse,
+    required this.transactionResponse
   });
 
   @override
@@ -31,15 +31,16 @@ class PaymentScreen extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  ListTile(
-                    title: Text(
-                      AppLocalizations.of(context)!.check_and_confirm,
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
+                  if (transactionResponse != null)
+                    ListTile(
+                      title: Text(
+                        AppLocalizations.of(context)!.check_and_confirm,
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                      subtitle: null,
                     ),
-                    subtitle: null,
-                  ),
                   const Separator(isLarge: true),
                   const SizedBox(height: AppDimen.p8),
                   ListTile(
@@ -49,7 +50,7 @@ class PaymentScreen extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                     ),
-                    subtitle: Text(qrResponse.accountName),
+                    subtitle: Text(transactionResponse!.account),
                   ),
                   ListTile(
                     title: Text(
@@ -58,8 +59,8 @@ class PaymentScreen extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                     ),
-                    subtitle: Text(qrResponse.amount!.toStringAsFixed(2)),
-                    trailing: Text(qrResponse.currency!),
+                    subtitle: Text(transactionResponse!.amount!.toStringAsFixed(2)),
+                    trailing: Text(transactionResponse!.currency!),
                   ),
                 ],
               ),

@@ -61,8 +61,9 @@ class AppRouterConfig {
           GoRoute(
             path: '/payment',
             pageBuilder: (context, state) {
-              final qrResponseDecoded = json.decode(state.extra as String);
-              final qrResponse = QRResponse.fromJson(qrResponseDecoded);
+              final responseDecoded = json.decode(state.extra as String);
+              final response = TransactionResponse.fromJson(responseDecoded);
+
               return MaterialPage(
                 fullscreenDialog: true,
                 child: AnnotatedRegion(
@@ -74,7 +75,9 @@ class AppRouterConfig {
                     onPopInvoked: (value) {
                       context.go('/');
                     },
-                    child: PaymentScreen(qrResponse: qrResponse),
+                    child: PaymentScreen(
+                      transactionResponse: response,
+                    ),
                   ),
                 ),
               );
@@ -160,20 +163,19 @@ class AppRouterConfig {
             },
           ),
           GoRoute(
-            path: '/wallet-details',
-            builder: (context, state) {
-              final walletDecoded = json.decode(state.extra as String);
-              final Wallet wallet = Wallet.fromJson(walletDecoded);
+              path: '/wallet-details',
+              builder: (context, state) {
+                final walletDecoded = json.decode(state.extra as String);
+                final Wallet wallet = Wallet.fromJson(walletDecoded);
 
-              return AnnotatedRegion(
-                value: SystemUiOverlayStyle(
-                  statusBarColor: AppColor.background,
-                  systemNavigationBarColor: AppColor.background,
-                ),
-                child: WalletDetailsScreen(wallet: wallet),
-              );
-            }
-          ),
+                return AnnotatedRegion(
+                  value: SystemUiOverlayStyle(
+                    statusBarColor: AppColor.background,
+                    systemNavigationBarColor: AppColor.background,
+                  ),
+                  child: WalletDetailsScreen(wallet: wallet),
+                );
+              }),
           GoRoute(
             path: '/on-boarding',
             builder: (context, state) {

@@ -3,9 +3,8 @@ import 'package:qpay/core/utils/qr_response.dart';
 class QrPayload {
   // Take de QRResponse model
   // and convert it into a qpay qr_paylaod
-  static String toPayload(QRResponse qrResponse) =>
+  static String toPayload(TransactionResponse qrResponse) =>
       'qpay-' +
-      '${qrResponse.accountName}-' +
       '${qrResponse.account}-' +
       '${qrResponse.amount}-' +
       '${qrResponse.type}-' +
@@ -16,20 +15,19 @@ class QrPayload {
     try {
       // Try to split our payload
       // and check if list contain 5 fields
-      return payload.split('-').length == 6 && payload.split('-')[0] == 'qpay';
+      return payload.split('-').length == 5 && payload.split('-')[0] == 'qpay';
     } catch (e) {
       return false;
     }
   }
 
-  static QRResponse fromPayload(String payload) {
+  static TransactionResponse fromPayload(String payload) {
     final params = payload.split('-');
-    return QRResponse(
-      accountName: params[1],
-      account: params[2],
-      amount: double.parse(params[3]),
-      type: params[4],
-      currency: params[5],
+    return TransactionResponse(
+      account: params[1],
+      amount: double.parse(params[2]),
+      type: params[3],
+      currency: params[4],
     );
   }
 }

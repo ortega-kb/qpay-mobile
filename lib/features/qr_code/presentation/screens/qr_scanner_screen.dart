@@ -38,7 +38,7 @@ class QrScannerScreen extends StatelessWidget {
           final qrPayloadRaw = barcode.barcodes.first.rawValue!;
           if (QrPayload.isValidPayload(qrPayloadRaw)) {
             // Parse Qr payload and validate data
-            QRResponse qrResponse = QrPayload.fromPayload(qrPayloadRaw);
+            TransactionResponse qrResponse = QrPayload.fromPayload(qrPayloadRaw);
             if (qrResponse.type == OperationType.PAYMENT.name) {
               // If Qr response operation type is PAYMENT,
               // Redirect to payment screen with Qr response data
