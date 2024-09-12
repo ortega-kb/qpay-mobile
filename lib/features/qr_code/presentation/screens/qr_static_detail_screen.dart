@@ -28,10 +28,10 @@ class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
 
   initialize() {
     _qrResponse = TransactionResponse(
-      account: widget.qrStatic.account,
+      code: widget.qrStatic.account,
       amount: widget.qrStatic.amount,
       type: OperationType.PAYMENT.name,
-      currency: widget.qrStatic.currency,
+      wallet: widget.qrStatic.currency,
     );
   }
 

@@ -2,6 +2,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
+import 'package:logger/logger.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:qpay/core/shared/services/shared_preferences_service.dart';
 import 'package:qpay/core/shared/services/user_information_service.dart';

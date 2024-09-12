@@ -1,32 +1,34 @@
 
+import 'package:qpay/core/utils/enums/operation_type.dart';
+
 class TransactionResponse {
-  final String account;
+  final String code;
   final double? amount;
   final String type;
-  final String? currency;
+  final String? wallet;
 
   TransactionResponse({
-    required this.account,
+    required this.code,
     required this.amount,
     required this.type,
-    required this.currency,
+    required this.wallet,
   });
 
   factory TransactionResponse.fromJson(Map<String, dynamic> json) {
     return TransactionResponse(
-      account: json['account'],
-      amount: json['amount'] as double?,
+      code: json['code'],
+      amount: json['at'] as double?,
       type: json['type'],
-      currency: json['currency'],
+      wallet: json['wt'],
     );
   }
 
   Map<String, dynamic> toJson() {
     final map = {
-      'account': account,
-      'amount': amount,
-      'type': type,
-      'currency': currency,
+      'code': code,
+      'at': amount,
+      'type': OperationType.PAYMENT.name,
+      'wt': wallet,
     };
 
     return map;

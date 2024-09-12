@@ -5,10 +5,10 @@ class QrPayload {
   // and convert it into a qpay qr_paylaod
   static String toPayload(TransactionResponse qrResponse) =>
       'qpay-' +
-      '${qrResponse.account}-' +
+      '${qrResponse.code}-' +
       '${qrResponse.amount}-' +
       '${qrResponse.type}-' +
-      '${qrResponse.currency}';
+      '${qrResponse.wallet}';
 
   // Check if the qr_payload is valid
   static bool isValidPayload(String payload) {
@@ -24,10 +24,10 @@ class QrPayload {
   static TransactionResponse fromPayload(String payload) {
     final params = payload.split('-');
     return TransactionResponse(
-      account: params[1],
+      code: params[1],
       amount: double.parse(params[2]),
       type: params[3],
-      currency: params[4],
+      wallet: params[4],
     );
   }
 }

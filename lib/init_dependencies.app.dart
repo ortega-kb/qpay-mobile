@@ -21,13 +21,15 @@ Future<void> initDependencies() async {
 
   final qrStaticBox = await Hive.openBox<QRStaticModel>('qr_static');
   final sharedPreferencesService = await SharedPreferencesService.getInstance();
-  final userInformationService =
-      UserInformationService(sharedPreferencesService);
+  final userInformationService = UserInformationService(sharedPreferencesService);
+
+  final logger = Logger();
 
   locator.registerLazySingleton(() => Supabase.instance.client);
   locator.registerLazySingleton(() => qrStaticBox);
   locator.registerLazySingleton(() => sharedPreferencesService);
   locator.registerLazySingleton(() => userInformationService);
+  locator.registerLazySingleton(() => logger);
 }
 
 void _initSVG() async {

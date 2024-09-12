@@ -59,10 +59,10 @@ class LinkUtil {
     final type = uri.queryParameters['type'];
 
     return TransactionResponse(
-      account: code!,
+      code: code!,
       amount: double.parse(amount!),
       type: type ?? OperationType.PAYMENT.name,
-      currency: wallet!,
+      wallet: wallet!,
     );
   }
 }

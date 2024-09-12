@@ -50,7 +50,7 @@ class TransactionScreen extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                     ),
-                    subtitle: Text(transactionResponse!.account),
+                    subtitle: Text(transactionResponse!.code),
                   ),
                   ListTile(
                     title: Text(
@@ -60,7 +60,7 @@ class TransactionScreen extends StatelessWidget {
                           ),
                     ),
                     subtitle: Text(transactionResponse!.amount!.toStringAsFixed(2)),
-                    trailing: Text(transactionResponse!.currency!),
+                    trailing: Text(transactionResponse!.wallet!),
                   ),
                 ],
               ),

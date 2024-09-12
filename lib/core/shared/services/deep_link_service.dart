@@ -47,10 +47,10 @@ class DeepLinkService {
     final wallet = uri.queryParameters['wt'];
 
     return TransactionResponse(
-      account: code!,
+      code: code!,
       amount: double.parse(amount!),
       type: OperationType.TRANSFER.name,
-      currency: wallet!,
+      wallet: wallet!,
     );
   }
 }
