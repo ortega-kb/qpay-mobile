@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:qpay/config/app_route_name.dart';
 import 'package:qpay/features/auth/presentation/bloc/cubits/timer_otp_cubit.dart';
 import 'package:qpay/core/shared/widgets/m_button.dart';
 import 'package:qpay/core/shared/widgets/m_outlined_button.dart';
@@ -17,6 +18,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class VerifyPhoneNumberScreen extends StatefulWidget {
   final String phone;
+
   const VerifyPhoneNumberScreen({super.key, required this.phone});
 
   @override
@@ -52,7 +54,7 @@ class _VerifyPhoneNumberScreenState extends State<VerifyPhoneNumberScreen> {
             context,
           );
 
-          context.go('/sign-in');
+          context.go(AppRouteName.signInScreen);
         }
         if (state is AuthVerifyPhoneNumberErrorState) {
           Messages.error(
@@ -137,8 +139,10 @@ class _VerifyPhoneNumberScreenState extends State<VerifyPhoneNumberScreen> {
                                 ? () {}
                                 : () {
                                     context.read<AuthBloc>().add(
-                                        AuthResendOtpEvent(
-                                            phone: widget.phone));
+                                          AuthResendOtpEvent(
+                                            phone: widget.phone,
+                                          ),
+                                        );
                                   },
                           );
                         },

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_onboarding_slider/flutter_onboarding_slider.dart';
 import 'package:go_router/go_router.dart';
+import 'package:qpay/config/app_route_name.dart';
 import 'package:qpay/core/shared/widgets/m_button.dart';
 import 'package:qpay/core/shared/widgets/m_outlined_button.dart';
 import 'package:qpay/core/theme/app_color.dart';
@@ -62,12 +63,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           children: [
             MButton(
               text: AppLocalizations.of(context)!.login,
-              onPressed: () => context.push('/sign-in'),
+              onPressed: () => context.push(AppRouteName.signInScreen),
             ),
             const SizedBox(height: AppDimen.p8),
             MOutlinedButton(
               text: AppLocalizations.of(context)!.create_account,
-              onPressed: () => context.push('/sign-up'),
+              onPressed: () => context.push(AppRouteName.signUpScreen),
             ),
           ],
         ),

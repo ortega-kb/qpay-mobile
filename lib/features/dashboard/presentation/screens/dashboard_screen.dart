@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:qpay/config/app_route_name.dart';
 import 'package:qpay/core/shared/services/user_information_service.dart';
 import 'package:qpay/core/shared/widgets/m_button.dart';
 import 'package:qpay/core/shared/widgets/m_select_fied.dart';
@@ -183,13 +184,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
               PermissionStatus status = await Permission.camera.status;
               if (status == PermissionStatus.granted) {
                 // Open QR Scanner
-                context.push('/qr-scanner');
+                context.push(AppRouteName.qrScannerScreen);
               } else if (status.isDenied || status.isPermanentlyDenied) {
                 // Request permission
                 await Permission.camera.request();
                 if (await Permission.camera.isGranted) {
                   // If permission granted, open QR Scanner
-                  context.push('/qr-scanner');
+                  context.push(AppRouteName.qrScannerScreen);
                 } else {
                   Messages.error(
                     AppLocalizations.of(context)!.permission,
@@ -207,7 +208,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           IconButton(
             tooltip: AppLocalizations.of(context)!.notifications,
             onPressed: () {
-              context.push('/notifications');
+              context.push(AppRouteName.notificationScreen);
             },
             icon: Badge.count(
               count: 3,

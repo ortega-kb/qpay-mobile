@@ -1,18 +1,12 @@
-import 'dart:convert';
 
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:qpay/core/shared/services/user_information_service.dart';
 import 'package:qpay/core/shared/widgets/list_loader.dart';
 import 'package:qpay/core/shared/widgets/m_subtitle.dart';
-import 'package:qpay/core/shared/widgets/not_found.dart';
-import 'package:qpay/core/shared/widgets/separator.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
-import 'package:qpay/core/utils/image_path.dart';
-import 'package:qpay/features/qr_code/presentation/widgets/qr_static_item.dart';
 import 'package:qpay/features/qr_code/presentation/widgets/qr_static_list.dart';
 import 'package:qpay/init_dependencies.dart';
 import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';

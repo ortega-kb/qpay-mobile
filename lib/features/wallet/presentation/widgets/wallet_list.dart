@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:qpay/config/app_route_name.dart';
 import 'package:qpay/core/shared/widgets/separator.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:qpay/features/wallet/presentation/widgets/wallet_item.dart';
@@ -26,7 +27,7 @@ class WalletList extends StatelessWidget {
               onTap: () {
                 print(wallets[index].toParcelable());
                 context.push(
-                    '/wallet-details',
+                    AppRouteName.walletDetailsScreen,
                     extra: json.encode(wallets[index].toParcelable())
                 );
               }

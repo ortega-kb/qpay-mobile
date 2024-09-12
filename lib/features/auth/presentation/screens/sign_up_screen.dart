@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
+import 'package:qpay/config/app_route_name.dart';
 import 'package:qpay/core/shared/cubits/account_type_cubit.dart';
 import 'package:qpay/core/shared/widgets/account_type_tile.dart';
 import 'package:qpay/core/shared/widgets/m_progress.dart';
@@ -61,7 +62,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
         }
 
         if (state is AuthSignUpSuccessState) {
-          context.push('/verify-phone-number', extra: _phoneController.text.trim());
+          context.push(
+            AppRouteName.verifyPhoneNumberScreen,
+            extra: _phoneController.text.trim(),
+          );
         }
       },
       builder: (context, state) {
@@ -197,7 +201,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     email: '',
                                     fullName: _fullNameController.text.trim(),
                                     password: _passwordController.text.trim(),
-                                    accountType: _accountTypeController.text.trim(),
+                                    accountType:
+                                        _accountTypeController.text.trim(),
                                   ),
                                 );
                           }
