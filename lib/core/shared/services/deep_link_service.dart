@@ -22,7 +22,7 @@ class DeepLinkService {
       if (initialLink != null) {
         if (LinkUtil.validateLink(initialLink.toString())) {
           context.push('/payment',
-              extra: json.encode(_extractUrlData(initialLink)));
+              extra: json.encode(_extractLinkData(initialLink)));
         }
       }
     } on PlatformException catch (e) {
@@ -35,12 +35,12 @@ class DeepLinkService {
     _appLinks.uriLinkStream.listen((Uri? uri) {
       // If the link is valid, handle it accordingly.
       if (LinkUtil.validateLink(uri.toString())) {
-        context.push('/payment', extra: json.encode(_extractUrlData(uri!)));
+        context.push('/payment', extra: json.encode(_extractLinkData(uri!)));
       }
     });
   }
 
-  TransactionResponse _extractUrlData(Uri uri) {
+  TransactionResponse _extractLinkData(Uri uri) {
     final code = uri.queryParameters['code'];
     final amount = uri.queryParameters['at'];
     final description = uri.queryParameters['desc'];

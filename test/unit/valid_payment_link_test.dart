@@ -20,7 +20,7 @@ void main() {
     userCode: 'qp1212121212121212',
     amount: '14500',
     description: 'test',
-    wallet: 'IND',
+    wallet: '',
   );
 
   test("should return valid link (true)", () {

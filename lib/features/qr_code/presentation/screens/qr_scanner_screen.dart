@@ -43,7 +43,7 @@ class QrScannerScreen extends StatelessWidget {
               // If Qr response operation type is PAYMENT,
               // Redirect to payment screen with Qr response data
               controller.stop();
-              context.push('/payment', extra: json.encode(qrResponse.toJson()));
+              context.push('/transaction', extra: json.encode(qrResponse.toJson()));
             } else {
               // If Qr response operation type is NOT PAYMENT,
               // Display error message or redirect to default screen

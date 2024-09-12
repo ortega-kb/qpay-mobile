@@ -1,5 +1,9 @@
 
 
+import 'package:qpay/core/utils/qr_response.dart';
+
+import 'enums/operation_type.dart';
+
 class LinkUtil {
 
   static bool validateLink(String url) {
@@ -11,7 +15,7 @@ class LinkUtil {
     }
 
     // Check if link is for the correct app
-    if (uri.host != 'qpay.app' || uri.path != '/payment') return false;
+    if (uri.host != 'qpay.app' || uri.path != '/transaction') return false;
 
     // Extract and check query parameters
     final code = uri.queryParameters['code'];
@@ -39,11 +43,26 @@ class LinkUtil {
   }) {
 
     final host = 'qpay.app';
-    final path = 'payment';
+    final path = 'transaction';
     final scheme = 'https';
 
     return Uri.parse(
       "$scheme://$host/$path?code=$userCode&at=$amount&desc=$description&wt=$wallet",
+    );
+  }
+
+  static TransactionResponse extractLinkData(Uri uri) {
+    final code = uri.queryParameters['code'];
+    final amount = uri.queryParameters['at'];
+    final description = uri.queryParameters['desc'];
+    final wallet = uri.queryParameters['wt'];
+    final type = uri.queryParameters['type'];
+
+    return TransactionResponse(
+      account: code!,
+      amount: double.parse(amount!),
+      type: type ?? OperationType.PAYMENT.name,
+      currency: wallet!,
     );
   }
 }

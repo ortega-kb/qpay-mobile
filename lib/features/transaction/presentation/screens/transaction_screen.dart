@@ -6,10 +6,10 @@ import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:qpay/core/utils/qr_response.dart';
 
-class PaymentScreen extends StatelessWidget {
+class TransactionScreen extends StatelessWidget {
   final TransactionResponse? transactionResponse;
 
-  const PaymentScreen({
+  const TransactionScreen({
     super.key,
     required this.transactionResponse
   });
