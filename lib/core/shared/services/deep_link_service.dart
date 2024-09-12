@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:app_links/app_links.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:qpay/core/utils/enums/operation_type.dart';
 import 'package:qpay/core/utils/link_util.dart';
@@ -14,6 +15,20 @@ class DeepLinkService {
   DeepLinkService._();
 
   static final DeepLinkService instance = DeepLinkService._();
+
+  void checkInitialLink(BuildContext context) async {
+    try {
+      final initialLink = await _appLinks.getInitialLink();
+      if (initialLink != null) {
+        if (LinkUtil.validateLink(initialLink.toString())) {
+          context.push('/payment',
+              extra: json.encode(_extractUrlData(initialLink)));
+        }
+      }
+    } on PlatformException catch (e) {
+      print('Échec lors de la récupération du lien initial. $e');
+    }
+  }
 
   void listenDeepLinks(BuildContext context) {
     log("Starting listening deep link");

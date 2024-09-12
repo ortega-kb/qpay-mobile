@@ -26,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      deepLinkService.checkInitialLink(context);
       deepLinkService.listenDeepLinks(context);
     });
     animateIconController = AnimateIconController();
