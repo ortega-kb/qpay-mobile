@@ -8,7 +8,7 @@ import 'package:qpay/core/shared/widgets/m_subtitle.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:qpay/features/qr_code/presentation/widgets/qr_static_list.dart';
-import 'package:qpay/init_dependencies.dart';
+import 'package:qpay/di/dependencies.dart';
 import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

@@ -11,7 +11,7 @@ import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:qpay/core/utils/extensions/datetime_extension.dart';
 import 'package:qpay/features/wallet/domain/entities/wallet.dart';
-import 'package:qpay/init_dependencies.dart';
+import 'package:qpay/di/dependencies.dart';
 
 import '../../../../core/utils/recognize_provider.dart';
 import '../bloc/wallet_bloc.dart';

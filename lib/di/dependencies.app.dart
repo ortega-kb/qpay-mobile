@@ -1,8 +1,8 @@
-part of 'init_dependencies.dart';
+part of 'dependencies.dart';
 
 final locator = GetIt.asNewInstance();
 
-Future<void> initDependencies() async {
+Future<void> dependencies() async {
   _initSVG();
   _initAuth();
   _initWallet();

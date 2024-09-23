@@ -4,9 +4,5 @@ import 'package:qpay/core/utils/enums/account_type.dart';
 
 class AccountTypeCubit extends Cubit<String> {
   AccountTypeCubit() : super(AccountType.PUBLIC.name);
-
-  void updateAccountType(AccountType accountType) {
-    debugPrint("ACCOUNT_TYPE_UPDATED: $accountType");
-    emit(accountType.name);
-  }
+  void updateAccountType(AccountType accountType) => emit(accountType.name);
 }

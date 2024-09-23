@@ -178,5 +178,11 @@
   "set_as_default": "Set as default",
   "confirm_set_as_default": "Do you really want to set wallet as default ?",
   "error_set_as_default": "Default wallet definition error.",
-  "success_set_as_default": "Default wallet set successfully."
+  "success_set_as_default": "Default wallet set successfully.",
+  "support": "Support",
+  "privacy": "Privacy policy",
+  "customized_logo": "Customized logo",
+  "share_app": "Share application",
+  "logout": "Logout"
+
 }

@@ -18,7 +18,7 @@ import 'package:qpay/core/utils/validator.dart';
 import 'package:qpay/features/wallet/domain/entities/wallet.dart';
 import 'package:qpay/features/wallet/presentation/widgets/wallet_list.dart';
 import 'package:qpay/features/wallet/presentation/widgets/wallet_item.dart';
-import 'package:qpay/init_dependencies.dart';
+import 'package:qpay/di/dependencies.dart';
 import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
 
 import '../../../../core/utils/image_path.dart';

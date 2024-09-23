@@ -178,6 +178,11 @@
   "set_as_default": "Le définir par défaut",
   "confirm_set_as_default": "Voulez-vous vraiment définir ce portefeuille par défaut ?",
   "error_set_as_default": "Erreur de définission du portefeuille par défaut.",
-  "success_set_as_default": "Définission du portefeuille par défaut réussie."
+  "success_set_as_default": "Définission du portefeuille par défaut réussie.",
+  "support": "Assistance",
+  "privacy": "Politique de confidentialité",
+  "customized_logo": "Logo personnalisé",
+  "share_app": "Partager l'application",
+  "logout": "Se déconnecter"
 }
 

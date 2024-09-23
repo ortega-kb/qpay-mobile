@@ -1,4 +1,3 @@
-import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
@@ -33,9 +32,9 @@ import 'package:qpay/features/wallet/domain/usecases/get_wallets_by_user_code_us
 import 'package:qpay/features/wallet/presentation/bloc/wallet_bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-import 'core/utils/preload_svg.dart';
-import 'features/wallet/data/datasources/wallet_remote_data_source.dart';
+import '../core/utils/preload_svg.dart';
+import '../features/wallet/data/datasources/wallet_remote_data_source.dart';
 
-part 'init_dependencies.app.dart';
+part 'dependencies.app.dart';
 
 

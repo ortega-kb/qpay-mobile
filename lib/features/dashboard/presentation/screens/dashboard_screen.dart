@@ -20,7 +20,7 @@ import 'package:qpay/core/utils/link_util.dart';
 import 'package:qpay/core/utils/messages.dart';
 import 'package:qpay/core/utils/validator.dart';
 import 'package:qpay/features/dashboard/presentation/widgets/quick_action_list.dart';
-import 'package:qpay/init_dependencies.dart';
+import 'package:qpay/di/dependencies.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
 

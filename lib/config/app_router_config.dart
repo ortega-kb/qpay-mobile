@@ -27,7 +27,7 @@ import 'package:qpay/features/wallet/presentation/screens/wallet_details_screen.
 import 'package:qpay/features/wallet/presentation/screens/wallet_list_screen.dart';
 
 import '../features/auth/presentation/screens/sign_in_screen.dart';
-import '../init_dependencies.dart';
+import '../di/dependencies.dart';
 
 class AppRouterConfig {
   SharedPreferencesService _sharedPreferencesService;
