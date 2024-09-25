@@ -26,7 +26,7 @@ class AppRouteName {
   static final String qrStaticDetailsScreen = '/qr-static-details';
   static final String qrScannerScreen = '/qr-scanner';
 
-
-
+  // Settings routes
+  static final String myQrCodeScreen = '/my-qr-code';
 
 }

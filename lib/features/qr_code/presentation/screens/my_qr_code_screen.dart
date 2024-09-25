@@ -1,6 +1,9 @@
-import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
+import 'package:flutter/services.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:qpay/core/shared/services/user_information_service.dart';
 import 'package:qpay/core/shared/widgets/qr_code_view.dart';
 import 'package:qpay/core/shared/widgets/separator.dart';
 import 'package:qpay/core/theme/app_color.dart';
@@ -11,27 +14,25 @@ import 'package:qpay/core/utils/messages.dart';
 import 'package:screenshot/screenshot.dart';
 
 import '../../../../core/utils/qr_response.dart';
-import '../../domain/entities/qr_static.dart';
+import '../../../../di/dependencies.dart';
 
-class QRStaticDetailScreen extends StatefulWidget {
-  final QRStatic qrStatic;
-
-  const QRStaticDetailScreen({super.key, required this.qrStatic});
+class MyQrCodeScreen extends StatefulWidget {
+  const MyQrCodeScreen({super.key});
 
   @override
-  State<QRStaticDetailScreen> createState() => _QRStaticDetailScreenState();
+  State<MyQrCodeScreen> createState() => _MyQrCodeScreenState();
 }
 
-class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
+class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
   ScreenshotController screenshotController = ScreenshotController();
   late TransactionResponse _qrResponse;
 
   initialize() {
     _qrResponse = TransactionResponse(
-      code: widget.qrStatic.account,
-      amount: widget.qrStatic.amount,
-      type: OperationType.PAYMENT.name,
-      wallet: widget.qrStatic.currency,
+      code: locator<UserInformationService>().userCode,
+      type: OperationType.TRANSFER.name,
+      amount: null,
+      wallet: '',
     );
   }
 
@@ -40,8 +41,6 @@ class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
     super.initState();
     initialize();
   }
-
-
 
   @override
   void dispose() {
@@ -157,7 +156,7 @@ class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
                                             ListTile(
                                               title: Text(
                                                 AppLocalizations.of(context)!
-                                                    .motif,
+                                                    .account_user,
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .bodyMedium
@@ -167,14 +166,15 @@ class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
                                                         color: AppColor.black),
                                               ),
                                               subtitle: Text(
-                                                widget.qrStatic.motif,
+                                                locator<UserInformationService>()
+                                                    .username,
                                               ),
                                             ),
                                             Separator(),
                                             ListTile(
                                               title: Text(
                                                 AppLocalizations.of(context)!
-                                                    .amount,
+                                                    .user_code,
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .bodyMedium
@@ -183,13 +183,22 @@ class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
                                                             FontWeight.bold,
                                                         color: AppColor.black),
                                               ),
-                                              subtitle: Text(
-                                                widget.qrStatic.amount
-                                                    .toString(),
-                                              ),
-                                              trailing: Text(
-                                                widget.qrStatic.currency
-                                                    .toString(),
+                                              subtitle: Text(locator<
+                                                      UserInformationService>()
+                                                  .userCode),
+                                              trailing: IconButton(
+                                                onPressed: () {
+                                                  Clipboard.setData(
+                                                    ClipboardData(
+                                                      text: locator<
+                                                              UserInformationService>()
+                                                          .userCode,
+                                                    ),
+                                                  );
+                                                },
+                                                icon: Icon(
+                                                  FluentIcons.copy_24_filled,
+                                                ),
                                               ),
                                             ),
                                           ],

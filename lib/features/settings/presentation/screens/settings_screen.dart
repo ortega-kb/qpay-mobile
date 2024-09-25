@@ -1,6 +1,8 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:go_router/go_router.dart';
+import 'package:qpay/config/app_route_name.dart';
 import 'package:qpay/core/shared/widgets/separator.dart';
 import 'package:qpay/core/shared/widgets/settings_item.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
@@ -28,7 +30,7 @@ class SettingsScreen extends StatelessWidget {
                     SettingsItem(
                       title: AppLocalizations.of(context)!.my_qr_code,
                       iconData: FluentIcons.qr_code_24_filled,
-                      onTap: () {},
+                      onTap: () => context.push(AppRouteName.myQrCodeScreen),
                     ),
                     Separator(isLarge: false),
                     SettingsItem(

@@ -17,6 +17,7 @@ import 'package:qpay/features/dashboard/presentation/screens/reports_screen.dart
 import 'package:qpay/features/home_screen.dart';
 import 'package:qpay/features/notifications/presentation/screens/notifications_screen.dart';
 import 'package:qpay/features/qr_code/domain/entities/qr_static.dart';
+import 'package:qpay/features/qr_code/presentation/screens/my_qr_code_screen.dart';
 import 'package:qpay/features/qr_code/presentation/screens/qr_scanner_screen.dart';
 import 'package:qpay/features/qr_code/presentation/screens/qr_static_detail_screen.dart';
 import 'package:qpay/features/transaction/presentation/screens/add_transaction_screen.dart';
@@ -36,7 +37,7 @@ class AppRouterConfig {
 
   GoRouter get router => GoRouter(
         debugLogDiagnostics: true,
-        initialLocation: AppRouteName.onBoardingScreen,
+        initialLocation: AppRouteName.root,
         routes: [
           GoRoute(
             path: AppRouteName.root,
@@ -260,9 +261,22 @@ class AppRouterConfig {
               );
             },
           ),
+          GoRoute(
+            path: AppRouteName.myQrCodeScreen,
+            builder: (context, state) {
+              return AnnotatedRegion(
+                value: SystemUiOverlayStyle(
+                  statusBarColor: AppColor.background,
+                  systemNavigationBarColor: AppColor.background,
+                ),
+                child: MyQrCodeScreen(),
+              );
+            },
+          ),
         ],
         redirect: (context, state) {
-          bool isAuthenticated = _sharedPreferencesService.userAuthenticated;
+          // Remove ! for production redirect
+          bool isAuthenticated = !_sharedPreferencesService.userAuthenticated;
 
           // If user is authenticated but try to access sign-in or sign-up screen,
           // redirect to home page
