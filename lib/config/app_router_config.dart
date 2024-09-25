@@ -9,6 +9,7 @@ import 'package:qpay/core/shared/services/shared_preferences_service.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/utils/link_util.dart';
 import 'package:qpay/core/utils/qr_response.dart';
+import 'package:qpay/features/auth/presentation/screens/account_screen.dart';
 import 'package:qpay/features/auth/presentation/screens/sign_up_screen.dart';
 import 'package:qpay/features/auth/presentation/screens/on_boarding_screen.dart';
 import 'package:qpay/features/auth/presentation/screens/user_information_screen.dart';
@@ -270,6 +271,18 @@ class AppRouterConfig {
                   systemNavigationBarColor: AppColor.background,
                 ),
                 child: MyQrCodeScreen(),
+              );
+            },
+          ),
+          GoRoute(
+            path: AppRouteName.accountScreen,
+            builder: (context, state) {
+              return AnnotatedRegion(
+                value: SystemUiOverlayStyle(
+                  statusBarColor: AppColor.background,
+                  systemNavigationBarColor: AppColor.background,
+                ),
+                child: AccountScreen(),
               );
             },
           ),

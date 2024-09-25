@@ -6,7 +6,10 @@ import 'package:qpay/config/app_route_name.dart';
 import 'package:qpay/core/shared/widgets/separator.dart';
 import 'package:qpay/core/shared/widgets/settings_item.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
+import 'package:qpay/core/utils/constants.dart';
 import 'package:qpay/features/settings/presentation/widgets/settings_container.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -19,7 +22,7 @@ class SettingsScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(AppDimen.p16),
+          padding: const EdgeInsets.symmetric(horizontal: AppDimen.p16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -36,7 +39,7 @@ class SettingsScreen extends StatelessWidget {
                     SettingsItem(
                       title: AppLocalizations.of(context)!.account_user,
                       iconData: FluentIcons.person_accounts_24_filled,
-                      onTap: () {},
+                      onTap: () => context.push(AppRouteName.accountScreen),
                     ),
                     Separator(isLarge: false),
                     SettingsItem(
@@ -77,7 +80,8 @@ class SettingsScreen extends StatelessWidget {
                   children: [
                     SettingsItem(
                       title: AppLocalizations.of(context)!.support,
-                      iconData: FluentIcons.accessibility_question_mark_24_filled,
+                      iconData:
+                          FluentIcons.accessibility_question_mark_24_filled,
                       onTap: () {},
                     ),
                     Separator(isLarge: false),
@@ -90,7 +94,9 @@ class SettingsScreen extends StatelessWidget {
                     SettingsItem(
                       title: AppLocalizations.of(context)!.share_app,
                       iconData: FluentIcons.share_24_filled,
-                      onTap: () {},
+                      onTap: () => Share.shareUri(
+                        Uri.parse("https://www.google.com"),
+                      ),
                     ),
                   ],
                 ),

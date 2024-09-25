@@ -184,6 +184,8 @@
   "customized_logo": "Customized logo",
   "share_app": "Share application",
   "logout": "Logout",
-  "user_code":  "User code"
+  "user_code":  "User code",
+  "delete_account": "Delete account",
+  "modify_informations": "Modify information"
 
 }

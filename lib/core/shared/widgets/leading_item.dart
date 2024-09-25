@@ -23,7 +23,7 @@ class LeadingItem extends StatelessWidget {
         padding: const EdgeInsets.all(AppDimen.p4),
         child: Icon(
           iconData,
-          size: 24,
+          size: 22,
         ),
       ),
     );

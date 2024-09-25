@@ -13,6 +13,7 @@ class UserInformationService {
     _sharedPreferencesService.userId = userModel.id!;
     _sharedPreferencesService.userCode = userModel.userCode;
     _sharedPreferencesService.accountType = userModel.accountType;
+    _sharedPreferencesService.phoneNumber = userModel.phone;
     _sharedPreferencesService.userCreatedAt = userModel.createdAt!.toIso8601String();
 
     // Set authenticated to true
@@ -24,5 +25,6 @@ class UserInformationService {
   String get userCode => _sharedPreferencesService.userCode;
   String get accountType => _sharedPreferencesService.accountType;
   String get userCreatedAt => _sharedPreferencesService.userCreatedAt;
+  String get phoneNumber => _sharedPreferencesService.phoneNumber;
 
 }

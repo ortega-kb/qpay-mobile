@@ -6,6 +6,7 @@ const _kUserAuthenticatedKey = 'userAuthenticated';
 const _kUserCodeKey = 'userCode';
 const _kUserCreatedAt = 'userCreatedAt';
 const _kAccountTypeKey = 'accountType';
+const _kPhoneNumberKey = 'phoneNumber';
 
 class SharedPreferencesService {
   static SharedPreferencesService? _instance;
@@ -58,6 +59,9 @@ class SharedPreferencesService {
 
   String get userCreatedAt => _getData(_kUserCreatedAt) ?? '';
   set userCreatedAt(String value) => _saveData(_kUserCreatedAt, value);
+
+  String get phoneNumber => _getData(_kPhoneNumberKey) ?? '';
+  set phoneNumber(String value) => _saveData(_kPhoneNumberKey, value);
 
   // Method for clearing all shared preferences
   void clear()  => _preferences.clear();

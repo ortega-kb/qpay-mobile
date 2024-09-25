@@ -10,6 +10,7 @@ class AppRouteName {
   static final String signUpScreen = '/sign-up';
   static final String verifyPhoneNumberScreen = '/verify-phone-number';
   static final String userInformationsScreen = '/user-informations';
+  static final String accountScreen = '/account';
 
   // Wallet routes
   static final String walletListScreen = '/wallet-list';
@@ -25,8 +26,6 @@ class AppRouteName {
   // Qr code routes
   static final String qrStaticDetailsScreen = '/qr-static-details';
   static final String qrScannerScreen = '/qr-scanner';
-
-  // Settings routes
   static final String myQrCodeScreen = '/my-qr-code';
 
 }

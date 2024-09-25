@@ -184,6 +184,8 @@
   "customized_logo": "Logo personnalisé",
   "share_app": "Partager l'application",
   "logout": "Se déconnecter",
-  "user_code":  "Code utilisateur"
+  "user_code":  "Code utilisateur",
+  "delete_account": "Supprimer le compte",
+  "modify_informations": "Modifier les informations"
 }
 
