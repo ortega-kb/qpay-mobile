@@ -12,21 +12,24 @@ class QuickActionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      spacing: AppDimen.p8,
-      runSpacing: AppDimen.p8,
-      children: [
-        QuickAction(
-          iconData: FluentIcons.arrow_trending_24_filled,
-          title: AppLocalizations.of(context)!.transfer_money,
-          onTap: () => context.push('/add-transaction'),
-        ),
-        QuickAction(
-          iconData: FluentIcons.building_bank_link_24_filled,
-          title: AppLocalizations.of(context)!.payment_link,
-          onTap: onGenerateLinkPayment,
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: AppDimen.p8),
+      child: Wrap(
+        spacing: AppDimen.p8,
+        runSpacing: AppDimen.p8,
+        children: [
+          QuickAction(
+            iconData: FluentIcons.arrow_trending_24_filled,
+            title: AppLocalizations.of(context)!.transfer_money,
+            onTap: () => context.push('/add-transaction'),
+          ),
+          QuickAction(
+            iconData: FluentIcons.building_bank_link_24_filled,
+            title: AppLocalizations.of(context)!.payment_link,
+            onTap: onGenerateLinkPayment,
+          ),
+        ],
+      ),
     );
   }
 }

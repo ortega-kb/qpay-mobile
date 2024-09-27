@@ -230,6 +230,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         },
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: AppDimen.p16),
               WalletUSDCDF(),

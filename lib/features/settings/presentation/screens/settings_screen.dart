@@ -11,6 +11,8 @@ import 'package:qpay/core/shared/widgets/item_container.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../core/utils/email_support.dart';
+
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
@@ -82,7 +84,7 @@ class SettingsScreen extends StatelessWidget {
                       title: AppLocalizations.of(context)!.support,
                       iconData:
                           FluentIcons.accessibility_question_mark_24_filled,
-                      onTap: () {},
+                      onTap: () => emailSupport(context),
                     ),
                     Separator(isLarge: false),
                     SettingsItem(
