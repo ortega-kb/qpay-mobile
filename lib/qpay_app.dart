@@ -9,7 +9,7 @@ import 'package:qpay/core/shared/cubits/wallet_show_hide_cubit.dart';
 import 'package:qpay/features/auth/presentation/bloc/cubits/timer_otp_cubit.dart';
 import 'package:qpay/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:qpay/features/dashboard/presentation/bloc/cubits/time_report_cubit.dart';
-import 'package:qpay/features/dashboard/presentation/bloc/cubits/wallet_page_cubit.dart';
+import 'package:qpay/core/shared/cubits/wallet_page_cubit.dart';
 import 'package:qpay/features/wallet/presentation/bloc/wallet_bloc.dart';
 import 'package:qpay/di/dependencies.dart';
 

@@ -7,7 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:qpay/core/shared/cubits/wallet_show_hide_cubit.dart';
 import 'package:qpay/core/utils/currency.dart';
-import 'package:qpay/features/dashboard/presentation/bloc/cubits/wallet_page_cubit.dart';
+import 'package:qpay/core/shared/cubits/wallet_page_cubit.dart';
 
 import '../../theme/app_color.dart';
 import '../../theme/app_dimen.dart';
