@@ -42,154 +42,180 @@ class AppRouterConfig {
                 child: HomeScreen(),
               );
             },
-          ),
-          GoRoute(
-            path: AppRouteName.walletListScreen,
-            builder: (context, state) {
-              return const AnnotatedRegion(
-                value: SystemUiOverlayStyle(
-                  statusBarColor: AppColor.background,
-                  systemNavigationBarColor: AppColor.background,
-                ),
-                child: WalletListScreen(),
-              );
-            },
-          ),
-          GoRoute(
-            path: AppRouteName.transactionQrCodeScreen,
-            builder: (context, state) {
-              final qrResponse = json.decode(state.extra as String);
-              final response = TransactionResponse.fromJson(qrResponse);
+            routes: [
+              GoRoute(
+                path: AppRouteName.walletListPath,
+                builder: (context, state) {
+                  return const AnnotatedRegion(
+                    value: SystemUiOverlayStyle(
+                      statusBarColor: AppColor.background,
+                      systemNavigationBarColor: AppColor.background,
+                    ),
+                    child: WalletListScreen(),
+                  );
+                },
+              ),
+              GoRoute(
+                path: AppRouteName.accountPath,
+                builder: (context, state) {
+                  return AnnotatedRegion(
+                    value: SystemUiOverlayStyle(
+                      statusBarColor: AppColor.background,
+                      systemNavigationBarColor: AppColor.background,
+                    ),
+                    child: AccountScreen(),
+                  );
+                },
+              ),
+              GoRoute(
+                path: AppRouteName.languagePath,
+                builder: (context, state) {
+                  return AnnotatedRegion(
+                    value: SystemUiOverlayStyle(
+                      statusBarColor: AppColor.background,
+                      systemNavigationBarColor: AppColor.background,
+                    ),
+                    child: LanguageScreen(),
+                  );
+                },
+              ),
+              GoRoute(
+                path: AppRouteName.transactionQrCodePath,
+                builder: (context, state) {
+                  final qrResponse = json.decode(state.extra as String);
+                  final response = TransactionResponse.fromJson(qrResponse);
 
-              return AnnotatedRegion(
-                value: SystemUiOverlayStyle(
-                  statusBarColor: AppColor.background,
-                  systemNavigationBarColor: AppColor.background,
-                ),
-                child: PopScope(
-                  onPopInvoked: (value) {
-                    context.go(AppRouteName.root);
-                  },
-                  child: TransactionScreen(
-                    transactionResponse: response,
-                  ),
-                ),
-              );
-            },
-          ),
-          GoRoute(
-            path: AppRouteName.transactionScreen,
-            builder: (context, state) {
-              final response = LinkUtil.extractLinkData(state.uri);
-              return AnnotatedRegion(
-                value: SystemUiOverlayStyle(
-                  statusBarColor: AppColor.background,
-                  systemNavigationBarColor: AppColor.background,
-                ),
-                child: PopScope(
-                  onPopInvoked: (value) {
-                    context.go(AppRouteName.root);
-                  },
-                  child: TransactionScreen(
-                    transactionResponse: response,
-                  ),
-                ),
-              );
-            },
-          ),
-          GoRoute(
-            path: AppRouteName.notificationScreen,
-            builder: (context, state) {
-              return const AnnotatedRegion(
-                value: SystemUiOverlayStyle(
-                  statusBarColor: AppColor.background,
-                  systemNavigationBarColor: AppColor.background,
-                ),
-                child: NotificationsScreen(),
-              );
-            },
-          ),
-          GoRoute(
-            path: AppRouteName.qrStaticDetailsScreen,
-            builder: (context, state) {
-              final qrStaticDecoded = json.decode(state.extra as String);
-              final QRStatic qrStatic = QRStatic.fromJson(qrStaticDecoded);
-              return AnnotatedRegion(
-                value: SystemUiOverlayStyle(
-                  statusBarColor: AppColor.background,
-                  systemNavigationBarColor: AppColor.background,
-                ),
-                child: QRStaticDetailScreen(qrStatic: qrStatic),
-              );
-            },
-          ),
-          GoRoute(
-            path: AppRouteName.addTransactionScreen,
-            builder: (context, state) {
-              return AnnotatedRegion(
-                value: SystemUiOverlayStyle(
-                  statusBarColor: AppColor.background,
-                  systemNavigationBarColor: AppColor.background,
-                ),
-                child: PopScope(
-                  onPopInvoked: (value) {
-                    context.pop();
-                  },
-                  child: AddTransactionScreen(),
-                ),
-              );
-            },
-          ),
-          GoRoute(
-            path: AppRouteName.transactionListScreen,
-            builder: (context, state) {
-              return const AnnotatedRegion(
-                value: SystemUiOverlayStyle(
-                  statusBarColor: AppColor.background,
-                  systemNavigationBarColor: AppColor.background,
-                ),
-                child: TransactionListScreen(),
-              );
-            },
-          ),
-          GoRoute(
-            path: AppRouteName.qrScannerScreen,
-            builder: (context, state) {
-              return const AnnotatedRegion(
-                value: SystemUiOverlayStyle(
-                  statusBarColor: AppColor.background,
-                  systemNavigationBarColor: AppColor.background,
-                ),
-                child: QrScannerScreen(),
-              );
-            },
-          ),
-          GoRoute(
-            path: AppRouteName.reportsTransactionScreen,
-            builder: (context, state) {
-              return const AnnotatedRegion(
-                value: SystemUiOverlayStyle(
-                  statusBarColor: AppColor.background,
-                  systemNavigationBarColor: AppColor.background,
-                ),
-                child: ReportsScreen(),
-              );
-            },
-          ),
-          GoRoute(
-            path: AppRouteName.walletDetailsScreen,
-            builder: (context, state) {
-              final walletDecoded = json.decode(state.extra as String);
-              final Wallet wallet = Wallet.fromJson(walletDecoded);
+                  return AnnotatedRegion(
+                    value: SystemUiOverlayStyle(
+                      statusBarColor: AppColor.background,
+                      systemNavigationBarColor: AppColor.background,
+                    ),
+                    child: PopScope(
+                      onPopInvoked: (value) {
+                        context.go(AppRouteName.root);
+                      },
+                      child: TransactionScreen(
+                        transactionResponse: response,
+                      ),
+                    ),
+                  );
+                },
+              ),
+              GoRoute(
+                path: AppRouteName.transactionPath,
+                builder: (context, state) {
+                  final response = LinkUtil.extractLinkData(state.uri);
+                  return AnnotatedRegion(
+                    value: SystemUiOverlayStyle(
+                      statusBarColor: AppColor.background,
+                      systemNavigationBarColor: AppColor.background,
+                    ),
+                    child: PopScope(
+                      onPopInvoked: (value) {
+                        context.go(AppRouteName.root);
+                      },
+                      child: TransactionScreen(
+                        transactionResponse: response,
+                      ),
+                    ),
+                  );
+                },
+              ),
+              GoRoute(
+                path: AppRouteName.notificationPath,
+                builder: (context, state) {
+                  return const AnnotatedRegion(
+                    value: SystemUiOverlayStyle(
+                      statusBarColor: AppColor.background,
+                      systemNavigationBarColor: AppColor.background,
+                    ),
+                    child: NotificationsScreen(),
+                  );
+                },
+              ),
+              GoRoute(
+                path: AppRouteName.qrStaticDetailsPath,
+                builder: (context, state) {
+                  final qrStaticDecoded = json.decode(state.extra as String);
+                  final QRStatic qrStatic = QRStatic.fromJson(qrStaticDecoded);
+                  return AnnotatedRegion(
+                    value: SystemUiOverlayStyle(
+                      statusBarColor: AppColor.background,
+                      systemNavigationBarColor: AppColor.background,
+                    ),
+                    child: QRStaticDetailScreen(qrStatic: qrStatic),
+                  );
+                },
+              ),
+              GoRoute(
+                path: AppRouteName.addTransactionPath,
+                builder: (context, state) {
+                  return AnnotatedRegion(
+                    value: SystemUiOverlayStyle(
+                      statusBarColor: AppColor.background,
+                      systemNavigationBarColor: AppColor.background,
+                    ),
+                    child: PopScope(
+                      onPopInvoked: (value) {
+                        context.pop();
+                      },
+                      child: AddTransactionScreen(),
+                    ),
+                  );
+                },
+              ),
+              GoRoute(
+                path: AppRouteName.transactionListPath,
+                builder: (context, state) {
+                  return const AnnotatedRegion(
+                    value: SystemUiOverlayStyle(
+                      statusBarColor: AppColor.background,
+                      systemNavigationBarColor: AppColor.background,
+                    ),
+                    child: TransactionListScreen(),
+                  );
+                },
+              ),
+              GoRoute(
+                path: AppRouteName.qrScannerPath,
+                builder: (context, state) {
+                  return const AnnotatedRegion(
+                    value: SystemUiOverlayStyle(
+                      statusBarColor: AppColor.background,
+                      systemNavigationBarColor: AppColor.background,
+                    ),
+                    child: QrScannerScreen(),
+                  );
+                },
+              ),
+              GoRoute(
+                path: AppRouteName.reportsTransactionPath,
+                builder: (context, state) {
+                  return const AnnotatedRegion(
+                    value: SystemUiOverlayStyle(
+                      statusBarColor: AppColor.background,
+                      systemNavigationBarColor: AppColor.background,
+                    ),
+                    child: ReportsScreen(),
+                  );
+                },
+              ),
+              GoRoute(
+                path: AppRouteName.walletDetailsPath,
+                builder: (context, state) {
+                  final walletDecoded = json.decode(state.extra as String);
+                  final Wallet wallet = Wallet.fromJson(walletDecoded);
 
-              return AnnotatedRegion(
-                value: SystemUiOverlayStyle(
-                  statusBarColor: AppColor.background,
-                  systemNavigationBarColor: AppColor.background,
-                ),
-                child: WalletDetailsScreen(wallet: wallet),
-              );
-            },
+                  return AnnotatedRegion(
+                    value: SystemUiOverlayStyle(
+                      statusBarColor: AppColor.background,
+                      systemNavigationBarColor: AppColor.background,
+                    ),
+                    child: WalletDetailsScreen(wallet: wallet),
+                  );
+                },
+              ),
+            ]
           ),
           GoRoute(
             path: AppRouteName.onBoardingScreen,
@@ -265,30 +291,6 @@ class AppRouterConfig {
               );
             },
           ),
-          GoRoute(
-            path: AppRouteName.accountScreen,
-            builder: (context, state) {
-              return AnnotatedRegion(
-                value: SystemUiOverlayStyle(
-                  statusBarColor: AppColor.background,
-                  systemNavigationBarColor: AppColor.background,
-                ),
-                child: AccountScreen(),
-              );
-            },
-          ),
-          GoRoute(
-            path: AppRouteName.languageScreen,
-            builder: (context, state) {
-              return AnnotatedRegion(
-                value: SystemUiOverlayStyle(
-                  statusBarColor: AppColor.background,
-                  systemNavigationBarColor: AppColor.background,
-                ),
-                child: LanguageScreen(),
-              );
-            },
-          ),
         ],
         redirect: (context, state) {
           bool isAuthenticated = _sharedPreferencesService.userAuthenticated;
@@ -304,19 +306,22 @@ class AppRouterConfig {
 
           // If user is not authenticated but try to access /transaction screen
           // redirect to /on-boarding
-          if (!isAuthenticated && (state.matchedLocation == AppRouteName.transactionScreen)) {
+          if (!isAuthenticated &&
+              (state.matchedLocation == AppRouteName.transactionScreen)) {
             locator<Logger>().d('query params ${state.uri.queryParameters}');
             return AppRouteName.onBoardingScreen;
           }
 
           // If user is not authenticated but try to access / screen
           // redirect to /on-boarding
-          if (!isAuthenticated && (state.matchedLocation == AppRouteName.root)) {
+          if (!isAuthenticated &&
+              (state.matchedLocation == AppRouteName.root)) {
             return AppRouteName.onBoardingScreen;
           }
 
           // If user is authenticated but try to access /transaction via link
-          if (isAuthenticated && (state.matchedLocation == AppRouteName.transactionScreen)) {
+          if (isAuthenticated &&
+              (state.matchedLocation == AppRouteName.transactionScreen)) {
             // If link not is valid
             // redirect to /
             if (!LinkUtil.validateLink(state.uri.toString())) {
