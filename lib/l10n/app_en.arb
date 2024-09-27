@@ -186,6 +186,6 @@
   "logout": "Logout",
   "user_code":  "User code",
   "delete_account": "Delete account",
-  "modify_informations": "Modify information"
-
+  "modify_informations": "Modify information",
+  "confirm_sign_out": "Do you really want to sign out ?"
 }

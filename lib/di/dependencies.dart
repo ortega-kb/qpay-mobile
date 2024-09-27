@@ -12,6 +12,7 @@ import 'package:qpay/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:qpay/features/auth/domain/repositories/auth_repository.dart';
 import 'package:qpay/features/auth/domain/usecases/resend_otp_code_use_case.dart';
 import 'package:qpay/features/auth/domain/usecases/sign_in_use_case.dart';
+import 'package:qpay/features/auth/domain/usecases/sign_out_use_case.dart';
 import 'package:qpay/features/auth/domain/usecases/sign_up_use_case.dart';
 import 'package:qpay/features/auth/domain/usecases/verify_phone_use_case.dart';
 import 'package:qpay/features/auth/presentation/bloc/auth_bloc.dart';

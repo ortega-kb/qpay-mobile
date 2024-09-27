@@ -21,7 +21,8 @@ Future<void> dependencies() async {
 
   final qrStaticBox = await Hive.openBox<QRStaticModel>('qr_static');
   final sharedPreferencesService = await SharedPreferencesService.getInstance();
-  final userInformationService = UserInformationService(sharedPreferencesService);
+  final userInformationService =
+      UserInformationService(sharedPreferencesService);
 
   final logger = Logger();
 
@@ -59,6 +60,9 @@ void _initAuth() async {
       () => SignUpUseCase(locator()),
     )
     ..registerFactory(
+      () => SignOutUseCase(locator()),
+    )
+    ..registerFactory(
       () => VerifyPhoneUseCase(locator()),
     )
     ..registerFactory(
@@ -66,11 +70,12 @@ void _initAuth() async {
     )
     ..registerLazySingleton(
       () => AuthBloc(
-        signInUseCase: locator(),
-        signUpUseCase: locator(),
-        verifyPhoneUseCase: locator(),
-        resendOtpCodeUseCase: locator(),
-      ),
+          signInUseCase: locator(),
+          signUpUseCase: locator(),
+          verifyPhoneUseCase: locator(),
+          resendOtpCodeUseCase: locator(),
+          signOutUseCase: locator(),
+          logger: locator()),
     );
 }
 

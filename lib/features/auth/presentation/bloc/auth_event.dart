@@ -60,6 +60,13 @@ final class AuthSignInEvent extends AuthEvent {
   List<Object> get props => [phone, password];
 }
 
+final class AuthSignOutEvent extends AuthEvent {
+  const AuthSignOutEvent();
+
+  @override
+  List<Object?> get props => [];
+}
+
 final class AuthPasswordsDoesntMatchEvent extends AuthEvent {
   const AuthPasswordsDoesntMatchEvent();
 

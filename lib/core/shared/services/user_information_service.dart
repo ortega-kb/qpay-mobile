@@ -20,6 +20,8 @@ class UserInformationService {
     _sharedPreferencesService.userAuthenticated = true;
   }
 
+  void clear() => _sharedPreferencesService.clear();
+
   String get username => _sharedPreferencesService.username;
   String get userId => _sharedPreferencesService.userId;
   String get userCode => _sharedPreferencesService.userCode;

@@ -26,5 +26,5 @@ abstract interface class AuthRepository {
     required String phone,
   });
 
-  Future<void> logout();
+  Future<Either<Failure, void>> logout();
 }

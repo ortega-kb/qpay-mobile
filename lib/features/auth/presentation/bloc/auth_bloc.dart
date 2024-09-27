@@ -1,9 +1,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:logger/logger.dart';
 import 'package:qpay/core/shared/entities/user.dart';
+import 'package:qpay/core/utils/usecase.dart';
 import 'package:qpay/features/auth/domain/usecases/usecases.dart';
 
 part 'auth_event.dart';
+
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
@@ -11,16 +14,22 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final SignUpUseCase _signUpUseCase;
   final VerifyPhoneUseCase _verifyPhoneUseCase;
   final ResendOtpCodeUseCase _resendOtpCodeUseCase;
+  final SignOutUseCase _signOutUseCase;
+  final Logger _logger;
 
-  AuthBloc({
-    required SignInUseCase signInUseCase,
-    required SignUpUseCase signUpUseCase,
-    required VerifyPhoneUseCase verifyPhoneUseCase,
-    required ResendOtpCodeUseCase resendOtpCodeUseCase,
-  })  : _signInUseCase = signInUseCase,
+  AuthBloc(
+      {required SignInUseCase signInUseCase,
+      required SignUpUseCase signUpUseCase,
+      required VerifyPhoneUseCase verifyPhoneUseCase,
+      required ResendOtpCodeUseCase resendOtpCodeUseCase,
+      required SignOutUseCase signOutUseCase,
+      required Logger logger})
+      : _signInUseCase = signInUseCase,
         _signUpUseCase = signUpUseCase,
         _verifyPhoneUseCase = verifyPhoneUseCase,
         _resendOtpCodeUseCase = resendOtpCodeUseCase,
+        _signOutUseCase = signOutUseCase,
+        _logger = logger,
         super(AuthInitial()) {
     on<AuthEvent>((event, emit) {
       emit(AuthInitial());
@@ -28,6 +37,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     on<AuthSignUpEvent>(signUp);
     on<AuthSignInEvent>(signIn);
+    on<AuthSignOutEvent>(signOut);
     on<AuthResendOtpEvent>(resendOtp);
     on<AuthVerifyPhoneNumberEvent>(verifyPhoneNumber);
     on<AuthPasswordsDoesntMatchEvent>(passwordsDoesntMatch);
@@ -101,6 +111,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     response.fold(
       (err) => emit(AuthSignInErrorState(err.message)),
       (response) => emit(AuthSignInSuccessState(response)),
+    );
+  }
+
+  Future<void> signOut(
+    AuthSignOutEvent event,
+    Emitter<AuthState> emit,
+  ) async {
+    final response = await _signOutUseCase.call(NoParams());
+
+    response.fold(
+      (err) => _logger.e(err.message),
+      (response) => emit(AuthSignOutSuccessState()),
     );
   }
 

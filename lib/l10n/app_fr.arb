@@ -186,6 +186,7 @@
   "logout": "Se déconnecter",
   "user_code":  "Code utilisateur",
   "delete_account": "Supprimer le compte",
-  "modify_informations": "Modifier les informations"
+  "modify_informations": "Modifier les informations",
+  "confirm_sign_out": "Voulez-vous vraiment vous déconnecter ?"
 }
 

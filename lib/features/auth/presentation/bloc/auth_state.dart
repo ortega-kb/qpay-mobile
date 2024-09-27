@@ -55,6 +55,13 @@ final class AuthPasswordsDoesntMatchState extends AuthState {
   List<Object> get props => [];
 }
 
+final class AuthSignOutSuccessState extends AuthState {
+  const AuthSignOutSuccessState();
+
+  @override
+  List<Object?> get props => [];
+}
+
 final class AuthVerifyPhoneNumberErrorState extends AuthState {
   final String errorMessage;
   const AuthVerifyPhoneNumberErrorState(this.errorMessage);

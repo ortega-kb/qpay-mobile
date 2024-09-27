@@ -142,6 +142,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<void> signOut() async {
+    _userInformationService.clear();
     await _supabaseClient.auth.signOut(scope: SignOutScope.local);
   }
 

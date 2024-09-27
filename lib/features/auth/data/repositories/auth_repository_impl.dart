@@ -12,8 +12,12 @@ class AuthRepositoryImpl implements AuthRepository {
   const AuthRepositoryImpl(this._authRemoteDataSource);
 
   @override
-  Future<void> logout() async {
-    await _authRemoteDataSource.signOut();
+  Future<Either<Failure, void>> logout() async {
+   try {
+     return right(_authRemoteDataSource.signOut());
+   } on ServerException catch (e) {
+     return left(Failure(e.message));
+   }
   }
 
   @override
