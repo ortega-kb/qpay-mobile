@@ -1,10 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:qpay/core/shared/entities/user.dart';
-import 'package:qpay/features/auth/domain/usecases/resend_otp_code_use_case.dart';
-import 'package:qpay/features/auth/domain/usecases/sign_in_use_case.dart';
-import 'package:qpay/features/auth/domain/usecases/sign_up_use_case.dart';
-import 'package:qpay/features/auth/domain/usecases/verify_phone_use_case.dart';
+import 'package:qpay/features/auth/domain/usecases/usecases.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';

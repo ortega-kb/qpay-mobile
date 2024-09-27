@@ -28,4 +28,7 @@ class AppRouteName {
   static final String qrScannerScreen = '/qr-scanner';
   static final String myQrCodeScreen = '/my-qr-code';
 
+  // Language routes
+  static final String languageScreen = '/language';
+
 }

@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
 
-class SettingsContainer extends StatelessWidget {
+class ItemContainer extends StatelessWidget {
   final Widget content;
 
-  const SettingsContainer({
+  const ItemContainer({
     super.key,
     required this.content,
   });

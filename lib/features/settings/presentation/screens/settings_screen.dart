@@ -7,7 +7,7 @@ import 'package:qpay/core/shared/widgets/separator.dart';
 import 'package:qpay/core/shared/widgets/settings_item.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:qpay/core/utils/constants.dart';
-import 'package:qpay/features/settings/presentation/widgets/settings_container.dart';
+import 'package:qpay/core/shared/widgets/item_container.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -27,7 +27,7 @@ class SettingsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: AppDimen.p16),
-              SettingsContainer(
+              ItemContainer(
                 content: Column(
                   children: [
                     SettingsItem(
@@ -51,13 +51,13 @@ class SettingsScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: AppDimen.p16),
-              SettingsContainer(
+              ItemContainer(
                 content: Column(
                   children: [
                     SettingsItem(
                       title: AppLocalizations.of(context)!.languages,
                       iconData: FluentIcons.translate_24_regular,
-                      onTap: () {},
+                      onTap: () => context.push(AppRouteName.languageScreen),
                     ),
                     Separator(isLarge: false),
                     SettingsItem(
@@ -69,13 +69,13 @@ class SettingsScreen extends StatelessWidget {
                     SettingsItem(
                       title: AppLocalizations.of(context)!.notifications,
                       iconData: FluentIcons.alert_24_filled,
-                      onTap: () {},
+                      onTap: () => context.push(AppRouteName.notificationScreen),
                     ),
                   ],
                 ),
               ),
               const SizedBox(height: AppDimen.p16),
-              SettingsContainer(
+              ItemContainer(
                 content: Column(
                   children: [
                     SettingsItem(
@@ -102,7 +102,7 @@ class SettingsScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: AppDimen.p16),
-              SettingsContainer(
+              ItemContainer(
                 content: SettingsItem(
                   hasNext: false,
                   title: AppLocalizations.of(context)!.logout,

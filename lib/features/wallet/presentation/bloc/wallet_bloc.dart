@@ -1,11 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:qpay/features/wallet/domain/usecases/usecases.dart';
 
 import '../../domain/entities/wallet.dart';
-import '../../domain/usecases/add_wallet_use_case.dart';
-import '../../domain/usecases/choose_default_wallet_use_case.dart';
-import '../../domain/usecases/delete_wallet_use_case.dart';
-import '../../domain/usecases/get_wallets_by_user_code_use_case.dart';
+
 
 part 'wallet_event.dart';
 

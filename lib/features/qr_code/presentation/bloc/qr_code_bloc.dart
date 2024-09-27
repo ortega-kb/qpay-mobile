@@ -1,11 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:qpay/core/utils/usecase.dart';
-import 'package:qpay/features/qr_code/domain/usecases/get_qr_static.dart';
+import 'package:qpay/features/qr_code/domain/usecases/usecases.dart';
 
 import '../../domain/entities/qr_static.dart';
-import '../../domain/usecases/add_qr_static.dart';
-import '../../domain/usecases/delete_qr_static.dart';
 
 part 'qr_code_event.dart';
 

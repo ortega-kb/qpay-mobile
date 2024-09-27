@@ -5,7 +5,7 @@ import 'package:qpay/core/shared/services/user_information_service.dart';
 import 'package:qpay/core/shared/widgets/separator.dart';
 import 'package:qpay/core/shared/widgets/settings_item.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
-import 'package:qpay/features/settings/presentation/widgets/settings_container.dart';
+import 'package:qpay/core/shared/widgets/item_container.dart';
 
 import '../../../../di/dependencies.dart';
 
@@ -41,7 +41,7 @@ class _AccountScreenState extends State<AccountScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: AppDimen.p16),
-              SettingsContainer(
+              ItemContainer(
                 content: Column(
                   children: [
                     SettingsItem(
@@ -79,7 +79,7 @@ class _AccountScreenState extends State<AccountScreen> {
                 ),
               ),
               const SizedBox(height: AppDimen.p16),
-              SettingsContainer(
+              ItemContainer(
                 content: SettingsItem(
                   title: AppLocalizations.of(context)!.delete_account,
                   onTap: () {},

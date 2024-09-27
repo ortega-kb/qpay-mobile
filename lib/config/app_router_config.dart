@@ -9,27 +9,18 @@ import 'package:qpay/core/shared/services/shared_preferences_service.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/utils/link_util.dart';
 import 'package:qpay/core/utils/qr_response.dart';
-import 'package:qpay/features/auth/presentation/screens/account_screen.dart';
-import 'package:qpay/features/auth/presentation/screens/sign_up_screen.dart';
-import 'package:qpay/features/auth/presentation/screens/on_boarding_screen.dart';
-import 'package:qpay/features/auth/presentation/screens/user_information_screen.dart';
-import 'package:qpay/features/auth/presentation/screens/verify_phone_number_screen.dart';
+import 'package:qpay/features/auth/presentation/screens/screens.dart';
 import 'package:qpay/features/dashboard/presentation/screens/reports_screen.dart';
 import 'package:qpay/features/home_screen.dart';
+import 'package:qpay/features/language/presentation/screens/language_screen.dart';
 import 'package:qpay/features/notifications/presentation/screens/notifications_screen.dart';
-import 'package:qpay/features/qr_code/domain/entities/qr_static.dart';
-import 'package:qpay/features/qr_code/presentation/screens/my_qr_code_screen.dart';
-import 'package:qpay/features/qr_code/presentation/screens/qr_scanner_screen.dart';
-import 'package:qpay/features/qr_code/presentation/screens/qr_static_detail_screen.dart';
-import 'package:qpay/features/transaction/presentation/screens/add_transaction_screen.dart';
-import 'package:qpay/features/transaction/presentation/screens/transaction_screen.dart';
-import 'package:qpay/features/transaction/presentation/screens/transaction_list_screen.dart';
+import 'package:qpay/features/qr_code/presentation/screens/screens.dart';
+import 'package:qpay/features/transaction/presentation/screens/screens.dart';
 import 'package:qpay/features/wallet/domain/entities/wallet.dart';
-import 'package:qpay/features/wallet/presentation/screens/wallet_details_screen.dart';
-import 'package:qpay/features/wallet/presentation/screens/wallet_list_screen.dart';
+import 'package:qpay/features/wallet/presentation/screens/screens.dart';
 
-import '../features/auth/presentation/screens/sign_in_screen.dart';
-import '../di/dependencies.dart';
+import 'package:qpay/di/di.dart';
+import '../features/qr_code/domain/entities/qr_static.dart';
 
 class AppRouterConfig {
   SharedPreferencesService _sharedPreferencesService;
@@ -286,10 +277,21 @@ class AppRouterConfig {
               );
             },
           ),
+          GoRoute(
+            path: AppRouteName.languageScreen,
+            builder: (context, state) {
+              return AnnotatedRegion(
+                value: SystemUiOverlayStyle(
+                  statusBarColor: AppColor.background,
+                  systemNavigationBarColor: AppColor.background,
+                ),
+                child: LanguageScreen(),
+              );
+            },
+          ),
         ],
         redirect: (context, state) {
-          // Remove ! for production redirect
-          bool isAuthenticated = !_sharedPreferencesService.userAuthenticated;
+          bool isAuthenticated = _sharedPreferencesService.userAuthenticated;
 
           // If user is authenticated but try to access sign-in or sign-up screen,
           // redirect to home page

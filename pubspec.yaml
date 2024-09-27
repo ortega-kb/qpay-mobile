@@ -82,6 +82,7 @@ dependencies:
   connectivity_plus: ^6.0.5
   skeletonizer: ^1.4.2
   logger: ^2.4.0
+  hydrated_bloc: ^9.1.5
 
 dev_dependencies:
   flutter_test:
