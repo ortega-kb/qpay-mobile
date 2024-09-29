@@ -1,11 +1,16 @@
 
 
+import 'package:qpay/core/utils/currency.dart';
 import 'package:qpay/core/utils/qr_response.dart';
 import 'package:qpay/features/transaction/presentation/screens/screens.dart';
 
 import 'enums/operation_type.dart';
 
 class LinkUtil {
+
+  static final _host = 'qpay.app';
+  static final _path = 'transaction';
+  static final _scheme = 'https';
 
   static bool validateLink(String url) {
     final uri = Uri.tryParse(url);
@@ -30,7 +35,7 @@ class LinkUtil {
     }
 
     // Check if wallet is valid (CDF or USD)
-    if (wallet != 'CDF' && wallet != 'USD') return false;
+    if (wallet != Currency.CDF.name && wallet != Currency.USD.name) return false;
 
     // Then all checks passed, the link is valid
     return true;
@@ -43,12 +48,9 @@ class LinkUtil {
     required String wallet,
   }) {
 
-    final host = 'qpay.app';
-    final path = 'transaction';
-    final scheme = 'https';
 
     return Uri.parse(
-      "$scheme://$host/$path?code=$userCode&at=$amount&desc=$description&wt=$wallet",
+      "$_scheme://$_host/$_path?code=$userCode&at=$amount&desc=$description&wt=$wallet",
     );
   }
 

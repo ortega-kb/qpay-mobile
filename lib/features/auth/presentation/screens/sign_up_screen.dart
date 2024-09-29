@@ -8,6 +8,7 @@ import 'package:qpay/core/shared/widgets/account_type_tile.dart';
 import 'package:qpay/core/shared/widgets/m_progress.dart';
 import 'package:qpay/core/shared/widgets/select_account_type.dart';
 import 'package:qpay/core/utils/enums/account_type.dart';
+import 'package:qpay/core/utils/external_link.dart';
 import 'package:qpay/core/utils/messages.dart';
 import 'package:qpay/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:qpay/features/auth/presentation/screens/screens.dart';
@@ -221,8 +222,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
             bottomNavigationBar: Padding(
               padding: const EdgeInsets.all(AppDimen.p16),
               child: TermsOfUseAndPrivacyPolicy(
-                onTapPrivacyPolicy: () {},
-                onTapTermsOfUse: () {},
+                onTapPrivacyPolicy: () => ExternalLink.privacy(),
+                onTapTermsOfUse: () => ExternalLink.privacy(),
               ),
             ),
           ),

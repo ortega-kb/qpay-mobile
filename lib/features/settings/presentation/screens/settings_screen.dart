@@ -3,16 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
-import 'package:qpay/config/app_route_name.dart';
 import 'package:qpay/core/shared/widgets/separator.dart';
 import 'package:qpay/core/shared/widgets/settings_item.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:qpay/core/shared/widgets/item_container.dart';
+import 'package:qpay/core/utils/external_link.dart';
 import 'package:qpay/features/notifications/presentation/screens/notifications_screen.dart';
-import 'package:qpay/features/privacy/presentation/screens/privacy_policy_screen.dart';
 import 'package:share_plus/share_plus.dart';
 
-import '../../../../core/utils/email_support.dart';
 import '../../../auth/presentation/bloc/auth_bloc.dart';
 import '../../../auth/presentation/screens/account_screen.dart';
 import '../../../auth/presentation/screens/on_boarding_screen.dart';
@@ -87,7 +85,7 @@ class SettingsScreen extends StatelessWidget {
                     SettingsItem(
                       title: AppLocalizations.of(context)!.privacy,
                       iconData: Icons.security_rounded,
-                      onTap: () => context.push(PrivacyPolicyScreen.route),
+                      onTap: () => ExternalLink.privacy(),
                     ),
                   ],
                 ),
@@ -123,7 +121,7 @@ class SettingsScreen extends StatelessWidget {
                     SettingsItem(
                       title: AppLocalizations.of(context)!.support,
                       iconData: FluentIcons.accessibility_question_mark_24_filled,
-                      onTap: () => emailSupport(context),
+                      onTap: () => ExternalLink.emailSupport(context),
                     ),
                     Separator(isLarge: false),
                     SettingsItem(

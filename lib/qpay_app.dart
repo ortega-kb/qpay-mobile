@@ -49,7 +49,7 @@ class QpayApp extends StatelessWidget {
               ],
               routerConfig: AppRouterConfig(locator<SharedPreferencesService>())
                   .router,
-              locale: Locale(context.watch<LanguageCubit>().state.language) ,
+              locale: Locale(context.watch<LanguageCubit>().state.language),
               theme: AppTheme.lightTheme
           );
         }

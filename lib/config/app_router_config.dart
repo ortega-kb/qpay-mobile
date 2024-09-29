@@ -15,7 +15,6 @@ import 'package:qpay/features/dashboard/presentation/screens/reports_screen.dart
 import 'package:qpay/features/home_screen.dart';
 import 'package:qpay/features/language/presentation/screens/language_screen.dart';
 import 'package:qpay/features/notifications/presentation/screens/notifications_screen.dart';
-import 'package:qpay/features/privacy/presentation/screens/privacy_policy_screen.dart';
 import 'package:qpay/features/qr_code/presentation/screens/screens.dart';
 import 'package:qpay/features/transaction/presentation/screens/screens.dart';
 import 'package:qpay/features/wallet/domain/entities/wallet.dart';
@@ -302,18 +301,6 @@ class AppRouterConfig {
                   systemNavigationBarColor: AppColor.background,
                 ),
                 child: UserInformationScreen(phone: phone),
-              );
-            },
-          ),
-          GoRoute(
-            path: PrivacyPolicyScreen.path,
-            builder: (context, state) {
-              return AnnotatedRegion(
-                value: SystemUiOverlayStyle(
-                  statusBarColor: AppColor.background,
-                  systemNavigationBarColor: AppColor.background,
-                ),
-                child: PrivacyPolicyScreen(),
               );
             },
           ),
