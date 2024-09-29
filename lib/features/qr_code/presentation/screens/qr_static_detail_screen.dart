@@ -15,8 +15,10 @@ import '../../domain/entities/qr_static.dart';
 
 class QRStaticDetailScreen extends StatefulWidget {
   final QRStatic qrStatic;
-
   const QRStaticDetailScreen({super.key, required this.qrStatic});
+
+  static get path => 'qr-static-details';
+  static get routes => '/qr-static-details';
 
   @override
   State<QRStaticDetailScreen> createState() => _QRStaticDetailScreenState();

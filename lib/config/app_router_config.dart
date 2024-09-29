@@ -32,7 +32,7 @@ class AppRouterConfig {
         initialLocation: AppRouteName.root,
         routes: [
           GoRoute(
-            path: AppRouteName.root,
+            path: HomeScreen.route,
             builder: (context, state) {
               return const AnnotatedRegion(
                 value: SystemUiOverlayStyle(
@@ -44,7 +44,7 @@ class AppRouterConfig {
             },
             routes: [
               GoRoute(
-                path: AppRouteName.walletListPath,
+                path: WalletListScreen.path,
                 builder: (context, state) {
                   return const AnnotatedRegion(
                     value: SystemUiOverlayStyle(
@@ -56,7 +56,7 @@ class AppRouterConfig {
                 },
               ),
               GoRoute(
-                path: AppRouteName.accountPath,
+                path: AccountScreen.path,
                 builder: (context, state) {
                   return AnnotatedRegion(
                     value: SystemUiOverlayStyle(
@@ -68,7 +68,7 @@ class AppRouterConfig {
                 },
               ),
               GoRoute(
-                path: AppRouteName.languagePath,
+                path: LanguageScreen.path,
                 builder: (context, state) {
                   return AnnotatedRegion(
                     value: SystemUiOverlayStyle(
@@ -92,7 +92,7 @@ class AppRouterConfig {
                     ),
                     child: PopScope(
                       onPopInvoked: (value) {
-                        context.go(AppRouteName.root);
+                        context.go(HomeScreen.route);
                       },
                       child: TransactionScreen(
                         transactionResponse: response,
@@ -102,7 +102,7 @@ class AppRouterConfig {
                 },
               ),
               GoRoute(
-                path: AppRouteName.transactionPath,
+                path: TransactionScreen.path,
                 builder: (context, state) {
                   final response = LinkUtil.extractLinkData(state.uri);
                   return AnnotatedRegion(
@@ -122,7 +122,7 @@ class AppRouterConfig {
                 },
               ),
               GoRoute(
-                path: AppRouteName.notificationPath,
+                path: NotificationsScreen.path,
                 builder: (context, state) {
                   return const AnnotatedRegion(
                     value: SystemUiOverlayStyle(
@@ -134,7 +134,7 @@ class AppRouterConfig {
                 },
               ),
               GoRoute(
-                path: AppRouteName.qrStaticDetailsPath,
+                path: QRStaticDetailScreen.path,
                 builder: (context, state) {
                   final qrStaticDecoded = json.decode(state.extra as String);
                   final QRStatic qrStatic = QRStatic.fromJson(qrStaticDecoded);
@@ -148,7 +148,7 @@ class AppRouterConfig {
                 },
               ),
               GoRoute(
-                path: AppRouteName.addTransactionPath,
+                path: AddTransactionScreen.path,
                 builder: (context, state) {
                   return AnnotatedRegion(
                     value: SystemUiOverlayStyle(
@@ -165,7 +165,7 @@ class AppRouterConfig {
                 },
               ),
               GoRoute(
-                path: AppRouteName.transactionListPath,
+                path: TransactionListScreen.path,
                 builder: (context, state) {
                   return const AnnotatedRegion(
                     value: SystemUiOverlayStyle(
@@ -177,7 +177,7 @@ class AppRouterConfig {
                 },
               ),
               GoRoute(
-                path: AppRouteName.qrScannerPath,
+                path: QrScannerScreen.path,
                 builder: (context, state) {
                   return const AnnotatedRegion(
                     value: SystemUiOverlayStyle(
@@ -189,7 +189,7 @@ class AppRouterConfig {
                 },
               ),
               GoRoute(
-                path: AppRouteName.reportsTransactionPath,
+                path: ReportsScreen.path,
                 builder: (context, state) {
                   return const AnnotatedRegion(
                     value: SystemUiOverlayStyle(
@@ -201,7 +201,7 @@ class AppRouterConfig {
                 },
               ),
               GoRoute(
-                path: AppRouteName.walletDetailsPath,
+                path: WalletDetailsScreen.path,
                 builder: (context, state) {
                   final walletDecoded = json.decode(state.extra as String);
                   final Wallet wallet = Wallet.fromJson(walletDecoded);
@@ -215,10 +215,10 @@ class AppRouterConfig {
                   );
                 },
               ),
-            ]
+            ],
           ),
           GoRoute(
-            path: AppRouteName.onBoardingScreen,
+            path: OnBoardingScreen.path,
             builder: (context, state) {
               return const AnnotatedRegion(
                 value: SystemUiOverlayStyle(
@@ -230,7 +230,7 @@ class AppRouterConfig {
             },
           ),
           GoRoute(
-            path: AppRouteName.signInScreen,
+            path: SignInScreen.path,
             builder: (context, state) {
               return const AnnotatedRegion(
                 value: SystemUiOverlayStyle(
@@ -242,7 +242,7 @@ class AppRouterConfig {
             },
           ),
           GoRoute(
-            path: AppRouteName.signUpScreen,
+            path: SignUpScreen.path,
             builder: (context, state) {
               return const AnnotatedRegion(
                 value: SystemUiOverlayStyle(
@@ -254,7 +254,7 @@ class AppRouterConfig {
             },
           ),
           GoRoute(
-            path: AppRouteName.verifyPhoneNumberScreen,
+            path: VerifyPhoneNumberScreen.path,
             builder: (context, state) {
               String phone = state.extra.toString();
               return AnnotatedRegion(
@@ -267,7 +267,7 @@ class AppRouterConfig {
             },
           ),
           GoRoute(
-            path: AppRouteName.userInformationsScreen,
+            path: UserInformationScreen.path,
             builder: (context, state) {
               final phone = state.extra.toString();
               return AnnotatedRegion(
@@ -280,7 +280,7 @@ class AppRouterConfig {
             },
           ),
           GoRoute(
-            path: AppRouteName.myQrCodeScreen,
+            path: MyQrCodeScreen.path,
             builder: (context, state) {
               return AnnotatedRegion(
                 value: SystemUiOverlayStyle(
@@ -298,16 +298,16 @@ class AppRouterConfig {
           // If user is authenticated but try to access sign-in or sign-up screen,
           // redirect to home page
           if (isAuthenticated &&
-              (state.matchedLocation == AppRouteName.signInScreen ||
-                  state.matchedLocation == AppRouteName.signUpScreen ||
-                  state.matchedLocation == AppRouteName.onBoardingScreen)) {
-            return AppRouteName.root;
+              (state.matchedLocation == SignInScreen.route ||
+                  state.matchedLocation == SignUpScreen.route ||
+                  state.matchedLocation == OnBoardingScreen.route)) {
+            return HomeScreen.route;
           }
 
           // If user is not authenticated but try to access /transaction screen
           // redirect to /on-boarding
           if (!isAuthenticated &&
-              (state.matchedLocation == AppRouteName.transactionScreen)) {
+              (state.matchedLocation == TransactionScreen.route)) {
             locator<Logger>().d('query params ${state.uri.queryParameters}');
             return AppRouteName.onBoardingScreen;
           }
@@ -315,18 +315,18 @@ class AppRouterConfig {
           // If user is not authenticated but try to access / screen
           // redirect to /on-boarding
           if (!isAuthenticated &&
-              (state.matchedLocation == AppRouteName.root)) {
-            return AppRouteName.onBoardingScreen;
+              (state.matchedLocation == HomeScreen.route)) {
+            return OnBoardingScreen.route;
           }
 
           // If user is authenticated but try to access /transaction via link
           if (isAuthenticated &&
-              (state.matchedLocation == AppRouteName.transactionScreen)) {
+              (state.matchedLocation == TransactionScreen.route)) {
             // If link not is valid
             // redirect to /
             if (!LinkUtil.validateLink(state.uri.toString())) {
               locator<Logger>().d('invalid link ${state.uri.queryParameters}');
-              return '/';
+              return HomeScreen.route;
             } else {
               return null;
             }

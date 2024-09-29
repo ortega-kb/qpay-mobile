@@ -19,6 +19,10 @@ import '../../../../di/dependencies.dart';
 class MyQrCodeScreen extends StatefulWidget {
   const MyQrCodeScreen({super.key});
 
+  static get path => 'my-qr-code';
+  static get route => '/my-qr-code';
+
+
   @override
   State<MyQrCodeScreen> createState() => _MyQrCodeScreenState();
 }

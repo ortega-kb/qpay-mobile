@@ -24,6 +24,9 @@ import '../widgets/auth_title.dart';
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
+  static get path => '/sign-up';
+  static get route => '/sign-up';
+
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
 }

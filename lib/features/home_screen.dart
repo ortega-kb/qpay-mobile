@@ -14,6 +14,9 @@ import '../core/shared/cubits/home_navigation_cubit.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
+  static get path => '/';
+  static get route => '/';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -16,17 +16,11 @@ import 'package:qpay/di/dependencies.dart';
 import 'config/configs.dart';
 import 'core/shared/services/shared_preferences_service.dart';
 import 'core/theme/app_theme.dart';
-import 'core/utils/constants.dart';
 import 'features/qr_code/presentation/bloc/qr_code_bloc.dart';
 
-class QpayApp extends StatefulWidget {
+class QpayApp extends StatelessWidget {
   const QpayApp({super.key});
 
-  @override
-  State<QpayApp> createState() => _QpayAppState();
-}
-
-class _QpayAppState extends State<QpayApp> {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -43,8 +37,8 @@ class _QpayAppState extends State<QpayApp> {
         BlocProvider(create: (_) => HomeNavigationCubit()),
         BlocProvider(create: (_) => LanguageCubit()),
       ],
-      child: BlocBuilder<LanguageCubit, LanguageState>(
-        builder: (context, state) {
+      child: Builder(
+        builder: (context) {
           return MaterialApp.router(
               debugShowCheckedModeBanner: false,
               title: 'QpayApp',
@@ -55,10 +49,10 @@ class _QpayAppState extends State<QpayApp> {
               ],
               routerConfig: AppRouterConfig(locator<SharedPreferencesService>())
                   .router,
-              locale: Locale(state.language) ,
+              locale: Locale(context.watch<LanguageCubit>().state.language) ,
               theme: AppTheme.lightTheme
           );
-        },
+        }
       ),
     );
   }

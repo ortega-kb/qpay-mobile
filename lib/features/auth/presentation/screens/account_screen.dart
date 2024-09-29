@@ -9,14 +9,12 @@ import 'package:qpay/core/shared/widgets/item_container.dart';
 
 import '../../../../di/dependencies.dart';
 
-class AccountScreen extends StatefulWidget {
+class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
 
-  @override
-  State<AccountScreen> createState() => _AccountScreenState();
-}
+  static get path => 'account';
+  static get route => '/account';
 
-class _AccountScreenState extends State<AccountScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

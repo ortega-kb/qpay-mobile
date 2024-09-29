@@ -18,8 +18,10 @@ import '../bloc/wallet_bloc.dart';
 
 class WalletDetailsScreen extends StatelessWidget {
   final Wallet wallet;
-
   const WalletDetailsScreen({super.key, required this.wallet});
+
+  static get path => 'wallet-details';
+  static get route => '/wallet-details';
 
   @override
   Widget build(BuildContext context) {

@@ -18,8 +18,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class VerifyPhoneNumberScreen extends StatefulWidget {
   final String phone;
-
   const VerifyPhoneNumberScreen({super.key, required this.phone});
+
+  static get path => '/verify-phone-number';
+  static get route => '/verify-phone-number';
 
   @override
   State<VerifyPhoneNumberScreen> createState() =>

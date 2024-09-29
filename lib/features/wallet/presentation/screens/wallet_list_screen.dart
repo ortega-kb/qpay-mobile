@@ -27,6 +27,9 @@ import '../bloc/wallet_bloc.dart';
 class WalletListScreen extends StatefulWidget {
   const WalletListScreen({super.key});
 
+  static get path => 'wallet-list';
+  static get route => '/wallet-list';
+
   @override
   State<WalletListScreen> createState() => _WalletListScreenState();
 }

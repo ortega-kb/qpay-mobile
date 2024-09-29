@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qpay/core/shared/cubits/language/language_cubit.dart';
-import 'package:qpay/core/shared/cubits/language/language_cubit.dart';
 import 'package:qpay/core/shared/widgets/item_container.dart';
 import 'package:qpay/core/shared/widgets/separator.dart';
 import 'package:qpay/core/theme/app_color.dart';
@@ -11,6 +10,9 @@ import 'package:qpay/core/utils/enums/language_type.dart';
 
 class LanguageScreen extends StatelessWidget {
   const LanguageScreen({super.key});
+
+  static get path => 'language';
+  static get route => '/language';
 
   @override
   Widget build(BuildContext context) {

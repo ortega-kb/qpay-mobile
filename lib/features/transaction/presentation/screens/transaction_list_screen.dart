@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
-class TransactionListScreen extends StatefulWidget {
+class TransactionListScreen extends StatelessWidget {
   const TransactionListScreen({super.key});
 
-  @override
-  State<TransactionListScreen> createState() => _TransactionListScreenState();
-}
+  static get path => 'transaction-list';
+  static get route => '/transaction-list';
 
-class _TransactionListScreenState extends State<TransactionListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

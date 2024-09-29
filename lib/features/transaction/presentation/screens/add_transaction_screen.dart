@@ -14,6 +14,9 @@ import '../../../../core/utils/operations.dart';
 class AddTransactionScreen extends StatefulWidget {
   const AddTransactionScreen({super.key});
 
+  static get path => 'add-transaction';
+  static get routes => '/add-transaction';
+
   @override
   State<AddTransactionScreen> createState() => _AddTransactionScreenState();
 }

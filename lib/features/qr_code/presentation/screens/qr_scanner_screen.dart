@@ -14,6 +14,9 @@ import '../../../../core/utils/qr_response.dart';
 class QrScannerScreen extends StatelessWidget {
   const QrScannerScreen({super.key});
 
+  static get path => 'qr-scanner';
+  static get route => '/qr-scanner';
+
   @override
   Widget build(BuildContext context) {
     final controller = MobileScannerController(
