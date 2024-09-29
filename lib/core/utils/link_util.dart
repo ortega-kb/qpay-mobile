@@ -10,7 +10,7 @@ class LinkUtil {
     final uri = Uri.tryParse(url);
 
     // Check if link is correct scheme, authority, and path
-    if (uri == null || !uri.hasScheme || !uri.hasAuthority) {
+    if (uri == null) {
       return false;
     }
 
