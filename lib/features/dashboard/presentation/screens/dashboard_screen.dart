@@ -134,7 +134,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         text: AppLocalizations.of(context)!.generate_link,
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            final link = LinkUtil.paymentLinkGenerator(
+                            final link = LinkUtil.linkGenerator(
                               userCode:
                                   locator<UserInformationService>().userCode,
                               amount: _amountController.text.trim(),

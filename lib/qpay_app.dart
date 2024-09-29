@@ -6,6 +6,7 @@ import 'package:qpay/core/shared/cubits/home_navigation_cubit.dart';
 import 'package:qpay/core/shared/cubits/language/language_cubit.dart';
 import 'package:qpay/core/shared/cubits/network/network_cubit.dart';
 import 'package:qpay/core/shared/cubits/wallet_show_hide_cubit.dart';
+import 'package:qpay/core/utils/constants.dart';
 import 'package:qpay/features/auth/presentation/bloc/cubits/timer_otp_cubit.dart';
 import 'package:qpay/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:qpay/features/dashboard/presentation/bloc/cubits/time_report_cubit.dart';
@@ -49,7 +50,7 @@ class QpayApp extends StatelessWidget {
               ],
               routerConfig: AppRouterConfig(locator<SharedPreferencesService>())
                   .router,
-              locale: Locale(context.watch<LanguageCubit>().state.language),
+              locale: Locale(Constants.locale),
               theme: AppTheme.lightTheme
           );
         }

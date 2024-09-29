@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:go_router/go_router.dart';
 import 'package:qpay/core/shared/widgets/m_button.dart';
 import 'package:qpay/core/shared/widgets/wallet.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
+import 'package:qpay/core/utils/link_util.dart';
 
 import '../../../../core/shared/cubits/wallet_page_cubit.dart';
 import '../../../../core/shared/widgets/m_text_field.dart';
@@ -15,6 +17,7 @@ class AddTransactionScreen extends StatefulWidget {
   const AddTransactionScreen({super.key});
 
   static get path => 'add-transaction';
+
   static get routes => '/add-transaction';
 
   @override
@@ -26,7 +29,14 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
 
   final _accountController = TextEditingController();
   final _amountController = TextEditingController();
-  final _totalController = TextEditingController();
+  final _walletController = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    _accountController.dispose();
+    _amountController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,38 +77,29 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                           suffixIcon: TextButton(
                             onPressed: () {},
                             child: Text(
-                              context.watch<WalletPageCubit>().state == 0
+                              context
+                                  .watch<WalletPageCubit>()
+                                  .state == 0
                                   ? Currency.CDF.name
                                   : Currency.USD.name,
                             ),
                           ),
-                          onChanged: (value) {
-                            if (value!.isEmpty)
-                              _totalController.text = "";
-                            else {
-                              _totalController.text = Operations()
-                                  .transferAmount(double.parse(value), 5)
-                                  .toString();
-                            }
-                            return null;
-                          },
                         );
                       },
                     ),
                     const SizedBox(height: AppDimen.p2),
                     Builder(builder: (context) {
-                      return context.watch<WalletPageCubit>().state == 0
+                      final wallet = context
+                          .watch<WalletPageCubit>()
+                          .state;
+
+                      _walletController.text =
+                      wallet == 0 ? Currency.CDF.name : Currency.USD.name;
+
+                      return wallet == 0
                           ? SupportingTitle(title: "Min: 1000 CDF")
                           : SupportingTitle(title: "Min: 1 USD");
                     }),
-                    SizedBox(height: AppDimen.p16),
-                    MTextField(
-                      controller: _totalController,
-                      label: AppLocalizations.of(context)!.total_and_transfer,
-                      obscureText: false,
-                      readOnly: true,
-                      keyboardType: TextInputType.text,
-                    ),
                   ],
                 ),
               )
@@ -110,7 +111,18 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
         padding: const EdgeInsets.all(AppDimen.p16),
         child: MButton(
           text: AppLocalizations.of(context)!.transfer_money,
-          onPressed: () {},
+          onPressed: () {
+            if (_formKey.currentState!.validate()) {
+              final uri = LinkUtil.linkGenerator(
+                userCode: _accountController.text.trim(),
+                amount: _amountController.text.trim(),
+                description: '',
+                wallet: _walletController.text.trim(),
+              );
+
+              context.push(uri.toString());
+            }
+          },
         ),
       ),
     );

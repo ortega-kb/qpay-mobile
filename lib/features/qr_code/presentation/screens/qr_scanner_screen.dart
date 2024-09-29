@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:qpay/config/app_route_name.dart';
+import 'package:qpay/core/utils/link_util.dart';
 import 'package:qpay/core/utils/messages.dart';
 import 'package:qpay/core/utils/qr_payload.dart';
 
@@ -15,6 +16,7 @@ class QrScannerScreen extends StatelessWidget {
   const QrScannerScreen({super.key});
 
   static get path => 'qr-scanner';
+
   static get route => '/qr-scanner';
 
   @override
@@ -42,15 +44,21 @@ class QrScannerScreen extends StatelessWidget {
           final qrPayloadRaw = barcode.barcodes.first.rawValue!;
           if (QrPayload.isValidPayload(qrPayloadRaw)) {
             // Parse Qr payload and validate data
-            TransactionResponse qrResponse = QrPayload.fromPayload(qrPayloadRaw);
+            TransactionResponse qrResponse =
+                QrPayload.fromPayload(qrPayloadRaw);
             if (qrResponse.type == OperationType.PAYMENT.name) {
               // If Qr response operation type is PAYMENT,
               // Redirect to payment screen with Qr response data
               controller.stop();
-              context.push(
-                AppRouteName.transactionQrCodeScreen,
-                extra: json.encode(qrResponse.toJson())
+
+              final qrCodeUri = LinkUtil.linkGenerator(
+                userCode: qrResponse.code,
+                amount: qrResponse.amount.toString(),
+                description: '',
+                wallet: qrResponse.wallet!,
               );
+
+              context.push(qrCodeUri.toString());
             } else {
               // If Qr response operation type is NOT PAYMENT,
               // Display error message or redirect to default screen

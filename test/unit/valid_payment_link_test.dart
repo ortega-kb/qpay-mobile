@@ -2,21 +2,21 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:qpay/core/utils/link_util.dart';
 
 void main() {
-  final validLink = LinkUtil.paymentLinkGenerator(
+  final validLink = LinkUtil.linkGenerator(
     userCode: 'qp123456789101112',
     amount: '4500',
     description: 'test',
     wallet: 'CDF',
   );
 
-  final validLink1 = LinkUtil.paymentLinkGenerator(
+  final validLink1 = LinkUtil.linkGenerator(
     userCode: 'qp123456789101112',
     amount: '4500',
     description: 'test',
     wallet: 'USD',
   );
 
-  final invalidLink = LinkUtil.paymentLinkGenerator(
+  final invalidLink = LinkUtil.linkGenerator(
     userCode: 'qp1212121212121212',
     amount: '14500',
     description: 'test',

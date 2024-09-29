@@ -41,7 +41,7 @@ class LinkUtil {
     return true;
   }
 
-  static Uri paymentLinkGenerator({
+  static Uri linkGenerator({
     required String userCode,
     required String amount,
     required String description,

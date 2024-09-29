@@ -322,7 +322,7 @@ class AppRouterConfig {
           if (!isAuthenticated &&
               (state.matchedLocation == TransactionScreen.route)) {
             locator<Logger>().d('query params ${state.uri.queryParameters}');
-            return AppRouteName.onBoardingScreen;
+            return OnBoardingScreen.route;
           }
 
           // If user is not authenticated but try to access / screen
