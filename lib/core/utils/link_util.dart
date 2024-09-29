@@ -1,6 +1,7 @@
 
 
 import 'package:qpay/core/utils/qr_response.dart';
+import 'package:qpay/features/transaction/presentation/screens/screens.dart';
 
 import 'enums/operation_type.dart';
 
@@ -15,7 +16,7 @@ class LinkUtil {
     }
 
     // Check if link is for the correct app
-    if (uri.host != 'qpay.app' || uri.path != '/transaction') return false;
+    if (uri.host != 'qpay.app' || uri.path != TransactionScreen.route) return false;
 
     // Extract and check query parameters
     final code = uri.queryParameters['code'];
