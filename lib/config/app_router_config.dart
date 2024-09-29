@@ -10,10 +10,12 @@ import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/utils/link_util.dart';
 import 'package:qpay/core/utils/qr_response.dart';
 import 'package:qpay/features/auth/presentation/screens/screens.dart';
+import 'package:qpay/features/customized_logo/presentation/screen/customized_logo_screen.dart';
 import 'package:qpay/features/dashboard/presentation/screens/reports_screen.dart';
 import 'package:qpay/features/home_screen.dart';
 import 'package:qpay/features/language/presentation/screens/language_screen.dart';
 import 'package:qpay/features/notifications/presentation/screens/notifications_screen.dart';
+import 'package:qpay/features/privacy/presentation/screens/privacy_policy_screen.dart';
 import 'package:qpay/features/qr_code/presentation/screens/screens.dart';
 import 'package:qpay/features/transaction/presentation/screens/screens.dart';
 import 'package:qpay/features/wallet/domain/entities/wallet.dart';
@@ -76,6 +78,18 @@ class AppRouterConfig {
                       systemNavigationBarColor: AppColor.background,
                     ),
                     child: LanguageScreen(),
+                  );
+                },
+              ),
+              GoRoute(
+                path: MyQrCodeScreen.path,
+                builder: (context, state) {
+                  return AnnotatedRegion(
+                    value: SystemUiOverlayStyle(
+                      statusBarColor: AppColor.background,
+                      systemNavigationBarColor: AppColor.background,
+                    ),
+                    child: MyQrCodeScreen(),
                   );
                 },
               ),
@@ -215,6 +229,18 @@ class AppRouterConfig {
                   );
                 },
               ),
+              GoRoute(
+                path: CustomizedLogoScreen.path,
+                builder: (context, state) {
+                  return AnnotatedRegion(
+                    value: SystemUiOverlayStyle(
+                      statusBarColor: AppColor.background,
+                      systemNavigationBarColor: AppColor.background,
+                    ),
+                    child: CustomizedLogoScreen(),
+                  );
+                },
+              ),
             ],
           ),
           GoRoute(
@@ -280,14 +306,14 @@ class AppRouterConfig {
             },
           ),
           GoRoute(
-            path: MyQrCodeScreen.path,
+            path: PrivacyPolicyScreen.path,
             builder: (context, state) {
               return AnnotatedRegion(
                 value: SystemUiOverlayStyle(
                   statusBarColor: AppColor.background,
                   systemNavigationBarColor: AppColor.background,
                 ),
-                child: MyQrCodeScreen(),
+                child: PrivacyPolicyScreen(),
               );
             },
           ),
@@ -314,8 +340,7 @@ class AppRouterConfig {
 
           // If user is not authenticated but try to access / screen
           // redirect to /on-boarding
-          if (!isAuthenticated &&
-              (state.matchedLocation == HomeScreen.route)) {
+          if (!isAuthenticated && (state.matchedLocation == HomeScreen.route)) {
             return OnBoardingScreen.route;
           }
 

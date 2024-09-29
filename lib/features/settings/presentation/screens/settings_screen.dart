@@ -9,12 +9,14 @@ import 'package:qpay/core/shared/widgets/settings_item.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:qpay/core/shared/widgets/item_container.dart';
 import 'package:qpay/features/notifications/presentation/screens/notifications_screen.dart';
+import 'package:qpay/features/privacy/presentation/screens/privacy_policy_screen.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../../../../core/utils/email_support.dart';
 import '../../../auth/presentation/bloc/auth_bloc.dart';
 import '../../../auth/presentation/screens/account_screen.dart';
 import '../../../auth/presentation/screens/on_boarding_screen.dart';
+import '../../../customized_logo/presentation/screen/customized_logo_screen.dart';
 import '../../../language/presentation/screens/language_screen.dart';
 import '../../../qr_code/presentation/screens/my_qr_code_screen.dart';
 
@@ -85,7 +87,7 @@ class SettingsScreen extends StatelessWidget {
                     SettingsItem(
                       title: AppLocalizations.of(context)!.privacy,
                       iconData: Icons.security_rounded,
-                      onTap: () {},
+                      onTap: () => context.push(PrivacyPolicyScreen.route),
                     ),
                   ],
                 ),
@@ -103,7 +105,7 @@ class SettingsScreen extends StatelessWidget {
                     SettingsItem(
                       title: AppLocalizations.of(context)!.customized_logo,
                       iconData: FluentIcons.picture_in_picture_24_filled,
-                      onTap: () {},
+                      onTap: () => context.push(CustomizedLogoScreen.route),
                     ),
                     Separator(isLarge: false),
                     SettingsItem(
@@ -120,8 +122,7 @@ class SettingsScreen extends StatelessWidget {
                   children: [
                     SettingsItem(
                       title: AppLocalizations.of(context)!.support,
-                      iconData:
-                          FluentIcons.accessibility_question_mark_24_filled,
+                      iconData: FluentIcons.accessibility_question_mark_24_filled,
                       onTap: () => emailSupport(context),
                     ),
                     Separator(isLarge: false),
