@@ -12,6 +12,7 @@ import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:qpay/core/utils/messages.dart';
 import 'package:qpay/core/utils/validator.dart';
 import 'package:qpay/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:qpay/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:qpay/features/auth/presentation/widgets/auth_subtitle.dart';
 import 'package:qpay/features/auth/presentation/widgets/auth_title.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -56,7 +57,7 @@ class _VerifyPhoneNumberScreenState extends State<VerifyPhoneNumberScreen> {
             context,
           );
 
-          context.go(AppRouteName.signInScreen);
+          context.go(SignInScreen.route);
         }
         if (state is AuthVerifyPhoneNumberErrorState) {
           Messages.error(

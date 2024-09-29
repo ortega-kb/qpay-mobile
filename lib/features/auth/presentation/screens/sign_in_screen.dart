@@ -11,6 +11,7 @@ import 'package:qpay/core/utils/messages.dart';
 import 'package:qpay/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:qpay/features/auth/presentation/widgets/auth_subtitle.dart';
 import 'package:qpay/features/auth/presentation/widgets/m_password_field.dart';
+import 'package:qpay/features/home_screen.dart';
 
 import '../../../../core/shared/widgets/m_text_field.dart';
 import '../../../../core/utils/validator.dart';
@@ -78,7 +79,7 @@ class _SignInScreenState extends State<SignInScreen> {
           );
 
           // If login success, redirect user to home
-          context.go(AppRouteName.root);
+          context.go(HomeScreen.route);
         }
       },
       builder: (context, state) {

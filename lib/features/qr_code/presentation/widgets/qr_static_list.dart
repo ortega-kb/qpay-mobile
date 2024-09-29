@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:qpay/config/app_route_name.dart';
+import 'package:qpay/features/qr_code/presentation/screens/qr_static_detail_screen.dart';
 import 'package:qpay/features/qr_code/presentation/widgets/qr_static_item.dart';
 
 import '../../../../core/shared/widgets/not_found.dart';
@@ -33,7 +34,7 @@ class QrStaticList extends StatelessWidget {
                 qrStatic: qrStatic,
                 index: index,
                 onTap: () => context.push(
-                  AppRouteName.qrStaticDetailsScreen,
+                  QRStaticDetailScreen.route,
                   extra: json.encode(
                     qrStatic.toJson(),
                   ),

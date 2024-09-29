@@ -8,17 +8,21 @@ import 'package:qpay/core/shared/widgets/separator.dart';
 import 'package:qpay/core/shared/widgets/settings_item.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:qpay/core/shared/widgets/item_container.dart';
+import 'package:qpay/features/notifications/presentation/screens/notifications_screen.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../../../../core/utils/email_support.dart';
 import '../../../auth/presentation/bloc/auth_bloc.dart';
+import '../../../auth/presentation/screens/account_screen.dart';
+import '../../../auth/presentation/screens/on_boarding_screen.dart';
+import '../../../language/presentation/screens/language_screen.dart';
+import '../../../qr_code/presentation/screens/my_qr_code_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     void confirmSignOut() {
       showDialog(
         context: context,
@@ -34,10 +38,8 @@ class SettingsScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text(
-                    AppLocalizations.of(context)!.cancel,
-                    style: Theme.of(context).textTheme.bodyMedium
-                ),
+                child: Text(AppLocalizations.of(context)!.cancel,
+                    style: Theme.of(context).textTheme.bodyMedium),
               ),
               TextButton(
                 onPressed: () {
@@ -71,13 +73,13 @@ class SettingsScreen extends StatelessWidget {
                     SettingsItem(
                       title: AppLocalizations.of(context)!.my_qr_code,
                       iconData: FluentIcons.qr_code_24_filled,
-                      onTap: () => context.push(AppRouteName.myQrCodeScreen),
+                      onTap: () => context.push(MyQrCodeScreen.route),
                     ),
                     Separator(isLarge: false),
                     SettingsItem(
                       title: AppLocalizations.of(context)!.account_user,
                       iconData: FluentIcons.person_accounts_24_filled,
-                      onTap: () => context.push(AppRouteName.accountScreen),
+                      onTap: () => context.push(AccountScreen.route),
                     ),
                     Separator(isLarge: false),
                     SettingsItem(
@@ -95,7 +97,7 @@ class SettingsScreen extends StatelessWidget {
                     SettingsItem(
                       title: AppLocalizations.of(context)!.languages,
                       iconData: FluentIcons.translate_24_regular,
-                      onTap: () => context.push(AppRouteName.languageScreen),
+                      onTap: () => context.push(LanguageScreen.route),
                     ),
                     Separator(isLarge: false),
                     SettingsItem(
@@ -107,8 +109,7 @@ class SettingsScreen extends StatelessWidget {
                     SettingsItem(
                       title: AppLocalizations.of(context)!.notifications,
                       iconData: FluentIcons.alert_24_filled,
-                      onTap: () =>
-                          context.push(AppRouteName.notificationScreen),
+                      onTap: () => context.push(NotificationsScreen.route),
                     ),
                   ],
                 ),
@@ -120,7 +121,7 @@ class SettingsScreen extends StatelessWidget {
                     SettingsItem(
                       title: AppLocalizations.of(context)!.support,
                       iconData:
-                      FluentIcons.accessibility_question_mark_24_filled,
+                          FluentIcons.accessibility_question_mark_24_filled,
                       onTap: () => emailSupport(context),
                     ),
                     Separator(isLarge: false),
@@ -133,10 +134,9 @@ class SettingsScreen extends StatelessWidget {
                     SettingsItem(
                       title: AppLocalizations.of(context)!.share_app,
                       iconData: FluentIcons.share_24_filled,
-                      onTap: () =>
-                          Share.shareUri(
-                            Uri.parse("https://www.google.com"),
-                          ),
+                      onTap: () => Share.shareUri(
+                        Uri.parse("https://www.google.com"),
+                      ),
                     ),
                   ],
                 ),
@@ -145,7 +145,7 @@ class SettingsScreen extends StatelessWidget {
               BlocConsumer<AuthBloc, AuthState>(
                 listener: (context, state) {
                   if (state is AuthSignOutSuccessState) {
-                    context.go(AppRouteName.onBoardingScreen);
+                    context.go(OnBoardingScreen.route);
                   }
                 },
                 builder: (context, state) {

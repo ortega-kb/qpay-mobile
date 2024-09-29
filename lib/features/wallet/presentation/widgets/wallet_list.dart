@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:qpay/config/app_route_name.dart';
 import 'package:qpay/core/shared/widgets/separator.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
+import 'package:qpay/features/wallet/presentation/screens/screens.dart';
 import 'package:qpay/features/wallet/presentation/widgets/wallet_item.dart';
 
 import '../../../../core/shared/widgets/not_found.dart';
@@ -27,7 +28,7 @@ class WalletList extends StatelessWidget {
               onTap: () {
                 print(wallets[index].toParcelable());
                 context.push(
-                    AppRouteName.walletDetailsScreen,
+                    WalletDetailsScreen.route,
                     extra: json.encode(wallets[index].toParcelable())
                 );
               }

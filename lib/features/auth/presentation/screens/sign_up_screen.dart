@@ -10,6 +10,7 @@ import 'package:qpay/core/shared/widgets/select_account_type.dart';
 import 'package:qpay/core/utils/enums/account_type.dart';
 import 'package:qpay/core/utils/messages.dart';
 import 'package:qpay/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:qpay/features/auth/presentation/screens/screens.dart';
 import 'package:qpay/features/auth/presentation/widgets/m_password_field.dart';
 import 'package:qpay/features/auth/presentation/widgets/terms_of_use_and_privacy_policy.dart';
 
@@ -25,6 +26,7 @@ class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
   static get path => '/sign-up';
+
   static get route => '/sign-up';
 
   @override
@@ -66,7 +68,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
         if (state is AuthSignUpSuccessState) {
           context.push(
-            AppRouteName.verifyPhoneNumberScreen,
+            VerifyPhoneNumberScreen.route,
             extra: _phoneController.text.trim(),
           );
         }
@@ -217,11 +219,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
             ),
             bottomNavigationBar: Padding(
-                padding: const EdgeInsets.all(AppDimen.p16),
-                child: TermsOfUseAndPrivacyPolicy(
-                  onTapPrivacyPolicy: () {},
-                  onTapTermsOfUse: () {},
-                )),
+              padding: const EdgeInsets.all(AppDimen.p16),
+              child: TermsOfUseAndPrivacyPolicy(
+                onTapPrivacyPolicy: () {},
+                onTapTermsOfUse: () {},
+              ),
+            ),
           ),
         );
       },

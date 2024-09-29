@@ -21,10 +21,11 @@ import 'package:qpay/core/utils/messages.dart';
 import 'package:qpay/core/utils/validator.dart';
 import 'package:qpay/features/dashboard/presentation/widgets/quick_action_list.dart';
 import 'package:qpay/di/dependencies.dart';
+import 'package:qpay/features/notifications/presentation/screens/notifications_screen.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:wolt_modal_sheet/wolt_modal_sheet.dart';
 
-import '../../../../core/shared/cubits/network/network_cubit.dart';
+import '../../../qr_code/presentation/screens/qr_scanner_screen.dart';
 import '../../../wallet/presentation/bloc/wallet_bloc.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -184,13 +185,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
               PermissionStatus status = await Permission.camera.status;
               if (status == PermissionStatus.granted) {
                 // Open QR Scanner
-                context.push(AppRouteName.qrScannerScreen);
+                context.push(QrScannerScreen.route);
               } else if (status.isDenied || status.isPermanentlyDenied) {
                 // Request permission
                 await Permission.camera.request();
                 if (await Permission.camera.isGranted) {
                   // If permission granted, open QR Scanner
-                  context.push(AppRouteName.qrScannerScreen);
+                  context.push(QrScannerScreen.route);
                 } else {
                   Messages.error(
                     AppLocalizations.of(context)!.permission,
@@ -208,7 +209,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           IconButton(
             tooltip: AppLocalizations.of(context)!.notifications,
             onPressed: () {
-              context.push(AppRouteName.notificationScreen);
+              context.push(NotificationsScreen.route);
             },
             icon: Badge.count(
               count: 3,

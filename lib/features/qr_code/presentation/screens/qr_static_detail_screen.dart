@@ -18,7 +18,7 @@ class QRStaticDetailScreen extends StatefulWidget {
   const QRStaticDetailScreen({super.key, required this.qrStatic});
 
   static get path => 'qr-static-details';
-  static get routes => '/qr-static-details';
+  static get route => '/qr-static-details';
 
   @override
   State<QRStaticDetailScreen> createState() => _QRStaticDetailScreenState();
