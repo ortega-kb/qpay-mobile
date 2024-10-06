@@ -13,15 +13,14 @@ import 'package:qpay/core/utils/extensions/datetime_extension.dart';
 import 'package:qpay/features/wallet/domain/entities/wallet.dart';
 import 'package:qpay/di/dependencies.dart';
 
-import '../../../../core/utils/recognize_provider.dart';
 import '../bloc/wallet_bloc.dart';
 
 class WalletDetailsScreen extends StatelessWidget {
   final Wallet wallet;
   const WalletDetailsScreen({super.key, required this.wallet});
 
-  static get path => 'wallet-details';
-  static get route => '/wallet-details';
+  static String path = 'wallet-details';
+  static String route = '/wallet-details';
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +83,7 @@ class WalletDetailsScreen extends StatelessWidget {
                   context.read<WalletBloc>().add(
                         WalletChooseDefaultEvent(
                           walletId: index,
-                          userCode: locator<UserInformationService>().userCode
+                          userCode: sl<UserInformationService>().userCode
                         ),
                       );
                   Navigator.pop(context);

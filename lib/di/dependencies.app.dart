@@ -1,6 +1,6 @@
 part of 'dependencies.dart';
 
-final locator = GetIt.asNewInstance();
+final sl = GetIt.asNewInstance();
 
 Future<void> dependencies() async {
   _initSVG();
@@ -21,16 +21,18 @@ Future<void> dependencies() async {
 
   final qrStaticBox = await Hive.openBox<QRStaticModel>('qr_static');
   final sharedPreferencesService = await SharedPreferencesService.getInstance();
-  final userInformationService =
-      UserInformationService(sharedPreferencesService);
+  
+  final appRouterConfig = AppRouterConfig(sharedPreferencesService);
+  final userInformationService = UserInformationService(sharedPreferencesService);
 
   final logger = Logger();
 
-  locator.registerLazySingleton(() => Supabase.instance.client);
-  locator.registerLazySingleton(() => qrStaticBox);
-  locator.registerLazySingleton(() => sharedPreferencesService);
-  locator.registerLazySingleton(() => userInformationService);
-  locator.registerLazySingleton(() => logger);
+  sl.registerLazySingleton(() => Supabase.instance.client);
+  sl.registerLazySingleton(() => qrStaticBox);
+  sl.registerLazySingleton(() => sharedPreferencesService);
+  sl.registerLazySingleton(() => userInformationService);
+  sl.registerLazySingleton(() => appRouterConfig);
+  sl.registerLazySingleton(() => logger);
 }
 
 void _initSVG() async {
@@ -43,96 +45,96 @@ void _initSVG() async {
 }
 
 void _initAuth() async {
-  locator
+  sl
     ..registerFactory<AuthRemoteDataSource>(
       () => AuthRemoteDataSourceImpl(
-        locator(),
-        locator(),
+        sl(),
+        sl(),
       ),
     )
     ..registerFactory<AuthRepository>(
-      () => AuthRepositoryImpl(locator()),
+      () => AuthRepositoryImpl(sl()),
     )
     ..registerFactory(
-      () => SignInUseCase(locator()),
+      () => SignInUseCase(sl()),
     )
     ..registerFactory(
-      () => SignUpUseCase(locator()),
+      () => SignUpUseCase(sl()),
     )
     ..registerFactory(
-      () => SignOutUseCase(locator()),
+      () => SignOutUseCase(sl()),
     )
     ..registerFactory(
-      () => VerifyPhoneUseCase(locator()),
+      () => VerifyPhoneUseCase(sl()),
     )
     ..registerFactory(
-      () => ResendOtpCodeUseCase(locator()),
+      () => ResendOtpCodeUseCase(sl()),
     )
     ..registerLazySingleton(
       () => AuthBloc(
-          signInUseCase: locator(),
-          signUpUseCase: locator(),
-          verifyPhoneUseCase: locator(),
-          resendOtpCodeUseCase: locator(),
-          signOutUseCase: locator(),
-          logger: locator()),
+          signInUseCase: sl(),
+          signUpUseCase: sl(),
+          verifyPhoneUseCase: sl(),
+          resendOtpCodeUseCase: sl(),
+          signOutUseCase: sl(),
+          logger: sl()),
     );
 }
 
 void _initTransaction() async {}
 
 void _initWallet() async {
-  locator
+  sl
     ..registerFactory<WalletRemoteDataSource>(
-      () => WalletRemoteDataSourceImpl(locator()),
+      () => WalletRemoteDataSourceImpl(sl()),
     )
     ..registerFactory<WalletRepository>(
-      () => WalletRepositoryImpl(locator()),
+      () => WalletRepositoryImpl(sl()),
     )
     ..registerFactory(
-      () => AddWalletUseCase(locator()),
+      () => AddWalletUseCase(sl()),
     )
     ..registerFactory(
-      () => ChooseDefaultWalletUseCase(locator()),
+      () => ChooseDefaultWalletUseCase(sl()),
     )
     ..registerFactory(
-      () => DeleteWalletUseCase(locator()),
+      () => DeleteWalletUseCase(sl()),
     )
     ..registerFactory(
-      () => GetWalletsByUserCodeUseCase(locator()),
+      () => GetWalletsByUserCodeUseCase(sl()),
     )
     ..registerLazySingleton(
       () => WalletBloc(
-        addWalletUseCase: locator(),
-        chooseDefaultWalletUseCase: locator(),
-        deleteWalletUseCase: locator(),
-        getWalletsByUserCodeUseCase: locator(),
+        addWalletUseCase: sl(),
+        chooseDefaultWalletUseCase: sl(),
+        deleteWalletUseCase: sl(),
+        getWalletsByUserCodeUseCase: sl(),
       ),
     );
 }
 
 void _initQRCode() async {
-  locator
+  sl
     ..registerFactory<QrStaticLocalDatasource>(
-      () => QRStaticLocalDatasourceImpl(locator()),
+      () => QRStaticLocalDatasourceImpl(sl()),
     )
     ..registerFactory<QRStaticRepository>(
-      () => QRStaticRepositoryImpl(locator()),
+      () => QRStaticRepositoryImpl(sl()),
     )
     ..registerFactory(
-      () => GetQRStatic(locator()),
+      () => GetQRStatic(sl()),
     )
     ..registerFactory(
-      () => AddQRStatic(locator()),
+      () => AddQRStatic(sl()),
     )
     ..registerFactory(
-      () => DeleteQRStatic(locator()),
+      () => DeleteQRStatic(sl()),
     )
     ..registerLazySingleton(
       () => QRCodeBloc(
-        getQRStatic: locator(),
-        addQRStatic: locator(),
-        deleteQRStatic: locator(),
+        getQRStatic: sl(),
+        addQRStatic: sl(),
+        deleteQRStatic: sl(),
       ),
     );
 }

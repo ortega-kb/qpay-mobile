@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
-import 'package:qpay/config/app_route_name.dart';
 import 'package:qpay/core/shared/widgets/m_button.dart';
 import 'package:qpay/core/shared/widgets/m_progress.dart';
 import 'package:qpay/core/theme/app_color.dart';
@@ -20,8 +19,8 @@ import '../widgets/auth_title.dart';
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
 
-  static get path => '/sign-in';
-  static get route => '/sign-in';
+  static String path = '/sign-in';
+  static String route = '/sign-in';
 
   @override
   State<SignInScreen> createState() => _SignInScreenState();

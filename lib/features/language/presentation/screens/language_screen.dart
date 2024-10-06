@@ -11,8 +11,8 @@ import 'package:qpay/core/utils/enums/language_type.dart';
 class LanguageScreen extends StatelessWidget {
   const LanguageScreen({super.key});
 
-  static get path => 'language';
-  static get route => '/language';
+  static String path = 'language';
+  static String route = '/language';
 
   @override
   Widget build(BuildContext context) {

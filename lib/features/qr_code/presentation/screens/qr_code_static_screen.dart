@@ -125,12 +125,12 @@ class _QrCodeStaticScreenState extends State<QrCodeStaticScreen> {
                       ),
                       const SizedBox(height: AppDimen.p32),
                       MButton(
-                        text: AppLocalizations.of(context)!.add,
+                        text: AppLocalizations.of(context)!.generate_qr_code,
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
                             context.read<QRCodeBloc>().add(
                                   AddQRStaticEvent(
-                                    locator<UserInformationService>().userCode,
+                                    sl<UserInformationService>().userCode,
                                     double.parse(_amountController.text),
                                     _motifController.text.trim(),
                                     _currencyController.text.trim(),

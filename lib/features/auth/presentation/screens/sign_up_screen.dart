@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
-import 'package:qpay/config/app_route_name.dart';
 import 'package:qpay/core/shared/cubits/account_type_cubit.dart';
 import 'package:qpay/core/shared/widgets/account_type_tile.dart';
 import 'package:qpay/core/shared/widgets/m_progress.dart';
@@ -26,9 +25,8 @@ import '../widgets/auth_title.dart';
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
-  static get path => '/sign-up';
-
-  static get route => '/sign-up';
+  static String path = '/sign-up';
+  static String route = '/sign-up';
 
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();

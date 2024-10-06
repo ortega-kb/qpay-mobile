@@ -94,12 +94,12 @@ class SettingsScreen extends StatelessWidget {
               ItemContainer(
                 content: Column(
                   children: [
-                    /*SettingsItem(
+                    SettingsItem(
                       title: AppLocalizations.of(context)!.languages,
                       iconData: FluentIcons.translate_24_regular,
                       onTap: () => context.push(LanguageScreen.route),
                     ),
-                    Separator(isLarge: false),*/
+                    Separator(isLarge: false),
                     SettingsItem(
                       title: AppLocalizations.of(context)!.customized_logo,
                       iconData: FluentIcons.picture_in_picture_24_filled,

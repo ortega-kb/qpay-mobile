@@ -8,18 +8,18 @@ class QpayBlocObserver extends BlocObserver {
   @override
   void onChange(BlocBase bloc, Change change) {
     super.onChange(bloc, change);
-    locator<Logger>().i('${bloc.runtimeType} $change');
+    sl<Logger>().i('${bloc.runtimeType} $change');
   }
 
   @override
   void onTransition(Bloc bloc, Transition transition) {
     super.onTransition(bloc, transition);
-    locator<Logger>().i('${bloc.runtimeType} $transition');
+    sl<Logger>().i('${bloc.runtimeType} $transition');
   }
 
   @override
   void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
     super.onError(bloc, error, stackTrace);
-    locator<Logger>().e('${bloc.runtimeType} $error $stackTrace');
+    sl<Logger>().e('${bloc.runtimeType} $error $stackTrace');
   }
 }

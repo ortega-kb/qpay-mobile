@@ -15,8 +15,8 @@ import 'screens.dart';
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
 
-  static get path => '/on-boarding';
-  static get route => '/on-boarding';
+  static String path = '/on-boarding';
+  static String route = '/on-boarding';
 
   @override
   State<OnBoardingScreen> createState() => _OnBoardingScreenState();

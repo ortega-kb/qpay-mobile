@@ -187,6 +187,8 @@
   "user_code":  "Code utilisateur",
   "delete_account": "Supprimer le compte",
   "modify_informations": "Modifier les informations",
-  "confirm_sign_out": "Voulez-vous vraiment vous déconnecter ?"
+  "confirm_sign_out": "Voulez-vous vraiment vous déconnecter ?",
+  "generate_qr_code": "Générer code QR"
+
 }
 

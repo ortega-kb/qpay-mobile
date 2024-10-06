@@ -27,8 +27,8 @@ import '../bloc/wallet_bloc.dart';
 class WalletListScreen extends StatefulWidget {
   const WalletListScreen({super.key});
 
-  static get path => 'wallet-list';
-  static get route => '/wallet-list';
+  static String path = 'wallet-list';
+  static String route = '/wallet-list';
 
   @override
   State<WalletListScreen> createState() => _WalletListScreenState();
@@ -44,7 +44,7 @@ class _WalletListScreenState extends State<WalletListScreen> {
   _getWallets() async {
     context.read<WalletBloc>().add(
           WalletGetByUserCodeEvent(
-            userCode: locator<UserInformationService>().userCode,
+            userCode: sl<UserInformationService>().userCode,
           ),
         );
   }
@@ -132,7 +132,7 @@ class _WalletListScreenState extends State<WalletListScreen> {
 
                             context.read<WalletBloc>().add(
                                   WalletAddEvent(
-                                    userCode: locator<UserInformationService>()
+                                    userCode: sl<UserInformationService>()
                                         .userCode,
                                     providerType:
                                         RecognizeProvider.recognize(phone)!,

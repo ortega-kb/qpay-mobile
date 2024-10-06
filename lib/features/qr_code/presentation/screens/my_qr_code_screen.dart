@@ -19,8 +19,8 @@ import '../../../../di/dependencies.dart';
 class MyQrCodeScreen extends StatefulWidget {
   const MyQrCodeScreen({super.key});
 
-  static get path => 'my-qr-code';
-  static get route => '/my-qr-code';
+  static String path = 'my-qr-code';
+  static String route = '/my-qr-code';
 
 
   @override
@@ -33,7 +33,7 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
 
   initialize() {
     _qrResponse = TransactionResponse(
-      code: locator<UserInformationService>().userCode,
+      code: sl<UserInformationService>().userCode,
       type: OperationType.TRANSFER.name,
       amount: null,
       wallet: '',
@@ -170,7 +170,7 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
                                                         color: AppColor.black),
                                               ),
                                               subtitle: Text(
-                                                locator<UserInformationService>()
+                                                sl<UserInformationService>()
                                                     .username,
                                               ),
                                             ),
@@ -187,14 +187,14 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
                                                             FontWeight.bold,
                                                         color: AppColor.black),
                                               ),
-                                              subtitle: Text(locator<
+                                              subtitle: Text(sl<
                                                       UserInformationService>()
                                                   .userCode),
                                               trailing: IconButton(
                                                 onPressed: () {
                                                   Clipboard.setData(
                                                     ClipboardData(
-                                                      text: locator<
+                                                      text: sl<
                                                               UserInformationService>()
                                                           .userCode,
                                                     ),

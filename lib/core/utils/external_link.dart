@@ -26,7 +26,7 @@ class ExternalLink {
     try {
       await launchUrl(uri);
     } catch (e) {
-      locator<Logger>().e(e);
+      sl<Logger>().e(e);
     }
   }
 }

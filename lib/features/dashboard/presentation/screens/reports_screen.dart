@@ -9,8 +9,8 @@ import 'package:qpay/features/dashboard/presentation/bloc/cubits/time_report_cub
 class ReportsScreen extends StatelessWidget {
   const ReportsScreen({super.key});
 
-  static get path => 'reports-transaction';
-  static get route => '/reports-transaction';
+  static String path = 'reports-transaction';
+  static String route = '/reports-transaction';
 
   @override
   Widget build(BuildContext context) {

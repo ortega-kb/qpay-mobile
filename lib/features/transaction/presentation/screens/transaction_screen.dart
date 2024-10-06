@@ -10,8 +10,8 @@ class TransactionScreen extends StatelessWidget {
   final TransactionResponse? transactionResponse;
   const TransactionScreen({super.key, required this.transactionResponse});
 
-  static get path => 'transaction';
-  static get route => '/transaction';
+  static String path = 'transaction';
+  static String route = '/transaction';
 
   @override
   Widget build(BuildContext context) {

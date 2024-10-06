@@ -6,7 +6,6 @@ import 'package:qpay/core/shared/cubits/home_navigation_cubit.dart';
 import 'package:qpay/core/shared/cubits/language/language_cubit.dart';
 import 'package:qpay/core/shared/cubits/network/network_cubit.dart';
 import 'package:qpay/core/shared/cubits/wallet_show_hide_cubit.dart';
-import 'package:qpay/core/utils/constants.dart';
 import 'package:qpay/features/auth/presentation/bloc/cubits/timer_otp_cubit.dart';
 import 'package:qpay/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:qpay/features/dashboard/presentation/bloc/cubits/time_report_cubit.dart';
@@ -15,7 +14,6 @@ import 'package:qpay/features/wallet/presentation/bloc/wallet_bloc.dart';
 import 'package:qpay/di/dependencies.dart';
 
 import 'config/configs.dart';
-import 'core/shared/services/shared_preferences_service.dart';
 import 'core/theme/app_theme.dart';
 import 'features/qr_code/presentation/bloc/qr_code_bloc.dart';
 
@@ -26,9 +24,9 @@ class QpayApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => locator<AuthBloc>()),
-        BlocProvider(create: (_) => locator<QRCodeBloc>()),
-        BlocProvider(create: (_) => locator<WalletBloc>()),
+        BlocProvider(create: (_) => sl<AuthBloc>()),
+        BlocProvider(create: (_) => sl<QRCodeBloc>()),
+        BlocProvider(create: (_) => sl<WalletBloc>()),
         BlocProvider(create: (_) => TimerOtpCubit()),
         BlocProvider(create: (_) => AccountTypeCubit()),
         BlocProvider(create: (_) => WalletPageCubit()),
@@ -40,17 +38,17 @@ class QpayApp extends StatelessWidget {
       ],
       child: Builder(
         builder: (context) {
+          final language = context.watch<LanguageCubit>().state.language;
           return MaterialApp.router(
               debugShowCheckedModeBanner: false,
-              title: 'QpayApp',
+              title: 'Qpay',
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: [
                 Locale('fr'),
                 Locale('en'),
               ],
-              routerConfig: AppRouterConfig(locator<SharedPreferencesService>())
-                  .router,
-              locale: Locale(Constants.locale),
+              routerConfig: sl<AppRouterConfig>().router,
+              locale: Locale(language),
               theme: AppTheme.lightTheme
           );
         }

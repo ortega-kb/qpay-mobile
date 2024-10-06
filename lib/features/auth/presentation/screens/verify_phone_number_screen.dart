@@ -21,8 +21,8 @@ class VerifyPhoneNumberScreen extends StatefulWidget {
   final String phone;
   const VerifyPhoneNumberScreen({super.key, required this.phone});
 
-  static get path => '/verify-phone-number';
-  static get route => '/verify-phone-number';
+  static String path = '/verify-phone-number';
+  static String route = '/verify-phone-number';
 
   @override
   State<VerifyPhoneNumberScreen> createState() =>

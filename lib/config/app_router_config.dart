@@ -23,12 +23,15 @@ import 'package:qpay/features/wallet/presentation/screens/screens.dart';
 import 'package:qpay/di/di.dart';
 import '../features/qr_code/domain/entities/qr_static.dart';
 
+final _navigatorKey = GlobalKey<NavigatorState>();
+
 class AppRouterConfig {
   SharedPreferencesService _sharedPreferencesService;
 
   AppRouterConfig(this._sharedPreferencesService);
 
   GoRouter get router => GoRouter(
+        navigatorKey: _navigatorKey,
         debugLogDiagnostics: true,
         initialLocation: AppRouteName.root,
         routes: [
@@ -321,7 +324,7 @@ class AppRouterConfig {
           // redirect to /on-boarding
           if (!isAuthenticated &&
               (state.matchedLocation == TransactionScreen.route)) {
-            locator<Logger>().d('query params ${state.uri.queryParameters}');
+            sl<Logger>().d('query params ${state.uri.queryParameters}');
             return OnBoardingScreen.route;
           }
 
@@ -337,7 +340,7 @@ class AppRouterConfig {
             // If link not is valid
             // redirect to /
             if (!LinkUtil.validateLink(state.uri.toString())) {
-              locator<Logger>().d('invalid link ${state.uri.queryParameters}');
+              sl<Logger>().d('invalid link ${state.uri.queryParameters}');
               return HomeScreen.route;
             } else {
               return null;

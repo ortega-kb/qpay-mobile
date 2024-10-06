@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:qpay/config/app_route_name.dart';
 import 'package:qpay/core/shared/services/user_information_service.dart';
 import 'package:qpay/core/shared/widgets/m_button.dart';
 import 'package:qpay/core/shared/widgets/m_select_fied.dart';
@@ -136,7 +135,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           if (_formKey.currentState!.validate()) {
                             final link = LinkUtil.linkGenerator(
                               userCode:
-                                  locator<UserInformationService>().userCode,
+                                  sl<UserInformationService>().userCode,
                               amount: _amountController.text.trim(),
                               description: _descriptionController.text.trim(),
                               wallet: _walletTypeController.text,
@@ -170,7 +169,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ?.copyWith(color: AppColor.gray),
             ),
             Text(
-              locator<UserInformationService>().username,
+              sl<UserInformationService>().username,
               style: Theme.of(context)
                   .textTheme
                   .bodyMedium
@@ -225,7 +224,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         onRefresh: () async {
           context.read<WalletBloc>().add(
                 WalletGetByUserCodeEvent(
-                  userCode: locator<UserInformationService>().userCode,
+                  userCode: sl<UserInformationService>().userCode,
                 ),
               );
         },

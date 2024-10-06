@@ -4,8 +4,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class NotificationsScreen extends StatelessWidget {
   const NotificationsScreen({super.key});
 
-  static get path => 'notifications';
-  static get route => '/notifications';
+  static String path = 'notifications';
+  static String route = '/notifications';
 
   @override
   Widget build(BuildContext context) {

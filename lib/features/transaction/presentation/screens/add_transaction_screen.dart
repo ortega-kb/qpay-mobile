@@ -16,9 +16,8 @@ import '../../../../core/utils/operations.dart';
 class AddTransactionScreen extends StatefulWidget {
   const AddTransactionScreen({super.key});
 
-  static get path => 'add-transaction';
-
-  static get routes => '/add-transaction';
+  static String path = 'add-transaction';
+  static String routes = '/add-transaction';
 
   @override
   State<AddTransactionScreen> createState() => _AddTransactionScreenState();
@@ -77,9 +76,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                           suffixIcon: TextButton(
                             onPressed: () {},
                             child: Text(
-                              context
-                                  .watch<WalletPageCubit>()
-                                  .state == 0
+                              context.watch<WalletPageCubit>().state == 0
                                   ? Currency.CDF.name
                                   : Currency.USD.name,
                             ),
@@ -89,12 +86,10 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                     ),
                     const SizedBox(height: AppDimen.p2),
                     Builder(builder: (context) {
-                      final wallet = context
-                          .watch<WalletPageCubit>()
-                          .state;
+                      final wallet = context.watch<WalletPageCubit>().state;
 
                       _walletController.text =
-                      wallet == 0 ? Currency.CDF.name : Currency.USD.name;
+                          wallet == 0 ? Currency.CDF.name : Currency.USD.name;
 
                       return wallet == 0
                           ? SupportingTitle(title: "Min: 1000 CDF")

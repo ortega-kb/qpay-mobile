@@ -12,8 +12,8 @@ import '../../../../di/dependencies.dart';
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
 
-  static get path => 'account';
-  static get route => '/account';
+  static String path = 'account';
+  static String route = '/account';
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class AccountScreen extends StatelessWidget {
                   children: [
                     SettingsItem(
                       title: AppLocalizations.of(context)!.account_user,
-                      subtitle: locator<UserInformationService>().username,
+                      subtitle: sl<UserInformationService>().username,
                       onTap: () {},
                       iconData: null,
                       hasNext: false,
@@ -52,7 +52,7 @@ class AccountScreen extends StatelessWidget {
                     Separator(isLarge: false),
                     SettingsItem(
                       title: AppLocalizations.of(context)!.user_code,
-                      subtitle: locator<UserInformationService>().userCode,
+                      subtitle: sl<UserInformationService>().userCode,
                       onTap: () {},
                       iconData: null,
                       hasNext: false,
@@ -60,7 +60,7 @@ class AccountScreen extends StatelessWidget {
                     Separator(isLarge: false),
                     SettingsItem(
                       title: AppLocalizations.of(context)!.account_type,
-                      subtitle: locator<UserInformationService>().accountType,
+                      subtitle: sl<UserInformationService>().accountType,
                       onTap: () {},
                       iconData: null,
                       hasNext: false,
@@ -68,7 +68,7 @@ class AccountScreen extends StatelessWidget {
                     Separator(isLarge: false),
                     SettingsItem(
                       title: AppLocalizations.of(context)!.phone_number,
-                      subtitle: locator<UserInformationService>().phoneNumber,
+                      subtitle: sl<UserInformationService>().phoneNumber,
                       onTap: () {},
                       iconData: null,
                       hasNext: false,

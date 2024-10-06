@@ -19,8 +19,8 @@ class UserInformationScreen extends StatefulWidget {
   final String phone;
   const UserInformationScreen({super.key, required this.phone});
 
-  static get path => '/user-informations';
-  static get route => '/user-informations';
+  static String path = '/user-informations';
+  static String route = '/user-informations';
 
   @override
   State<UserInformationScreen> createState() => _UserInformationScreenState();
