@@ -15,6 +15,7 @@ import '../../domain/entities/qr_static.dart';
 
 class QRStaticDetailScreen extends StatefulWidget {
   final QRStatic qrStatic;
+
   const QRStaticDetailScreen({super.key, required this.qrStatic});
 
   static String path = 'qr-static-details';
@@ -30,11 +31,11 @@ class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
 
   initialize() {
     _qrResponse = TransactionResponse(
-      code: widget.qrStatic.account,
-      amount: widget.qrStatic.amount,
-      type: OperationType.PAYMENT.name,
-      wallet: widget.qrStatic.currency,
-    );
+        code: widget.qrStatic.account,
+        amount: widget.qrStatic.amount,
+        type: OperationType.PAYMENT.name,
+        wallet: widget.qrStatic.currency,
+        description: widget.qrStatic.motif);
   }
 
   @override
@@ -42,8 +43,6 @@ class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
     super.initState();
     initialize();
   }
-
-
 
   @override
   void dispose() {
@@ -159,14 +158,15 @@ class _QRStaticDetailScreenState extends State<QRStaticDetailScreen> {
                                             ListTile(
                                               title: Text(
                                                 AppLocalizations.of(context)!
-                                                    .motif,
+                                                    .description,
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .bodyMedium
                                                     ?.copyWith(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        color: AppColor.black),
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: AppColor.black,
+                                                    ),
                                               ),
                                               subtitle: Text(
                                                 widget.qrStatic.motif,

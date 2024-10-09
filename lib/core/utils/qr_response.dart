@@ -6,12 +6,14 @@ class TransactionResponse {
   final double? amount;
   final String type;
   final String? wallet;
+  final String? description;
 
   TransactionResponse({
     required this.code,
     required this.amount,
     required this.type,
     required this.wallet,
+    this.description
   });
 
   factory TransactionResponse.fromJson(Map<String, dynamic> json) {
@@ -20,6 +22,7 @@ class TransactionResponse {
       amount: json['at'] as double?,
       type: json['type'],
       wallet: json['wt'],
+      description: json['desc']
     );
   }
 
@@ -29,6 +32,7 @@ class TransactionResponse {
       'at': amount,
       'type': OperationType.PAYMENT.name,
       'wt': wallet,
+      'desc': description
     };
 
     return map;

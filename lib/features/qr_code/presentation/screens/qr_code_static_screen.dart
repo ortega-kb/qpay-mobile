@@ -76,7 +76,7 @@ class _QrCodeStaticScreenState extends State<QrCodeStaticScreen> {
                       const SizedBox(height: AppDimen.p16),
                       MTextField(
                         controller: _motifController,
-                        label: AppLocalizations.of(context)!.motif,
+                        label: AppLocalizations.of(context)!.description,
                         obscureText: false,
                         keyboardType: TextInputType.text,
                         validator: (value) {

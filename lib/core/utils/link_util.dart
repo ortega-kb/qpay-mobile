@@ -66,6 +66,7 @@ class LinkUtil {
       amount: double.parse(amount!),
       type: type ?? OperationType.PAYMENT.name,
       wallet: wallet!,
+      description: description ?? null
     );
   }
 }

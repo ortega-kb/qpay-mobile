@@ -8,6 +8,7 @@ import 'package:qpay/core/utils/qr_response.dart';
 
 class TransactionScreen extends StatelessWidget {
   final TransactionResponse? transactionResponse;
+
   const TransactionScreen({super.key, required this.transactionResponse});
 
   static String path = 'transaction';
@@ -51,6 +52,8 @@ class TransactionScreen extends StatelessWidget {
                     ),
                     subtitle: Text(transactionResponse!.code),
                   ),
+                  const Separator(isLarge: false),
+                  const SizedBox(height: AppDimen.p8),
                   ListTile(
                     title: Text(
                       AppLocalizations.of(context)!.amount,
@@ -62,6 +65,18 @@ class TransactionScreen extends StatelessWidget {
                         Text(transactionResponse!.amount!.toStringAsFixed(2)),
                     trailing: Text(transactionResponse!.wallet!),
                   ),
+                  if (transactionResponse!.description != '')
+                    const Separator(isLarge: false),
+                    const SizedBox(height: AppDimen.p8),
+                    ListTile(
+                      title: Text(
+                        AppLocalizations.of(context)!.description,
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                      subtitle: Text(transactionResponse!.description!),
+                    ),
                 ],
               ),
             ),

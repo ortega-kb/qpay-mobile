@@ -4,7 +4,6 @@ import 'package:ai_barcode_scanner/ai_barcode_scanner.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
-import 'package:qpay/config/app_route_name.dart';
 import 'package:qpay/core/utils/link_util.dart';
 import 'package:qpay/core/utils/messages.dart';
 import 'package:qpay/core/utils/qr_payload.dart';
@@ -53,7 +52,7 @@ class QrScannerScreen extends StatelessWidget {
               final qrCodeUri = LinkUtil.linkGenerator(
                 userCode: qrResponse.code,
                 amount: qrResponse.amount.toString(),
-                description: '',
+                description: qrResponse.description ?? '',
                 wallet: qrResponse.wallet!,
               );
 
