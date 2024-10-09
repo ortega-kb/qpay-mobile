@@ -8,6 +8,7 @@ import 'package:qpay/core/shared/widgets/qr_code_view.dart';
 import 'package:qpay/core/shared/widgets/separator.dart';
 import 'package:qpay/core/theme/app_color.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
+import 'package:qpay/core/utils/currency.dart';
 import 'package:qpay/core/utils/enums/operation_type.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:qpay/core/utils/messages.dart';
@@ -22,7 +23,6 @@ class MyQrCodeScreen extends StatefulWidget {
   static String path = 'my-qr-code';
   static String route = '/my-qr-code';
 
-
   @override
   State<MyQrCodeScreen> createState() => _MyQrCodeScreenState();
 }
@@ -34,9 +34,10 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
   initialize() {
     _qrResponse = TransactionResponse(
       code: sl<UserInformationService>().userCode,
+      amount: 0,
       type: OperationType.TRANSFER.name,
-      amount: null,
-      wallet: '',
+      wallet: Currency.CDF.name,
+      description: 'Description',
     );
   }
 
@@ -187,16 +188,16 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
                                                             FontWeight.bold,
                                                         color: AppColor.black),
                                               ),
-                                              subtitle: Text(sl<
-                                                      UserInformationService>()
-                                                  .userCode),
+                                              subtitle: Text(
+                                                  sl<UserInformationService>()
+                                                      .userCode),
                                               trailing: IconButton(
                                                 onPressed: () {
                                                   Clipboard.setData(
                                                     ClipboardData(
-                                                      text: sl<
-                                                              UserInformationService>()
-                                                          .userCode,
+                                                      text:
+                                                          sl<UserInformationService>()
+                                                              .userCode,
                                                     ),
                                                   );
                                                 },

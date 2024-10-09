@@ -166,6 +166,14 @@ class AppRouterConfig {
               GoRoute(
                 path: AddTransactionScreen.path,
                 builder: (context, state) {
+                  TransactionResponse? transactionResponse = null;
+                  if (state.extra != null) {
+                    final transactionDecoded =
+                        json.decode(state.extra as String);
+                    transactionResponse =
+                        TransactionResponse.fromJson(transactionDecoded);
+                  }
+
                   return AnnotatedRegion(
                     value: SystemUiOverlayStyle(
                       statusBarColor: AppColor.background,
@@ -173,9 +181,13 @@ class AppRouterConfig {
                     ),
                     child: PopScope(
                       onPopInvoked: (value) {
-                        context.pop();
+                        if (transactionResponse != null) {
+                          context.go(HomeScreen.route);
+                        }
                       },
-                      child: AddTransactionScreen(),
+                      child: AddTransactionScreen(
+                        transactionResponse: transactionResponse,
+                      ),
                     ),
                   );
                 },

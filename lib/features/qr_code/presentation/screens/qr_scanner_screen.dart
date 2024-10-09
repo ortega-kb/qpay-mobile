@@ -4,12 +4,15 @@ import 'package:ai_barcode_scanner/ai_barcode_scanner.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
+import 'package:logger/logger.dart';
 import 'package:qpay/core/utils/link_util.dart';
 import 'package:qpay/core/utils/messages.dart';
 import 'package:qpay/core/utils/qr_payload.dart';
+import 'package:qpay/features/transaction/presentation/screens/add_transaction_screen.dart';
 
 import '../../../../core/utils/enums/operation_type.dart';
 import '../../../../core/utils/qr_response.dart';
+import '../../../../di/dependencies.dart';
 
 class QrScannerScreen extends StatelessWidget {
   const QrScannerScreen({super.key});
@@ -41,13 +44,16 @@ class QrScannerScreen extends StatelessWidget {
         if (barcode.barcodes.isNotEmpty) {
           final qrPayloadRaw = barcode.barcodes.first.rawValue!;
           if (QrPayload.isValidPayload(qrPayloadRaw)) {
+            // If QrPayload.isValidPayload
+            // Stop controller
+            controller.stop();
+
             // Parse Qr payload and validate data
             TransactionResponse qrResponse =
                 QrPayload.fromPayload(qrPayloadRaw);
             if (qrResponse.type == OperationType.PAYMENT.name) {
               // If Qr response operation type is PAYMENT,
               // Redirect to payment screen with Qr response data
-              controller.stop();
 
               final qrCodeUri = LinkUtil.linkGenerator(
                 userCode: qrResponse.code,
@@ -58,9 +64,14 @@ class QrScannerScreen extends StatelessWidget {
 
               context.push(qrCodeUri.toString());
             } else {
-              // If Qr response operation type is NOT PAYMENT,
-              // Display error message or redirect to default screen
-              // TODO: Handle not payment payload
+              // If Qr response operation type is NOT PAYMENT, (TRANSFER)
+              sl<Logger>().d('Scanning another qr code');
+              context.push(
+                AddTransactionScreen.route,
+                extra: json.encode(
+                  qrResponse.toJson(),
+                ),
+              );
             }
           } else {
             // If Qr payload is not valid, display error message

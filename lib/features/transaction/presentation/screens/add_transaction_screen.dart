@@ -6,6 +6,7 @@ import 'package:qpay/core/shared/widgets/m_button.dart';
 import 'package:qpay/core/shared/widgets/wallet.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
 import 'package:qpay/core/utils/link_util.dart';
+import 'package:qpay/core/utils/qr_response.dart';
 
 import '../../../../core/shared/cubits/wallet_page_cubit.dart';
 import '../../../../core/shared/widgets/m_text_field.dart';
@@ -14,10 +15,11 @@ import '../../../../core/utils/currency.dart';
 import '../../../../core/utils/operations.dart';
 
 class AddTransactionScreen extends StatefulWidget {
-  const AddTransactionScreen({super.key});
+  final TransactionResponse? transactionResponse;
+  const AddTransactionScreen({super.key, required this.transactionResponse});
 
   static String path = 'add-transaction';
-  static String routes = '/add-transaction';
+  static String route = '/add-transaction';
 
   @override
   State<AddTransactionScreen> createState() => _AddTransactionScreenState();
@@ -29,6 +31,14 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
   final _accountController = TextEditingController();
   final _amountController = TextEditingController();
   final _walletController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.transactionResponse != null) {
+      _accountController.text = widget.transactionResponse!.code;
+    }
+  }
 
   @override
   void dispose() {
