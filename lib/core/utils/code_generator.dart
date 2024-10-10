@@ -3,12 +3,12 @@ import 'dart:math';
 class CodeGenerator {
   // generate unique user code for customers
   static String userCode() {
-    return "qp${_uniqueNumericCode()}";
+    return "qp${_uniqueNumericCode()}".toUpperCase();
   }
 
   // generate unique numeric code for transaction IDs
   static String transactionCode() {
-    return "#qp${_uniqueNumericCode()}";
+    return "#qp${_uniqueNumericCode()}".toUpperCase();
   }
 
   // generate unique numeric code for user and transaction IDs
