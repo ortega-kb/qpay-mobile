@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
+import 'package:qpay/core/shared/cubits/home_navigation_cubit.dart';
 import 'package:qpay/core/shared/widgets/separator.dart';
 import 'package:qpay/core/shared/widgets/settings_item.dart';
 import 'package:qpay/core/theme/app_dimen.dart';
@@ -44,6 +45,7 @@ class SettingsScreen extends StatelessWidget {
               TextButton(
                 onPressed: () {
                   context.read<AuthBloc>().add(AuthSignOutEvent());
+                  context.read<HomeNavigationCubit>().navigate(0);
                   Navigator.pop(context);
                 },
                 child: Text(

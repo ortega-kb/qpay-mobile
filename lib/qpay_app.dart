@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:go_router/go_router.dart';
 import 'package:qpay/core/shared/cubits/account_type_cubit.dart';
 import 'package:qpay/core/shared/cubits/home_navigation_cubit.dart';
 import 'package:qpay/core/shared/cubits/language/language_cubit.dart';
@@ -13,12 +14,12 @@ import 'package:qpay/core/shared/cubits/wallet_page_cubit.dart';
 import 'package:qpay/features/wallet/presentation/bloc/wallet_bloc.dart';
 import 'package:qpay/di/dependencies.dart';
 
-import 'config/configs.dart';
 import 'core/theme/app_theme.dart';
 import 'features/qr_code/presentation/bloc/qr_code_bloc.dart';
 
 class QpayApp extends StatelessWidget {
-  const QpayApp({super.key});
+  final GoRouter router;
+  const QpayApp({super.key, required this.router});
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +48,7 @@ class QpayApp extends StatelessWidget {
                 Locale('fr'),
                 Locale('en'),
               ],
-              routerConfig: sl<AppRouterConfig>().router,
+              routerConfig: router,
               locale: Locale(language),
               theme: AppTheme.lightTheme
           );

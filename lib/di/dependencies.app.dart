@@ -22,7 +22,6 @@ Future<void> dependencies() async {
   final qrStaticBox = await Hive.openBox<QRStaticModel>('qr_static');
   final sharedPreferencesService = await SharedPreferencesService.getInstance();
   
-  final appRouterConfig = AppRouterConfig(sharedPreferencesService);
   final userInformationService = UserInformationService(sharedPreferencesService);
 
   final logger = Logger();
@@ -31,7 +30,6 @@ Future<void> dependencies() async {
   sl.registerLazySingleton(() => qrStaticBox);
   sl.registerLazySingleton(() => sharedPreferencesService);
   sl.registerLazySingleton(() => userInformationService);
-  sl.registerLazySingleton(() => appRouterConfig);
   sl.registerLazySingleton(() => logger);
 }
 
