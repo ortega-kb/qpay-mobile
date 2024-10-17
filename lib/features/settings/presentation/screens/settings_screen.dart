@@ -1,3 +1,4 @@
+import 'package:app_settings/app_settings.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -111,7 +112,9 @@ class SettingsScreen extends StatelessWidget {
                     SettingsItem(
                       title: AppLocalizations.of(context)!.notifications,
                       iconData: FluentIcons.alert_24_filled,
-                      onTap: () => context.push(NotificationsScreen.route),
+                      onTap: () => AppSettings.openAppSettings(
+                        type: AppSettingsType.notification,
+                      ),
                     ),
                   ],
                 ),
@@ -122,7 +125,8 @@ class SettingsScreen extends StatelessWidget {
                   children: [
                     SettingsItem(
                       title: AppLocalizations.of(context)!.support,
-                      iconData: FluentIcons.accessibility_question_mark_24_filled,
+                      iconData:
+                          FluentIcons.accessibility_question_mark_24_filled,
                       onTap: () => ExternalLink.emailSupport(context),
                     ),
                     Separator(isLarge: false),

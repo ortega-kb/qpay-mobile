@@ -17,6 +17,13 @@ void main() async {
         ? HydratedStorage.webStorageDirectory
         : await getApplicationDocumentsDirectory(),
   );
+
   Bloc.observer = QpayBlocObserver();
-  runApp(QpayApp(router: AppRouterConfig(sl<SharedPreferencesService>()).router));
+  runApp(
+    QpayApp(
+      router: AppRouterConfig(
+        sl<SharedPreferencesService>(),
+      ).router,
+    ),
+  );
 }

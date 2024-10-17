@@ -18,9 +18,9 @@ class MOutlinedButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColor.transparant,
-        shadowColor: AppColor.transparant,
-        surfaceTintColor: AppColor.transparant,
+        backgroundColor: AppColor.transparent,
+        shadowColor: AppColor.transparent,
+        surfaceTintColor: AppColor.transparent,
         shape: RoundedRectangleBorder(
           side: const BorderSide(color: AppColor.greyColor),
           borderRadius: BorderRadius.circular(AppDimen.p32),

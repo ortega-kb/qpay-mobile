@@ -8,7 +8,7 @@ class Progress extends StatelessWidget {
   final Color color;
   const Progress({
     super.key,
-    this.color = AppColor.transparant,
+    this.color = AppColor.transparent,
     this.size = 40,
   });
 
